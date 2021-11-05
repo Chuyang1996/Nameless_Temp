@@ -77,7 +77,8 @@ namespace Nameless.DataMono
                 this.fixbtn.gameObject.SetActive(false);
                 if (value == PawnState.Wait)
                 {
-                    this.fixbtn.gameObject.SetActive(true);
+                    if(!this.isAI)
+                        this.fixbtn.gameObject.SetActive(true);
                     this.PlayCharacterAnim(0);
                 }
                 else if (value == PawnState.Walk)
