@@ -1,0 +1,1 @@
+{"101":{"name":"弹药打折","descrption":"弹药打折","condition":"null","costMedicineRate":"0","costAmmoRate":"-0.5"},"102":{"name":"药品打折","descrption":"药品打折","condition":"null","costMedicineRate":"-0.5","costAmmoRate":"0"}}

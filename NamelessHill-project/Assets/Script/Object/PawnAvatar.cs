@@ -1,3 +1,4 @@
+using Nameless.Agent;
 using Nameless.Data;
 using Nameless.Manager;
 using Nameless.UI;
@@ -19,6 +20,8 @@ namespace Nameless.DataMono
     }
     public class PawnAvatar : MonoBehaviour
     {
+        public long Id;
+
         #region//AI
         public int goal;
         public bool isAI;
@@ -89,15 +92,15 @@ namespace Nameless.DataMono
                 state = value;
             }
         }
-
         public bool isPlay = false;
         public int currentIndex = 0;
 
         public Material WireMaterial;
         public float animationDuration;
 
-        #region//动画
         public PawnAgent pawnAgent;
+        #region//动画
+
         private AnimatorOverrideController animOverride;
         public AnimationClip[] animationClips;
         public Animator characterAnim;
@@ -112,40 +115,6 @@ namespace Nameless.DataMono
         public Text dialogueTxt;
         public GameObject fixbtn;
         #endregion
-        //100, 
-        //1.0f, 
-        //20, 
-        //1.0f,
-        // 200,
-        // 0.5f,
-        // 100,
-        // 0.5f,
-        // 100, 
-        //0.5f,
-        // 1,
-        // 1.0f,
-        // 100,
-        // 1.0f, 
-        //100,
-        // 1.0f,
-        //10,
-        //1.0f
-        public float health = 100;
-        public float crHealth = 1.0f;
-        public float attack = 20.0f;
-        public float crAttack = 1.0f;
-        public float morale = 200.0f;
-        public float crMorale = 0.5f;
-        public int ammo = 100;
-        public float crAmmo = 0.5f;
-        public float speed = 1.0f;
-        public float crSpeed = 1.0f;
-        public float hit = 100.0f;
-        public float crHit = 1.0f;
-        public float dex = 100.0f;
-        public float crDex = 1.0f;
-        public float defend = 10;
-        public float crDefend = 1.0f;
         // Start is called before the first frame update
         void Start()
         {
@@ -157,10 +126,12 @@ namespace Nameless.DataMono
         {
             this.healthBar.value = 1;
             this.characterView = GameManager.Instance.characterView;
-            this.pawnAgent = new PawnAgent(this.healthBar, this.CurrentArea,this.health, this.crHealth, this.attack, this.crAttack, this.morale, this.crMorale, this.ammo, this.crAmmo,  this.speed, this.crSpeed, this.hit, this.crHit, this.dex, this.crDex, this.defend, this.crDefend);
+            this.pawnAgent = new PawnAgent(this.healthBar, this.CurrentArea,PawnFactory.GetPawnById(Id));
             this.animOverride = new AnimatorOverrideController(this.characterAnim.runtimeAnimatorController);
             this.characterAnim.runtimeAnimatorController = this.animOverride;
             this.State = PawnState.Wait;
+            this.nameTxt.text = DataManager.Instance.GetCharacter(Id).name;
+
             //this.InitLine();
         }
         // Update is called once per frame
@@ -550,6 +521,35 @@ namespace Nameless.DataMono
         #endregion
 
         #region//战斗
+        public void CalcuateBattleInfo()
+        {
+            float attack = this.pawnAgent.pawn.curAttack;
+            float defend = this.pawnAgent.pawn.curDefend;
+            for (int i = 0; i < this.pawnAgent.skills.Count; i++)
+            {
+                if (this.pawnAgent.skills[i] is FightSkill)
+                {
+                    PropertySkillEffect propertySkillEffect = this.pawnAgent.skills[i].Execute(this, this);
+                    attack += propertySkillEffect.changeAttack;
+                    defend += propertySkillEffect.changeDefend;
+                }
+            }
+            for(int i = 0; i < this.pawnAgent.supporters.Count; i++)
+            {
+                List<Skill> skills = this.pawnAgent.supporters[i].pawnAgent.skills;
+                for(int j = 0; j < skills.Count; j++)
+                {
+                    if(skills[j] is SupportSkill)
+                    {
+                        PropertySkillEffect propertySkillEffect = skills[j].Execute(this, this);
+                        attack += propertySkillEffect.changeAttack;
+                        defend += propertySkillEffect.changeDefend;
+                    }
+                }
+            }
+            this.pawnAgent.battleInfo = new PawnAgent.BattleInfo(attack, defend);
+        }
+
         public bool IsFail()
         {
             if (this.pawnAgent.pawn.curHealth <= 0)
@@ -561,6 +561,7 @@ namespace Nameless.DataMono
         public void CheckResult(bool ifRetreat)
         {
             this.pawnAgent.MoraleChange(-10.0f);//待修改
+            this.pawnAgent.battleSide = BattleSide.Peace;//待修改
             this.ClearPawn();
             //if (this.pawnAgent.pawn.curMorale <= 0 || this.CheckIfSurround())
             //{
@@ -583,6 +584,7 @@ namespace Nameless.DataMono
         }//检查战败后的结果（死亡）
         public void CheckIfBattleResult(PawnAvatar opponent, bool ifForward)
         {
+            this.pawnAgent.battleSide = BattleSide.Peace;
             this.pawnAgent.MoraleChange(10.0f);//待修改
             this.PlayDialogue(this.pawnAgent.pawn.winTxt);
             this.pawnAgent.ResetBattleInfo();
@@ -600,8 +602,6 @@ namespace Nameless.DataMono
             //        this.State = this.lastState;
             //}
         }//检查战胜后的结果（是否还战斗）
-
-
         private void CheckSupport()//检查支援
         {
             for(int i = 0; i < this.CurrentArea.neighboors.Count; i++)

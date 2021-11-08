@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using System.Reflection;
 using System;
 using Nameless.Data;
+using Nameless.ConfigData;
 
 namespace Nameless.Manager
 {
@@ -20,6 +21,10 @@ namespace Nameless.Manager
         #region
 
         public Dictionary<long, Dictionary<string, string>> characterData;
+        public Dictionary<long, Dictionary<string, string>> fightSkillData;
+        public Dictionary<long, Dictionary<string, string>> supportSkillData;
+        public Dictionary<long, Dictionary<string, string>> buildSkillData;
+        public Dictionary<long, Dictionary<string, string>> buffSkillData;
 
         #endregion
         ///////////////////////////////数据//////////////////////////
@@ -37,10 +42,30 @@ namespace Nameless.Manager
         {
             string data;
 
-            FileStream skillFile = File.Open(Application.streamingAssetsPath + "/" + "Character_Data.txt", FileMode.Open, FileAccess.Read);
-            StreamReader skillReader = new StreamReader(skillFile);
-            data = skillReader.ReadLine();
+            FileStream characterFile = File.Open(Application.streamingAssetsPath + "/" + "Character_Data.txt", FileMode.Open, FileAccess.Read);
+            StreamReader characterReader = new StreamReader(characterFile);
+            data = characterReader.ReadLine();
             this.characterData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
+
+            FileStream fightSkillFile = File.Open(Application.streamingAssetsPath + "/" + "FightSkill_Data.txt", FileMode.Open, FileAccess.Read);
+            StreamReader fightSkillReader = new StreamReader(fightSkillFile);
+            data = fightSkillReader.ReadLine();
+            this.fightSkillData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
+
+            FileStream supportSkillFile = File.Open(Application.streamingAssetsPath + "/" + "SupportSkill_Data.txt", FileMode.Open, FileAccess.Read);
+            StreamReader supportSkillReader = new StreamReader(supportSkillFile);
+            data = supportSkillReader.ReadLine();
+            this.supportSkillData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
+
+            FileStream buildSkillFile = File.Open(Application.streamingAssetsPath + "/" + "BuildSkill_Data.txt", FileMode.Open, FileAccess.Read);
+            StreamReader buildSkillReader = new StreamReader(buildSkillFile);
+            data = buildSkillReader.ReadLine();
+            this.buildSkillData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
+
+            FileStream buffSkillFile = File.Open(Application.streamingAssetsPath + "/" + "Buff_Data.txt", FileMode.Open, FileAccess.Read);
+            StreamReader buffSkillReader = new StreamReader(buffSkillFile);
+            data = buffSkillReader.ReadLine();
+            this.buffSkillData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
 
         }
         #endregion
@@ -63,6 +88,7 @@ namespace Nameless.Manager
                     CharacterData skill = new CharacterData
                             (id,
                             this.characterData[id]["name"],
+                            this.characterData[id]["descrption"],
                             float.Parse(this.characterData[id]["health"]),
                             float.Parse(this.characterData[id]["crHealth"]),
                             float.Parse(this.characterData[id]["attack"]),
@@ -80,7 +106,10 @@ namespace Nameless.Manager
                             float.Parse(this.characterData[id]["hit"]),
                             float.Parse(this.characterData[id]["crHit"]),
                             float.Parse(this.characterData[id]["dex"]),
-                            float.Parse(this.characterData[id]["crDex"])
+                            float.Parse(this.characterData[id]["crDex"]),
+                            this.characterData[id]["fightSkill"],
+                            this.characterData[id]["supportSkill"],
+                            this.characterData[id]["buildSkill"]
                             );
                     return skill;
                 }
@@ -97,7 +126,118 @@ namespace Nameless.Manager
             }
         }
         //获取被动技能
-    
+        public FightSkillData GetFightSkillData(long id)
+        {
+            try
+            {
+                if (this.fightSkillData.ContainsKey(id))
+                {
+                    FightSkillData skill = new FightSkillData
+                            (id,
+                            this.fightSkillData[id]["name"],
+                            this.fightSkillData[id]["descrption"],
+                            this.fightSkillData[id]["condition"],
+                            float.Parse(this.fightSkillData[id]["attackRate"]),
+                            float.Parse(this.fightSkillData[id]["defendRate"])
+                            );
+                    return skill;
+                }
+                else
+                {
+                    Debug.LogError("楚洋：FightSkillData数据转换错误，数据中未能找到此id = " + id + " 的物品，请在逻辑层检查是否对数据进行了初始化,或者Id出了问题，或是否配表出了问题");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("楚洋:表中的数据名称可能发生改动或者删除，请检查表中的数据title名称是否正确，如果正确请联系楚洋进行核对");
+                return null;
+            }
+        }
+        public SupportSkillData GetSupportSkillData(long id)
+        {
+            try
+            {
+                if (this.supportSkillData.ContainsKey(id))
+                {
+                    SupportSkillData skill = new SupportSkillData
+                            (id,
+                            this.supportSkillData[id]["name"],
+                            this.supportSkillData[id]["descrption"],
+                            this.supportSkillData[id]["condition"],
+                            this.supportSkillData[id]["buff"],
+                            float.Parse(this.supportSkillData[id]["attackRate"]),
+                            float.Parse(this.supportSkillData[id]["defendRate"])
+                            );
+                    return skill;
+                }
+                else
+                {
+                    Debug.LogError("楚洋：SupportSkillData数据转换错误，数据中未能找到此id = " + id + " 的物品，请在逻辑层检查是否对数据进行了初始化,或者Id出了问题，或是否配表出了问题");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("楚洋:表中的数据名称可能发生改动或者删除，请检查表中的数据title名称是否正确，如果正确请联系楚洋进行核对");
+                return null;
+            }
+        }
+        public BuildSkillData GetBuildSkillData(long id)
+        {
+            try
+            {
+                if (this.buildSkillData.ContainsKey(id))
+                {
+                    BuildSkillData skill = new BuildSkillData
+                            (id,
+                            this.buildSkillData[id]["name"],
+                            this.buildSkillData[id]["descrption"],
+                            this.buildSkillData[id]["condition"],
+                            float.Parse(this.buildSkillData[id]["costMedicineRate"]),
+                            float.Parse(this.buildSkillData[id]["costAmmoRate"])
+                            );
+                    return skill;
+                }
+                else
+                {
+                    Debug.LogError("楚洋：BuildSkillData数据转换错误，数据中未能找到此id = " + id + " 的物品，请在逻辑层检查是否对数据进行了初始化,或者Id出了问题，或是否配表出了问题");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("楚洋:表中的数据名称可能发生改动或者删除，请检查表中的数据title名称是否正确，如果正确请联系楚洋进行核对");
+                return null;
+            }
+        }
+        public BuffData GetBuffData(long id)
+        {
+            try
+            {
+                if (this.buffSkillData.ContainsKey(id))
+                {
+                    BuffData skill = new BuffData
+                            (id,
+                            this.buffSkillData[id]["name"],
+                            this.buffSkillData[id]["descrption"],
+                            int.Parse(this.buffSkillData[id]["type"]),
+                            this.buffSkillData[id]["parameter"]
+                            );
+                    return skill;
+                }
+                else
+                {
+                    Debug.LogError("楚洋：BuildSkillData数据转换错误，数据中未能找到此id = " + id + " 的物品，请在逻辑层检查是否对数据进行了初始化,或者Id出了问题，或是否配表出了问题");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("楚洋:表中的数据名称可能发生改动或者删除，请检查表中的数据title名称是否正确，如果正确请联系楚洋进行核对");
+                return null;
+            }
+        }
         //将字符串转换成整型数组
         public int[] StringToIntArray(string stringlist)
         {

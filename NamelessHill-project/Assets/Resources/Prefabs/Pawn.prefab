@@ -542,6 +542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296882f73cf37e9498ef2bc5f69aaf6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Id: 1005
   goal: 1
   isAI: 1
   characterView: {fileID: 0}
@@ -565,22 +566,6 @@ MonoBehaviour:
   nameTxt: {fileID: 2782149106756308242}
   dialogueTxt: {fileID: 2782149107033820259}
   fixbtn: {fileID: 173567583345087979}
-  health: 100
-  crHealth: 1
-  attack: 30
-  crAttack: 1
-  morale: 200
-  crMorale: 0.5
-  ammo: 100
-  crAmmo: 1
-  speed: 0.5
-  crSpeed: 1
-  hit: 100
-  crHit: 1
-  dex: 100
-  crDex: 1
-  defend: 10
-  crDefend: 1
 --- !u!114 &9109056592837110068
 MonoBehaviour:
   m_ObjectHideFlags: 0

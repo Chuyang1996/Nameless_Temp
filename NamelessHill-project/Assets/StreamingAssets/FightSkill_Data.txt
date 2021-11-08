@@ -1,0 +1,1 @@
+{"101":{"name":"加强攻击","descrption":"加攻击","condition":"[[10:1]]","attackRate":"0.2","defendRate":"0.2"},"102":{"name":"加强防御","descrption":"加防御","condition":"[[11:1]]","attackRate":"0","defendRate":"0.5"},"103":{"name":"加强攻击","descrption":"加攻击","condition":"[[10:1]]","attackRate":"0.5","defendRate":"0"}}

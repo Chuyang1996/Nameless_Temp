@@ -19,6 +19,9 @@ namespace Nameless.DataMono
             this.attacker = attacker;
             this.defender = defender;
 
+            this.attacker.pawnAgent.battleSide = BattleSide.Attacker;
+            this.defender.pawnAgent.battleSide = BattleSide.Defender;
+
             this.attacker.pawnAgent.opponents.Add(this.defender);
             this.defender.pawnAgent.opponents.Add(this.attacker);
 
@@ -33,6 +36,7 @@ namespace Nameless.DataMono
             bool attackerTurn = true;
             this.attacker.ShowBattleHint(true);
             this.defender.ShowBattleHint(true);
+
             while (true)
             {
                 if (this.attacker == null || this.defender == null)
@@ -40,12 +44,17 @@ namespace Nameless.DataMono
 
                 if (this.IsTheBattleEnd())
                     break;
-                
+                this.attacker.CalcuateBattleInfo();//计算本次战斗实际的角色数据
+                this.defender.CalcuateBattleInfo();
+
                 if (attackerTurn)
                 {
                     this.attacker.pawnAgent.AmmoChange(-1);
                     this.attacker.currentArea.CostAmmo(this.attacker);
-                    float damage = (this.attacker.pawnAgent.pawn.curAttack - this.defender.pawnAgent.pawn.curDefend) * this.attacker.pawnAgent.pawn.curMorale / this.attacker.pawnAgent.pawn.maxMorale;
+                    float attackerAtk = this.attacker.pawnAgent.battleInfo.actualAttack;
+                    float defenderDef = this.defender.pawnAgent.battleInfo.actualDefend;
+
+                    float damage = (attackerAtk - defenderDef) * this.attacker.pawnAgent.pawn.curMorale / this.attacker.pawnAgent.pawn.maxMorale;
                     this.defender.pawnAgent.HealthChange(-damage);
                     this.defender.currentArea.CostMedicine(this.defender);
                 }
@@ -53,7 +62,10 @@ namespace Nameless.DataMono
                 {
                     this.defender.pawnAgent.AmmoChange(-1);
                     this.defender.currentArea.CostAmmo(this.defender);
-                    float damage = (this.defender.pawnAgent.pawn.curAttack - this.attacker.pawnAgent.pawn.curDefend) * this.defender.pawnAgent.pawn.curMorale / this.defender.pawnAgent.pawn.maxMorale;
+                    float attackerAtk = this.defender.pawnAgent.battleInfo.actualAttack;
+                    float defenderDef = this.attacker.pawnAgent.battleInfo.actualDefend;
+
+                    float damage = (attackerAtk - defenderDef) * this.defender.pawnAgent.pawn.curMorale / this.defender.pawnAgent.pawn.maxMorale;
                     this.attacker.pawnAgent.HealthChange(-damage);
                     this.attacker.currentArea.CostMedicine(this.attacker);
                 }

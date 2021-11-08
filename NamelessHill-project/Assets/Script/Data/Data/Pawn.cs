@@ -6,6 +6,9 @@ namespace Nameless.Data
 {
     public class Pawn
     {
+        public long id;
+        public string name;
+
         public float maxHealth;
         public float maxAttack;
         public float maxMorale;
@@ -203,8 +206,14 @@ namespace Nameless.Data
         private float currentHit;
         private float currentDex;
         private float currentDefend;
-        public Pawn(float health, float crHealth, float attack, float crAttack, float morale, float crMorale, int ammo, float crAmmo, float speed,float crSpeed, float hit,float crHit,float dex,float crDex,float defend,float crDefend )
+
+        public List<long> fightSkillIds;
+        public List<long> supportSkillIds;
+        public List<long> buildSkillIds;
+        public Pawn(long id, string name,float health, float crHealth, float attack, float crAttack, float morale, float crMorale, int ammo, float crAmmo, float speed, float crSpeed, float hit, float crHit, float dex, float crDex, float defend, float crDefend, List<long> fightSkillIds, List<long> supportSkillIds, List<long> buildSkillIds)
         {
+            this.id = id;
+            this.name = name;
             this.maxHealth = health;
             this.maxAttack = attack;
             this.maxMorale = morale;
@@ -227,6 +236,10 @@ namespace Nameless.Data
             this.pinchTxt = "We are attacked by two sides!!";
             this.surroundTxt = "They are too many!!";
             this.winTxt = "We won!! Charge!!";
+
+            this.fightSkillIds = fightSkillIds;
+            this.supportSkillIds = supportSkillIds;
+            this.buildSkillIds = buildSkillIds;
 
         }
 

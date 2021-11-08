@@ -1,3 +1,4 @@
+using Nameless.Agent;
 using Nameless.Data;
 using Nameless.Manager;
 using System;
@@ -20,7 +21,12 @@ namespace Nameless.DataMono
         Pinch = 1,
         Surround = 2,
     }
-
+    public enum BattleSide
+    {
+        Peace = 0,
+        Attacker = 1,
+        Defender = 2,
+    }
     public class PawnAgent
     {
         public struct RunningTimeCostProperty
@@ -78,7 +84,16 @@ namespace Nameless.DataMono
                 this.addTimeAmmo = addTimeAmmo;
             }
         }
-
+        public struct BattleInfo
+        {
+            public float actualAttack;
+            public float actualDefend;
+            public BattleInfo(float actualAttack, float actualDefend)
+            {
+                this.actualAttack = actualAttack;
+                this.actualDefend = actualDefend;
+            }
+        }
 
         public PropertyState state;
         public Slider healthBar;
@@ -108,6 +123,7 @@ namespace Nameless.DataMono
         #endregion
 
         #region//角色战斗状态
+        public BattleSide battleSide;
         public BattleState BattleState
         {
             set
@@ -128,18 +144,24 @@ namespace Nameless.DataMono
             }
         }
         private BattleState battleState = BattleState.Normal;
+        public BattleInfo battleInfo;
         public List<PawnAvatar> opponents = new List<PawnAvatar>();//正在与自己战斗的所有角色
         public PawnAvatar curOpponent = null;//自己正在攻击的角色
         public bool opponentIsInBattle = false;//对方是否在攻击其他角色
         public Dictionary<Area, int> aroundOppoNum = new Dictionary<Area, int>();
-
+        public List<PawnAvatar> supporters = new List<PawnAvatar>();
 
         #endregion
 
-        public PawnAgent(Slider healthBar,Area currentArea, float health, float crHealth, float attack, float crAttack, float morale, float crMorale, int ammo, float crAmmo, float speed, float crSpeed, float hit, float crHit, float dex, float crDex, float defend, float crDefend)
+        #region//角色技能和buff
+        public List<Buff> buffs;
+        public List<Skill> skills;
+        #endregion
+
+        public PawnAgent(Slider healthBar,Area currentArea, Pawn pawn)
         {
             this.healthBar = healthBar;
-            this.pawn = new Pawn( health, crHealth,  attack, crAttack, morale, crMorale,  ammo,  crAmmo,   speed,  crSpeed,  hit,  crHit,  dex,  crDex,  defend,  crDefend);
+            this.pawn = pawn;
             this.healthBar.value = this.pawn.curHealth / this.pawn.maxHealth;
             if (currentArea.type == AreaType.Base)
             {
@@ -152,13 +174,30 @@ namespace Nameless.DataMono
                 this.state = PropertyState.Costing;//暂时根据当前地面的类型去判断是否消耗或者补充
                 this.runningTimeProperty = new RunningTimeCostProperty(currentArea.costMorale, -1.0f, currentArea.costTimeMorale, 1.0f, 0, 0, 0, 0);
             }
-            
+
+            this.buffs = new List<Buff>();
+            this.skills = new List<Skill>();
+            this.supporters = new List<PawnAvatar>();
+            for (int i = 0; i < pawn.fightSkillIds.Count; i++)
+            {
+                this.skills.Add(SkillFactory.GetSkillById(SkillFactoryType.FightSkill, pawn.fightSkillIds[i]));
+            }
+            for (int i = 0; i < pawn.supportSkillIds.Count; i++)
+            {
+                this.skills.Add(SkillFactory.GetSkillById(SkillFactoryType.SupportSkill, pawn.supportSkillIds[i]));
+            }
+            for (int i = 0; i < pawn.buildSkillIds.Count; i++)
+            {
+                this.skills.Add(SkillFactory.GetSkillById(SkillFactoryType.BuildSkill, pawn.buildSkillIds[i]));
+            }
             this.countCTimeMorale = 0.0f;
             this.countBTimeMorale = 0.0f;
             this.countConTimeMorale = 0.0f;
-
+            this.battleSide = BattleSide.Peace;
             ResetBattleInfo();
         }
+
+        
         // Start is called before the first frame update
 
         // Update is called once per frame
@@ -248,6 +287,14 @@ namespace Nameless.DataMono
             if (this.aroundOppoNum.Count == 2)
                 return true;
             return false;
+        }
+        public void AddBuff(Buff buff)
+        {
+            this.buffs.Add(buff);
+        }
+        public void RemoveBuff(Buff buff)
+        {
+            this.buffs.Remove(buff);
         }
         //public void AddSurroundArea(PawnAvatar opponent)
         //{

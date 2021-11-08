@@ -1,0 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Nameless.ConfigData
+{
+    public class SupportSkillData
+    {
+
+        public long Id;
+        public string name;
+        public string description;
+        public string condition;
+        public string buff;
+        public float attackRate;
+        public float defendRate;
+
+        public SupportSkillData(long Id, string name, string description, string condition, string buff, float attackRate, float defendRate)
+        {
+            this.Id = Id;
+            this.name = name;
+            this.description = description;
+            this.condition = condition;
+            this.buff = buff;
+            this.attackRate = attackRate;
+            this.defendRate = defendRate;
+        }
+    }
+}

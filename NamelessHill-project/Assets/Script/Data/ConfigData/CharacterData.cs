@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Nameless.Data
+namespace Nameless.ConfigData
 {
     public class CharacterData
     {
         public long Id;
         public string name;
+        public string descrption;
         public float health;
         public float crHealth;
         public float attack;
@@ -27,12 +28,15 @@ namespace Nameless.Data
         public float dex;
         public float crDex;
 
-
+        public string fightSkills;
+        public string supportSkills;
+        public string buildSkills;
 
         public CharacterData
             (
             long Id, 
             string name, 
+            string descrption, 
             float health, 
             float crHealth, 
             float attack, 
@@ -50,10 +54,15 @@ namespace Nameless.Data
             float hit, 
             float crHit, 
             float dex, 
-            float crDex)
+            float crDex,
+            string fightSkills,
+            string supportSkills,
+            string buildSkills
+            )
         {
             this.Id = Id;
             this.name = name;
+            this.descrption = descrption;
             this.health = health;
             this.crHealth = crHealth;
             this.attack = attack;
@@ -72,6 +81,9 @@ namespace Nameless.Data
             this.crHit = crHit;
             this.dex = dex;
             this.crDex = crDex;
+            this.fightSkills = fightSkills;
+            this.supportSkills = supportSkills;
+            this.buildSkills = buildSkills;
 
         }
 
@@ -79,6 +91,7 @@ namespace Nameless.Data
     (
             long Id,
             string name,
+            string descrption,
     float health,
     float crHealth,
     float attack,
@@ -96,10 +109,15 @@ namespace Nameless.Data
     float hit,
     float crHit,
     float dex,
-    float crDex)
+    float crDex,
+            string fightSkills,
+            string supportSkills,
+            string buildSkills
+            )
         {
             this.Id = Id;
             this.name = name;
+            this.name = descrption;
             this.health = health;
             this.crHealth = crHealth;
             this.attack = attack;
@@ -118,6 +136,9 @@ namespace Nameless.Data
             this.crHit = crHit;
             this.dex = dex;
             this.crDex = crDex;
+            this.fightSkills = fightSkills;
+            this.supportSkills = supportSkills;
+            this.buildSkills = buildSkills;
 
         }
         // Start is called before the first frame update

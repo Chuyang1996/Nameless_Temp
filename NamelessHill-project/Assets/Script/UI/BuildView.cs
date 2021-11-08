@@ -1,3 +1,4 @@
+using Nameless.Data;
 using Nameless.DataMono;
 using Nameless.DataUI;
 using Nameless.Manager;
@@ -25,6 +26,8 @@ namespace Nameless.UI
 
         private List<GameObject> buildList = new List<GameObject>();
         private List<GameObject> costList = new List<GameObject>();
+        private PawnAvatar currentPawn;
+
         public Area currentArea;
         public BuildSelectUI currentBuild;
         public Text descTxt;
@@ -39,8 +42,17 @@ namespace Nameless.UI
             {
                 this.currentArea.Ammo += this.currentBuild.addAmmoBuild;
                 this.currentArea.Medicine += this.currentBuild.addMedicineBuild;
-                GameManager.Instance.ChangeAmmo(-this.currentBuild.costAmmo);
-                GameManager.Instance.ChangeMedicine(-this.currentBuild.costMedicine);
+                int costAmmo = -this.currentBuild.costAmmo;
+                int costMedicine = -this.currentBuild.costMedicine;
+                List<Skill> skills = this.currentPawn.pawnAgent.skills;
+                for(int i = 0;i< skills.Count; i++)
+                {
+                    PropertySkillEffect propertySkillEffect = skills[i].Execute(this.currentPawn,this.currentPawn);
+                    costAmmo -= (int)propertySkillEffect.changeAmmo;
+                    costMedicine -= (int)propertySkillEffect.changeMedicine;
+                }
+                GameManager.Instance.ChangeAmmo(costAmmo);
+                GameManager.Instance.ChangeMedicine(costMedicine);
                 this.setBtn.interactable = this.IsSetBtnActiveAfterClick();
             });
         }
@@ -52,7 +64,7 @@ namespace Nameless.UI
             this.buildList.Clear();
 
             this.currentArea = pawn.currentArea;
-
+            this.currentPawn = pawn;
             Transform Obj0 = Instantiate(this.buildTemplate.transform, this.contentBuildSelect.transform);
             Transform Obj1 = Instantiate(this.buildTemplate.transform, this.contentBuildSelect.transform);
             Obj0.gameObject.SetActive(true);
