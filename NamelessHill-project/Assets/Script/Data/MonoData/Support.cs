@@ -22,7 +22,8 @@ namespace Nameless.DataMono
             {
                 if(supporter.pawnAgent.skills[i] is SupportSkill)
                 {
-                    List<Buff> buffs = ((SupportSkill)supporter.pawnAgent.skills[i]).buffs;
+                    PropertySkillEffect skillEffect = supporter.pawnAgent.skills[i].Execute(receiver, receiver);
+                    List<Buff> buffs = skillEffect.buffs;
                     for(int j = 0; j < buffs.Count; j++)
                     {
                         if(buffs[j] is TimelyBuff)

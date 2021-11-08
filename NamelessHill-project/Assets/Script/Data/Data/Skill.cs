@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Nameless.Data
 {
-    public enum ConditionType
+    public enum SkillConditionType
     {
         LowHealth = 0,
         HighHealth = 1,
@@ -31,13 +31,14 @@ namespace Nameless.Data
 
         public float changeAmmo;
         public float changeMedicine;
-
-        public PropertySkillEffect(float changeAttack, float changeDefend, float changeAmmo,float changeMedicine)
+        public List<Buff> buffs;
+        public PropertySkillEffect(float changeAttack, float changeDefend, float changeAmmo,float changeMedicine, List<Buff> buffs)
         {
             this.changeAttack = changeAttack;
             this.changeDefend = changeDefend;
             this.changeAmmo = changeAmmo;
             this.changeMedicine = changeMedicine;
+            this.buffs = buffs;
         }
     }
     public class Skill
@@ -45,13 +46,13 @@ namespace Nameless.Data
         public long id;
         public string name;
         public string descrption;
-        public Dictionary<ConditionType, float> conditions = new Dictionary<ConditionType, float>();
+        public Dictionary<SkillConditionType, float> conditions = new Dictionary<SkillConditionType, float>();
 
         protected bool IsActive(PawnAvatar pawnAvatar)
         {
             foreach(var child in this.conditions)
             {
-                if(child.Key == ConditionType.LowHealth)
+                if(child.Key == SkillConditionType.LowHealth)
                 {
                     if(pawnAvatar.pawnAgent.pawn.curHealth <= child.Value * pawnAvatar.pawnAgent.pawn.maxHealth)
                     {
@@ -62,7 +63,7 @@ namespace Nameless.Data
                         return false;
                     }
                 }
-                else if (child.Key == ConditionType.HighHealth)
+                else if (child.Key == SkillConditionType.HighHealth)
                 {
                     if (pawnAvatar.pawnAgent.pawn.curHealth > child.Value * pawnAvatar.pawnAgent.pawn.maxHealth)
                     {
@@ -73,7 +74,7 @@ namespace Nameless.Data
                         return false;
                     }
                 }
-                else if (child.Key == ConditionType.LowAttack)
+                else if (child.Key == SkillConditionType.LowAttack)
                 {
                     if (pawnAvatar.pawnAgent.pawn.curAttack <= child.Value * pawnAvatar.pawnAgent.pawn.maxAttack)
                     {
@@ -84,7 +85,7 @@ namespace Nameless.Data
                         return false;
                     }
                 }
-                else if (child.Key == ConditionType.HightAttack)
+                else if (child.Key == SkillConditionType.HightAttack)
                 {
                     if (pawnAvatar.pawnAgent.pawn.curAttack > child.Value * pawnAvatar.pawnAgent.pawn.maxAttack)
                     {
@@ -95,7 +96,7 @@ namespace Nameless.Data
                         return false;
                     }
                 }
-                else if (child.Key == ConditionType.LowDefend)
+                else if (child.Key == SkillConditionType.LowDefend)
                 {
                     if (pawnAvatar.pawnAgent.pawn.curDefend <= child.Value * pawnAvatar.pawnAgent.pawn.maxDefend)
                     {
@@ -106,7 +107,7 @@ namespace Nameless.Data
                         return false;
                     }
                 }
-                else if (child.Key == ConditionType.HighDefend)
+                else if (child.Key == SkillConditionType.HighDefend)
                 {
                     if (pawnAvatar.pawnAgent.pawn.curDefend > child.Value * pawnAvatar.pawnAgent.pawn.maxDefend)
                     {
@@ -117,7 +118,7 @@ namespace Nameless.Data
                         return false;
                     }
                 }
-                else if (child.Key == ConditionType.LowMorale)
+                else if (child.Key == SkillConditionType.LowMorale)
                 {
                     if (pawnAvatar.pawnAgent.pawn.curMorale <= child.Value * pawnAvatar.pawnAgent.pawn.maxMorale)
                     {
@@ -128,7 +129,7 @@ namespace Nameless.Data
                         return false;
                     }
                 }
-                else if (child.Key == ConditionType.HighMorale)
+                else if (child.Key == SkillConditionType.HighMorale)
                 {
                     if (pawnAvatar.pawnAgent.pawn.curMorale > child.Value * pawnAvatar.pawnAgent.pawn.maxMorale)
                     {
@@ -139,7 +140,7 @@ namespace Nameless.Data
                         return false;
                     }
                 }
-                else if (child.Key == ConditionType.LowAmmo)
+                else if (child.Key == SkillConditionType.LowAmmo)
                 {
                     if (pawnAvatar.pawnAgent.pawn.curAmmo <= child.Value * pawnAvatar.pawnAgent.pawn.maxAmmo)
                     {
@@ -150,7 +151,7 @@ namespace Nameless.Data
                         return false;
                     }
                 }
-                else if (child.Key == ConditionType.HighAmmo)
+                else if (child.Key == SkillConditionType.HighAmmo)
                 {
                     if (pawnAvatar.pawnAgent.pawn.curAmmo > child.Value * pawnAvatar.pawnAgent.pawn.maxAmmo)
                     {
@@ -161,7 +162,7 @@ namespace Nameless.Data
                         return false;
                     }
                 }
-                else if(child.Key == ConditionType.IsAttacker)
+                else if(child.Key == SkillConditionType.IsAttacker)
                 {
                     if (pawnAvatar.pawnAgent.battleSide == BattleSide.Attacker)
                     {
@@ -170,7 +171,7 @@ namespace Nameless.Data
                     else
                         return false;
                 }
-                else if (child.Key == ConditionType.IsDefender)
+                else if (child.Key == SkillConditionType.IsDefender)
                 {
                     if (pawnAvatar.pawnAgent.battleSide == BattleSide.Defender)
                     {
@@ -186,31 +187,33 @@ namespace Nameless.Data
 
         public PropertySkillEffect Execute(PawnAvatar condition, PawnAvatar contribute)
         {
+            List<Buff> buffs = new List<Buff>();
             if (this.IsActive(condition))
             {
                 if (this is FightSkill)
                 {
                     FightSkill fightSkill = (FightSkill)this;
-                    return new PropertySkillEffect(fightSkill.ExtraAttack(condition, contribute), fightSkill.ExtraDefend(condition, contribute), 0, 0);
+                    return new PropertySkillEffect(fightSkill.ExtraAttack(condition, contribute), fightSkill.ExtraDefend(condition, contribute), 0, 0, buffs);
                 }
                 else if(this is SupportSkill)
                 {
                     SupportSkill supportSkill = (SupportSkill)this;
-                    return new PropertySkillEffect(supportSkill.ExtraAttack(condition, contribute), supportSkill.ExtraDefend(condition, contribute), 0, 0);
+                    buffs = supportSkill.buffs;
+                    return new PropertySkillEffect(supportSkill.ExtraAttack(condition, contribute), supportSkill.ExtraDefend(condition, contribute), 0, 0, buffs);
                 }
                 else if(this is BuildSkill)
                 {
                     BuildSkill buildSkill = (BuildSkill)this;
-                    return new PropertySkillEffect(0, 0, buildSkill.ExtraAmmo(condition, 100.0f), buildSkill.ExtraMedicine(condition, 50.0f));//待修改 后面要改成全局的数据控制
+                    return new PropertySkillEffect(0, 0, buildSkill.ExtraAmmo(condition, 100.0f), buildSkill.ExtraMedicine(condition, 50.0f), buffs);//待修改 后面要改成全局的数据控制
                 }
                 else
                 {
-                    return new PropertySkillEffect(0, 0, 0, 0);
+                    return new PropertySkillEffect(0, 0, 0, 0, buffs);
                 }
             }
             else
             {
-                return new PropertySkillEffect(0, 0, 0, 0);
+                return new PropertySkillEffect(0, 0, 0, 0, buffs);
             }
         }
 
@@ -220,7 +223,7 @@ namespace Nameless.Data
     {
         public float attackRate;
         public float defendRate;
-        public FightSkill(long id, string name, string descrption, Dictionary<ConditionType,float> conditions, float attackRate, float defendRate)
+        public FightSkill(long id, string name, string descrption, Dictionary<SkillConditionType,float> conditions, float attackRate, float defendRate)
         {
             this.id = id;
             this.name = name;
@@ -252,7 +255,7 @@ namespace Nameless.Data
         public List<Buff> buffs;
         public float attackRate;
         public float defendRate;
-        public SupportSkill(long id, string name, string descrption, Dictionary<ConditionType, float> conditions, List<Buff> buffs, float attackRate, float defendRate)
+        public SupportSkill(long id, string name, string descrption, Dictionary<SkillConditionType, float> conditions, List<Buff> buffs, float attackRate, float defendRate)
         {
             this.id = id;
             this.name = name;
@@ -284,7 +287,7 @@ namespace Nameless.Data
         public float costMedicineRate;
         public float costAmmoRate;
 
-        public BuildSkill(long id, string name, string descrption, Dictionary<ConditionType, float> conditions, float costMedicineRate, float costAmmoRate)
+        public BuildSkill(long id, string name, string descrption, Dictionary<SkillConditionType, float> conditions, float costMedicineRate, float costAmmoRate)
         {
             this.id = id;
             this.name = name;

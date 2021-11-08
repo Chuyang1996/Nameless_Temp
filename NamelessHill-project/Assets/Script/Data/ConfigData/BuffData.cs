@@ -10,6 +10,7 @@ namespace Nameless.ConfigData
         public long Id;
         public string name;
         public string description;
+        public string conditions;
         public int type;
         public string parameter;
 
@@ -17,6 +18,7 @@ namespace Nameless.ConfigData
             long Id,
             string name,
             string description,
+            string conditions,
             int type,
             string parameter
             )
@@ -24,6 +26,7 @@ namespace Nameless.ConfigData
             this.Id = Id;
             this.name = name;
             this.description = description;
+            this.conditions = conditions;
             this.type = type;
             this.parameter = parameter;
         }

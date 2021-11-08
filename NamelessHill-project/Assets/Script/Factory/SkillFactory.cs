@@ -28,7 +28,7 @@ namespace Nameless.Agent
         }
         public static Skill Get(FightSkillData fightSkillData)
         {
-            Dictionary<ConditionType, float> tempDic = new Dictionary<ConditionType, float>();
+            Dictionary<SkillConditionType, float> tempDic = new Dictionary<SkillConditionType, float>();
             if(fightSkillData.condition != "null")
             {
                 tempDic = GetConditions(fightSkillData.condition);
@@ -37,7 +37,7 @@ namespace Nameless.Agent
         }
         public static Skill Get(SupportSkillData supportSkillData)
         {
-            Dictionary<ConditionType, float> tempDic = new Dictionary<ConditionType, float>();
+            Dictionary<SkillConditionType, float> tempDic = new Dictionary<SkillConditionType, float>();
             if (supportSkillData.condition != "null")
             {
                 tempDic = GetConditions(supportSkillData.condition);
@@ -55,7 +55,7 @@ namespace Nameless.Agent
         }
         public static Skill Get(BuildSkillData buildSkillData)
         {
-            Dictionary<ConditionType, float> tempDic = new Dictionary<ConditionType, float>();
+            Dictionary<SkillConditionType, float> tempDic = new Dictionary<SkillConditionType, float>();
             if (buildSkillData.condition != "null")
             {
                 tempDic = GetConditions(buildSkillData.condition);
@@ -64,13 +64,13 @@ namespace Nameless.Agent
         }
 
 
-        public static Dictionary<ConditionType, float> GetConditions(string conditionString)
+        public static Dictionary<SkillConditionType, float> GetConditions(string conditionString)
         {
-            Dictionary<ConditionType, float> tempCondition = new Dictionary<ConditionType, float>();
+            Dictionary<SkillConditionType, float> tempCondition = new Dictionary<SkillConditionType, float>();
             List<float[]> tempList = StringToListArray(conditionString);
             for(int i = 0; i < tempList.Count; i++)
             {
-                tempCondition.Add((ConditionType)tempList[i][0], tempList[i][1]);
+                tempCondition.Add((SkillConditionType)tempList[i][0], tempList[i][1]);
             }
             return tempCondition;
 

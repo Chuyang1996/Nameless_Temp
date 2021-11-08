@@ -221,6 +221,7 @@ namespace Nameless.Manager
                             (id,
                             this.buffSkillData[id]["name"],
                             this.buffSkillData[id]["descrption"],
+                            this.buffSkillData[id]["condition"],
                             int.Parse(this.buffSkillData[id]["type"]),
                             this.buffSkillData[id]["parameter"]
                             );
