@@ -1,4 +1,5 @@
 using Nameless.Agent;
+using Nameless.Controller;
 using Nameless.Data;
 using Nameless.Manager;
 using Nameless.UI;
@@ -137,7 +138,7 @@ namespace Nameless.DataMono
         // Update is called once per frame
         void Update()
         {
-            if (this.currentArea == null || this.pawnAgent == null)
+            if (this.currentArea == null || this.pawnAgent == null || RTSCamera.Instance._isTranstionTo)
                 return;
 
             if (this.State == PawnState.Wait)
@@ -549,7 +550,6 @@ namespace Nameless.DataMono
             }
             this.pawnAgent.battleInfo = new PawnAgent.BattleInfo(attack, defend);
         }
-
         public bool IsFail()
         {
             if (this.pawnAgent.pawn.curHealth <= 0)

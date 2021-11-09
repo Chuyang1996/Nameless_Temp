@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Nameless.DataMono
 {
     
-    public class BattleController : MonoBehaviour
+    public class BattleRound : MonoBehaviour
     {
         public Battle battle;
         private PawnAvatar attacker;
@@ -54,7 +54,7 @@ namespace Nameless.DataMono
                     float attackerAtk = this.attacker.pawnAgent.battleInfo.actualAttack;
                     float defenderDef = this.defender.pawnAgent.battleInfo.actualDefend;
 
-                    float damage = (attackerAtk - defenderDef) * this.attacker.pawnAgent.pawn.curMorale / this.attacker.pawnAgent.pawn.maxMorale;
+                    float damage = (attackerAtk - defenderDef)/* * this.attacker.pawnAgent.pawn.curMorale / this.attacker.pawnAgent.pawn.maxMorale*/;
                     this.defender.pawnAgent.HealthChange(-damage);
                     this.defender.currentArea.CostMedicine(this.defender);
                 }
@@ -65,7 +65,7 @@ namespace Nameless.DataMono
                     float attackerAtk = this.defender.pawnAgent.battleInfo.actualAttack;
                     float defenderDef = this.attacker.pawnAgent.battleInfo.actualDefend;
 
-                    float damage = (attackerAtk - defenderDef) * this.defender.pawnAgent.pawn.curMorale / this.defender.pawnAgent.pawn.maxMorale;
+                    float damage = (attackerAtk - defenderDef) /** this.defender.pawnAgent.pawn.curMorale / this.defender.pawnAgent.pawn.maxMorale*/;
                     this.attacker.pawnAgent.HealthChange(-damage);
                     this.attacker.currentArea.CostMedicine(this.attacker);
                 }

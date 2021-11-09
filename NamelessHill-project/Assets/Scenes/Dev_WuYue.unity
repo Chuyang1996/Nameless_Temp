@@ -4291,6 +4291,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4306,6 +4307,25 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe55d5679217144b8dafc8747b2d079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 9
+  y: 9
+  orthographicSizeMin: 1.5
+  orthographicSizeMax: 10
+  speed: 1
+  Locked: 0
+  _isTranstionTo: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -4333,7 +4353,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.2
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -15632,7 +15652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5252757079715980612, guid: 696cab3c5054d284eb7df8433e3436df, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.6823654
+      value: 0.68237305
       objectReference: {fileID: 0}
     - target: {fileID: 5252757080191606953, guid: 696cab3c5054d284eb7df8433e3436df, type: 3}
       propertyPath: m_AnchorMax.y
