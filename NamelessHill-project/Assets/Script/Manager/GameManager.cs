@@ -9,10 +9,22 @@ using UnityEngine;
 namespace Nameless.Manager {
     public class GameManager : SingletonMono<GameManager>
     {
+        public bool isPlay = true;
+
         public Action<string, bool> RESULTEVENT;
 
+        /// <summary>
+        /// 临时数据
+        /// </summary>
         public int totalAmmo;
         public int totalMedicine;
+
+
+        /// <summary>
+        /// 临时数据
+        /// </summary>
+
+
         
         public AreasManager currentMap;
         public CharacterView characterView;
@@ -23,6 +35,7 @@ namespace Nameless.Manager {
         // Start is called before the first frame update
         void Start()
         {
+            this.isPlay = true;
             DataManager.Instance.InitData();
             //Debug.Log(DataManager.Instance.GetCharacter(1001).name);
             AudioManager.Instance.InitAudio();
@@ -59,6 +72,7 @@ namespace Nameless.Manager {
 
         public void ChangeAmmo(int cost)
         {
+
             this.totalAmmo += cost;
             this.battleView.resourceInfoView.Init(this.totalAmmo, this.totalMedicine);
         }
@@ -66,6 +80,15 @@ namespace Nameless.Manager {
         {
             this.totalMedicine += cost;
             this.battleView.resourceInfoView.Init(this.totalAmmo, this.totalMedicine);
+        }
+
+        public void PauseOrPlay(bool isPause)
+        {
+            this.isPlay = isPause;
+            if (this.isPlay)
+                Time.timeScale = 1.0f;
+            else
+                Time.timeScale = 0.0f;
         }
     }
 }

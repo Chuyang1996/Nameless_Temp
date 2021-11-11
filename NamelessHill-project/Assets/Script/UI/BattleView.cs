@@ -60,13 +60,12 @@ namespace Nameless.UI
                 this.isPlay = !this.isPlay;
                 if (isPlay)
                 {
-                    this.gamePauseBtn.image.sprite = pauseIcon;
-                    Time.timeScale = 1.0f;
+                    GameManager.Instance.PauseOrPlay(true);
                 }
                 else
                 {
                     this.gamePauseBtn.image.sprite = playIcon;
-                    Time.timeScale = 0.0f;
+                    GameManager.Instance.PauseOrPlay(false);
                 } 
             });
         

@@ -1,4 +1,5 @@
 using Nameless.DataMono;
+using Nameless.Manager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -194,17 +195,24 @@ namespace Nameless.Data
         {
             while (true)
             {
-                if (pawnAvatar.pawnAgent.buffs.Contains(this))
+                if (!GameManager.Instance.isPlay)
                 {
-                    if (this.IsActive(pawnAvatar))
-                    {
-                        if (this.property == BuffAffectProperty.Health)
-                            pawnAvatar.pawnAgent.HealthChange(valueChange);
-                    }
+                    yield return null;
                 }
                 else
-                    break;
-                yield return new WaitForSecondsRealtime(this.second);
+                {
+                    if (pawnAvatar.pawnAgent.buffs.Contains(this))
+                    {
+                        if (this.IsActive(pawnAvatar))
+                        {
+                            if (this.property == BuffAffectProperty.Health)
+                                pawnAvatar.pawnAgent.HealthChange(valueChange);
+                        }
+                    }
+                    else
+                        break;
+                    yield return new WaitForSecondsRealtime(this.second);
+                }
             }
         }
     }
