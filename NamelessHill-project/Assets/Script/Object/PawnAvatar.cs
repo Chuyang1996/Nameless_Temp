@@ -191,6 +191,7 @@ namespace Nameless.DataMono
                     {
                         GameManager.Instance.buildView.gameObject.SetActive(true);
                         GameManager.Instance.buildView.ResetBuild(this);
+                        GameManager.Instance.PauseOrPlay(false);
                     }
                 }
             }

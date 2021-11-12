@@ -107,9 +107,9 @@ namespace Nameless.Manager {
             this.battleView.resourceInfoView.Init(this.totalAmmo, this.totalMedicine);
         }
 
-        public void PauseOrPlay(bool isPause)
+        public void PauseOrPlay(bool isPlay)
         {
-            this.isPlay = isPause;
+            this.isPlay = isPlay;
             if (this.isPlay)
                 Time.timeScale = 1.0f;
             else

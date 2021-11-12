@@ -36,7 +36,7 @@ namespace Nameless.UI
         void ResetPanel(EventResult eventResult)
         {
             for (int i = 0; i < this.eventOptionUIs.Count; i++)
-                DestroyImmediate(this.eventOptionUIs[i]);
+                DestroyImmediate(this.eventOptionUIs[i].gameObject);
             this.eventOptionUIs.Clear();
 
             for(int i = 0; i < eventResult.options.Count; i++)

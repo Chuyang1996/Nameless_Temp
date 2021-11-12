@@ -47,7 +47,7 @@ namespace Nameless.Manager {
                 {
                     int lastAmmo = GameManager.Instance.totalAmmo;
                     int afterAmmo = GameManager.Instance.totalAmmo + cost;
-                    if(afterAmmo < (int)child.Key.parameter  && (int)child.Key.parameter < lastAmmo)
+                    if(afterAmmo < (int)child.Key.parameter  && (int)child.Key.parameter <= lastAmmo)
                     {
                        for(int i = 0; i < child.Value.Count; i++)
                         {
@@ -67,7 +67,7 @@ namespace Nameless.Manager {
                 {
                     int lastMedicine = GameManager.Instance.totalMedicine;
                     int afterMedicine = GameManager.Instance.totalMedicine + cost;
-                    if (afterMedicine < (int)child.Key.parameter && (int)child.Key.parameter < lastMedicine)
+                    if (afterMedicine < (int)child.Key.parameter && (int)child.Key.parameter <= lastMedicine)
                     {
                         for (int i = 0; i < child.Value.Count; i++)
                         {
@@ -100,7 +100,8 @@ namespace Nameless.Manager {
         {
             while (true)
             {
-                if (this.currentAllEvent.Count > 0 && GameManager.Instance.isPlay)
+                //Debug.Log("ÎÒ»¹ÔÚ¼àÌý");
+                if (this.currentAllEvent.Count > 0)
                 {
                     GameManager.Instance.eventView.NewEvent();
                     GameManager.Instance.PauseOrPlay(false);
