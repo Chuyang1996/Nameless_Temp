@@ -38,6 +38,8 @@ namespace Nameless.Manager
 {
     public class AreasManager : SingletonMono<AreasManager>
     {
+        
+
         public MouseFollower mouseFollower;
         public float[,] areaMatrix;
         public List<Area> areas;
