@@ -36,6 +36,7 @@ namespace Nameless.UI
         {
             this.closeBtn.onClick.AddListener(() => 
             {
+                GameManager.Instance.PauseOrPlay(true);
                 this.gameObject.SetActive(false);
             });
             this.setBtn.onClick.AddListener(() =>

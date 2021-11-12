@@ -39,38 +39,45 @@ namespace Nameless.DataMono
 
             while (true)
             {
-                if (this.attacker == null || this.defender == null)
-                    break;
-
-                if (this.IsTheBattleEnd())
-                    break;
-                this.attacker.CalcuateBattleInfo();//计算本次战斗实际的角色数据
-                this.defender.CalcuateBattleInfo();
-
-                if (attackerTurn)
+                if (!GameManager.Instance.isPlay)
                 {
-                    this.attacker.pawnAgent.AmmoChange(-1);
-                    this.attacker.currentArea.CostAmmo(this.attacker);
-                    float attackerAtk = this.attacker.pawnAgent.battleInfo.actualAttack;
-                    float defenderDef = this.defender.pawnAgent.battleInfo.actualDefend;
-
-                    float damage = (attackerAtk - defenderDef)/* * this.attacker.pawnAgent.pawn.curMorale / this.attacker.pawnAgent.pawn.maxMorale*/;
-                    this.defender.pawnAgent.HealthChange(-damage);
-                    this.defender.currentArea.CostMedicine(this.defender);
+                    yield return null;
                 }
                 else
                 {
-                    this.defender.pawnAgent.AmmoChange(-1);
-                    this.defender.currentArea.CostAmmo(this.defender);
-                    float attackerAtk = this.defender.pawnAgent.battleInfo.actualAttack;
-                    float defenderDef = this.attacker.pawnAgent.battleInfo.actualDefend;
+                    if (this.attacker == null || this.defender == null)
+                        break;
 
-                    float damage = (attackerAtk - defenderDef) /** this.defender.pawnAgent.pawn.curMorale / this.defender.pawnAgent.pawn.maxMorale*/;
-                    this.attacker.pawnAgent.HealthChange(-damage);
-                    this.attacker.currentArea.CostMedicine(this.attacker);
+                    if (this.IsTheBattleEnd())
+                        break;
+                    this.attacker.CalcuateBattleInfo();//计算本次战斗实际的角色数据
+                    this.defender.CalcuateBattleInfo();
+
+                    if (attackerTurn)
+                    {
+                        this.attacker.pawnAgent.AmmoChange(-1);
+                        this.attacker.currentArea.CostAmmo(this.attacker);
+                        float attackerAtk = this.attacker.pawnAgent.battleInfo.actualAttack;
+                        float defenderDef = this.defender.pawnAgent.battleInfo.actualDefend;
+
+                        float damage = (attackerAtk - defenderDef)/* * this.attacker.pawnAgent.pawn.curMorale / this.attacker.pawnAgent.pawn.maxMorale*/;
+                        this.defender.pawnAgent.HealthChange(-damage);
+                        this.defender.currentArea.CostMedicine(this.defender);
+                    }
+                    else
+                    {
+                        this.defender.pawnAgent.AmmoChange(-1);
+                        this.defender.currentArea.CostAmmo(this.defender);
+                        float attackerAtk = this.defender.pawnAgent.battleInfo.actualAttack;
+                        float defenderDef = this.attacker.pawnAgent.battleInfo.actualDefend;
+
+                        float damage = (attackerAtk - defenderDef) /** this.defender.pawnAgent.pawn.curMorale / this.defender.pawnAgent.pawn.maxMorale*/;
+                        this.attacker.pawnAgent.HealthChange(-damage);
+                        this.attacker.currentArea.CostMedicine(this.attacker);
+                    }
+                    attackerTurn = !attackerTurn;
+                    yield return new WaitForSecondsRealtime(1.0f);
                 }
-                attackerTurn = !attackerTurn;
-                yield return new WaitForSecondsRealtime(1.0f);
             }
             BattleManager.Instance.battleDic.Remove(this.battle);
 

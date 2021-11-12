@@ -191,6 +191,7 @@ namespace Nameless.DataMono
                     {
                         GameManager.Instance.buildView.gameObject.SetActive(true);
                         GameManager.Instance.buildView.ResetBuild(this);
+                        GameManager.Instance.PauseOrPlay(false);
                     }
                 }
             }
@@ -458,21 +459,28 @@ namespace Nameless.DataMono
                         Vector3 pos = startPos;
                         while (pos != endPos)
                         {
-                            float t = (Time.time - startTime) / segmentDuration;
-                            pos = Vector3.Lerp(startPos, endPos, t);
-
-                            for (int j = i + 1; j < renderWire.positionCount; j++)
+                            if (!GameManager.Instance.isPlay)
                             {
-                                try
-                                {
-                                    renderWire.SetPosition(j, pos);
-                                }
-                                catch (Exception e)
-                                {
-                                    Debug.LogError(renderWire.positionCount + " : " + "j" + " : " + j);
-                                }
+                                yield return null;
                             }
-                            yield return null;
+                            else
+                            {
+                                float t = (Time.time - startTime) / segmentDuration;
+                                pos = Vector3.Lerp(startPos, endPos, t);
+
+                                for (int j = i + 1; j < renderWire.positionCount; j++)
+                                {
+                                    try
+                                    {
+                                        renderWire.SetPosition(j, pos);
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        Debug.LogError(renderWire.positionCount + " : " + "j" + " : " + j);
+                                    }
+                                }
+                                yield return null;
+                            }
                         }
                         //Debug.Log("½áÊø²¥·Å");
                     }

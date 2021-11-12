@@ -30,22 +30,23 @@ namespace Nameless.UI
         #endregion
 
         #region//¼ÆÊ±¼ä
-        public int totalTime = 720;
+        public int totalTime;
         public Text timeTxt;
         public Button gamePauseBtn;
 
         public Sprite pauseIcon;
         public Sprite playIcon;
 
-        private bool isPlay;
+        private bool isPlay = false;
 
         private float seconds;
         private int minute;
         private int hour;
         #endregion
         // Start is called before the first frame update
-        void Start()
+        public void Init(int totalTime)
         {
+            this.totalTime = totalTime;
             string shour = this.totalTime / 60 > 10 ? (this.totalTime / 60).ToString() : "0" + (this.totalTime / 60).ToString();
             string sminute = this.totalTime % 60 > 10 ? (this.totalTime % 60).ToString() : "0" + (this.totalTime % 60).ToString();
             this.timeTxt.text = shour + ":"+ sminute;
@@ -60,13 +61,12 @@ namespace Nameless.UI
                 this.isPlay = !this.isPlay;
                 if (isPlay)
                 {
-                    this.gamePauseBtn.image.sprite = pauseIcon;
-                    Time.timeScale = 1.0f;
+                    GameManager.Instance.PauseOrPlay(true);
                 }
                 else
                 {
                     this.gamePauseBtn.image.sprite = playIcon;
-                    Time.timeScale = 0.0f;
+                    GameManager.Instance.PauseOrPlay(false);
                 } 
             });
         
@@ -75,6 +75,8 @@ namespace Nameless.UI
         // Update is called once per frame
         void Update()
         {
+            if (!this.isPlay)
+                return;
             this.SelectArea();
             this.CountTime();
             
@@ -99,6 +101,7 @@ namespace Nameless.UI
 
                 this.seconds = 0.0f;
                 this.totalTime--;
+                EventTriggerManager.Instance.CheckRelateTimeEvent(this.totalTime);
                 this.hour = this.totalTime / 60;
                 this.minute = this.totalTime % 60;
                 string minTxt = minute > 9 ? minute.ToString() : "0" + minute.ToString();

@@ -1,5 +1,6 @@
 #define DEBUG
 
+using Nameless.Manager;
 using System.Collections;
 using UnityEngine;
 
@@ -68,27 +69,42 @@ namespace Nameless.Controller
                 bool GetZoomTarget = false;
                 while (transform.position != transitionTargets[index].targetPos || _camera.orthographicSize != transitionTargets[index].targetZoom)
                 {
-                    if (transform.position == transitionTargets[index].targetPos)
-                        GetPosTarget = true;
+                    if (!GameManager.Instance.isPlay)
+                    {
+                        yield return null;
+                    }
                     else
-                        transform.position = Vector3.MoveTowards(transform.position, transitionTargets[index].targetPos, Time.deltaTime * transitionTargets[index].speedPos);
-                    if (_camera.orthographicSize == transitionTargets[index].targetZoom)
-                        GetZoomTarget = true;
-                    else
-                        _camera.orthographicSize += Mathf.Clamp(-transitionTargets[index].speedZoom * Time.deltaTime, transitionTargets[index].targetZoom - _camera.orthographicSize, transitionTargets[index].speedZoom * Time.deltaTime);
-                    if (GetZoomTarget && GetPosTarget)
-                        break;
-                    yield return null;
+                    {
+                        if (transform.position == transitionTargets[index].targetPos)
+                            GetPosTarget = true;
+                        else
+                            transform.position = Vector3.MoveTowards(transform.position, transitionTargets[index].targetPos, Time.deltaTime * transitionTargets[index].speedPos);
+                        if (_camera.orthographicSize == transitionTargets[index].targetZoom)
+                            GetZoomTarget = true;
+                        else
+                            _camera.orthographicSize += Mathf.Clamp(-transitionTargets[index].speedZoom * Time.deltaTime, transitionTargets[index].targetZoom - _camera.orthographicSize, transitionTargets[index].speedZoom * Time.deltaTime);
+                        if (GetZoomTarget && GetPosTarget)
+                            break;
+                        yield return null;
+                    }
                 }
 
                 while (!isAuto)
                 {
-                    if (this._clickToNext)
+                    if (!GameManager.Instance.isPlay)
                     {
-                        this._clickToNext = false;
-                        break;
+                        yield return null;
+                        continue;
                     }
-                    yield return null;
+                    else
+                    {
+                        if (this._clickToNext)
+                        {
+                            this._clickToNext = false;
+                            break;
+                        }
+                        yield return null;
+                    }
                 }
                 if(isAuto)
                     yield return new WaitForSecondsRealtime(transitionTargets[index].waitTime);
