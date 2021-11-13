@@ -1,3 +1,4 @@
+using Nameless.Data;
 using Nameless.Manager;
 using Nameless.UI;
 using System.Collections;
@@ -10,20 +11,24 @@ namespace Nameless.DataUI
     public class EventOptionUI : MonoBehaviour
     {
         public Button button;
+        public Text descTxt;
+        private EventOption eventResult;
         // Start is called before the first frame update
         void Start()
         {
             this.button.onClick.AddListener(() => this.OptionResult());
         }
 
-        public void InitOption()
+        public void InitOption(EventOption eventResult)
         {
-
+            this.eventResult = eventResult;
+            this.descTxt.text = eventResult.descrption;
         }
 
         public void OptionResult()
         {
-            GameManager.Instance.eventView.NewEvent();
+            this.eventResult.ExecuteEffect();
+            GameManager.Instance.eventView.NewEvent();//´ýÐÞ¸Ä
         }
     }
 }

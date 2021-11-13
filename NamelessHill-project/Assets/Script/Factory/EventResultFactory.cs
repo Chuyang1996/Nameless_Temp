@@ -16,7 +16,13 @@ namespace Nameless.Agent
         }
         public static EventResult Get(EventResultData eventResultData)
         {
-            return new EventResult(eventResultData.id, eventResultData.name, eventResultData.descrption, eventResultData.conditionId, StringToLongArray(eventResultData.options));
+            List<EventOption> options = new List<EventOption>(); 
+            List<long> resultId = StringToLongArray(eventResultData.options);
+            for(int i = 0; i < resultId.Count; i++)
+            {
+                options.Add(EventOptionFactory.GetEventOptionById(resultId[i]));
+            }
+            return new EventResult(eventResultData.id, eventResultData.name, eventResultData.descrption, eventResultData.conditionId, options);
         }
 
 

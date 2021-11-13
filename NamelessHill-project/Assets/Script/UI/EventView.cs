@@ -43,7 +43,7 @@ namespace Nameless.UI
             {
                 GameObject eventOption = Instantiate(this.eventOptionTemplate.gameObject, this.optionContent.transform);
                 eventOption.SetActive(true);
-                eventOption.GetComponent<EventOptionUI>().InitOption();
+                eventOption.GetComponent<EventOptionUI>().InitOption(eventResult.options[i]);
                 this.eventOptionUIs.Add(eventOption.GetComponent<EventOptionUI>());
 
             }

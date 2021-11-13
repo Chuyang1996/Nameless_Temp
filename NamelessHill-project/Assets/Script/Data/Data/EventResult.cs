@@ -11,9 +11,9 @@ namespace Nameless.Data
         public string name;
         public string descrption;
         public long conditionId;
-        public List<long> options;
+        public List<EventOption> options;
 
-        public EventResult(long id, string name, string descrption, long conditionId, List<long> options)
+        public EventResult(long id, string name, string descrption, long conditionId, List<EventOption> options)
         {
             this.id = id;
             this.name = name;

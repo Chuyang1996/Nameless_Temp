@@ -36,7 +36,7 @@ namespace Nameless.Manager {
         public BuildView buildView;
         public EventView eventView;
         public Area[] areas;
-        public PawnAvatar[] pawns;
+        public PawnAvatar[] playerPawns;
         // Start is called before the first frame update
         void Start()
         {
@@ -64,27 +64,27 @@ namespace Nameless.Manager {
             this.battleView.resourceInfoView.Init(this.totalAmmo, this.totalMedicine);
             Time.timeScale = 1.0f;
             this.RESULTEVENT += this.Result;
-            for(int i = 0; i < this.pawns.Length; i++)
+            for(int i = 0; i < this.playerPawns.Length; i++)
             {
-                this.pawns[i].characterView = this.characterView;
-                this.pawns[i].currentArea = this.areas[i];
+                this.playerPawns[i].characterView = this.characterView;
+                this.playerPawns[i].currentArea = this.areas[i];
                 this.areas[i].Init();
-                this.areas[i].AddPawn(this.pawns[i]);
-                this.pawns[i].transform.position = this.areas[i].centerNode.transform.position;
-                this.pawns[i].Init();
+                this.areas[i].AddPawn(this.playerPawns[i]);
+                this.playerPawns[i].transform.position = this.areas[i].centerNode.transform.position;
+                this.playerPawns[i].Init();
             }
 
 
             #region//ÉãÏñ»ú¶¯»­ÁÙÊ±
             RTSCamera.Instance.InitCamera();
-            TransitionTarget[] transitionTargets = new TransitionTarget[pawns.Length+1];
-            for(int i = 0; i < pawns.Length; i++)
+            TransitionTarget[] transitionTargets = new TransitionTarget[playerPawns.Length+1];
+            for(int i = 0; i < playerPawns.Length; i++)
             {
-                Vector3 targetpos = new Vector3(pawns[i].transform.position.x, pawns[i].transform.position.y, - 10.0f);
+                Vector3 targetpos = new Vector3(playerPawns[i].transform.position.x, playerPawns[i].transform.position.y, - 10.0f);
                 transitionTargets[i] = new TransitionTarget(targetpos, 1.5f, 2.0f, 2.0f, 2.0f);
             }
             Vector3 pos = new Vector3(0, 0, -10.0f);
-            transitionTargets[pawns.Length] = new TransitionTarget(pos, 5.0f, 2.0f, 2.0f, 0.5f);
+            transitionTargets[playerPawns.Length] = new TransitionTarget(pos, 5.0f, 2.0f, 2.0f, 0.5f);
             RTSCamera.Instance.StartTransition(transitionTargets,false);
             #endregion
         }

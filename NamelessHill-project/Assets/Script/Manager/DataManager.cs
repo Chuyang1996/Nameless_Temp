@@ -27,6 +27,7 @@ namespace Nameless.Manager
         public Dictionary<long, Dictionary<string, string>> buffSkillData;
         public Dictionary<long, Dictionary<string, string>> eventTriggerData;
         public Dictionary<long, Dictionary<string, string>> eventResultData;
+        public Dictionary<long, Dictionary<string, string>> eventOptionData;
 
         #endregion
         ///////////////////////////////数据//////////////////////////
@@ -78,6 +79,11 @@ namespace Nameless.Manager
             StreamReader eventResultReader = new StreamReader(eventResultFile);
             data = eventResultReader.ReadLine();
             this.eventResultData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
+
+            FileStream eventOptionFile = File.Open(Application.streamingAssetsPath + "/" + "EventOption_Data.txt", FileMode.Open, FileAccess.Read);
+            StreamReader eventOptionReader = new StreamReader(eventOptionFile);
+            data = eventOptionReader.ReadLine();
+            this.eventOptionData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
 
         }
         #endregion
@@ -296,6 +302,32 @@ namespace Nameless.Manager
                 else
                 {
                     Debug.LogError("楚洋：EventResultData数据转换错误，数据中未能找到此id = " + id + " 的物品，请在逻辑层检查是否对数据进行了初始化,或者Id出了问题，或是否配表出了问题");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("楚洋:表中的数据名称可能发生改动或者删除，请检查表中的数据title名称是否正确，如果正确请联系楚洋进行核对");
+                return null;
+            }
+        }
+        public EventOptionData GetEventOptionData(long id)
+        {
+            try
+            {
+                if (this.eventOptionData.ContainsKey(id))
+                {
+                    EventOptionData skill = new EventOptionData
+                            (id,
+                            this.eventOptionData[id]["name"],
+                            this.eventOptionData[id]["descrption"],
+                            this.eventOptionData[id]["effect"]
+                            );
+                    return skill;
+                }
+                else
+                {
+                    Debug.LogError("楚洋：EventOptionData数据转换错误，数据中未能找到此id = " + id + " 的物品，请在逻辑层检查是否对数据进行了初始化,或者Id出了问题，或是否配表出了问题");
                     return null;
                 }
             }
