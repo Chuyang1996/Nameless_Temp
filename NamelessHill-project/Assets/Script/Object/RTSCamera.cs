@@ -52,7 +52,7 @@ namespace Nameless.Controller
 
         public void InitCamera()
         {
-                        Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.Confined;
             _camera = GetComponent<Camera>();
         }
         public void StartTransition(TransitionTarget[] transitionTargets, bool isAuto)

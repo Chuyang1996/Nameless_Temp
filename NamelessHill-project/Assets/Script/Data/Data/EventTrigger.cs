@@ -9,6 +9,7 @@ namespace Nameless.Data
         TimePass = 0,
         AmmoLess = 1,
         MedicineLess = 2,
+        EnemyKillNum = 3,
     }
     public class EventTrigger
     {

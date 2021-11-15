@@ -28,6 +28,8 @@ namespace Nameless.Manager
         public Dictionary<long, Dictionary<string, string>> eventTriggerData;
         public Dictionary<long, Dictionary<string, string>> eventResultData;
         public Dictionary<long, Dictionary<string, string>> eventOptionData;
+        public Dictionary<long, Dictionary<string, string>> dialogueData;
+        public Dictionary<long, Dictionary<string, string>> dialogueGroupData;
 
         #endregion
         ///////////////////////////////数据//////////////////////////
@@ -85,6 +87,15 @@ namespace Nameless.Manager
             data = eventOptionReader.ReadLine();
             this.eventOptionData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
 
+            FileStream dialogueFile = File.Open(Application.streamingAssetsPath + "/" + "Dialogue_Data.txt", FileMode.Open, FileAccess.Read);
+            StreamReader dialogueReader = new StreamReader(dialogueFile);
+            data = dialogueReader.ReadLine();
+            this.dialogueData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
+
+            FileStream dialogueGroupFile = File.Open(Application.streamingAssetsPath + "/" + "DialogueGroup_Data.txt", FileMode.Open, FileAccess.Read);
+            StreamReader dialogueGroupReader = new StreamReader(dialogueGroupFile);
+            data = dialogueGroupReader.ReadLine();
+            this.dialogueGroupData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
         }
         #endregion
 
@@ -328,6 +339,58 @@ namespace Nameless.Manager
                 else
                 {
                     Debug.LogError("楚洋：EventOptionData数据转换错误，数据中未能找到此id = " + id + " 的物品，请在逻辑层检查是否对数据进行了初始化,或者Id出了问题，或是否配表出了问题");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("楚洋:表中的数据名称可能发生改动或者删除，请检查表中的数据title名称是否正确，如果正确请联系楚洋进行核对");
+                return null;
+            }
+        }
+        public DialogueData GetDialogueData(long id)
+        {
+            try
+            {
+                if (this.dialogueData.ContainsKey(id))
+                {
+                    DialogueData skill = new DialogueData
+                            (id,
+                            this.dialogueData[id]["dialogue"],
+                            this.dialogueData[id]["condition"],
+                            bool.Parse(this.dialogueData[id]["isAuto"]),
+                            float.Parse(this.dialogueData[id]["waitTime"]),
+                            long.Parse(this.dialogueData[id]["nextId"] == "null"? "-1": this.dialogueData[id]["nextId"])
+                            );
+                    return skill;
+                }
+                else
+                {
+                    Debug.LogError("楚洋：DialogueData数据转换错误，数据中未能找到此id = " + id + " 的物品，请在逻辑层检查是否对数据进行了初始化,或者Id出了问题，或是否配表出了问题");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("楚洋:表中的数据名称可能发生改动或者删除，请检查表中的数据title名称是否正确，如果正确请联系楚洋进行核对");
+                return null;
+            }
+        }
+        public DialogueGroupData GetDialogueGroupData(long id)
+        {
+            try
+            {
+                if (this.dialogueGroupData.ContainsKey(id))
+                {
+                    DialogueGroupData skill = new DialogueGroupData
+                            (id,
+                            this.dialogueGroupData[id]["dialogueIds"]
+                            );
+                    return skill;
+                }
+                else
+                {
+                    Debug.LogError("楚洋：DialogueData数据转换错误，数据中未能找到此id = " + id + " 的物品，请在逻辑层检查是否对数据进行了初始化,或者Id出了问题，或是否配表出了问题");
                     return null;
                 }
             }

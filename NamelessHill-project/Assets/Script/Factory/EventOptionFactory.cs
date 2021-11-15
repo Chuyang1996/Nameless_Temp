@@ -38,6 +38,9 @@ namespace Nameless.Agent
                 else if(intArray[0] == (int)EventEffectType.MedicineChange)
                 {
                     effects.Add(new MedicineEventEffect((float)intArray[1]));
+                }else if(intArray[0] == (int)EventEffectType.NextEvent)
+                {
+                    effects.Add(new NextEventEffect((long)intArray[1]));
                 }
             }
 

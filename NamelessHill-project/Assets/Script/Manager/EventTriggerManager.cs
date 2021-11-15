@@ -16,7 +16,7 @@ namespace Nameless.Manager {
         // Start is called before the first frame update
         public Dictionary<EventTrigger, List<EventResult>> eventTriggerDic = new Dictionary<EventTrigger, List<EventResult>>();
         public Stack<EventResult> currentAllEvent = new Stack<EventResult>();
-
+        
         public void InitEventTrigger(List<EventResult> allEventResults)
         {
             Dictionary<long, List<EventResult>> tempDic = new Dictionary<long, List<EventResult>>();
@@ -58,7 +58,6 @@ namespace Nameless.Manager {
             }
         }
 
-
         public void CheckRelateMedicineEvent(int cost)
         {
             foreach (var child in this.eventTriggerDic)
@@ -68,6 +67,25 @@ namespace Nameless.Manager {
                     int lastMedicine = GameManager.Instance.totalMedicine;
                     int afterMedicine = GameManager.Instance.totalMedicine + cost;
                     if (afterMedicine < (int)child.Key.parameter && (int)child.Key.parameter <= lastMedicine)
+                    {
+                        for (int i = 0; i < child.Value.Count; i++)
+                        {
+                            this.currentAllEvent.Push(child.Value[i]);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void CheckRelateEnemyKillEvent(int num)
+        {
+            foreach (var child in this.eventTriggerDic)
+            {
+                if (child.Key.type == EventTriggerType.EnemyKillNum)
+                {
+                    int lastEnemies = GameManager.Instance.enemiesDieNum;
+                    int afterEnemies = GameManager.Instance.enemiesDieNum + num;
+                    if (afterEnemies < (int)child.Key.parameter && (int)child.Key.parameter <= lastEnemies)
                     {
                         for (int i = 0; i < child.Value.Count; i++)
                         {
@@ -93,6 +111,15 @@ namespace Nameless.Manager {
                         }
                     }
                 }
+            }
+        }
+
+        public void AddNewEvent(long eventId)
+        {
+            if (eventId != -1)
+            {
+                EventResult eventResult = EventResultFactory.GetEventResultById(eventId);
+                this.currentAllEvent.Push(eventResult);
             }
         }
 

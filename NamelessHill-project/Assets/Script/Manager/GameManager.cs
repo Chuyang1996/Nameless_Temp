@@ -19,10 +19,11 @@ namespace Nameless.Manager {
         /// 临时数据
         /// </summary>
         /// 
-        public int totalTime = 720;//待修改
-        public int totalAmmo;//待修改
-        public int totalMedicine;//待修改
-
+        public int totalTime = 720;//本场战斗总时间//待修改
+        public int totalAmmo;//我方的弹药数量//待修改
+        public int totalMedicine;//我方的药品数量//待修改
+        [HideInInspector]
+        public int enemiesDieNum = 0;//敌人死亡数量//待修改
 
         /// <summary>
         /// 临时数据
@@ -106,7 +107,11 @@ namespace Nameless.Manager {
             this.totalMedicine += cost;
             this.battleView.resourceInfoView.Init(this.totalAmmo, this.totalMedicine);
         }
-
+        public void EnemiesKillNum(int num)
+        {
+            EventTriggerManager.Instance.CheckRelateEnemyKillEvent(num);
+            this.enemiesDieNum += num;
+        }
         public void PauseOrPlay(bool isPlay)
         {
             this.isPlay = isPlay;

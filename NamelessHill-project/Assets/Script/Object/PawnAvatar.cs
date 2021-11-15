@@ -114,7 +114,22 @@ namespace Nameless.DataMono
         public Image healthBarColor;
         public Text nameTxt;
         public Text dialogueTxt;
+
+
         public GameObject fixbtn;
+        private bool FixBtnActive
+        {
+            set
+            {
+                fixbtn.gameObject.SetActive(value);
+                fixBtnActive = value;
+            }
+            get
+            {
+                return fixBtnActive;
+            }
+        }
+        private bool fixBtnActive = false;
         #endregion
         // Start is called before the first frame update
         void Start()
@@ -132,6 +147,7 @@ namespace Nameless.DataMono
             this.characterAnim.runtimeAnimatorController = this.animOverride;
             this.State = PawnState.Wait;
             this.nameTxt.text = DataManager.Instance.GetCharacter(Id).name;
+            this.fixbtn.gameObject.SetActive(false);
 
             //this.InitLine();
         }
@@ -218,6 +234,20 @@ namespace Nameless.DataMono
                 }
             }
 
+            if (Input.GetMouseButtonDown(0))
+            {
+                //Debug.Log("sssss");
+                Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
+                if (hit.collider != null)
+                {
+                    if (hit.collider.gameObject == this.currentArea.gameObject)
+                    {
+                        this.FixBtnActive = !this.FixBtnActive;
+
+                    }
+                }
+            }
 
         }
 
@@ -791,6 +821,7 @@ namespace Nameless.DataMono
             {
                 MatManager.Instance.GenerateMat(this.CurrentArea, MatType.AMMO, 100);
                 MatManager.Instance.GenerateMat(this.CurrentArea, MatType.MEDICINE, 100);
+                GameManager.Instance.EnemiesKillNum(1);
             }
             if (this.Wire != null)
             {

@@ -14,8 +14,9 @@ namespace Nameless.Data
         AllMoraleChange = 101,
         AmmoChange = 102,
         MedicineChange = 103,
-        UnlockNote = 104,
-        DialogueTrigger = 105,
+        NextEvent = 104,
+        UnlockNote = 105,
+        DialogueTrigger = 106
     }
 
     abstract public class EventEffect 
@@ -136,6 +137,20 @@ namespace Nameless.Data
         public override void Execute()
         {
             GameManager.Instance.ChangeMedicine((int)this.medicineChange);
+        }
+    }
+
+    public class NextEventEffect : EventEffect
+    {
+        public long eventId;
+        public NextEventEffect(long eventId)
+        {
+            this.type = EventEffectType.NextEvent;
+            this.eventId = eventId;
+        }
+        public override void Execute()
+        {
+            EventTriggerManager.Instance.AddNewEvent(this.eventId);
         }
     }
 }
