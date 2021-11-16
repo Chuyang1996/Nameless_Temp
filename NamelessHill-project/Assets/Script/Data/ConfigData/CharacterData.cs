@@ -32,6 +32,8 @@ namespace Nameless.ConfigData
         public string supportSkills;
         public string buildSkills;
 
+        public string dialogue;
+
         public CharacterData
             (
             long Id, 
@@ -57,7 +59,8 @@ namespace Nameless.ConfigData
             float crDex,
             string fightSkills,
             string supportSkills,
-            string buildSkills
+            string buildSkills,
+            string dialogue
             )
         {
             this.Id = Id;
@@ -84,6 +87,7 @@ namespace Nameless.ConfigData
             this.fightSkills = fightSkills;
             this.supportSkills = supportSkills;
             this.buildSkills = buildSkills;
+            this.dialogue = dialogue;
 
         }
 
@@ -112,7 +116,8 @@ namespace Nameless.ConfigData
     float crDex,
             string fightSkills,
             string supportSkills,
-            string buildSkills
+            string buildSkills,
+            string dialogue
             )
         {
             this.Id = Id;
@@ -139,6 +144,7 @@ namespace Nameless.ConfigData
             this.fightSkills = fightSkills;
             this.supportSkills = supportSkills;
             this.buildSkills = buildSkills;
+            this.dialogue = dialogue;
 
         }
         // Start is called before the first frame update

@@ -1,3 +1,4 @@
+using Nameless.Manager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,7 +42,9 @@ namespace Nameless.DataMono
                         pawnAvatar.GetComponent<PawnAvatar>().healthBarColor.color = Color.red;
                     }
                     this.AddPawn(pawnAvatar.GetComponent<PawnAvatar>());
-                    pawnAvatar.GetComponent<PawnAvatar>().Init();
+                    pawnAvatar.GetComponent<PawnAvatar>().Init(0);
+                    DialogueTriggerManager.Instance.TimeTriggerEvent += pawnAvatar.GetComponent<PawnAvatar>().ReceiveCurrentTime;
+                    GameManager.Instance.enemyPawns.Add(pawnAvatar.GetComponent<PawnAvatar>());
                 }
                 else
                 {

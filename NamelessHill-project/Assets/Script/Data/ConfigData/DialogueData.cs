@@ -11,9 +11,9 @@ namespace Nameless.ConfigData {
         public bool isAuto;
         public float waitTime;
         public long nextId;
+        public long nextPawn;
 
-
-        public DialogueData(long id, string dialogue,string condition,bool isAuto,float waitTime,long nextId)
+        public DialogueData(long id, string dialogue,string condition,bool isAuto,float waitTime,long nextId,long nextPawn)
         {
             this.id = id;
             this.dialogue = dialogue;
@@ -21,6 +21,7 @@ namespace Nameless.ConfigData {
             this.isAuto = isAuto;
             this.waitTime = waitTime;
             this.nextId = nextId;
+            this.nextPawn = nextPawn;
         }
     }
 }

@@ -138,7 +138,8 @@ namespace Nameless.Manager
                             float.Parse(this.characterData[id]["crDex"]),
                             this.characterData[id]["fightSkill"],
                             this.characterData[id]["supportSkill"],
-                            this.characterData[id]["buildSkill"]
+                            this.characterData[id]["buildSkill"],
+                            this.characterData[id]["dialogue"]
                             );
                     return skill;
                 }
@@ -360,7 +361,8 @@ namespace Nameless.Manager
                             this.dialogueData[id]["condition"],
                             bool.Parse(this.dialogueData[id]["isAuto"]),
                             float.Parse(this.dialogueData[id]["waitTime"]),
-                            long.Parse(this.dialogueData[id]["nextId"] == "null"? "-1": this.dialogueData[id]["nextId"])
+                            long.Parse(this.dialogueData[id]["nextId"] == "null"? "-1": this.dialogueData[id]["nextId"]),
+                            long.Parse(this.dialogueData[id]["nextPawn"] == "null"? "-1": this.dialogueData[id]["nextPawn"])
                             );
                     return skill;
                 }

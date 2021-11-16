@@ -1,7 +1,10 @@
 #define DEBUG
 
+using Nameless.Data;
+using Nameless.DataMono;
 using Nameless.Manager;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Nameless.Controller
@@ -55,19 +58,22 @@ namespace Nameless.Controller
             Cursor.lockState = CursorLockMode.Confined;
             _camera = GetComponent<Camera>();
         }
-        public void StartTransition(TransitionTarget[] transitionTargets, bool isAuto)
+        public void StartTransition(Stack<DialoguePawn> transitionTargets)
         {
             this._isTranstionTo = true;
-            StartCoroutine(TransitionToCoroutine(transitionTargets, 0, isAuto));
+            StartCoroutine(TransitionToCoroutine(transitionTargets));
         }
 
-        IEnumerator TransitionToCoroutine(TransitionTarget[] transitionTargets,int index,bool isAuto)
+        IEnumerator TransitionToCoroutine(Stack<DialoguePawn> transitionTargets)
         {
-            if (index < transitionTargets.Length)
+            if (transitionTargets.Count > 0)
             {
+                DialoguePawn dialoguePawn = transitionTargets.Pop();
                 bool GetPosTarget = false;
                 bool GetZoomTarget = false;
-                while (transform.position != transitionTargets[index].targetPos || _camera.orthographicSize != transitionTargets[index].targetZoom)
+                Vector3 targetpos = new Vector3(dialoguePawn.pawnAvatar.transform.position.x, dialoguePawn.pawnAvatar.transform.position.y, -10.0f);
+                TransitionTarget transitionTarget = new TransitionTarget(targetpos, 1.5f, dialoguePawn.dialogue.waitTime, 2.0f, 2.0f);
+                while (transform.position != transitionTarget.targetPos || _camera.orthographicSize != transitionTarget.targetZoom)
                 {
                     if (!GameManager.Instance.isPlay)
                     {
@@ -75,21 +81,21 @@ namespace Nameless.Controller
                     }
                     else
                     {
-                        if (transform.position == transitionTargets[index].targetPos)
+                        if (transform.position == transitionTarget.targetPos)
                             GetPosTarget = true;
                         else
-                            transform.position = Vector3.MoveTowards(transform.position, transitionTargets[index].targetPos, Time.deltaTime * transitionTargets[index].speedPos);
-                        if (_camera.orthographicSize == transitionTargets[index].targetZoom)
+                            transform.position = Vector3.MoveTowards(transform.position, transitionTarget.targetPos, Time.deltaTime * transitionTarget.speedPos);
+                        if (_camera.orthographicSize == transitionTarget.targetZoom)
                             GetZoomTarget = true;
                         else
-                            _camera.orthographicSize += Mathf.Clamp(-transitionTargets[index].speedZoom * Time.deltaTime, transitionTargets[index].targetZoom - _camera.orthographicSize, transitionTargets[index].speedZoom * Time.deltaTime);
+                            _camera.orthographicSize += Mathf.Clamp(-transitionTarget.speedZoom * Time.deltaTime, transitionTarget.targetZoom - _camera.orthographicSize, transitionTarget.speedZoom * Time.deltaTime);
                         if (GetZoomTarget && GetPosTarget)
                             break;
                         yield return null;
                     }
                 }
-
-                while (!isAuto)
+                dialoguePawn.pawnAvatar.ShowDialogue(dialoguePawn.dialogue.dialogueTxt);
+                while (!dialoguePawn.dialogue.isAuto)
                 {
                     if (!GameManager.Instance.isPlay)
                     {
@@ -100,20 +106,42 @@ namespace Nameless.Controller
                     {
                         if (this._clickToNext)
                         {
-                            this._clickToNext = false;
-                            break;
+                            if (dialoguePawn.dialogue.NextDialogue() != null)
+                            {
+                                dialoguePawn.dialogue = dialoguePawn.dialogue.NextDialogue();
+                                dialoguePawn.pawnAvatar.ShowDialogue(dialoguePawn.dialogue.dialogueTxt);
+                            }
+                            else
+                            {
+                                this._clickToNext = false;
+                                break;
+                            }
                         }
                         yield return null;
                     }
                 }
-                if(isAuto)
-                    yield return new WaitForSecondsRealtime(transitionTargets[index].waitTime);
+                if (dialoguePawn.dialogue.isAuto)
+                {
+                    do
+                    {
+                        dialoguePawn.pawnAvatar.ShowDialogue(dialoguePawn.dialogue.dialogueTxt);
+                        yield return new WaitForSecondsRealtime(transitionTarget.waitTime);
+                        dialoguePawn.dialogue = dialoguePawn.dialogue.NextDialogue();
+                    } 
+                    while (dialoguePawn.dialogue!=null);
+                }
+                dialoguePawn.pawnAvatar.StopDialogue();
+                if (dialoguePawn.dialogue!=null && dialoguePawn.dialogue.FindTargetDialoguePawn() != null)
+                {
+                    DialoguePawn newPawn = new DialoguePawn(dialoguePawn.dialogue.FindTargetDialoguePawn(), new Dialogue(-1, "-1",new ConditionDialogue(ConditionType.None,0), true, 4.0f, -1, -1));
+                    DialogueTriggerManager.Instance.PushNewDialoguePawn(newPawn);
+                }
 
-                index++;
-                StartCoroutine(TransitionToCoroutine(transitionTargets, index, isAuto));
+                StartCoroutine(TransitionToCoroutine(transitionTargets));
             }
             else
             {
+                DialogueTriggerManager.Instance.isShowDialogue = false;
                 this._isTranstionTo = false;
             }
         }

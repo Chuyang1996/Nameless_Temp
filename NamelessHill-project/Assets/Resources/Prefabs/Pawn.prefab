@@ -643,6 +643,7 @@ MonoBehaviour:
   healthBar: {fileID: 2782149105818189967}
   healthBarColor: {fileID: 2782149106411439583}
   nameTxt: {fileID: 2782149106756308242}
+  dialogueIm: {fileID: 9134814031976819070}
   dialogueTxt: {fileID: 3250596878508462602}
   fixbtn: {fileID: 173567583345087979}
 --- !u!114 &9109056592837110068

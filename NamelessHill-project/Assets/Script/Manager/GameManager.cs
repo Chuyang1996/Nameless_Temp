@@ -36,58 +36,65 @@ namespace Nameless.Manager {
         public BattleView battleView;
         public BuildView buildView;
         public EventView eventView;
-        public Area[] areas;
-        public PawnAvatar[] playerPawns;
+
+        public Area[] areas;//待修改 所有玩家角色区域
+        public List<PawnAvatar> playerPawns;//待修改 所有玩家角色
+        public Area[] enemyAreas;//待修改 所有敌方角色区域
+        public List<PawnAvatar> enemyPawns;//待修改 所有敌方角色
+ 
         // Start is called before the first frame update
         void Start()
         {
             this.isPlay = true;
+            RTSCamera.Instance.InitCamera();
             DataManager.Instance.InitData();
-            //Debug.Log(DataManager.Instance.GetCharacter(1001).name);
             AudioManager.Instance.InitAudio();
             MatManager.Instance.InitMat();
+            //Debug.Log(DataManager.Instance.GetCharacter(1001).name);
 
 
-            #region//获取本次场景里的事件
-            List<EventResult> eventResults = new List<EventResult>();
-            eventResults.Add( EventResultFactory.GetEventResultById(101));
-            eventResults.Add( EventResultFactory.GetEventResultById(102));
-            eventResults.Add( EventResultFactory.GetEventResultById(103));
-            eventResults.Add( EventResultFactory.GetEventResultById(104));
-            eventResults.Add( EventResultFactory.GetEventResultById(105));
-            EventTriggerManager.Instance.InitEventTrigger(eventResults);
-
-            //开始监听事件
-            StartCoroutine(EventTriggerManager.Instance.StartListenEvent());
-            #endregion
 
             this.battleView.Init(this.totalTime);
             this.battleView.resourceInfoView.Init(this.totalAmmo, this.totalMedicine);
             Time.timeScale = 1.0f;
             this.RESULTEVENT += this.Result;
-            for(int i = 0; i < this.playerPawns.Length; i++)
+            for(int i = 0; i < this.playerPawns.Count; i++)
             {
                 this.playerPawns[i].characterView = this.characterView;
                 this.playerPawns[i].currentArea = this.areas[i];
                 this.areas[i].Init();
                 this.areas[i].AddPawn(this.playerPawns[i]);
                 this.playerPawns[i].transform.position = this.areas[i].centerNode.transform.position;
-                this.playerPawns[i].Init();
+                this.playerPawns[i].Init(0);
+                DialogueTriggerManager.Instance.TimeTriggerEvent += this.playerPawns[i].ReceiveCurrentTime;
+                DialogueTriggerManager.Instance.CheckGameStartEvent(this.playerPawns[i]);
             }
 
-
-            #region//摄像机动画临时
-            RTSCamera.Instance.InitCamera();
-            TransitionTarget[] transitionTargets = new TransitionTarget[playerPawns.Length+1];
-            for(int i = 0; i < playerPawns.Length; i++)
+            for(int i = 0; i < this.enemyPawns.Count; i++)
             {
-                Vector3 targetpos = new Vector3(playerPawns[i].transform.position.x, playerPawns[i].transform.position.y, - 10.0f);
-                transitionTargets[i] = new TransitionTarget(targetpos, 1.5f, 2.0f, 2.0f, 2.0f);
+                this.enemyPawns[i].characterView = this.characterView;
+                this.enemyPawns[i].currentArea = this.enemyAreas[i];
+                this.enemyAreas[i].Init();
+                this.enemyAreas[i].AddPawn(this.enemyPawns[i]);
+                this.enemyPawns[i].transform.position = this.enemyAreas[i].centerNode.transform.position;
+                this.enemyPawns[i].Init(0);
+                DialogueTriggerManager.Instance.TimeTriggerEvent += this.enemyPawns[i].ReceiveCurrentTime;
+                DialogueTriggerManager.Instance.CheckGameStartEvent(this.enemyPawns[i]);
             }
-            Vector3 pos = new Vector3(0, 0, -10.0f);
-            transitionTargets[playerPawns.Length] = new TransitionTarget(pos, 5.0f, 2.0f, 2.0f, 0.5f);
-            RTSCamera.Instance.StartTransition(transitionTargets,false);
+            #region//获取本次场景里的事件
+            List<EventResult> eventResults = new List<EventResult>();
+            eventResults.Add(EventResultFactory.GetEventResultById(101));
+            eventResults.Add(EventResultFactory.GetEventResultById(102));
+            eventResults.Add(EventResultFactory.GetEventResultById(103));
+            eventResults.Add(EventResultFactory.GetEventResultById(104));
+            eventResults.Add(EventResultFactory.GetEventResultById(105));
+            EventTriggerManager.Instance.InitEventTrigger(eventResults);
+
+            //开始监听事件
+            StartCoroutine(EventTriggerManager.Instance.StartListenEvent());
+            StartCoroutine(DialogueTriggerManager.Instance.StartListenEvent());
             #endregion
+
         }
 
         private void Result(string title, bool isWin)
@@ -111,6 +118,19 @@ namespace Nameless.Manager {
         {
             EventTriggerManager.Instance.CheckRelateEnemyKillEvent(num);
             this.enemiesDieNum += num;
+        }
+
+        public void PlayCamera(Stack<DialoguePawn> pawns)
+        {
+            //TransitionTarget[] transitionTargets = new TransitionTarget[pawns.Count + 1];
+            //for (int i = 0; i < pawns.Count; i++)
+            //{
+            //    Vector3 targetpos = new Vector3(pawns[i].transform.position.x, pawns[i].transform.position.y, -10.0f);
+            //    transitionTargets[i] = new TransitionTarget(targetpos, 1.5f, 2.0f, 2.0f, 2.0f);
+            //}
+            //Vector3 pos = new Vector3(0, 0, -10.0f);
+            //transitionTargets[pawns.Count] = new TransitionTarget(pos, 5.0f, 2.0f, 2.0f, 0.5f);
+            RTSCamera.Instance.StartTransition(pawns);
         }
         public void PauseOrPlay(bool isPlay)
         {

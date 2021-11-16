@@ -113,6 +113,7 @@ namespace Nameless.DataMono
         public Slider healthBar;
         public Image healthBarColor;
         public Text nameTxt;
+        public GameObject dialogueIm;
         public Text dialogueTxt;
 
 
@@ -138,11 +139,11 @@ namespace Nameless.DataMono
             //this.Init();
 
         }
-        public void Init()
+        public void Init(int mapId)
         {
             this.healthBar.value = 1;
             this.characterView = GameManager.Instance.characterView;
-            this.pawnAgent = new PawnAgent(this.healthBar, this.CurrentArea,PawnFactory.GetPawnById(Id));
+            this.pawnAgent = new PawnAgent(this.healthBar, this.CurrentArea,PawnFactory.GetPawnById(Id),mapId);
             this.animOverride = new AnimatorOverrideController(this.characterAnim.runtimeAnimatorController);
             this.characterAnim.runtimeAnimatorController = this.animOverride;
             this.State = PawnState.Wait;
@@ -792,6 +793,22 @@ namespace Nameless.DataMono
             this.dialogueTxt.text = txt;
             this.dialogueAnim.Play();
         }
+        public void ShowDialogue(string txt)
+        {
+            if (txt == "-1")
+            {
+                this.dialogueIm.SetActive(false);
+            }
+            else
+            {
+                this.dialogueIm.SetActive(true);
+                this.dialogueTxt.text = txt;
+            }
+        }
+        public void StopDialogue()
+        {
+            this.dialogueIm.SetActive(false);
+        }
         public void ShowBattleHint(bool isShow)
         {
             this.battleHint.gameObject.SetActive(isShow);
@@ -815,6 +832,12 @@ namespace Nameless.DataMono
                 
             }
         }
+
+        public void ReceiveCurrentTime(int time)
+        {
+            int passTime = GameManager.Instance.totalTime - time;
+            DialogueTriggerManager.Instance.CheckTimeflowEvent(this, passTime);
+        }
         public void ClearPawn()
         {
             if (this.isAI)
@@ -822,7 +845,13 @@ namespace Nameless.DataMono
                 MatManager.Instance.GenerateMat(this.CurrentArea, MatType.AMMO, 100);
                 MatManager.Instance.GenerateMat(this.CurrentArea, MatType.MEDICINE, 100);
                 GameManager.Instance.EnemiesKillNum(1);
+                GameManager.Instance.enemyPawns.Remove(this);
             }
+            else
+            {
+                GameManager.Instance.playerPawns.Remove(this);
+            }
+
             if (this.Wire != null)
             {
                 DestroyImmediate(this.Wire.gameObject);
@@ -831,7 +860,7 @@ namespace Nameless.DataMono
             }
             this.CurrentArea.RemovePawn(this);
             this.CurrentArea.Init();
-
+            DialogueTriggerManager.Instance.TimeTriggerEvent -= this.ReceiveCurrentTime;
             DestroyImmediate(this.gameObject);
         }//Çå³ýµôÆå×Ó
         #endregion

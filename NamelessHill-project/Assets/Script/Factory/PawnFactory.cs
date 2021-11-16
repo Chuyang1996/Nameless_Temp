@@ -26,6 +26,14 @@ namespace Nameless.Agent
             float crMorale = characterData.crMorale > 1 ? 1.0f : characterData.crMorale;
             float crSpeed = characterData.crSpeed > 1 ? 1.0f : characterData.crSpeed;
 
+            Dictionary<long, DialogueGroup> dialogueGroupDic = new Dictionary<long, DialogueGroup>();
+            List<string> dialogueString = StringToStringArray(characterData.dialogue);
+            for(int i = 0; i < dialogueString.Count; i++)
+            {
+                long[] temp = StringToLong2Array(dialogueString[i]);
+                dialogueGroupDic.Add(temp[0], DialogueGroupFactory.GetDialogueGroupById(temp[1]));
+            }
+
             return new Pawn(
                 characterData.Id,
                 characterData.name,
@@ -47,7 +55,8 @@ namespace Nameless.Agent
                 crDefend,
                 StringToLongArray(characterData.fightSkills),
                 StringToLongArray(characterData.supportSkills),
-                StringToLongArray(characterData.buildSkills)
+                StringToLongArray(characterData.buildSkills),
+                dialogueGroupDic
                 );
         }
 
@@ -67,5 +76,39 @@ namespace Nameless.Agent
             }
             return result;
         }
+        private static long[] StringToLong2Array(string stringlist)
+        {
+            long[] array;
+            if (stringlist.Contains("]") && stringlist.Contains("["))
+            {
+                stringlist = stringlist.Remove(0, 1);
+                stringlist = stringlist.Remove(stringlist.Length - 1, 1);
+                array = stringlist.Contains(":") ? Array.ConvertAll<string, long>(stringlist.Split(new char[] { ':' }), s => long.Parse(s)) : new long[1] { long.Parse(stringlist) };
+            }
+            else
+            {
+                array = new long[1];
+                array[0] = 0;
+            }
+            return array;
+        }
+        private static List<string> StringToStringArray(string stringlist)
+        {
+            List<string> result = new List<string>();
+            string[] array;
+            if (stringlist.Contains("]") && stringlist.Contains("["))
+            {
+                stringlist = stringlist.Remove(0, 1);
+                stringlist = stringlist.Remove(stringlist.Length - 1, 1);
+                array = stringlist.Contains(",") ? stringlist.Split(new char[] { ',' }) : new string[1] { stringlist };
+                for (int i = 0; i < array.Length; i++)
+                {
+                    result.Add(array[i]);
+                }
+            }
+            return result;
+        }
+
+
     }
 }

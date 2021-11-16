@@ -158,7 +158,11 @@ namespace Nameless.DataMono
         public List<Skill> skills;
         #endregion
 
-        public PawnAgent(Slider healthBar,Area currentArea, Pawn pawn)
+        #region//½ÇÉ«¶Ô»°
+        public DialogueGroup dialogueGroup;
+        #endregion
+
+        public PawnAgent(Slider healthBar,Area currentArea, Pawn pawn, int mapId)
         {
             this.healthBar = healthBar;
             this.pawn = pawn;
@@ -178,6 +182,11 @@ namespace Nameless.DataMono
             this.buffs = new List<Buff>();
             this.skills = new List<Skill>();
             this.supporters = new List<PawnAvatar>();
+            if (this.pawn.dialogueDic.ContainsKey(mapId))
+                this.dialogueGroup = this.pawn.dialogueDic[mapId];
+            else
+                this.dialogueGroup = null;
+            
             for (int i = 0; i < pawn.fightSkillIds.Count; i++)
             {
                 this.skills.Add(SkillFactory.GetSkillById(SkillFactoryType.FightSkill, pawn.fightSkillIds[i]));
@@ -194,6 +203,7 @@ namespace Nameless.DataMono
             this.countBTimeMorale = 0.0f;
             this.countConTimeMorale = 0.0f;
             this.battleSide = BattleSide.Peace;
+
             ResetBattleInfo();
         }
 
