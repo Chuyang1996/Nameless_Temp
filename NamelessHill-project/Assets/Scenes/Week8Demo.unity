@@ -4135,7 +4135,9 @@ MonoBehaviour:
   - {fileID: 1726379287}
   - {fileID: 275778987}
   - {fileID: 818267280}
-  enemyAreas: []
+  enemyAreas:
+  - {fileID: 2029149057}
+  - {fileID: 1186093651}
   enemyPawns: []
 --- !u!4 &245343619
 Transform:
@@ -8506,7 +8508,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 33c344475268b524292ee0cfe39ab303, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_FlipX: 0
@@ -9875,7 +9877,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5ae2fa3b99ae22047a7224c397a9c03f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_FlipX: 0
@@ -9926,11 +9928,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efe55d5679217144b8dafc8747b2d079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 9
-  y: 9
+  x: 40
+  y: 40
   orthographicSizeMin: 1.5
   orthographicSizeMax: 10
-  speed: 1
+  speed: 10
   Locked: 0
   _isTranstionTo: 0
   _clickToNext: 0
@@ -11086,7 +11088,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 56a249ad6ec9a9747beba4b0a3b46fd1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_FlipX: 0
@@ -16634,7 +16636,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 27f1fb482c2b0e842805244b32896bba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_FlipX: 0
@@ -17794,7 +17796,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 407237497f3d520479ebe455b6f5d07c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_FlipX: 0
@@ -19515,7 +19517,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: af67d671e1d3911478188b33e6b7c6ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_FlipX: 0
@@ -21430,7 +21432,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1186093648}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: adbaa64c5c188b648b12da4f92eeba03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -21441,6 +21443,10 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
+  spawnAI: 1
+  limiltedNum: 5
+  durationTimeSpawn: 10
+  pawnPath: Prefabs/Pawn
 --- !u!212 &1186093652
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21482,7 +21488,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ea9917459ac38e7458b10cc7204e3ecd, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_Color: {r: 1, g: 0.003921569, b: 0.003921569, a: 0.78431374}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -22362,7 +22368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 23
   costMorale: -1
   costTimeMorale: 1
   centerNode: {fileID: 1947788204}
@@ -23764,7 +23770,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 875fccd2b55c3a446871c4484deb815e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_FlipX: 0
@@ -25684,73 +25690,73 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseFollower: {fileID: 769163868}
   areas:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1723858751}
+  - {fileID: 430998746}
+  - {fileID: 774766981}
+  - {fileID: 1043457994}
+  - {fileID: 1872200037}
+  - {fileID: 1360638175}
+  - {fileID: 1420593891}
+  - {fileID: 518765980}
+  - {fileID: 517023450}
+  - {fileID: 848514066}
+  - {fileID: 853137972}
+  - {fileID: 2119991502}
+  - {fileID: 697097748}
+  - {fileID: 2029149057}
+  - {fileID: 47538871}
+  - {fileID: 2037919782}
+  - {fileID: 1339980955}
+  - {fileID: 388789312}
+  - {fileID: 563496878}
+  - {fileID: 1899090765}
+  - {fileID: 413381533}
+  - {fileID: 436251216}
+  - {fileID: 1311411305}
+  - {fileID: 414148573}
+  - {fileID: 571519392}
+  - {fileID: 19313594}
+  - {fileID: 795311032}
+  - {fileID: 1397097284}
+  - {fileID: 1081695893}
+  - {fileID: 533134745}
+  - {fileID: 1166817751}
+  - {fileID: 1513897056}
+  - {fileID: 6423578}
+  - {fileID: 523255365}
+  - {fileID: 1095665580}
+  - {fileID: 57268485}
+  - {fileID: 385041112}
+  - {fileID: 384011984}
+  - {fileID: 409457945}
+  - {fileID: 19394758}
+  - {fileID: 797894981}
+  - {fileID: 434163174}
+  - {fileID: 966248836}
+  - {fileID: 582008379}
+  - {fileID: 505082118}
+  - {fileID: 356363851}
+  - {fileID: 1385549212}
+  - {fileID: 670036073}
+  - {fileID: 282382390}
+  - {fileID: 116884964}
+  - {fileID: 159723425}
+  - {fileID: 1899708265}
+  - {fileID: 1178833050}
+  - {fileID: 929872926}
+  - {fileID: 1383988540}
+  - {fileID: 1063547582}
+  - {fileID: 886202106}
+  - {fileID: 1716295541}
+  - {fileID: 1449564321}
+  - {fileID: 2056671173}
+  - {fileID: 1602194378}
+  - {fileID: 149194493}
+  - {fileID: 513453547}
+  - {fileID: 1661696877}
+  - {fileID: 1454092504}
+  - {fileID: 1730277985}
+  - {fileID: 1186093651}
   paths:
   - {fileID: 1714156729}
   - {fileID: 1174301733}
@@ -26150,7 +26156,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1513897053}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adbaa64c5c188b648b12da4f92eeba03, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -26161,10 +26167,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  spawnAI: 1
-  limiltedNum: 5
-  durationTimeSpawn: 0
-  pawnPath: Prefabs/Pawn
 --- !u!212 &1513897057
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26206,7 +26208,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ec06e7cd80ae5804887eaa4e270e18f1, type: 3}
-  m_Color: {r: 1, g: 0.0037735105, b: 0.0037735105, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -28826,7 +28828,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: d2e73869c735329479fd76d4a3a1918d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_FlipX: 0
@@ -31464,7 +31466,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: bef805cc9d09eee4383ab118034eda95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_FlipX: 0
@@ -33469,7 +33471,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2029149054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: adbaa64c5c188b648b12da4f92eeba03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -33480,6 +33482,10 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
+  spawnAI: 1
+  limiltedNum: 5
+  durationTimeSpawn: 10
+  pawnPath: Prefabs/Pawn
 --- !u!212 &2029149058
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33521,7 +33527,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b15ed38f1b4577d4d9d25b1d64adc2e1, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_Color: {r: 0.9811321, g: 0, b: 0, a: 0.78431374}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
