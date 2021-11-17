@@ -1,5 +1,9 @@
+using Nameless.Agent;
+using Nameless.DataMono;
+using Nameless.Manager;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Nameless.Data
@@ -16,30 +20,62 @@ namespace Nameless.Data
         }
     }
 
-    public enum ConditionDialogue
+    public enum ConditionType
     {
+        None = 0,
         GameStart = 1,
         TimeFlowing = 2,
+    }
+    public struct ConditionDialogue
+    {
+        public ConditionType conditionType;
+        public float time;
+
+        public ConditionDialogue(ConditionType type,float time)
+        {
+            this.conditionType = type;
+            this.time = time;
+        }
     }
     public class Dialogue
     {
         public long id;
         public string dialogueTxt;
-        public Dictionary<ConditionDialogue, float> conditionDic = new Dictionary<ConditionDialogue, float>();
+        public ConditionDialogue conditionDialogue;
         public bool isAuto;
         public float waitTime;
         public long nextId;
+        public long nextPawnId;
 
-        public Dialogue(long id, string dialogueTxt, Dictionary<ConditionDialogue,float> conditionDic,bool isAuto,float waitTime,long nextId)
+        public Dialogue(long id, string dialogueTxt, ConditionDialogue conditionDialogue, bool isAuto,float waitTime,long nextId, long nextPawn)
         {
             this.id = id;
             this.dialogueTxt = dialogueTxt;
-            this.conditionDic = conditionDic;
+            this.conditionDialogue = conditionDialogue;
             this.isAuto = isAuto;
             this.waitTime = waitTime;
             this.nextId = nextId;
+            this.nextPawnId = nextPawn;
         }
 
+        public Dialogue NextDialogue()
+        {
+            return this.nextId != -1 ? DialogueFactory.GetDialogueById(this.nextId) : null;
+        }
 
+        public PawnAvatar FindTargetDialoguePawn()//待修改 考虑一下是否要删掉这个功能或者换成别的
+        {
+            if (this.nextPawnId != -1)
+            {
+                var pawn = GameManager.Instance.playerPawns.Where(_pawn => _pawn.Id == this.nextPawnId).FirstOrDefault();
+                if (pawn != null) return pawn;
+                pawn = GameManager.Instance.enemyPawns.Where(_pawn => _pawn.Id == this.nextPawnId).FirstOrDefault();
+                if (pawn != null) return pawn;
+                else return null;
+
+            }
+            else
+                return null; 
+        }
     }
 }

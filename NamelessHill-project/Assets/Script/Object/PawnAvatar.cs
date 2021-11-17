@@ -79,16 +79,13 @@ namespace Nameless.DataMono
             {
                 this.ResetAllSupport();
                 this.fixbtn.gameObject.SetActive(false);
-                if (value == PawnState.Wait)
-                {
-                    if(!this.isAI)
-                        this.fixbtn.gameObject.SetActive(true);
-                    this.PlayCharacterAnim(0);
-                }
-                else if (value == PawnState.Walk)
-                    this.PlayCharacterAnim(1);
-                else if (value == PawnState.Battle)
-                    this.PlayCharacterAnim(2);
+                this.PlayCharacterAnim(value);
+                //if (value == PawnState.Wait)
+                //    this.PlayCharacterAnim(value);
+                //else if (value == PawnState.Walk)
+                //    this.PlayCharacterAnim(1);
+                //else if (value == PawnState.Battle)
+                //    this.PlayCharacterAnim(2);
                 lastState = state;
                 state = value;
             }
@@ -101,10 +98,14 @@ namespace Nameless.DataMono
 
         public PawnAgent pawnAgent;
         #region//动画
+        private const string pathFindAnim = "Prefabs/CharacterAnim/";
 
-        private AnimatorOverrideController animOverride;
-        public AnimationClip[] animationClips;
-        public Animator characterAnim;
+        public GameObject _root;
+        public Action _attackEvent;
+        public Action _walkEvent;
+        public Action _waitEvent;
+        public Action _deathEvent;
+
         public Animation dialogueAnim;
         #endregion
 
@@ -113,6 +114,7 @@ namespace Nameless.DataMono
         public Slider healthBar;
         public Image healthBarColor;
         public Text nameTxt;
+        public GameObject dialogueIm;
         public Text dialogueTxt;
 
 
@@ -132,23 +134,18 @@ namespace Nameless.DataMono
         private bool fixBtnActive = false;
         #endregion
         // Start is called before the first frame update
-        void Start()
-        {
-            
-            //this.Init();
-
-        }
-        public void Init()
+        public void Init(int mapId)
         {
             this.healthBar.value = 1;
             this.characterView = GameManager.Instance.characterView;
-            this.pawnAgent = new PawnAgent(this.healthBar, this.CurrentArea,PawnFactory.GetPawnById(Id));
-            this.animOverride = new AnimatorOverrideController(this.characterAnim.runtimeAnimatorController);
-            this.characterAnim.runtimeAnimatorController = this.animOverride;
+            this.pawnAgent = new PawnAgent(this.healthBar, this.CurrentArea,PawnFactory.GetPawnById(Id),mapId);
             this.State = PawnState.Wait;
             this.nameTxt.text = DataManager.Instance.GetCharacter(Id).name;
             this.fixbtn.gameObject.SetActive(false);
-
+            GameObject animObj = Instantiate(Resources.Load(pathFindAnim + this.pawnAgent.pawn.animName), this._root.transform) as GameObject;
+            animObj.transform.localPosition = new Vector3(0, -9.0f, 0);
+            animObj.transform.localScale = new Vector3(1, 1, 1);
+            animObj.GetComponent<CharacterAnim>().Init(this);
             //this.InitLine();
         }
         // Update is called once per frame
@@ -200,7 +197,7 @@ namespace Nameless.DataMono
                         this.targetArea = this.CurrentArea;
                         this.startPoint = this.CurrentArea;
                         this.State = PawnState.Draw;
-                        AreasManager.Instance.mouseFollower.gameObject.GetComponent<SpriteRenderer>().sprite = this.gameObject.GetComponent<SpriteRenderer>().sprite;
+                        //AreasManager.Instance.mouseFollower.gameObject.GetComponent<SpriteRenderer>().sprite = this.gameObject.GetComponent<SpriteRenderer>().sprite;
                         this.InitLine();
                     }
                     else if (TargetHit.transform.gameObject == this.fixbtn)
@@ -600,7 +597,8 @@ namespace Nameless.DataMono
         {
             this.pawnAgent.MoraleChange(-10.0f);//待修改
             this.pawnAgent.battleSide = BattleSide.Peace;//待修改
-            this.ClearPawn();
+            //this.ClearPawn();
+            this.PlayDeathAnim();
             //if (this.pawnAgent.pawn.curMorale <= 0 || this.CheckIfSurround())
             //{
             //    this.ClearPawn();
@@ -773,6 +771,29 @@ namespace Nameless.DataMono
         //}//检查前方区域是否还有敌人
         #endregion
 
+        #region//动画事件
+        private void PlayWaitAnim()
+        {
+            if (this._waitEvent != null)
+                this._waitEvent();
+        }
+        private void PlayWalkAnim()
+        {
+            if (this._walkEvent != null)
+                this._walkEvent();
+        }
+        private void PlayAttackAnim()
+        {
+            if (this._attackEvent != null)
+                this._attackEvent();
+        }
+        private void PlayDeathAnim()
+        {
+            if (this._deathEvent != null)
+                this._deathEvent();
+        }
+        #endregion
+
         #region//效果
         public void UpdateCurrentArea(Area area)
         {
@@ -782,15 +803,37 @@ namespace Nameless.DataMono
                 GameManager.Instance.RESULTEVENT("You Lose!!", false);
             }
         }
-        public void PlayCharacterAnim(int index)
+        private void PlayCharacterAnim(PawnState pawnState)
         {
-            this.animOverride["Idle"]= this.animationClips[index];
-            this.characterAnim.runtimeAnimatorController = this.animOverride;
+            if (pawnState == PawnState.Wait)
+                this.PlayWaitAnim();
+            else if (pawnState == PawnState.Walk)
+                this.PlayWalkAnim();
+            else if (pawnState == PawnState.Battle)
+                this.PlayAttackAnim();
+
         }
+
         public void PlayDialogue(string txt)//播放对话
         {
             this.dialogueTxt.text = txt;
             this.dialogueAnim.Play();
+        }
+        public void ShowDialogue(string txt)
+        {
+            if (txt == "-1")
+            {
+                this.dialogueIm.SetActive(false);
+            }
+            else
+            {
+                this.dialogueIm.SetActive(true);
+                this.dialogueTxt.text = txt;
+            }
+        }
+        public void StopDialogue()
+        {
+            this.dialogueIm.SetActive(false);
         }
         public void ShowBattleHint(bool isShow)
         {
@@ -815,6 +858,11 @@ namespace Nameless.DataMono
                 
             }
         }
+        public void ReceiveCurrentTime(int time)
+        {
+            int passTime = GameManager.Instance.totalTime - time;
+            DialogueTriggerManager.Instance.CheckTimeflowEvent(this, passTime);
+        }
         public void ClearPawn()
         {
             if (this.isAI)
@@ -822,17 +870,23 @@ namespace Nameless.DataMono
                 MatManager.Instance.GenerateMat(this.CurrentArea, MatType.AMMO, 100);
                 MatManager.Instance.GenerateMat(this.CurrentArea, MatType.MEDICINE, 100);
                 GameManager.Instance.EnemiesKillNum(1);
+                GameManager.Instance.enemyPawns.Remove(this);
             }
+            else
+            {
+                GameManager.Instance.playerPawns.Remove(this);
+            }
+
             if (this.Wire != null)
             {
-                DestroyImmediate(this.Wire.gameObject);
+                Destroy(this.Wire.gameObject);
                 if (this.walkWire != null)
-                    DestroyImmediate(this.walkWire.gameObject);
+                    Destroy(this.walkWire.gameObject);
             }
             this.CurrentArea.RemovePawn(this);
             this.CurrentArea.Init();
-
-            DestroyImmediate(this.gameObject);
+            DialogueTriggerManager.Instance.TimeTriggerEvent -= this.ReceiveCurrentTime;
+            Destroy(this.gameObject);
         }//清除掉棋子
         #endregion
     }

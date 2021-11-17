@@ -210,7 +210,11 @@ namespace Nameless.Data
         public List<long> fightSkillIds;
         public List<long> supportSkillIds;
         public List<long> buildSkillIds;
-        public Pawn(long id, string name,float health, float crHealth, float attack, float crAttack, float morale, float crMorale, int ammo, float crAmmo, float speed, float crSpeed, float hit, float crHit, float dex, float crDex, float defend, float crDefend, List<long> fightSkillIds, List<long> supportSkillIds, List<long> buildSkillIds)
+
+        public Dictionary<long, DialogueGroup> dialogueDic = new Dictionary<long, DialogueGroup>();
+
+        public string animName;
+        public Pawn(long id, string name,float health, float crHealth, float attack, float crAttack, float morale, float crMorale, int ammo, float crAmmo, float speed, float crSpeed, float hit, float crHit, float dex, float crDex, float defend, float crDefend, List<long> fightSkillIds, List<long> supportSkillIds, List<long> buildSkillIds, Dictionary<long, DialogueGroup> dialogueDic,string animName)
         {
             this.id = id;
             this.name = name;
@@ -240,6 +244,10 @@ namespace Nameless.Data
             this.fightSkillIds = fightSkillIds;
             this.supportSkillIds = supportSkillIds;
             this.buildSkillIds = buildSkillIds;
+
+
+            this.dialogueDic = dialogueDic;
+            this.animName = animName;
 
         }
 
