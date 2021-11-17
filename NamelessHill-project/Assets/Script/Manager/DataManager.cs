@@ -139,7 +139,8 @@ namespace Nameless.Manager
                             this.characterData[id]["fightSkill"],
                             this.characterData[id]["supportSkill"],
                             this.characterData[id]["buildSkill"],
-                            this.characterData[id]["dialogue"]
+                            this.characterData[id]["dialogue"],
+                            this.characterData[id]["animName"]
                             );
                     return skill;
                 }

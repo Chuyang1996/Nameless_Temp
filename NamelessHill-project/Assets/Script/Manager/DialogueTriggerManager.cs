@@ -14,6 +14,8 @@ namespace Nameless.Manager
         public Action<int> TimeTriggerEvent;
         public Stack<DialoguePawn> dialoguePawns = new Stack<DialoguePawn>();
         public bool isShowDialogue = false;
+
+
         public void CheckGameStartEvent(PawnAvatar pawn)
         {
             if (pawn.pawnAgent.dialogueGroup != null)
@@ -29,6 +31,13 @@ namespace Nameless.Manager
             }
         }
 
+        public void CheckTimeTriggerEvent(int cost)
+        {
+            if (this.TimeTriggerEvent != null)
+            {
+                this.TimeTriggerEvent(cost);
+            }
+        }
 
         public void CheckTimeflowEvent(PawnAvatar pawn, int time)
         {
@@ -49,6 +58,7 @@ namespace Nameless.Manager
         {
             this.dialoguePawns.Push(dialoguePawn);
         }
+
         public IEnumerator StartListenEvent()
         {
             while (true)

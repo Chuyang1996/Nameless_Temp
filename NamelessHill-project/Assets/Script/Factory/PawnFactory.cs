@@ -56,7 +56,8 @@ namespace Nameless.Agent
                 StringToLongArray(characterData.fightSkills),
                 StringToLongArray(characterData.supportSkills),
                 StringToLongArray(characterData.buildSkills),
-                dialogueGroupDic
+                dialogueGroupDic,
+                characterData.animName
                 );
         }
 
