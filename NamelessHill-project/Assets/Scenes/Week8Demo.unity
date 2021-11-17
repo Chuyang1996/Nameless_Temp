@@ -327,8 +327,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6423576}
   - component: {fileID: 6423579}
-  - component: {fileID: 6423578}
   - component: {fileID: 6423577}
+  - component: {fileID: 6423578}
   m_Layer: 0
   m_Name: 33
   m_TagString: Area
@@ -415,7 +415,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6423575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -426,9 +426,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &6423579
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -520,8 +517,8 @@ GameObject:
   m_Component:
   - component: {fileID: 19313592}
   - component: {fileID: 19313595}
-  - component: {fileID: 19313594}
   - component: {fileID: 19313593}
+  - component: {fileID: 19313594}
   m_Layer: 0
   m_Name: 26
   m_TagString: Area
@@ -663,7 +660,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 19313591}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -674,9 +671,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &19313595
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -738,8 +732,8 @@ GameObject:
   m_Component:
   - component: {fileID: 19394756}
   - component: {fileID: 19394759}
-  - component: {fileID: 19394758}
   - component: {fileID: 19394757}
+  - component: {fileID: 19394758}
   m_Layer: 0
   m_Name: 40
   m_TagString: Area
@@ -836,7 +830,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 19394755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -847,9 +841,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &19394759
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1077,8 +1068,8 @@ GameObject:
   m_Component:
   - component: {fileID: 47538869}
   - component: {fileID: 47538872}
-  - component: {fileID: 47538871}
   - component: {fileID: 47538870}
+  - component: {fileID: 47538871}
   m_Layer: 0
   m_Name: 15
   m_TagString: Area
@@ -1150,7 +1141,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 47538868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -1161,9 +1152,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &47538872
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1255,8 +1243,8 @@ GameObject:
   m_Component:
   - component: {fileID: 57268483}
   - component: {fileID: 57268486}
-  - component: {fileID: 57268485}
   - component: {fileID: 57268484}
+  - component: {fileID: 57268485}
   m_Layer: 0
   m_Name: 36
   m_TagString: Area
@@ -1390,7 +1378,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 57268482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -1401,9 +1389,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &57268486
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2476,8 +2461,8 @@ GameObject:
   m_Component:
   - component: {fileID: 116884962}
   - component: {fileID: 116884965}
-  - component: {fileID: 116884964}
   - component: {fileID: 116884963}
+  - component: {fileID: 116884964}
   m_Layer: 0
   m_Name: 50
   m_TagString: Area
@@ -2571,7 +2556,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 116884961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -2582,9 +2567,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &116884965
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2945,8 +2927,8 @@ GameObject:
   m_Component:
   - component: {fileID: 149194491}
   - component: {fileID: 149194494}
-  - component: {fileID: 149194493}
   - component: {fileID: 149194492}
+  - component: {fileID: 149194493}
   m_Layer: 0
   m_Name: 62
   m_TagString: Area
@@ -3031,7 +3013,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 149194490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -3042,9 +3024,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &149194494
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3106,8 +3085,8 @@ GameObject:
   m_Component:
   - component: {fileID: 159723423}
   - component: {fileID: 159723426}
-  - component: {fileID: 159723425}
   - component: {fileID: 159723424}
+  - component: {fileID: 159723425}
   m_Layer: 0
   m_Name: 51
   m_TagString: Area
@@ -3178,7 +3157,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 159723422}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -3189,9 +3168,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &159723426
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4150,15 +4126,17 @@ MonoBehaviour:
   buildView: {fileID: 1512733783}
   eventView: {fileID: 5843025245591029898}
   areas:
-  - {fileID: 387054660}
-  - {fileID: 351303015}
-  - {fileID: 705724526}
-  - {fileID: 121778962}
+  - {fileID: 414148573}
+  - {fileID: 571519392}
+  - {fileID: 1043457994}
+  - {fileID: 1872200037}
   playerPawns:
   - {fileID: 285042176}
   - {fileID: 1726379287}
   - {fileID: 275778987}
   - {fileID: 818267280}
+  enemyAreas: []
+  enemyPawns: []
 --- !u!4 &245343619
 Transform:
   m_ObjectHideFlags: 0
@@ -4642,11 +4620,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2782149106178587399, guid: 2ddb7be589d7c8848b14def77dee7865, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.26
+      value: -16.93
       objectReference: {fileID: 0}
     - target: {fileID: 2782149106178587399, guid: 2ddb7be589d7c8848b14def77dee7865, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.26
+      value: 11.74
       objectReference: {fileID: 0}
     - target: {fileID: 2782149106178587399, guid: 2ddb7be589d7c8848b14def77dee7865, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4845,8 +4823,8 @@ GameObject:
   m_Component:
   - component: {fileID: 282382388}
   - component: {fileID: 282382391}
-  - component: {fileID: 282382390}
   - component: {fileID: 282382389}
+  - component: {fileID: 282382390}
   m_Layer: 0
   m_Name: 49
   m_TagString: Area
@@ -4930,7 +4908,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 282382387}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -4941,9 +4919,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &282382391
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5208,11 +5183,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2782149106178587399, guid: 2ddb7be589d7c8848b14def77dee7865, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.509
+      value: -2.35
       objectReference: {fileID: 0}
     - target: {fileID: 2782149106178587399, guid: 2ddb7be589d7c8848b14def77dee7865, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.314
+      value: 13.13
       objectReference: {fileID: 0}
     - target: {fileID: 2782149106178587399, guid: 2ddb7be589d7c8848b14def77dee7865, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6076,8 +6051,8 @@ GameObject:
   m_Component:
   - component: {fileID: 356363849}
   - component: {fileID: 356363852}
-  - component: {fileID: 356363851}
   - component: {fileID: 356363850}
+  - component: {fileID: 356363851}
   m_Layer: 0
   m_Name: 46
   m_TagString: Area
@@ -6197,7 +6172,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 356363848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -6208,9 +6183,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &356363852
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6528,8 +6500,8 @@ GameObject:
   m_Component:
   - component: {fileID: 384011982}
   - component: {fileID: 384011985}
-  - component: {fileID: 384011984}
   - component: {fileID: 384011983}
+  - component: {fileID: 384011984}
   m_Layer: 0
   m_Name: 38
   m_TagString: Area
@@ -6641,7 +6613,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 384011981}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -6652,9 +6624,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &384011985
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6716,8 +6685,8 @@ GameObject:
   m_Component:
   - component: {fileID: 385041110}
   - component: {fileID: 385041113}
-  - component: {fileID: 385041112}
   - component: {fileID: 385041111}
+  - component: {fileID: 385041112}
   m_Layer: 0
   m_Name: 37
   m_TagString: Area
@@ -6840,7 +6809,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 385041109}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -6851,9 +6820,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &385041113
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7062,8 +7028,8 @@ GameObject:
   m_Component:
   - component: {fileID: 388789310}
   - component: {fileID: 388789313}
-  - component: {fileID: 388789312}
   - component: {fileID: 388789311}
+  - component: {fileID: 388789312}
   m_Layer: 0
   m_Name: 18
   m_TagString: Area
@@ -7176,7 +7142,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 388789309}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -7187,9 +7153,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &388789313
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7541,8 +7504,8 @@ GameObject:
   m_Component:
   - component: {fileID: 409457943}
   - component: {fileID: 409457946}
-  - component: {fileID: 409457945}
   - component: {fileID: 409457944}
+  - component: {fileID: 409457945}
   m_Layer: 0
   m_Name: 39
   m_TagString: Area
@@ -7623,7 +7586,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 409457942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -7634,9 +7597,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &409457946
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7786,8 +7746,8 @@ GameObject:
   m_Component:
   - component: {fileID: 413381531}
   - component: {fileID: 413381534}
-  - component: {fileID: 413381533}
   - component: {fileID: 413381532}
+  - component: {fileID: 413381533}
   m_Layer: 0
   m_Name: 21
   m_TagString: Area
@@ -7887,7 +7847,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 413381530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -7898,9 +7858,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &413381534
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7962,8 +7919,8 @@ GameObject:
   m_Component:
   - component: {fileID: 414148571}
   - component: {fileID: 414148574}
-  - component: {fileID: 414148573}
   - component: {fileID: 414148572}
+  - component: {fileID: 414148573}
   m_Layer: 0
   m_Name: 24
   m_TagString: Area
@@ -8098,7 +8055,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 414148570}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -8109,9 +8066,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &414148574
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8233,8 +8187,8 @@ GameObject:
   m_Component:
   - component: {fileID: 430998744}
   - component: {fileID: 430998747}
-  - component: {fileID: 430998746}
   - component: {fileID: 430998745}
+  - component: {fileID: 430998746}
   m_Layer: 0
   m_Name: 2
   m_TagString: Area
@@ -8313,7 +8267,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 430998743}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -8324,9 +8278,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &430998747
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8388,8 +8339,8 @@ GameObject:
   m_Component:
   - component: {fileID: 434163172}
   - component: {fileID: 434163175}
-  - component: {fileID: 434163174}
   - component: {fileID: 434163173}
+  - component: {fileID: 434163174}
   m_Layer: 0
   m_Name: 42
   m_TagString: Area
@@ -8505,7 +8456,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 434163171}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -8516,9 +8467,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &434163175
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8580,8 +8528,8 @@ GameObject:
   m_Component:
   - component: {fileID: 436251214}
   - component: {fileID: 436251217}
-  - component: {fileID: 436251216}
   - component: {fileID: 436251215}
+  - component: {fileID: 436251216}
   m_Layer: 0
   m_Name: 22
   m_TagString: Area
@@ -8664,7 +8612,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 436251213}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -8675,9 +8623,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &436251217
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9193,8 +9138,8 @@ GameObject:
   m_Component:
   - component: {fileID: 505082116}
   - component: {fileID: 505082119}
-  - component: {fileID: 505082118}
   - component: {fileID: 505082117}
+  - component: {fileID: 505082118}
   m_Layer: 0
   m_Name: 45
   m_TagString: Area
@@ -9314,7 +9259,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 505082115}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -9325,9 +9270,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &505082119
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9479,8 +9421,8 @@ GameObject:
   m_Component:
   - component: {fileID: 513453545}
   - component: {fileID: 513453548}
-  - component: {fileID: 513453547}
   - component: {fileID: 513453546}
+  - component: {fileID: 513453547}
   m_Layer: 0
   m_Name: 63
   m_TagString: Area
@@ -9561,7 +9503,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 513453544}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -9572,9 +9514,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &513453548
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9636,8 +9575,8 @@ GameObject:
   m_Component:
   - component: {fileID: 517023448}
   - component: {fileID: 517023451}
-  - component: {fileID: 517023450}
   - component: {fileID: 517023449}
+  - component: {fileID: 517023450}
   m_Layer: 0
   m_Name: 9
   m_TagString: Area
@@ -9733,7 +9672,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 517023447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -9744,9 +9683,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &517023451
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9808,8 +9744,8 @@ GameObject:
   m_Component:
   - component: {fileID: 518765978}
   - component: {fileID: 518765981}
-  - component: {fileID: 518765980}
   - component: {fileID: 518765979}
+  - component: {fileID: 518765980}
   m_Layer: 0
   m_Name: 8
   m_TagString: Area
@@ -9889,7 +9825,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 518765977}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -9900,9 +9836,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &518765981
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10098,8 +10031,8 @@ GameObject:
   m_Component:
   - component: {fileID: 523255363}
   - component: {fileID: 523255366}
-  - component: {fileID: 523255365}
   - component: {fileID: 523255364}
+  - component: {fileID: 523255365}
   m_Layer: 0
   m_Name: 34
   m_TagString: Area
@@ -10218,7 +10151,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 523255362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -10229,9 +10162,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &523255366
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10369,8 +10299,8 @@ GameObject:
   m_Component:
   - component: {fileID: 533134743}
   - component: {fileID: 533134746}
-  - component: {fileID: 533134745}
   - component: {fileID: 533134744}
+  - component: {fileID: 533134745}
   m_Layer: 0
   m_Name: 30
   m_TagString: Area
@@ -10490,7 +10420,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 533134742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -10501,9 +10431,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &533134746
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10991,8 +10918,8 @@ GameObject:
   m_Component:
   - component: {fileID: 563496876}
   - component: {fileID: 563496879}
-  - component: {fileID: 563496878}
   - component: {fileID: 563496877}
+  - component: {fileID: 563496878}
   m_Layer: 0
   m_Name: 19
   m_TagString: Area
@@ -11109,7 +11036,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 563496875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -11120,9 +11047,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &563496879
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11286,8 +11210,8 @@ GameObject:
   m_Component:
   - component: {fileID: 571519390}
   - component: {fileID: 571519393}
-  - component: {fileID: 571519392}
   - component: {fileID: 571519391}
+  - component: {fileID: 571519392}
   m_Layer: 0
   m_Name: 25
   m_TagString: Area
@@ -11401,7 +11325,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 571519389}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -11412,9 +11336,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &571519393
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11598,8 +11519,8 @@ GameObject:
   m_Component:
   - component: {fileID: 582008377}
   - component: {fileID: 582008380}
-  - component: {fileID: 582008379}
   - component: {fileID: 582008378}
+  - component: {fileID: 582008379}
   m_Layer: 0
   m_Name: 44
   m_TagString: Area
@@ -11726,7 +11647,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 582008376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -11737,9 +11658,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &582008380
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12603,8 +12521,8 @@ GameObject:
   m_Component:
   - component: {fileID: 670036071}
   - component: {fileID: 670036074}
-  - component: {fileID: 670036073}
   - component: {fileID: 670036072}
+  - component: {fileID: 670036073}
   m_Layer: 0
   m_Name: 48
   m_TagString: Area
@@ -12686,7 +12604,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 670036070}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -12697,9 +12615,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &670036074
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12929,8 +12844,8 @@ GameObject:
   m_Component:
   - component: {fileID: 697097746}
   - component: {fileID: 697097749}
-  - component: {fileID: 697097748}
   - component: {fileID: 697097747}
+  - component: {fileID: 697097748}
   m_Layer: 0
   m_Name: 13
   m_TagString: Area
@@ -13043,7 +12958,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 697097745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -13054,9 +12969,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &697097749
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14483,8 +14395,8 @@ GameObject:
   m_Component:
   - component: {fileID: 774766979}
   - component: {fileID: 774766982}
-  - component: {fileID: 774766981}
   - component: {fileID: 774766980}
+  - component: {fileID: 774766981}
   m_Layer: 0
   m_Name: 3
   m_TagString: Area
@@ -14559,7 +14471,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 774766978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -14570,9 +14482,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &774766982
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14695,8 +14604,8 @@ GameObject:
   m_Component:
   - component: {fileID: 795311030}
   - component: {fileID: 795311033}
-  - component: {fileID: 795311032}
   - component: {fileID: 795311031}
+  - component: {fileID: 795311032}
   m_Layer: 0
   m_Name: 27
   m_TagString: Area
@@ -14802,7 +14711,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 795311029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -14813,9 +14722,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &795311033
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14877,8 +14783,8 @@ GameObject:
   m_Component:
   - component: {fileID: 797894979}
   - component: {fileID: 797894982}
-  - component: {fileID: 797894981}
   - component: {fileID: 797894980}
+  - component: {fileID: 797894981}
   m_Layer: 0
   m_Name: 41
   m_TagString: Area
@@ -14960,7 +14866,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 797894978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -14971,9 +14877,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &797894982
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15266,11 +15169,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2782149106178587399, guid: 2ddb7be589d7c8848b14def77dee7865, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.49
+      value: -16.17
       objectReference: {fileID: 0}
     - target: {fileID: 2782149106178587399, guid: 2ddb7be589d7c8848b14def77dee7865, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.07
+      value: 6.87
       objectReference: {fileID: 0}
     - target: {fileID: 2782149106178587399, guid: 2ddb7be589d7c8848b14def77dee7865, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15759,8 +15662,8 @@ GameObject:
   m_Component:
   - component: {fileID: 848514064}
   - component: {fileID: 848514067}
-  - component: {fileID: 848514066}
   - component: {fileID: 848514065}
+  - component: {fileID: 848514066}
   m_Layer: 0
   m_Name: 10
   m_TagString: Area
@@ -15878,7 +15781,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 848514063}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -15889,9 +15792,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &848514067
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16111,8 +16011,8 @@ GameObject:
   m_Component:
   - component: {fileID: 853137970}
   - component: {fileID: 853137973}
-  - component: {fileID: 853137972}
   - component: {fileID: 853137971}
+  - component: {fileID: 853137972}
   m_Layer: 0
   m_Name: 11
   m_TagString: Area
@@ -16231,7 +16131,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 853137969}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -16242,9 +16142,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &853137973
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16590,8 +16487,8 @@ GameObject:
   m_Component:
   - component: {fileID: 886202104}
   - component: {fileID: 886202107}
-  - component: {fileID: 886202106}
   - component: {fileID: 886202105}
+  - component: {fileID: 886202106}
   m_Layer: 0
   m_Name: 57
   m_TagString: Area
@@ -16687,7 +16584,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 886202103}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -16698,9 +16595,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &886202107
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17048,8 +16942,8 @@ GameObject:
   m_Component:
   - component: {fileID: 929872924}
   - component: {fileID: 929872927}
-  - component: {fileID: 929872926}
   - component: {fileID: 929872925}
+  - component: {fileID: 929872926}
   m_Layer: 0
   m_Name: 54
   m_TagString: Area
@@ -17172,7 +17066,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 929872923}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -17183,9 +17077,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &929872927
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17761,8 +17652,8 @@ GameObject:
   m_Component:
   - component: {fileID: 966248834}
   - component: {fileID: 966248837}
-  - component: {fileID: 966248836}
   - component: {fileID: 966248835}
+  - component: {fileID: 966248836}
   m_Layer: 0
   m_Name: 43
   m_TagString: Area
@@ -17853,7 +17744,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 966248833}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -17864,9 +17755,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &966248837
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18878,8 +18766,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1043457992}
   - component: {fileID: 1043457995}
-  - component: {fileID: 1043457994}
   - component: {fileID: 1043457993}
+  - component: {fileID: 1043457994}
   m_Layer: 0
   m_Name: 4
   m_TagString: Area
@@ -18977,7 +18865,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1043457991}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -18988,9 +18876,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1043457995
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19172,8 +19057,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1063547580}
   - component: {fileID: 1063547583}
-  - component: {fileID: 1063547582}
   - component: {fileID: 1063547581}
+  - component: {fileID: 1063547582}
   m_Layer: 0
   m_Name: 56
   m_TagString: Area
@@ -19288,7 +19173,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1063547579}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -19299,9 +19184,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1063547583
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19483,8 +19365,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1081695891}
   - component: {fileID: 1081695894}
-  - component: {fileID: 1081695893}
   - component: {fileID: 1081695892}
+  - component: {fileID: 1081695893}
   m_Layer: 0
   m_Name: 29
   m_TagString: Area
@@ -19583,7 +19465,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1081695890}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -19594,9 +19476,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1081695894
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19748,8 +19627,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1095665578}
   - component: {fileID: 1095665581}
-  - component: {fileID: 1095665580}
   - component: {fileID: 1095665579}
+  - component: {fileID: 1095665580}
   m_Layer: 0
   m_Name: 35
   m_TagString: Area
@@ -19855,7 +19734,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1095665577}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -19866,9 +19745,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1095665581
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20634,8 +20510,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1166817749}
   - component: {fileID: 1166817752}
-  - component: {fileID: 1166817751}
   - component: {fileID: 1166817750}
+  - component: {fileID: 1166817751}
   m_Layer: 0
   m_Name: 31
   m_TagString: Area
@@ -20717,7 +20593,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1166817748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -20728,9 +20604,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1166817752
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21117,8 +20990,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1178833048}
   - component: {fileID: 1178833051}
-  - component: {fileID: 1178833050}
   - component: {fileID: 1178833049}
+  - component: {fileID: 1178833050}
   m_Layer: 0
   m_Name: 53
   m_TagString: Area
@@ -21230,7 +21103,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1178833047}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -21241,9 +21114,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1178833051
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21494,8 +21364,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1186093649}
   - component: {fileID: 1186093652}
-  - component: {fileID: 1186093651}
   - component: {fileID: 1186093650}
+  - component: {fileID: 1186093651}
   m_Layer: 0
   m_Name: 67
   m_TagString: Area
@@ -21560,7 +21430,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1186093648}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -21571,9 +21441,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1186093652
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22409,8 +22276,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1311411303}
   - component: {fileID: 1311411306}
-  - component: {fileID: 1311411305}
   - component: {fileID: 1311411304}
+  - component: {fileID: 1311411305}
   m_Layer: 0
   m_Name: 23
   m_TagString: Area
@@ -22504,8 +22371,8 @@ MonoBehaviour:
   type: 0
   neighboors: []
   battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
+  supportAmmo: 0
+  supportDeltaTime: 0
 --- !u!212 &1311411306
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22547,7 +22414,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d77d9347a1391f44595aa44dad823205, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_Color: {r: 0.3339622, g: 0.86856616, b: 1, a: 0.78431374}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -22932,8 +22799,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1339980953}
   - component: {fileID: 1339980956}
-  - component: {fileID: 1339980955}
   - component: {fileID: 1339980954}
+  - component: {fileID: 1339980955}
   m_Layer: 0
   m_Name: 17
   m_TagString: Area
@@ -23032,7 +22899,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1339980952}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -23043,9 +22910,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1339980956
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23303,8 +23167,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1360638173}
   - component: {fileID: 1360638176}
-  - component: {fileID: 1360638175}
   - component: {fileID: 1360638174}
+  - component: {fileID: 1360638175}
   m_Layer: 0
   m_Name: 6
   m_TagString: Area
@@ -23377,7 +23241,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1360638172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -23388,9 +23252,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1360638176
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23528,8 +23389,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1383988538}
   - component: {fileID: 1383988541}
-  - component: {fileID: 1383988540}
   - component: {fileID: 1383988539}
+  - component: {fileID: 1383988540}
   m_Layer: 0
   m_Name: 55
   m_TagString: Area
@@ -23639,7 +23500,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1383988537}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -23650,9 +23511,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1383988541
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23714,8 +23572,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1385549210}
   - component: {fileID: 1385549213}
-  - component: {fileID: 1385549212}
   - component: {fileID: 1385549211}
+  - component: {fileID: 1385549212}
   m_Layer: 0
   m_Name: 47
   m_TagString: Area
@@ -23856,7 +23714,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1385549209}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -23867,9 +23725,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1385549213
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24224,8 +24079,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1397097282}
   - component: {fileID: 1397097285}
-  - component: {fileID: 1397097284}
   - component: {fileID: 1397097283}
+  - component: {fileID: 1397097284}
   m_Layer: 0
   m_Name: 28
   m_TagString: Area
@@ -24324,7 +24179,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1397097281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -24335,9 +24190,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1397097285
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24625,8 +24477,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1420593889}
   - component: {fileID: 1420593892}
-  - component: {fileID: 1420593891}
   - component: {fileID: 1420593890}
+  - component: {fileID: 1420593891}
   m_Layer: 0
   m_Name: 7
   m_TagString: Area
@@ -24712,7 +24564,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1420593888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -24723,9 +24575,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1420593892
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25116,8 +24965,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1449564319}
   - component: {fileID: 1449564322}
-  - component: {fileID: 1449564321}
   - component: {fileID: 1449564320}
+  - component: {fileID: 1449564321}
   m_Layer: 0
   m_Name: 59
   m_TagString: Area
@@ -25226,7 +25075,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1449564318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -25237,9 +25086,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1449564322
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25301,8 +25147,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1454092502}
   - component: {fileID: 1454092505}
-  - component: {fileID: 1454092504}
   - component: {fileID: 1454092503}
+  - component: {fileID: 1454092504}
   m_Layer: 0
   m_Name: 65
   m_TagString: Area
@@ -25397,7 +25243,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1454092501}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -25408,9 +25254,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1454092505
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25841,73 +25684,73 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseFollower: {fileID: 769163868}
   areas:
-  - {fileID: 1723858751}
-  - {fileID: 430998746}
-  - {fileID: 774766981}
-  - {fileID: 1043457994}
-  - {fileID: 1872200037}
-  - {fileID: 1360638175}
-  - {fileID: 1420593891}
-  - {fileID: 518765980}
-  - {fileID: 517023450}
-  - {fileID: 848514066}
-  - {fileID: 853137972}
-  - {fileID: 2119991502}
-  - {fileID: 697097748}
-  - {fileID: 2029149057}
-  - {fileID: 47538871}
-  - {fileID: 2037919782}
-  - {fileID: 1339980955}
-  - {fileID: 388789312}
-  - {fileID: 563496878}
-  - {fileID: 1899090765}
-  - {fileID: 413381533}
-  - {fileID: 436251216}
-  - {fileID: 1311411305}
-  - {fileID: 414148573}
-  - {fileID: 571519392}
-  - {fileID: 19313594}
-  - {fileID: 795311032}
-  - {fileID: 1397097284}
-  - {fileID: 1081695893}
-  - {fileID: 533134745}
-  - {fileID: 1166817751}
-  - {fileID: 1513897056}
-  - {fileID: 6423578}
-  - {fileID: 523255365}
-  - {fileID: 1095665580}
-  - {fileID: 57268485}
-  - {fileID: 385041112}
-  - {fileID: 384011984}
-  - {fileID: 409457945}
-  - {fileID: 19394758}
-  - {fileID: 797894981}
-  - {fileID: 434163174}
-  - {fileID: 966248836}
-  - {fileID: 582008379}
-  - {fileID: 505082118}
-  - {fileID: 356363851}
-  - {fileID: 1385549212}
-  - {fileID: 670036073}
-  - {fileID: 282382390}
-  - {fileID: 116884964}
-  - {fileID: 159723425}
-  - {fileID: 1899708265}
-  - {fileID: 1178833050}
-  - {fileID: 929872926}
-  - {fileID: 1383988540}
-  - {fileID: 1063547582}
-  - {fileID: 886202106}
-  - {fileID: 1716295541}
-  - {fileID: 1449564321}
-  - {fileID: 2056671173}
-  - {fileID: 1602194378}
-  - {fileID: 149194493}
-  - {fileID: 513453547}
-  - {fileID: 1661696877}
-  - {fileID: 1454092504}
-  - {fileID: 1730277985}
-  - {fileID: 1186093651}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   paths:
   - {fileID: 1714156729}
   - {fileID: 1174301733}
@@ -26240,8 +26083,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1513897054}
   - component: {fileID: 1513897057}
-  - component: {fileID: 1513897056}
   - component: {fileID: 1513897055}
+  - component: {fileID: 1513897056}
   m_Layer: 0
   m_Name: 32
   m_TagString: Area
@@ -26307,7 +26150,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1513897053}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: adbaa64c5c188b648b12da4f92eeba03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -26318,9 +26161,10 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
+  spawnAI: 1
+  limiltedNum: 5
+  durationTimeSpawn: 0
+  pawnPath: Prefabs/Pawn
 --- !u!212 &1513897057
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26362,7 +26206,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ec06e7cd80ae5804887eaa4e270e18f1, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_Color: {r: 1, g: 0.0037735105, b: 0.0037735105, a: 0.78431374}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -26972,8 +26816,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1602194376}
   - component: {fileID: 1602194379}
-  - component: {fileID: 1602194378}
   - component: {fileID: 1602194377}
+  - component: {fileID: 1602194378}
   m_Layer: 0
   m_Name: 61
   m_TagString: Area
@@ -27062,7 +26906,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1602194375}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -27073,9 +26917,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1602194379
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27586,8 +27427,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1661696875}
   - component: {fileID: 1661696878}
-  - component: {fileID: 1661696877}
   - component: {fileID: 1661696876}
+  - component: {fileID: 1661696877}
   m_Layer: 0
   m_Name: 64
   m_TagString: Area
@@ -27677,7 +27518,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1661696874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -27688,9 +27529,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1661696878
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28352,8 +28190,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1716295539}
   - component: {fileID: 1716295542}
-  - component: {fileID: 1716295541}
   - component: {fileID: 1716295540}
+  - component: {fileID: 1716295541}
   m_Layer: 0
   m_Name: 58
   m_TagString: Area
@@ -28435,7 +28273,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1716295538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -28446,9 +28284,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1716295542
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28556,8 +28391,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1723858748}
   - component: {fileID: 1723858750}
-  - component: {fileID: 1723858751}
   - component: {fileID: 1723858749}
+  - component: {fileID: 1723858751}
   m_Layer: 0
   m_Name: 1
   m_TagString: Area
@@ -28677,7 +28512,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1723858747}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -28688,9 +28523,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!1001 &1726379286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28716,11 +28548,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2782149106178587399, guid: 2ddb7be589d7c8848b14def77dee7865, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.9
+      value: -6.32
       objectReference: {fileID: 0}
     - target: {fileID: 2782149106178587399, guid: 2ddb7be589d7c8848b14def77dee7865, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.3
+      value: 10.27
       objectReference: {fileID: 0}
     - target: {fileID: 2782149106178587399, guid: 2ddb7be589d7c8848b14def77dee7865, type: 3}
       propertyPath: m_LocalPosition.z
@@ -28849,8 +28681,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1730277983}
   - component: {fileID: 1730277986}
-  - component: {fileID: 1730277985}
   - component: {fileID: 1730277984}
+  - component: {fileID: 1730277985}
   m_Layer: 0
   m_Name: 66
   m_TagString: Area
@@ -28944,7 +28776,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1730277982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -28955,9 +28787,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1730277986
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31006,8 +30835,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1872200035}
   - component: {fileID: 1872200038}
-  - component: {fileID: 1872200037}
   - component: {fileID: 1872200036}
+  - component: {fileID: 1872200037}
   m_Layer: 0
   m_Name: 5
   m_TagString: Area
@@ -31158,7 +30987,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1872200034}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -31169,9 +30998,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1872200038
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31491,8 +31317,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1899090763}
   - component: {fileID: 1899090766}
-  - component: {fileID: 1899090765}
   - component: {fileID: 1899090764}
+  - component: {fileID: 1899090765}
   m_Layer: 0
   m_Name: 20
   m_TagString: Area
@@ -31588,7 +31414,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1899090762}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -31599,9 +31425,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1899090766
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31663,8 +31486,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1899708263}
   - component: {fileID: 1899708266}
-  - component: {fileID: 1899708265}
   - component: {fileID: 1899708264}
+  - component: {fileID: 1899708265}
   m_Layer: 0
   m_Name: 52
   m_TagString: Area
@@ -31750,7 +31573,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1899708262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -31761,9 +31584,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &1899708266
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33571,8 +33391,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2029149055}
   - component: {fileID: 2029149058}
-  - component: {fileID: 2029149057}
   - component: {fileID: 2029149056}
+  - component: {fileID: 2029149057}
   m_Layer: 0
   m_Name: 14
   m_TagString: Area
@@ -33649,7 +33469,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2029149054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -33660,9 +33480,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &2029149058
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33942,8 +33759,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2037919780}
   - component: {fileID: 2037919783}
-  - component: {fileID: 2037919782}
   - component: {fileID: 2037919781}
+  - component: {fileID: 2037919782}
   m_Layer: 0
   m_Name: 16
   m_TagString: Area
@@ -34075,7 +33892,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2037919779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -34086,9 +33903,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &2037919783
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34392,8 +34206,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2056671171}
   - component: {fileID: 2056671174}
-  - component: {fileID: 2056671173}
   - component: {fileID: 2056671172}
+  - component: {fileID: 2056671173}
   m_Layer: 0
   m_Name: 60
   m_TagString: Area
@@ -34515,7 +34329,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2056671170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -34526,9 +34340,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &2056671174
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35733,8 +35544,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2119991500}
   - component: {fileID: 2119991503}
-  - component: {fileID: 2119991502}
   - component: {fileID: 2119991501}
+  - component: {fileID: 2119991502}
   m_Layer: 0
   m_Name: 12
   m_TagString: Area
@@ -35824,7 +35635,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2119991499}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
@@ -35835,9 +35646,6 @@ MonoBehaviour:
   mats: []
   type: 0
   neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 5
-  supportDeltaTime: 1
 --- !u!212 &2119991503
 SpriteRenderer:
   m_ObjectHideFlags: 0
