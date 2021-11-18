@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 1005
-  goal: 23
+  goal: 24
   isAI: 1
   characterView: {fileID: 0}
   state: 0
