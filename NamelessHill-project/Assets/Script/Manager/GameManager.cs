@@ -83,11 +83,10 @@ namespace Nameless.Manager {
             }
             #region//获取本次场景里的事件
             List<EventResult> eventResults = new List<EventResult>();
-            eventResults.Add(EventResultFactory.GetEventResultById(101));
-            eventResults.Add(EventResultFactory.GetEventResultById(102));
-            eventResults.Add(EventResultFactory.GetEventResultById(103));
-            eventResults.Add(EventResultFactory.GetEventResultById(104));
-            eventResults.Add(EventResultFactory.GetEventResultById(105));
+            foreach (var child in DataManager.Instance.eventResultData)
+            {
+                eventResults.Add(EventResultFactory.GetEventResultById(child.Key));
+            }
             EventTriggerManager.Instance.InitEventTrigger(eventResults);
 
             //开始监听事件

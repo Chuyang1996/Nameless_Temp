@@ -143,7 +143,7 @@ namespace Nameless.DataMono
             this.nameTxt.text = DataManager.Instance.GetCharacter(Id).name;
             this.fixbtn.gameObject.SetActive(false);
             GameObject animObj = Instantiate(Resources.Load(pathFindAnim + this.pawnAgent.pawn.animName), this._root.transform) as GameObject;
-            animObj.transform.localPosition = new Vector3(0, -9.0f, 0);
+            animObj.transform.localPosition = new Vector3(0, -9 ,0);
             animObj.transform.localScale = new Vector3(1, 1, 1);
             animObj.GetComponent<CharacterAnim>().Init(this);
             //this.InitLine();
@@ -269,10 +269,10 @@ namespace Nameless.DataMono
             //renderWire.material.SetTextureScale("_MainTex", new Vector2(2f, 2f));
             this.renderWire.SetWidth(0.4f, 0.4f);
             this.renderWire.SetColors(this.isAI?Color.yellow: Color.blue, this.isAI ? Color.yellow : Color.blue);
-            this.renderWire.sortingOrder = 1;
+            this.renderWire.sortingOrder = 0;
             this.currentIndex = 0;
             this.nodePath.Add(this.startPoint.centerNode.transform.position);
-            this.renderWire.sortingOrder = 0;
+            this.renderWire.sortingOrder = 1;
             this.renderWire.positionCount = 1;
             this.renderWire.SetPosition(0, this.startPoint.centerNode.transform.position);
             this.areaDic.Add(this.targetArea.gameObject, true);
