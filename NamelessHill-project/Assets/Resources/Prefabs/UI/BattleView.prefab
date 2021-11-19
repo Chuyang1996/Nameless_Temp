@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b9dd404a4b107374dacc898922b7f73d, type: 3}
+  m_Sprite: {fileID: -3349645178535924709, guid: d63499dfb031c5941abb90e81797c3dd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2216,8 +2216,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceInfoView: {fileID: 29667133}
   resultInfoView: {fileID: 6983917632883720366}
-  medicineImg: {fileID: 21300000, guid: b9dd404a4b107374dacc898922b7f73d, type: 3}
-  ammoImg: {fileID: 21300000, guid: f1f7e596b6327ac4e89c3a310b9bc2fb, type: 3}
+  medicineImg: {fileID: -3349645178535924709, guid: d63499dfb031c5941abb90e81797c3dd, type: 3}
+  ammoImg: {fileID: 3111377950246234702, guid: d63499dfb031c5941abb90e81797c3dd, type: 3}
   contentTxt: {fileID: 6983917632843920265}
   areaNameTxt: {fileID: 6983917634149407125}
   templateUI: {fileID: 5104088124183939684}
@@ -3245,7 +3245,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f1f7e596b6327ac4e89c3a310b9bc2fb, type: 3}
+  m_Sprite: {fileID: 3111377950246234702, guid: d63499dfb031c5941abb90e81797c3dd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
