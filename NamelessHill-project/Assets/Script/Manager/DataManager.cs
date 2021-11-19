@@ -308,7 +308,8 @@ namespace Nameless.Manager
                             this.eventResultData[id]["name"],
                             this.eventResultData[id]["descrption"],
                             long.Parse(this.eventResultData[id]["condition"]),
-                            this.eventResultData[id]["option"]
+                            this.eventResultData[id]["option"],
+                            this.eventResultData[id]["Image"]
                             );
                     return skill;
                 }

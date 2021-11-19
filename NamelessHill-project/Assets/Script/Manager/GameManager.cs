@@ -50,6 +50,7 @@ namespace Nameless.Manager {
             DataManager.Instance.InitData();
             AudioManager.Instance.InitAudio();
             MatManager.Instance.InitMat();
+            SpriteManager.Instance.InitTexturePackage();
             //Debug.Log(DataManager.Instance.GetCharacter(1001).name);
 
 

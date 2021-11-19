@@ -134,7 +134,7 @@ namespace Nameless.Controller
                 dialoguePawn.pawnAvatar.StopDialogue();
                 if (dialoguePawn.dialogue!=null && dialoguePawn.dialogue.FindTargetDialoguePawn() != null)
                 {
-                    DialoguePawn newPawn = new DialoguePawn(dialoguePawn.dialogue.FindTargetDialoguePawn(), new Dialogue(-1, "-1",new ConditionDialogue(ConditionType.None,0), true, 4.0f,5.0f,2.0f,1.0f, -1, -1));
+                    DialoguePawn newPawn = new DialoguePawn(dialoguePawn.dialogue.FindTargetDialoguePawn(), new Dialogue(-1, "-1",new ConditionDialogue(ConditionType.None,0), true, 4.0f,20.0f,2.0f,1.0f, -1, -1));
                     DialogueTriggerManager.Instance.PushNewDialoguePawn(newPawn);
                 }
 
@@ -243,7 +243,7 @@ namespace Nameless.Controller
         // Update is called once per frame
         void LateUpdate()
         {
-            if (Locked)
+            if (Locked || !GameManager.Instance.isPlay)
                 return;
             if (this._isTranstionTo)
             {

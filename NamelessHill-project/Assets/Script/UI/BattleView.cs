@@ -1,3 +1,4 @@
+using Nameless.Controller;
 using Nameless.DataMono;
 using Nameless.DataUI;
 using Nameless.Manager;
@@ -32,10 +33,10 @@ namespace Nameless.UI
         #region//¼ÆÊ±¼ä
         public int totalTime;
         public Text timeTxt;
-        public Button gamePauseBtn;
+        //public Button gamePauseBtn;
 
-        public Sprite pauseIcon;
-        public Sprite playIcon;
+        //public Sprite pauseIcon;
+        //public Sprite playIcon;
 
         private bool isPlay = false;
 
@@ -55,27 +56,27 @@ namespace Nameless.UI
             this.hour = 0;
 
             this.isPlay = true;
-            this.gamePauseBtn.image.sprite = pauseIcon;
-            this.gamePauseBtn.onClick.AddListener(() => 
-            { 
-                this.isPlay = !this.isPlay;
-                if (isPlay)
-                {
-                    GameManager.Instance.PauseOrPlay(true);
-                }
-                else
-                {
-                    this.gamePauseBtn.image.sprite = playIcon;
-                    GameManager.Instance.PauseOrPlay(false);
-                } 
-            });
+            //this.gamePauseBtn.image.sprite = pauseIcon;
+            //this.gamePauseBtn.onClick.AddListener(() => 
+            //{ 
+            //    this.isPlay = !this.isPlay;
+            //    if (isPlay)
+            //    {
+            //        GameManager.Instance.PauseOrPlay(true);
+            //    }
+            //    else
+            //    {
+            //        this.gamePauseBtn.image.sprite = playIcon;
+            //        GameManager.Instance.PauseOrPlay(false);
+            //    } 
+            //});
         
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (!this.isPlay)
+            if (!this.isPlay || RTSCamera.Instance._isTranstionTo)
                 return;
             this.SelectArea();
             this.CountTime();

@@ -47,7 +47,7 @@ namespace Nameless.UI
                 this.eventOptionUIs.Add(eventOption.GetComponent<EventOptionUI>());
 
             }
-
+            this.pictureImage.sprite = eventResult.eventImage;
             this.content.text = eventResult.descrption;
             
         }

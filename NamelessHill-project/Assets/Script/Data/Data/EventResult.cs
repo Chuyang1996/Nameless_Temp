@@ -12,14 +12,15 @@ namespace Nameless.Data
         public string descrption;
         public long conditionId;
         public List<EventOption> options;
-
-        public EventResult(long id, string name, string descrption, long conditionId, List<EventOption> options)
+        public Sprite eventImage;
+        public EventResult(long id, string name, string descrption, long conditionId, List<EventOption> options,Sprite eventImage)
         {
             this.id = id;
             this.name = name;
             this.descrption = descrption;
             this.conditionId = conditionId;
             this.options = options;
+            this.eventImage = eventImage;
         }
 
     }

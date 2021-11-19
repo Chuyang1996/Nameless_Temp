@@ -419,7 +419,7 @@ namespace Nameless.DataMono
                 }
                 int nodes = (this.pathList[this.currentNode].nodes.Length - 1);
                 this.walkedNodes += nodes;
-                this.ReDrawLine(this.walkedNodes - 1);
+                this.ReDrawLine(this.walkedNodes);
                 this.gameObject.transform.position = this.endAreaList[this.currentNode].centerNode.gameObject.transform.position;
                 this.CurrentArea.RemovePawn(this);
                 this.UpdateCurrentArea(this.endAreaList[this.currentNode]);
