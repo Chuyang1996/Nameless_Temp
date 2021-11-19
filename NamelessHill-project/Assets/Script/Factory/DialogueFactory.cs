@@ -16,7 +16,7 @@ namespace Nameless.Agent
         {
             int[] condition = StringToIntArray(dialogueData.condition);
             ConditionDialogue conditionDialogue = new ConditionDialogue((ConditionType)condition[0],(float)condition[1]);
-            return new Dialogue(dialogueData.id, dialogueData.dialogue, conditionDialogue, dialogueData.isAuto, dialogueData.waitTime, dialogueData.nextId,dialogueData.nextPawn);
+            return new Dialogue(dialogueData.id, dialogueData.dialogue, conditionDialogue, dialogueData.isAuto,  dialogueData.waitTime, dialogueData.speedPos, dialogueData.zoom, dialogueData.zoomSpeed, dialogueData.nextId,dialogueData.nextPawn);
         }
 
         private static int[] StringToIntArray(string stringlist)

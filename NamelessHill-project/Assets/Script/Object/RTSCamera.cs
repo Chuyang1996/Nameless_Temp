@@ -64,7 +64,7 @@ namespace Nameless.Controller
             StartCoroutine(TransitionToCoroutine(transitionTargets));
         }
 
-        IEnumerator TransitionToCoroutine(Stack<DialoguePawn> transitionTargets)
+        IEnumerator TransitionToCoroutine(Stack<DialoguePawn> transitionTargets)//´ýÐÞ¸Ä
         {
             if (transitionTargets.Count > 0)
             {
@@ -72,7 +72,7 @@ namespace Nameless.Controller
                 bool GetPosTarget = false;
                 bool GetZoomTarget = false;
                 Vector3 targetpos = new Vector3(dialoguePawn.pawnAvatar.transform.position.x, dialoguePawn.pawnAvatar.transform.position.y, -10.0f);
-                TransitionTarget transitionTarget = new TransitionTarget(targetpos, 1.5f, dialoguePawn.dialogue.waitTime, 2.0f, 2.0f);
+                TransitionTarget transitionTarget = new TransitionTarget(targetpos, dialoguePawn.dialogue.zoom, dialoguePawn.dialogue.waitTime, dialoguePawn.dialogue.speedPos, dialoguePawn.dialogue.zoomSpeed);
                 while (transform.position != transitionTarget.targetPos || _camera.orthographicSize != transitionTarget.targetZoom)
                 {
                     if (!GameManager.Instance.isPlay)
@@ -127,13 +127,14 @@ namespace Nameless.Controller
                         dialoguePawn.pawnAvatar.ShowDialogue(dialoguePawn.dialogue.dialogueTxt);
                         yield return new WaitForSecondsRealtime(transitionTarget.waitTime);
                         dialoguePawn.dialogue = dialoguePawn.dialogue.NextDialogue();
+
                     } 
                     while (dialoguePawn.dialogue!=null);
                 }
                 dialoguePawn.pawnAvatar.StopDialogue();
                 if (dialoguePawn.dialogue!=null && dialoguePawn.dialogue.FindTargetDialoguePawn() != null)
                 {
-                    DialoguePawn newPawn = new DialoguePawn(dialoguePawn.dialogue.FindTargetDialoguePawn(), new Dialogue(-1, "-1",new ConditionDialogue(ConditionType.None,0), true, 4.0f, -1, -1));
+                    DialoguePawn newPawn = new DialoguePawn(dialoguePawn.dialogue.FindTargetDialoguePawn(), new Dialogue(-1, "-1",new ConditionDialogue(ConditionType.None,0), true, 4.0f,5.0f,2.0f,1.0f, -1, -1));
                     DialogueTriggerManager.Instance.PushNewDialoguePawn(newPawn);
                 }
 

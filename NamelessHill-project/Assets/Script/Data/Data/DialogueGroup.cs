@@ -44,16 +44,22 @@ namespace Nameless.Data
         public ConditionDialogue conditionDialogue;
         public bool isAuto;
         public float waitTime;
+        public float speedPos;
+        public float zoom;
+        public float zoomSpeed;
         public long nextId;
         public long nextPawnId;
 
-        public Dialogue(long id, string dialogueTxt, ConditionDialogue conditionDialogue, bool isAuto,float waitTime,long nextId, long nextPawn)
+        public Dialogue(long id, string dialogueTxt, ConditionDialogue conditionDialogue, bool isAuto, float waitTime, float speedPos, float zoom, float zoomSpeed, long nextId, long nextPawn)
         {
             this.id = id;
             this.dialogueTxt = dialogueTxt;
             this.conditionDialogue = conditionDialogue;
             this.isAuto = isAuto;
             this.waitTime = waitTime;
+            this.speedPos = speedPos;
+            this.zoom = zoom;
+            this.zoomSpeed = zoomSpeed;
             this.nextId = nextId;
             this.nextPawnId = nextPawn;
         }

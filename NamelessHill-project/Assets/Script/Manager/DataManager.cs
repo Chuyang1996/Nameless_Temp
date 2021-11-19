@@ -362,6 +362,9 @@ namespace Nameless.Manager
                             this.dialogueData[id]["condition"],
                             bool.Parse(this.dialogueData[id]["isAuto"]),
                             float.Parse(this.dialogueData[id]["waitTime"]),
+                            float.Parse(this.dialogueData[id]["speedPos"]),
+                            float.Parse(this.dialogueData[id]["zoom"]),
+                            float.Parse(this.dialogueData[id]["zoomSpeed"]),
                             long.Parse(this.dialogueData[id]["nextId"] == "null"? "-1": this.dialogueData[id]["nextId"]),
                             long.Parse(this.dialogueData[id]["nextPawn"] == "null"? "-1": this.dialogueData[id]["nextPawn"])
                             );
