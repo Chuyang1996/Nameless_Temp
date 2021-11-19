@@ -16,6 +16,9 @@ namespace Nameless.UI
 
 
         public Slider oppoMoraleSlider;
+
+        public GameObject content;
+        public 
         // Start is called before the first frame update
 
         // Update is called once per frame
