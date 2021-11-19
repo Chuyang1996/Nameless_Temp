@@ -34,6 +34,7 @@ namespace Nameless.ConfigData
 
         public string dialogue;
         public string animName;
+        public string iconName;
 
         public CharacterData
             (
@@ -62,7 +63,8 @@ namespace Nameless.ConfigData
             string supportSkills,
             string buildSkills,
             string dialogue,
-            string animName
+            string animName,
+            string iconName
             )
         {
             this.Id = Id;
@@ -91,6 +93,7 @@ namespace Nameless.ConfigData
             this.buildSkills = buildSkills;
             this.dialogue = dialogue;
             this.animName = animName;
+            this.iconName = iconName;
 
         }
 
@@ -121,7 +124,8 @@ namespace Nameless.ConfigData
             string supportSkills,
             string buildSkills,
             string dialogue,
-            string animName
+            string animName,
+            string iconName
             )
         {
             this.Id = Id;
@@ -150,6 +154,7 @@ namespace Nameless.ConfigData
             this.buildSkills = buildSkills;
             this.dialogue = dialogue;
             this.animName = animName;
+            this.iconName = iconName;
 
         }
         // Start is called before the first frame update

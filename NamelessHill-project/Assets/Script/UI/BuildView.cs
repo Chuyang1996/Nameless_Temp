@@ -14,6 +14,9 @@ namespace Nameless.UI
         public Sprite ammoSprite;
         public Sprite medicineSprite;
 
+        public Sprite ammoCostSprite;
+        public Sprite medicineCostSprite;
+
 
         public GameObject contentBuildSelect;
         public GameObject contentInfoSelect;
@@ -90,14 +93,14 @@ namespace Nameless.UI
             if (costAmmo > 0) {
                 Transform Obj0 = Instantiate(this.infoTemplate.transform, this.contentInfoSelect.transform);
                 Obj0.gameObject.SetActive(true);
-                Obj0.GetComponent<BuildInfoUI>().Init(ammoSprite,costAmmo);
+                Obj0.GetComponent<BuildInfoUI>().Init(this.ammoCostSprite,costAmmo);
                 this.costList.Add(Obj0.gameObject);
             }
             if (costMedicine > 0)
             {
                 Transform Obj0 = Instantiate(this.infoTemplate.transform, this.contentInfoSelect.transform);
                 Obj0.gameObject.SetActive(true);
-                Obj0.GetComponent<BuildInfoUI>().Init(medicineSprite, costMedicine);
+                Obj0.GetComponent<BuildInfoUI>().Init(this.medicineCostSprite, costMedicine);
                 this.costList.Add(Obj0.gameObject);
             }
         }

@@ -7,6 +7,7 @@ namespace Nameless.Manager
     public enum AtlasType
     {
         EventImage = 0,
+        CharacterImage = 1,
     }
     public class SpriteManager : Singleton<SpriteManager>
     {
@@ -14,6 +15,7 @@ namespace Nameless.Manager
         private Dictionary<string, AtlasType> atlasIndex = new Dictionary<string, AtlasType>
     {
         { "EventImage", AtlasType.EventImage},
+        { "CharacterImage", AtlasType.CharacterImage},
     };
         public Dictionary<AtlasType, SpriteAtlas> atlasCollection = new Dictionary<AtlasType, SpriteAtlas>();
         // Start is called before the first frame update

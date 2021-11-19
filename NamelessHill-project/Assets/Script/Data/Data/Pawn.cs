@@ -1,3 +1,4 @@
+using Nameless.Manager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -214,7 +215,8 @@ namespace Nameless.Data
         public Dictionary<long, DialogueGroup> dialogueDic = new Dictionary<long, DialogueGroup>();
 
         public string animName;
-        public Pawn(long id, string name,float health, float crHealth, float attack, float crAttack, float morale, float crMorale, int ammo, float crAmmo, float speed, float crSpeed, float hit, float crHit, float dex, float crDex, float defend, float crDefend, List<long> fightSkillIds, List<long> supportSkillIds, List<long> buildSkillIds, Dictionary<long, DialogueGroup> dialogueDic,string animName)
+        public Sprite icon;
+        public Pawn(long id, string name,float health, float crHealth, float attack, float crAttack, float morale, float crMorale, int ammo, float crAmmo, float speed, float crSpeed, float hit, float crHit, float dex, float crDex, float defend, float crDefend, List<long> fightSkillIds, List<long> supportSkillIds, List<long> buildSkillIds, Dictionary<long, DialogueGroup> dialogueDic,string animName,string iconName)
         {
             this.id = id;
             this.name = name;
@@ -248,6 +250,7 @@ namespace Nameless.Data
 
             this.dialogueDic = dialogueDic;
             this.animName = animName;
+            this.icon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterImage, iconName);
 
         }
 

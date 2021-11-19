@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CharacterImage
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: d9474c532717d0448b975f0608ed13e1, type: 3}
+    totalSpriteSurfaceArea: 20480
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 20c7cb60a2248434ba3bbcc86bf302f2, type: 3}
+  - {fileID: 21300000, guid: becdd2e307be21044b1bf6e25915dfdb, type: 3}
+  - {fileID: 21300000, guid: b2f051c4e064c9e4b943c6acc277c785, type: 3}
+  - {fileID: 21300000, guid: b7aa031a5d96ed344a27350743d30f27, type: 3}
+  - {fileID: 21300000, guid: f19dbbca15928254398001150c0b12be, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - engineer
+  - medical
+  - sniper
+  - soldier
+  - enemy
+  m_RenderDataMap: {}
+  m_Tag: CharacterImage
+  m_IsVariant: 0

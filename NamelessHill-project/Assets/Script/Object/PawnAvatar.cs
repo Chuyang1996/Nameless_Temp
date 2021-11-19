@@ -197,10 +197,10 @@ namespace Nameless.DataMono
                         this.targetArea = this.CurrentArea;
                         this.startPoint = this.CurrentArea;
                         this.State = PawnState.Draw;
-                        //AreasManager.Instance.mouseFollower.gameObject.GetComponent<SpriteRenderer>().sprite = this.gameObject.GetComponent<SpriteRenderer>().sprite;
+                        AreasManager.Instance.mouseFollower.gameObject.GetComponent<SpriteRenderer>().sprite = this.pawnAgent.pawn.icon;
                         this.InitLine();
                     }
-                    else if (TargetHit.transform.gameObject == this.fixbtn)
+                    else if (TargetHit.transform.gameObject == this.fixbtn && !this.isAI)//´ýÐÞ¸Ä.AI
                     {
                         GameManager.Instance.buildView.gameObject.SetActive(true);
                         GameManager.Instance.buildView.ResetBuild(this);
@@ -238,7 +238,7 @@ namespace Nameless.DataMono
                 RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
                 if (hit.collider != null)
                 {
-                    if (hit.collider.gameObject == this.currentArea.gameObject)
+                    if (hit.collider.gameObject == this.currentArea.gameObject && !this.isAI)//´ýÐÞ¸Ä.AI
                     {
                         this.FixBtnActive = !this.FixBtnActive;
 

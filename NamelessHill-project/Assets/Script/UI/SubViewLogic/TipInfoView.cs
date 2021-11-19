@@ -37,7 +37,7 @@ namespace Nameless.UI
             RaycastHit TargetHit;
             if (Physics.Raycast(targetray, out TargetHit))
             {
-                if (TargetHit.transform.gameObject.GetComponent<PawnAvatar>() != null && !TargetHit.transform.gameObject.GetComponent<PawnAvatar>().isAI)//待修改
+                if (TargetHit.transform.gameObject.GetComponent<PawnAvatar>() != null && !TargetHit.transform.gameObject.GetComponent<PawnAvatar>().isAI)//待修改.AI
                 {
                     this.ownTip.SetActive(true);
                     this.opponentTip.SetActive(false);
@@ -53,7 +53,7 @@ namespace Nameless.UI
                     //    this.isShowSupport = true;
                     //}
                     this.currentPawn = TargetHit.transform.gameObject.GetComponent<PawnAvatar>();
-                    this.RreshPanel();
+                    this.RreshPanel();//待修改 不要让其反复调用
                     float curMorale = (float)currentPawn.pawnAgent.pawn.curMorale;
                     float maxMorale = (float)currentPawn.pawnAgent.pawn.maxMorale;
                     if (curMorale >= maxMorale / 2)
@@ -70,7 +70,7 @@ namespace Nameless.UI
                     }
                     this.ownAmmoSlider.value = (float)currentPawn.pawnAgent.pawn.curAmmo / (float)currentPawn.pawnAgent.pawn.maxAmmo;
                 }
-                else if (TargetHit.transform.gameObject.GetComponent<PawnAvatar>() != null && TargetHit.transform.gameObject.GetComponent<PawnAvatar>().isAI)//待修改
+                else if (TargetHit.transform.gameObject.GetComponent<PawnAvatar>() != null && TargetHit.transform.gameObject.GetComponent<PawnAvatar>().isAI)//待修改.AI
                 {
                     this.currentPawn = TargetHit.transform.gameObject.GetComponent<PawnAvatar>();
                     this.opponentTip.SetActive(true);
