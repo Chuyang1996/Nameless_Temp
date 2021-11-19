@@ -185,7 +185,7 @@ namespace Nameless.DataMono
                     }
                 }
             }
-            if (Input.GetMouseButtonDown(0) && this.State != PawnState.Battle)
+            if (Input.GetMouseButtonDown(0) /*&& this.State != PawnState.Battle*/)
             {
                 //Debug.Log("sssss");
                 Ray targetray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -269,6 +269,7 @@ namespace Nameless.DataMono
             //renderWire.material.SetTextureScale("_MainTex", new Vector2(2f, 2f));
             this.renderWire.SetWidth(0.4f, 0.4f);
             this.renderWire.SetColors(this.isAI?Color.yellow: Color.blue, this.isAI ? Color.yellow : Color.blue);
+            
             this.renderWire.sortingOrder = 0;
             this.currentIndex = 0;
             this.nodePath.Add(this.startPoint.centerNode.transform.position);
@@ -743,28 +744,28 @@ namespace Nameless.DataMono
         //        }
         //    }
         //}//检查当前的战斗状态
-        //public void Retreat()
-        //{
-        //    List<Area> tempAreaList = new List<Area>();
-        //    for (int i = 0; i < this.currentArea.neighboors.Count; i++)
-        //    {
-        //        if (this.currentArea.neighboors[i].pawns.Count <= 0 || this.isAI == this.currentArea.neighboors[i].pawns[0].isAI)
-        //        {
-        //            tempAreaList.Add(this.currentArea.neighboors[i]);
-        //        }
-        //    }
-        //    int index =UnityEngine.Random.Range(0, tempAreaList.Count - 1);
-        //    this.InitLine();
-        //    this.DrawPath(tempAreaList[index], true);
+        public void Retreat()
+        {
+            List<Area> tempAreaList = new List<Area>();
+            for (int i = 0; i < this.currentArea.neighboors.Count; i++)
+            {
+                if (this.currentArea.neighboors[i].pawns.Count <= 0 || this.isAI == this.currentArea.neighboors[i].pawns[0].isAI)
+                {
+                    tempAreaList.Add(this.currentArea.neighboors[i]);
+                }
+            }
+            int index = UnityEngine.Random.Range(0, tempAreaList.Count - 1);
+            this.InitLine();
+            this.DrawPath(tempAreaList[index], true);
 
 
-        //}//撤退
-        //IEnumerator CheckFrontArea(PawnAvatar opponent)
-        //{
-        //    while ((opponent!=null && opponent.currentArea == this.endAreaList[this.currentNode]) || this.pawnAgent.opponents.Count > 0)//在周围没有敌人攻击我的情况我等待前方敌人撤退
-        //    {
-        //        yield return new WaitForSecondsRealtime(0.1f);
-        //    }
+        }//撤退
+         //IEnumerator CheckFrontArea(PawnAvatar opponent)
+         //{
+         //    while ((opponent!=null && opponent.currentArea == this.endAreaList[this.currentNode]) || this.pawnAgent.opponents.Count > 0)//在周围没有敌人攻击我的情况我等待前方敌人撤退
+         //    {
+         //        yield return new WaitForSecondsRealtime(0.1f);
+         //    }
 
         //    if(this.pawnAgent.opponents.Count<=0)//确定前方没有敌人后 再确定一下周围有没有人在打我
         //        this.State = this.lastState;

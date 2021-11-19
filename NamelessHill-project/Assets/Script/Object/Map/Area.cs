@@ -84,6 +84,7 @@ namespace Nameless.DataMono
             {
                 this.areaSprite.color = Color.white;
             }
+            
         }
 
 
