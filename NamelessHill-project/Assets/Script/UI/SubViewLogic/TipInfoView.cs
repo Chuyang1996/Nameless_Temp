@@ -1,6 +1,7 @@
 using Nameless.Data;
 using Nameless.DataMono;
 using Nameless.DataUI;
+using Nameless.Manager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,7 +24,8 @@ namespace Nameless.UI
 
         public GameObject content;
         public GameObject supportTemplate;
-        private List<GameObject> supportsItem;
+        public List<GameObject> RreshPanels = new List<GameObject>();
+        private List<GameObject> supportsItem = new List<GameObject>();
         private PawnAvatar currentPawn;
         private bool isShowSupport = false;
         // Start is called before the first frame update
@@ -40,17 +42,18 @@ namespace Nameless.UI
                     this.ownTip.SetActive(true);
                     this.opponentTip.SetActive(false);
                     this.FollowMouseMove(ownTip);
-                    if (TargetHit.transform.gameObject.GetComponent<PawnAvatar>().pawnAgent.supporters.Count == 0)
-                    {
-                        this.ClearPanel();
-                        this.isShowSupport = false;
-                    }
-                    if(this.currentPawn != TargetHit.transform.gameObject.GetComponent<PawnAvatar>() || !this.isShowSupport)
-                    {
-                        this.RreshPanel();
-                        this.isShowSupport = true;
-                    }
+                    //if (this.currentPawn != TargetHit.transform.gameObject.GetComponent<PawnAvatar>() || TargetHit.transform.gameObject.GetComponent<PawnAvatar>().pawnAgent.supporters.Count == 0)
+                    //{
+                    //    this.ClearPanel();
+                    //    this.isShowSupport = false;
+                    //}
+                    //if(this.currentPawn != TargetHit.transform.gameObject.GetComponent<PawnAvatar>() || !this.isShowSupport)
+                    //{
+                    //    this.RreshPanel();
+                    //    this.isShowSupport = true;
+                    //}
                     this.currentPawn = TargetHit.transform.gameObject.GetComponent<PawnAvatar>();
+                    this.RreshPanel();
                     float curMorale = (float)currentPawn.pawnAgent.pawn.curMorale;
                     float maxMorale = (float)currentPawn.pawnAgent.pawn.maxMorale;
                     if (curMorale >= maxMorale / 2)
@@ -95,7 +98,7 @@ namespace Nameless.UI
             base.FollowMouseMove(item);
             item.gameObject.SetActive(true);
             RectTransform rectTransform = item.transform as RectTransform;
-            item.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x + (item.GetComponent<RectTransform>().sizeDelta.x / 2), pos.y - (item.GetComponent<RectTransform>().sizeDelta.y));
+            item.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x + (item.GetComponent<RectTransform>().sizeDelta.x / 2), pos.y - (item.GetComponent<RectTransform>().sizeDelta.y/2));
 
         }
         private void RreshPanel()
@@ -111,13 +114,17 @@ namespace Nameless.UI
         {
             yield return new WaitForSecondsRealtime(1.0f);
             this.RemoveAllTips();
+            foreach (GameObject child in this.RreshPanels)
+            {
+                LayoutRebuilder.ForceRebuildLayoutImmediate(child.GetComponent<RectTransform>());
+            }
             LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
         }
         private IEnumerator RreshEnumerator()
         {
             yield return new WaitForSecondsRealtime(1.0f);
             this.RreshAllTips();
-            LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
+            
         }
         private void RemoveAllTips()
         {
@@ -162,6 +169,11 @@ namespace Nameless.UI
                     this.GenerateSupportTip(buffs[i].descrption);
                 }
             }
+            foreach (GameObject child in this.RreshPanels)
+            {
+                LayoutRebuilder.ForceRebuildLayoutImmediate(child.GetComponent<RectTransform>());
+            }
+            LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
         }
 
 

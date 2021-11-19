@@ -500,7 +500,6 @@ GameObject:
   - component: {fileID: 471972581866224372}
   - component: {fileID: 1110251728763814513}
   - component: {fileID: 6689331603620417346}
-  - component: {fileID: 8907095020917616792}
   - component: {fileID: 1844554427}
   m_Layer: 5
   m_Name: BascPanel
@@ -527,8 +526,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 93.71255, y: 0}
-  m_SizeDelta: {x: 162.7526, y: 41.2136}
+  m_AnchoredPosition: {x: 84.667, y: 0}
+  m_SizeDelta: {x: 0, y: 41.2136}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &471972581866224372
 CanvasRenderer:
@@ -594,20 +593,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
---- !u!114 &8907095020917616792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5840963240554332436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 2
-  m_VerticalFit: 0
 --- !u!114 &1844554427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,7 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
+  m_HorizontalFit: 2
   m_VerticalFit: 0
 --- !u!1 &6647168471488106137
 GameObject:
@@ -811,8 +796,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: -0.00061035156}
-  m_SizeDelta: {x: 0, y: 0.7000122}
+  m_AnchoredPosition: {x: -0.000061035156, y: -0.50061035}
+  m_SizeDelta: {x: 0, y: 1.7000122}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6983917632077899996
 MonoBehaviour:
@@ -836,7 +821,8 @@ MonoBehaviour:
   stateMorale: {fileID: 2205489220491051197}
   ownAmmoSlider: {fileID: 6983917632556950177}
   oppoMoraleSlider: {fileID: 6983917632094118567}
-  content: {fileID: 0}
+  content: {fileID: 7309171428392997935}
+  supportTemplate: {fileID: 7788437400393626947}
 --- !u!1 &6983917632085289724
 GameObject:
   m_ObjectHideFlags: 0
@@ -2257,8 +2243,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.569}
   m_AnchorMax: {x: 0.5, y: 0.569}
-  m_AnchoredPosition: {x: 199, y: 0.000015258789}
-  m_SizeDelta: {x: 187.4251, y: 0}
+  m_AnchoredPosition: {x: 266.53467, y: -3.3999996}
+  m_SizeDelta: {x: 169.334, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6983917633204171641
 CanvasRenderer:
@@ -3498,7 +3484,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 93.71255, y: 0}
+  m_AnchoredPosition: {x: 84.667, y: 0}
   m_SizeDelta: {x: 166.39, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &492456578871225094
