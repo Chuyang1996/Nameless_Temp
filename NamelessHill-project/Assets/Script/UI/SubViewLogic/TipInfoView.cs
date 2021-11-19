@@ -156,8 +156,8 @@ namespace Nameless.UI
                 List<Buff> buffs = new List<Buff>();
                 for(int i = 0; i < supportSkills.Count; i++)
                 {
-
-                    this.GenerateSupportTip(supportSkills[i].descrption);
+                    if(supportSkills[i].attackRate != 0.0f || supportSkills[i].defendRate != 0.0f)
+                        this.GenerateSupportTip(supportSkills[i].descrption);
                     for(int j = 0; j < supportSkills[i].buffs.Count; j++)
                     {
                         buffs.Add(supportSkills[i].buffs[j]);

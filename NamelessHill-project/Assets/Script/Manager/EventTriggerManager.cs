@@ -85,7 +85,7 @@ namespace Nameless.Manager {
                 {
                     int lastEnemies = GameManager.Instance.enemiesDieNum;
                     int afterEnemies = GameManager.Instance.enemiesDieNum + num;
-                    if (afterEnemies < (int)child.Key.parameter && (int)child.Key.parameter <= lastEnemies)
+                    if (lastEnemies < (int)child.Key.parameter && (int)child.Key.parameter <= afterEnemies)
                     {
                         for (int i = 0; i < child.Value.Count; i++)
                         {
