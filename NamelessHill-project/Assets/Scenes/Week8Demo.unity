@@ -4117,8 +4117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlay: 1
   totalTime: 720
-  totalAmmo: 2000
-  totalMedicine: 2000
+  totalAmmo: 200
+  totalMedicine: 200
   enemiesDieNum: 0
   currentMap: {fileID: 1502894495}
   characterView: {fileID: 2059111272}
@@ -9930,7 +9930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   x: 20
-  y: 20
+  y: 15
   orthographicSizeMin: 1.5
   orthographicSizeMax: 10
   speed: 10
