@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Tutorial
+  m_Name: EventImage
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -48,5 +48,5 @@ SpriteAtlas:
   - Tutorial_02
   - Tutorial_01
   m_RenderDataMap: {}
-  m_Tag: Tutorial
+  m_Tag: EventImage
   m_IsVariant: 0

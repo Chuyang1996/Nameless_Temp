@@ -6,14 +6,14 @@ namespace Nameless.Manager
 {
     public enum AtlasType
     {
-        Tutorial = 0,
+        EventImage = 0,
     }
     public class SpriteManager : Singleton<SpriteManager>
     {
         private const string loadPath = "TexturePackage/";
         private Dictionary<string, AtlasType> atlasIndex = new Dictionary<string, AtlasType>
     {
-        { "Tutorial", AtlasType.Tutorial},
+        { "EventImage", AtlasType.EventImage},
     };
         public Dictionary<AtlasType, SpriteAtlas> atlasCollection = new Dictionary<AtlasType, SpriteAtlas>();
         // Start is called before the first frame update

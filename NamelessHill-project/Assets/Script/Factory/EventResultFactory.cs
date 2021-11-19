@@ -22,7 +22,7 @@ namespace Nameless.Agent
             {
                 options.Add(EventOptionFactory.GetEventOptionById(resultId[i]));
             }
-            Sprite sprite = SpriteManager.Instance.FindSpriteByName(AtlasType.Tutorial, eventResultData.Image);
+            Sprite sprite = SpriteManager.Instance.FindSpriteByName(AtlasType.EventImage, eventResultData.Image);
             return new EventResult(eventResultData.id, eventResultData.name, eventResultData.descrption, eventResultData.conditionId, options, sprite);
         }
 
