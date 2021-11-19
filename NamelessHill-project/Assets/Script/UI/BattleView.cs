@@ -129,7 +129,7 @@ namespace Nameless.UI
 
             if (this.currentArea != null)
             {
-                this.areaNameTxt.text = this.currentArea.gameObject.name;
+                this.areaNameTxt.text ="Area:"+ this.currentArea.gameObject.name;
                 Transform txtObj0 = Instantiate(this.templateUI.transform, this.contentTxt.transform);
                 txtObj0.gameObject.GetComponent<BuildInfoUI>().Init(this.medicineImg, this.currentArea.Medicine);
                 txtObj0.gameObject.SetActive(true);
