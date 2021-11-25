@@ -54,6 +54,7 @@ namespace Nameless.UI
                     costMilitaryRes -= (int)propertySkillEffect.changeAmmo;
                 }
                 GameManager.Instance.ChangeMilitaryRes(costMilitaryRes);
+                
                 this.setBtn.interactable = this.IsSetBtnActiveAfterClick();
             });
         }

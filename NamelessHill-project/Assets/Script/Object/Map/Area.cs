@@ -23,12 +23,23 @@ namespace Nameless.DataMono
         {
             set
             {
+                if(value > 0 && medicine == 0)
+                {
+                    GenerateManager.Instance.GenerateBuild(this, BuildType.MeidicalBuild);
+                }
+                medicine = value;
                 if (medicine > 1)
                     medicine = 1;
                 else if (medicine < 0)
                     medicine = 0;
-                else
-                    medicine = value;
+
+                if (medicine == 0)
+                {
+                    if (this.builds.ContainsKey(BuildType.MeidicalBuild))
+                    {
+                        this.RemoveBuild(this.builds[BuildType.MeidicalBuild]);
+                    }
+                }
             }
             get
             {
@@ -41,12 +52,23 @@ namespace Nameless.DataMono
         {
             set
             {
+                if (value > 0 && medicine == 0)
+                {
+                    GenerateManager.Instance.GenerateBuild(this, BuildType.AmmoBuild);
+                }
+                ammo = value;
                 if (ammo > 1)
                     ammo = 1;
                 else if (ammo < 0)
                     ammo = 0;
-                else
-                    ammo = value;
+
+                if (ammo == 0) 
+                {
+                    if (this.builds.ContainsKey(BuildType.AmmoBuild))
+                    {
+                        this.RemoveBuild(this.builds[BuildType.AmmoBuild]);
+                    }
+                }
             }
             get
             {
@@ -56,10 +78,13 @@ namespace Nameless.DataMono
         private int ammo = 0;
 
         public GameObject centerNode;
-        private GameObject matGeneratePoint;
+        private GameObject matPoint;
+        private GameObject ammoPoint;
+        private GameObject meidicalPoint;
         //[HideInInspector]
         public List<PawnAvatar> pawns = new List<PawnAvatar>();
         public Dictionary<MatType, Mat> mats = new Dictionary<MatType,Mat>();
+        public Dictionary<BuildType, Build> builds = new Dictionary<BuildType, Build>();
         //[HideInInspector]
         public AreaType type;
 
@@ -69,16 +94,20 @@ namespace Nameless.DataMono
         public List<Area> neighboors;
         private void Start()//待修改 等框架搭建完成
         {
-            this.matGeneratePoint = transform.Find("MatPos").gameObject;
+            this.matPoint = transform.Find("MatPos").gameObject;
+            this.ammoPoint = transform.Find("AmmoPos").gameObject;
+            this.meidicalPoint = transform.Find("MedicialPos").gameObject;
             this.areaSprite = GetComponent<SpriteRenderer>();
             this.type = AreaType.Normal;
             
         }
         public void Init()//待修改 等框架搭建完成
         {
-            
-            this.matGeneratePoint = transform.Find("MatPos").gameObject;
-            Debug.Log(this.matGeneratePoint);
+
+            this.matPoint = transform.Find("MatPos").gameObject;
+            this.ammoPoint = transform.Find("AmmoPos").gameObject;
+            this.meidicalPoint = transform.Find("MedicialPos").gameObject;
+            Debug.Log(this.matPoint);
             this.areaSprite = GetComponent<SpriteRenderer>();
             GameManager.Instance.AddAreaForPlayer(this);
             //if (this.pawns.Count > 0)
@@ -103,7 +132,7 @@ namespace Nameless.DataMono
 
             //this.ResetPawnPos();
             return true;
-        }
+        }//本区域添加一个角色
         public virtual void RemovePawn(PawnAvatar pawn)
         {
             this.pawns.Remove(pawn);
@@ -112,12 +141,12 @@ namespace Nameless.DataMono
             //    this.areaSprite.color = this.pawns[0].isAI ? new Color(1, 0, 0, 0.2f) : new Color(0, 1, 0, 0.2f);
             //}
             //this.ResetPawnPos();
-        }
+        }//本区域移除一个角色
         public virtual void ChangeColor(bool isAi)
         {
             this.areaSprite.color = isAi? new Color(1, 0, 0, 0.2f) : new Color(0, 1, 0, 0.2f);
             
-        }
+        }//本区域改变颜色
         public virtual bool IsMatExist(MatType type ,int num)
         {
             if (this.mats.ContainsKey(type))
@@ -127,30 +156,62 @@ namespace Nameless.DataMono
             }
             else
                 return false;
-        }
+        }//本区域是否存在该材料
+        public virtual bool IsBuildExist(BuildType type)
+        {
+            if (this.builds.ContainsKey(type))
+                return true;
+            else
+                return false;
+        }//本区域是否存在该建筑
         public virtual void AddMat(Mat mat)
         {
-            this.mats.Add(mat.type,mat);
-            this.ResetMatPos();
-        }
+            if (!this.mats.ContainsKey(mat.type))
+            {
+                this.mats.Add(mat.type, mat);
+                this.ResetMatPos();
+            }
+        }//本区域添加材料
         public virtual void RemoveMat(Mat mat)
         {
-            this.mats.Remove(mat.type);
-            DestroyImmediate(mat.gameObject);
-            this.ResetMatPos();
-        }
+            if (this.mats.ContainsKey(mat.type))
+            {
+                this.mats.Remove(mat.type);
+                DestroyImmediate(mat.gameObject);
+                this.ResetMatPos();
+            }
+        }//本区域移除材料
+        public virtual void AddBuild(Build build)
+        {
+            if (!this.builds.ContainsKey(build.type))
+            {
+                this.builds.Add(build.type, build);
+                if (build.type == BuildType.AmmoBuild)
+                    build.gameObject.transform.position = this.ammoPoint.transform.position;
+                else if (build.type == BuildType.MeidicalBuild)
+                    build.gameObject.transform.position = meidicalPoint.transform.position;
+            }
+        }//本区域添加建筑
+        public virtual void RemoveBuild(Build build)
+        {
+            if (this.builds.ContainsKey(build.type))
+            {
+                this.builds.Remove(build.type);
+                DestroyImmediate(build.gameObject);
+            }
+        }//本区域移除建筑
         public virtual void ResetMatPos()
         {
             float durDis = (this.mats.Count - 1) * 0.5f;
             float halfDis = -durDis / 2;
             foreach(var child in this.mats)
             {
-                child.Value.gameObject.transform.parent = this.matGeneratePoint.gameObject.transform;
+                child.Value.gameObject.transform.parent = this.matPoint.gameObject.transform;
                 child.Value.gameObject.transform.localPosition = Vector3.zero;
                 child.Value.gameObject.transform.position = new Vector3(child.Value.gameObject.transform.position.x + halfDis, child.Value.gameObject.transform.position.y, child.Value.gameObject.transform.position.z);
                 halfDis += 0.5f;
             }
-        }
+        }//本区域重置材料位置
         public virtual void CostMedicine(PawnAvatar pawn)
         {
             if (pawn.pawnAgent.pawn.curHealth/ pawn.pawnAgent.pawn.maxHealth < 0.2)
@@ -173,7 +234,6 @@ namespace Nameless.DataMono
                 }
             }
         }
-
         public virtual void OccupyArea()
         {
             if (this.pawns.Count > 0)
@@ -184,8 +244,7 @@ namespace Nameless.DataMono
                     StartCoroutine(OcuppyProcess(5.0f));
                     
             }
-        }
-
+        }//占领本区域
         IEnumerator OcuppyProcess(float waitTime)
         {
             float countTime = 0.0f;
