@@ -102,8 +102,8 @@ namespace Nameless.DataMono
 
         #region//角色事件
         public Action<float> HealthBarEvent;
-        public Action<float> MoraleBarEvent;
-        public Action<float> AmmoBarEvent;
+        public Action<PawnAgent> MoraleBarEvent;
+        public Action<PawnAgent> AmmoBarEvent;
         public Action<float> AttackValueEvent;
         public Action<float> DefendValueEvent;
         public Action<float> SpeedValueEvent;
@@ -115,7 +115,7 @@ namespace Nameless.DataMono
         public RunningTimeCostProperty runningTimeProperty;
 
 
-        private float countCTimeMorale = 0.0f;
+        //private float countCTimeMorale = 0.0f;
         private float countBTimeMorale = 0.0f;
         private float countConTimeMorale = 0.0f;
 
@@ -123,27 +123,27 @@ namespace Nameless.DataMono
         #endregion
 
         #region//角色战斗状态
-        public BattleSide battleSide;
-        public BattleState BattleState
-        {
-            set
-            {
-                if(this.battleState == BattleState.Surround)
-                {
-                    AudioManager.Instance.PlayAudio(this.curOpponent.gameObject.transform, "Surround");
-                }
-                else if(this.battleState == BattleState.Pinch)
-                {
-                    AudioManager.Instance.PlayAudio(this.curOpponent.gameObject.transform, "Pinch");
-                }
-                this.battleState = value;
-            }
-            get
-            {
-                return this.battleState;
-            }
-        }
-        private BattleState battleState = BattleState.Normal;
+        public Dictionary<PawnAvatar,  BattleSide> battleSideDic = new Dictionary<PawnAvatar, BattleSide>();
+        //public BattleState BattleState
+        //{
+        //    set
+        //    {
+        //        if(this.battleState == BattleState.Surround)
+        //        {
+        //            AudioManager.Instance.PlayAudio(this.curOpponent.gameObject.transform, "Surround");
+        //        }
+        //        else if(this.battleState == BattleState.Pinch)
+        //        {
+        //            AudioManager.Instance.PlayAudio(this.curOpponent.gameObject.transform, "Pinch");
+        //        }
+        //        this.battleState = value;
+        //    }
+        //    get
+        //    {
+        //        return this.battleState;
+        //    }
+        //}
+        //private BattleState battleState = BattleState.Normal;
         public BattleInfo battleInfo;
         public List<PawnAvatar> opponents = new List<PawnAvatar>();//正在与自己战斗的所有角色
         public PawnAvatar curOpponent = null;//自己正在攻击的角色
@@ -199,10 +199,10 @@ namespace Nameless.DataMono
             {
                 this.skills.Add(SkillFactory.GetSkillById(SkillFactoryType.BuildSkill, pawn.buildSkillIds[i]));
             }
-            this.countCTimeMorale = 0.0f;
+            //this.countCTimeMorale = 0.0f;
             this.countBTimeMorale = 0.0f;
             this.countConTimeMorale = 0.0f;
-            this.battleSide = BattleSide.Peace;
+            this.battleSideDic = new Dictionary<PawnAvatar, BattleSide>();
 
             ResetBattleInfo();
         }
@@ -248,10 +248,10 @@ namespace Nameless.DataMono
                 if (this.countSTimeAmmo > this.runningTimeProperty.addTimeAmmo)
                 {
                     this.countSTimeAmmo = 0.0f;
-                    if (GameManager.Instance.totalAmmo > 0)//待修改
+                    if (GameManager.Instance.totalMilitaryRes > 0)//待修改
                     {
                         this.AmmoChange(this.runningTimeProperty.addAmmo);
-                        GameManager.Instance.ChangeAmmo((int)this.runningTimeProperty.addAmmo);//待修改
+                        GameManager.Instance.ChangeMilitaryRes((int)this.runningTimeProperty.addAmmo);//待修改
                     }
                 }
                 else
@@ -286,7 +286,7 @@ namespace Nameless.DataMono
         }
         public void ResetBattleInfo()
         {
-            this.BattleState = BattleState.Normal;
+            //this.BattleState = BattleState.Normal;
             this.opponents = new List<PawnAvatar>();
             this.curOpponent = null;
             this.opponentIsInBattle = false;
@@ -329,7 +329,7 @@ namespace Nameless.DataMono
         {
             this.pawn.curMorale += valueChange;
             if (this.MoraleBarEvent != null)
-                this.MoraleBarEvent(this.pawn.curMorale/this.pawn.maxMorale);
+                this.MoraleBarEvent(this);
 
         }
         public void HealthChange(float valuechange)
@@ -361,7 +361,7 @@ namespace Nameless.DataMono
                 }
             }
             if (this.AmmoBarEvent != null)
-                this.AmmoBarEvent(this.pawn.curAmmo / this.pawn.maxAmmo);
+                this.AmmoBarEvent(this);
 
         }
 
@@ -369,7 +369,7 @@ namespace Nameless.DataMono
         {
             this.pawn.curMorale  = value;
             if (this.MoraleBarEvent != null)
-                this.MoraleBarEvent(this.pawn.curMorale / this.pawn.maxMorale);
+                this.MoraleBarEvent(this);
         }
         public void InitHealth (float value)
         {
@@ -386,7 +386,7 @@ namespace Nameless.DataMono
                 this.InitAttack(this.pawn.curAttack * 0.2f);
             }
             if (this.AmmoBarEvent != null)
-                this.AmmoBarEvent(this.pawn.curAmmo / this.pawn.maxAmmo);
+                this.AmmoBarEvent(this);
         }
 
         public void InitAttack(float value)

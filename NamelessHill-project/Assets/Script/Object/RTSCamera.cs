@@ -6,9 +6,32 @@ using Nameless.Manager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.InteropServices;
 
 namespace Nameless.Controller
 {
+    public class Win32
+    {
+        [DllImport("User32.Dll")]
+        public static extern long SetCursorPos(int x, int y);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool GetCursorPos(out POINT lpPoint);
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct POINT
+        {
+            public int X;
+            public int Y;
+
+            public POINT(int x, int y)
+            {
+                this.X = x;
+                this.Y = y;
+            }
+        }
+    }
     public struct TransitionTarget
     {
         public Vector3 targetPos;
@@ -29,15 +52,20 @@ namespace Nameless.Controller
     }
     public class RTSCamera : SingletonMono<RTSCamera>
     {
-        public float x = 5;
-        public float y = 5;
+
+
+        public float rangeX = 5;
+        public float rangeY = 5;
         [SerializeField] private float orthographicSizeMin = 5;
         [SerializeField] private float orthographicSizeMax = 30;
 
         [SerializeField] private float speed = 3.0f;
+        //[SerializeField] private float dragSpeed = 3.0f;
 
         private Camera _camera;
-
+        private Win32.POINT lastTimePos;
+        private int lastMouseX;
+        private int lastMouseY;
         public bool Locked = false;
 
         //private float _moveToSpeed = 6.0f;
@@ -128,13 +156,13 @@ namespace Nameless.Controller
                         yield return new WaitForSecondsRealtime(transitionTarget.waitTime);
                         dialoguePawn.dialogue = dialoguePawn.dialogue.NextDialogue();
 
-                    } 
-                    while (dialoguePawn.dialogue!=null);
+                    }
+                    while (dialoguePawn.dialogue != null);
                 }
                 dialoguePawn.pawnAvatar.StopDialogue();
-                if (dialoguePawn.dialogue!=null && dialoguePawn.dialogue.FindTargetDialoguePawn() != null)
+                if (dialoguePawn.dialogue != null && dialoguePawn.dialogue.FindTargetDialoguePawn() != null)
                 {
-                    DialoguePawn newPawn = new DialoguePawn(dialoguePawn.dialogue.FindTargetDialoguePawn(), new Dialogue(-1, "-1",new ConditionDialogue(ConditionType.None,0), true, 4.0f,20.0f,5.0f,1.0f, -1, -1));
+                    DialoguePawn newPawn = new DialoguePawn(dialoguePawn.dialogue.FindTargetDialoguePawn(), new Dialogue(-1, "-1", new ConditionDialogue(ConditionType.None, 0), true, 4.0f, 20.0f, 5.0f, 1.0f, -1, -1));
                     DialogueTriggerManager.Instance.PushNewDialoguePawn(newPawn);
                 }
 
@@ -235,14 +263,17 @@ namespace Nameless.Controller
 #endif
 
 
-        private void Start()
-        {
-
-        }
-
         // Update is called once per frame
         void LateUpdate()
         {
+            if (Input.GetMouseButton(2))
+            {
+                Cursor.visible = false;
+            }
+            else if (Input.GetMouseButtonUp(2))
+            {
+                Cursor.visible = true;
+            }
             if (Locked || !GameManager.Instance.isPlay)
                 return;
             if (this._isTranstionTo)
@@ -253,21 +284,44 @@ namespace Nameless.Controller
             }
 
             float move_x, move_y;
+
             move_x = Input.GetAxis("Horizontal") * speed;
             move_y = Input.GetAxis("Vertical") * speed;
-            if (Input.mousePosition.x < 5) move_x -= speed;
-            else if (Input.mousePosition.x > Screen.width - 5) move_x += speed;
+            if (Input.GetMouseButton(2))
+            {
+                Cursor.lockState = CursorLockMode.None;
+                //Cursor.visible = false;
+                move_x = (Vector3.left * Input.GetAxis("Mouse X") * speed).x;
+                move_y = (Vector3.up * Input.GetAxis("Mouse Y") * -speed).y;
+                //move_x = (Camera.main.ScreenToWorldPoint(Input.mousePosition).x - this.lastTimePos.x) * speed;
+                //move_y = (Camera.main.ScreenToWorldPoint(Input.mousePosition).y - this.lastTimePos.y) * speed;
+            }
+            else if (Input.GetMouseButtonUp(2))
+            {
+                Win32.SetCursorPos(this.lastMouseX, this.lastMouseY);
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Confined;
+                //Cursor.visible = true;
+                if (Input.mousePosition.x < 5) move_x -= speed;
+                else if (Input.mousePosition.x > Screen.width - 5) move_x += speed;
 
-            if (Input.mousePosition.y < 5) move_y -= speed;
-            else if (Input.mousePosition.y > Screen.height - 5) move_y += speed;
+                if (Input.mousePosition.y < 5) move_y -= speed;
+                else if (Input.mousePosition.y > Screen.height - 5) move_y += speed;
+                Win32.POINT pt = new Win32.POINT();
+                Win32.GetCursorPos(out pt);
+                this.lastMouseX = pt.X;
+                this.lastMouseY = pt.Y;
+            }
 
             //if (_moveToCanBeInterupted && (move_x != 0 || move_y != 0))
             //    StopMoveTo();
 
             Vector3 newPosition = transform.position + new Vector3(move_x, move_y, 0) * Time.fixedDeltaTime;
 
-            newPosition.x = Mathf.Clamp(newPosition.x, -x, x);
-            newPosition.y = Mathf.Clamp(newPosition.y, -y, y);
+            newPosition.x = Mathf.Clamp(newPosition.x, -rangeX, rangeX);
+            newPosition.y = Mathf.Clamp(newPosition.y, -rangeY, rangeY);
 
 
             transform.position = newPosition;
@@ -277,9 +331,10 @@ namespace Nameless.Controller
             else if (Input.GetAxis("Mouse ScrollWheel") < 0)
                 Camera.main.orthographicSize++;
             _camera.orthographicSize = Mathf.Clamp(_camera.orthographicSize, orthographicSizeMin, orthographicSizeMax);
-            
+
 
             //PlayerControl.Instance.RefreshOpUIPos();
         }
+
     }
 }

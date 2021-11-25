@@ -38,17 +38,20 @@ namespace Nameless.Manager
     public class BattleManager : SingletonMono<BattleManager>
     {
         public Dictionary<Battle, BattleRound> battleDic = new Dictionary<Battle, BattleRound>();
-        public void GenerateBattle(PawnAvatar attacker, PawnAvatar defender)
+        public void GenerateBattle(PawnAvatar attacker, PawnAvatar defender, bool defenderisInBattle)
         {
             
             GameObject newBattle = Instantiate( Resources.Load("Prefabs/Battle")) as GameObject;
             newBattle.GetComponent<BattleRound>().Init(attacker, defender);
             attacker.pawnAgent.curOpponent = defender;
-            defender.pawnAgent.curOpponent = attacker;
+            if (!defenderisInBattle)
+            {
+                defender.pawnAgent.curOpponent = attacker;
+            }
             Battle battle = new Battle(attacker, defender);
             this.battleDic.Add(battle, newBattle.GetComponent<BattleRound>());
             //defender.CheckBattleState();
-            StartCoroutine(newBattle.GetComponent<BattleRound>().ProcessBattle());
+            StartCoroutine(newBattle.GetComponent<BattleRound>().ProcessBattle(defenderisInBattle));
         }
     }
 }

@@ -6,16 +6,14 @@ using UnityEngine.UI;
 namespace Nameless.UI {
     public class ResourceInfoView : MonoBehaviour
     {
-        public Text ammoTxt;
-        public Text medicineTxt;
+        public Text militartResTxt;
         // Start is called before the first frame update
         
 
         // Update is called once per frame
-        public void Init(int ammo,int medicine)
+        public void Init(int ammo)
         {
-            this.ammoTxt.text = ammo.ToString();
-            this.medicineTxt.text = medicine.ToString();
+            this.militartResTxt.text = ammo.ToString();
         }
     }
 }

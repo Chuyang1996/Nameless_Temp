@@ -17,8 +17,7 @@ namespace Nameless.DataUI
         public int addAmmoBuild;
         public int addMedicineBuild;
 
-        public int costAmmo;
-        public int costMedicine;
+        public int costMilitartRes;
 
         private string description;
         // Start is called before the first frame update
@@ -30,12 +29,11 @@ namespace Nameless.DataUI
             });
         }
 
-        public void Init(Sprite sprite, int addAmmoBuild, int costAmmo, int addMedicineBuild,int costMedicine,string desc)
+        public void Init(Sprite sprite, int costMilitartRes, int addAmmoBuild, int addMedicineBuild,string desc)
         {
             this.icon.sprite = sprite;
             this.description = desc;
-            this.costAmmo = costAmmo;
-            this.costMedicine = costMedicine;
+            this.costMilitartRes = costMilitartRes;
             this.addAmmoBuild = addAmmoBuild;
             this.addMedicineBuild = addMedicineBuild;
         }
@@ -44,15 +42,13 @@ namespace Nameless.DataUI
         {
             this.buildView.ResetBuildSelect();
             this.buildView.currentBuild = this;
-            this.buildView.ResetDescription(description, costAmmo, costMedicine);
+            this.buildView.ResetDescription(description, costMilitartRes);
             this.selectIcon.SetActive(true);
-            if (GameManager.Instance.totalAmmo < this.costAmmo
-            || GameManager.Instance.totalMedicine < this.costMedicine)
+            if (GameManager.Instance.totalMilitaryRes < this.costMilitartRes)
             {
                 this.buildView.setBtn.interactable = false;
             }
-            else if ((this.buildView.currentArea.Ammo >= 1 && this.addAmmoBuild > 0)
-                || (this.buildView.currentArea.Medicine >= 1 && this.addMedicineBuild > 0))
+            else if ((this.buildView.currentArea.Ammo >= 1 && this.addAmmoBuild > 0))
             {
                 this.buildView.setBtn.interactable = false;
             }

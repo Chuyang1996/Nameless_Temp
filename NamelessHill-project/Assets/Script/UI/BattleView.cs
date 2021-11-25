@@ -22,12 +22,12 @@ namespace Nameless.UI
         #region//区域信息
         public Sprite medicineImg;
         public Sprite ammoImg;
-
-        public GameObject contentTxt;
-        public Text areaNameTxt;
-        public BuildInfoUI templateUI;
-        private Area currentArea;
-        private List<GameObject> txtInfoList = new List<GameObject>();
+        public Text golaDes;
+        //public GameObject contentTxt;
+        //public Text areaNameTxt;
+        //public BuildInfoUI templateUI;
+        //private Area currentArea;
+        //private List<GameObject> txtInfoList = new List<GameObject>();
         #endregion
 
         #region//计时间
@@ -45,9 +45,10 @@ namespace Nameless.UI
         private int hour;
         #endregion
         // Start is called before the first frame update
-        public void Init(int totalTime)
+        public void Init(int totalTime, string goalDes)
         {
             this.totalTime = totalTime;
+            this.golaDes.text = goalDes;
             string shour = this.totalTime / 60 > 10 ? (this.totalTime / 60).ToString() : "0" + (this.totalTime / 60).ToString();
             string sminute = this.totalTime % 60 > 10 ? (this.totalTime % 60).ToString() : "0" + (this.totalTime % 60).ToString();
             this.timeTxt.text = shour + ":"+ sminute;
@@ -78,23 +79,23 @@ namespace Nameless.UI
         {
             if (!this.isPlay || RTSCamera.Instance._isTranstionTo)
                 return;
-            this.SelectArea();
+            //this.SelectArea();
             this.CountTime();
             
         }
-        void SelectArea()
-        {
-            Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
-            if (hit.collider != null && hit.collider.gameObject.tag == "Area")
-            {
-                if (hit.collider.gameObject.GetComponent<Area>() != null && hit.collider.gameObject.GetComponent<Area>()!=this.currentArea)
-                {
-                    this.currentArea = hit.collider.gameObject.GetComponent<Area>();
-                    this.ResetAreaInfo();
-                }
-            }
-        }
+        //void SelectArea()
+        //{
+        //    Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //    RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
+        //    if (hit.collider != null && hit.collider.gameObject.tag == "Area")
+        //    {
+        //        if (hit.collider.gameObject.GetComponent<Area>() != null && hit.collider.gameObject.GetComponent<Area>()!=this.currentArea)
+        //        {
+        //            this.currentArea = hit.collider.gameObject.GetComponent<Area>();
+        //            this.ResetAreaInfo();
+        //        }
+        //    }
+        //}
         void CountTime()
         {
             if (this.seconds > 60.0f)
@@ -121,48 +122,48 @@ namespace Nameless.UI
                 this.seconds += (Time.deltaTime * 48);
             }
         }
-        void ResetAreaInfo()
-        {
-            for(int i = 0;i<this.txtInfoList.Count;i++)
-                DestroyImmediate(this.txtInfoList[i]);
-            this.txtInfoList.Clear();
+        //void ResetAreaInfo()
+        //{
+        //    for(int i = 0;i<this.txtInfoList.Count;i++)
+        //        DestroyImmediate(this.txtInfoList[i]);
+        //    this.txtInfoList.Clear();
 
-            if (this.currentArea != null)
-            {
-                this.areaNameTxt.text ="Area:"+ this.currentArea.gameObject.name;
-                Transform txtObj0 = Instantiate(this.templateUI.transform, this.contentTxt.transform);
-                txtObj0.gameObject.GetComponent<BuildInfoUI>().Init(this.medicineImg, this.currentArea.Medicine);
-                txtObj0.gameObject.SetActive(true);
-                Transform txtObj1 = Instantiate(this.templateUI.transform, this.contentTxt.transform);
-                txtObj1.gameObject.GetComponent<BuildInfoUI>().Init(this.ammoImg, this.currentArea.Ammo);
-                txtObj1.gameObject.SetActive(true);
-                this.txtInfoList.Add(txtObj0.gameObject);
-                this.txtInfoList.Add(txtObj1.gameObject);
-                //if (this.currentArea.type == AreaType.Normal || this.currentArea.type == AreaType.Spawn)
-                //{
-                //    Transform txtObj0 = Instantiate(this.templateUI.transform, this.contentTxt.transform);
+        //    if (this.currentArea != null)
+        //    {
+        //        this.areaNameTxt.text ="Area:"+ this.currentArea.gameObject.name;
+        //        Transform txtObj0 = Instantiate(this.templateUI.transform, this.contentTxt.transform);
+        //        txtObj0.gameObject.GetComponent<BuildInfoUI>().Init(this.medicineImg, this.currentArea.Medicine);
+        //        txtObj0.gameObject.SetActive(true);
+        //        Transform txtObj1 = Instantiate(this.templateUI.transform, this.contentTxt.transform);
+        //        txtObj1.gameObject.GetComponent<BuildInfoUI>().Init(this.ammoImg, this.currentArea.Ammo);
+        //        txtObj1.gameObject.SetActive(true);
+        //        this.txtInfoList.Add(txtObj0.gameObject);
+        //        this.txtInfoList.Add(txtObj1.gameObject);
+        //        //if (this.currentArea.type == AreaType.Normal || this.currentArea.type == AreaType.Spawn)
+        //        //{
+        //        //    Transform txtObj0 = Instantiate(this.templateUI.transform, this.contentTxt.transform);
 
-                //    txtObj0.gameObject.GetComponent<Text>().text = "Morale:     " + this.currentArea.costMorale + "/" + this.currentArea.costTimeMorale + "s";
+        //        //    txtObj0.gameObject.GetComponent<Text>().text = "Morale:     " + this.currentArea.costMorale + "/" + this.currentArea.costTimeMorale + "s";
 
-                //    txtObj0.gameObject.SetActive(true);
+        //        //    txtObj0.gameObject.SetActive(true);
 
-                //    this.txtInfoList.Add(txtObj0.gameObject);
+        //        //    this.txtInfoList.Add(txtObj0.gameObject);
 
-                //}
-                //else if (this.currentArea.type == AreaType.Base)
-                //{
-                //    Transform txtObj0 = Instantiate(this.templateUI.transform, this.contentTxt.transform);
+        //        //}
+        //        //else if (this.currentArea.type == AreaType.Base)
+        //        //{
+        //        //    Transform txtObj0 = Instantiate(this.templateUI.transform, this.contentTxt.transform);
 
-                //    BaseArea tempBase = (BaseArea)this.currentArea;
-                //    txtObj0.gameObject.GetComponent<Text>().text = "Ammo:     " + "+"+ tempBase.supportAmmo + "/" + tempBase.supportDeltaTime + "s";
+        //        //    BaseArea tempBase = (BaseArea)this.currentArea;
+        //        //    txtObj0.gameObject.GetComponent<Text>().text = "Ammo:     " + "+"+ tempBase.supportAmmo + "/" + tempBase.supportDeltaTime + "s";
 
-                //    txtObj0.gameObject.SetActive(true);
+        //        //    txtObj0.gameObject.SetActive(true);
 
-                //    this.txtInfoList.Add(txtObj0.gameObject);
+        //        //    this.txtInfoList.Add(txtObj0.gameObject);
 
-                //}
-            }
+        //        //}
+        //    }
             
-        }
+        //}
     }
 }

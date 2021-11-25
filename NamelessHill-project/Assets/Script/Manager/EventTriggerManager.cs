@@ -39,14 +39,14 @@ namespace Nameless.Manager {
         }
 
 
-        public void CheckRelateAmmoEvent(int cost)
+        public void CheckRelateMilitaryResEvent(int cost)
         {
             foreach(var child in this.eventTriggerDic)
             {
                 if(child.Key.type == EventTriggerType.AmmoLess)
                 {
-                    int lastAmmo = GameManager.Instance.totalAmmo;
-                    int afterAmmo = GameManager.Instance.totalAmmo + cost;
+                    int lastAmmo = GameManager.Instance.totalMilitaryRes;
+                    int afterAmmo = GameManager.Instance.totalMilitaryRes + cost;
                     if(afterAmmo < (int)child.Key.parameter  && (int)child.Key.parameter <= lastAmmo)
                     {
                        for(int i = 0; i < child.Value.Count; i++)
@@ -58,24 +58,24 @@ namespace Nameless.Manager {
             }
         }
 
-        public void CheckRelateMedicineEvent(int cost)
-        {
-            foreach (var child in this.eventTriggerDic)
-            {
-                if (child.Key.type == EventTriggerType.MedicineLess)
-                {
-                    int lastMedicine = GameManager.Instance.totalMedicine;
-                    int afterMedicine = GameManager.Instance.totalMedicine + cost;
-                    if (afterMedicine < (int)child.Key.parameter && (int)child.Key.parameter <= lastMedicine)
-                    {
-                        for (int i = 0; i < child.Value.Count; i++)
-                        {
-                            this.currentAllEvent.Push(child.Value[i]);
-                        }
-                    }
-                }
-            }
-        }
+        //public void CheckRelateMedicineEvent(int cost)
+        //{
+        //    foreach (var child in this.eventTriggerDic)
+        //    {
+        //        if (child.Key.type == EventTriggerType.MedicineLess)
+        //        {
+        //            int lastMedicine = GameManager.Instance.totalMedicine;
+        //            int afterMedicine = GameManager.Instance.totalMedicine + cost;
+        //            if (afterMedicine < (int)child.Key.parameter && (int)child.Key.parameter <= lastMedicine)
+        //            {
+        //                for (int i = 0; i < child.Value.Count; i++)
+        //                {
+        //                    this.currentAllEvent.Push(child.Value[i]);
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
         public void CheckRelateEnemyKillEvent(int num)
         {

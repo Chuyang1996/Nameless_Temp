@@ -17,10 +17,10 @@ namespace Nameless.DataMono
         private float countTimeSpawn = 0.0f;
         private int countNumSpawn = 0;
 
-        private void Start()
+        private void Start()//待修改 等框架搭建完成
         {
             this.areaSprite = GetComponent<SpriteRenderer>();
-            this.areaSprite.color = Color.white;
+            //this.areaSprite.color = Color.white;
             this.type = AreaType.Spawn;
         }
         // Update is called once per frame

@@ -12,8 +12,7 @@ namespace Nameless.Data
     {
         MoraleChange = 100,
         AllMoraleChange = 101,
-        AmmoChange = 102,
-        MedicineChange = 103,
+        MilitaryResourceChange = 102,
         NextEvent = 104,
         UnlockNote = 105,
         DialogueTrigger = 106
@@ -114,31 +113,17 @@ namespace Nameless.Data
 
         public AmmoEventEffect(float ammoChange)
         {
-            this.type = EventEffectType.AmmoChange;
+            this.type = EventEffectType.MilitaryResourceChange;
             this.ammoChange = ammoChange;
         }
 
         public override void Execute()
         {
-            GameManager.Instance.ChangeAmmo((int)this.ammoChange);
+            GameManager.Instance.ChangeMilitaryRes((int)this.ammoChange);
         }
     }
 
-    public class MedicineEventEffect : EventEffect
-    {
-        public float medicineChange;
 
-        public MedicineEventEffect(float medicineChange)
-        {
-            this.type = EventEffectType.MedicineChange;
-            this.medicineChange = medicineChange;
-        }
-
-        public override void Execute()
-        {
-            GameManager.Instance.ChangeMedicine((int)this.medicineChange);
-        }
-    }
 
     public class NextEventEffect : EventEffect
     {

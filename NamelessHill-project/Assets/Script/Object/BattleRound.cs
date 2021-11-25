@@ -11,16 +11,20 @@ namespace Nameless.DataMono
     public class BattleRound : MonoBehaviour
     {
         public Battle battle;
+        public SpriteRenderer sprite;
         private PawnAvatar attacker;
         private PawnAvatar defender;
         private bool forceEnd = false;
         public void Init(PawnAvatar attacker, PawnAvatar defender)
         {
+
             this.attacker = attacker;
             this.defender = defender;
-
-            this.attacker.pawnAgent.battleSide = BattleSide.Attacker;
-            this.defender.pawnAgent.battleSide = BattleSide.Defender;
+            this.name = this.attacker.gameObject.name + " vs " + this.defender.gameObject.name;
+            this.sprite.color = this.attacker.isAI ? Color.red : Color.green;
+            this.CalculatePosition();
+            this.attacker.pawnAgent.battleSideDic.Add(this.defender,BattleSide.Attacker);
+            this.defender.pawnAgent.battleSideDic.Add(this.attacker, BattleSide.Defender);
 
             this.attacker.pawnAgent.opponents.Add(this.defender);
             this.defender.pawnAgent.opponents.Add(this.attacker);
@@ -29,10 +33,10 @@ namespace Nameless.DataMono
             this.forceEnd = false;
         }
 
-        public IEnumerator ProcessBattle()
+        public IEnumerator ProcessBattle(bool defenderisInBattle)
         {
-            this.attacker.pawnAgent.opponentIsInBattle = true;
-            this.defender.pawnAgent.opponentIsInBattle = true;
+            this.attacker.pawnAgent.opponentIsInBattle = defenderisInBattle;
+            //this.defender.pawnAgent.opponentIsInBattle = true;
             bool attackerTurn = true;
             this.attacker.ShowBattleHint(true);
             this.defender.ShowBattleHint(true);
@@ -45,15 +49,15 @@ namespace Nameless.DataMono
                 }
                 else
                 {
-                    if (this.attacker == null || this.defender == null)
-                        break;
+                    //if (this.attacker == null || this.defender == null)
+                    //    break;
 
                     if (this.IsTheBattleEnd())
                         break;
                     this.attacker.CalcuateBattleInfo();//计算本次战斗实际的角色数据
                     this.defender.CalcuateBattleInfo();
 
-                    if (attackerTurn)
+                    if (attackerTurn || this.attacker.pawnAgent.opponentIsInBattle)
                     {
                         this.attacker.pawnAgent.AmmoChange(-1);
                         this.attacker.currentArea.CostAmmo(this.attacker);
@@ -90,7 +94,9 @@ namespace Nameless.DataMono
             if (this.defender.IsFail())
             {
                 this.defender.pawnAgent.opponents.Remove(this.attacker);
+                this.defender.pawnAgent.battleSideDic.Remove(this.attacker);
                 this.attacker.pawnAgent.opponents.Remove(this.defender);
+                this.attacker.pawnAgent.battleSideDic.Remove(this.defender);
                 this.attacker.ShowBattleHint(false);
                 this.defender.ShowBattleHint(false);
 
@@ -98,7 +104,7 @@ namespace Nameless.DataMono
                 {
                     this.defender.CheckResult(true);
                 }
-                this.attacker.CheckIfBattleResult(this.defender,true);//检查周围是否还有其他的敌人正在攻击自己
+                this.attacker.CheckIfBattleResult();//检查周围是否还有其他的敌人正在攻击自己
 
                 isEnd = true;
                 //this.defender.gameObject.SetActive(false);
@@ -106,7 +112,9 @@ namespace Nameless.DataMono
             else if (this.attacker.IsFail())
             {
                 this.defender.pawnAgent.opponents.Remove(this.attacker);
+                this.defender.pawnAgent.battleSideDic.Remove(this.attacker);
                 this.attacker.pawnAgent.opponents.Remove(this.defender);
+                this.attacker.pawnAgent.battleSideDic.Remove(this.defender);
                 this.attacker.ShowBattleHint(false);
                 this.defender.ShowBattleHint(false);
 
@@ -114,34 +122,49 @@ namespace Nameless.DataMono
                 {
                     this.attacker.CheckResult(false);
                 }
-                this.defender.CheckIfBattleResult(this.attacker,false);//检查周围是否还有其他的敌人正在攻击自己
+                this.defender.CheckIfBattleResult();//检查周围是否还有其他的敌人正在攻击自己
                 isEnd = true;
                 //this.attacker.gameObject.SetActive(false); 
             }
             else if(this.defender.State == PawnState.Walk)
             {
                 this.defender.pawnAgent.opponents.Remove(this.attacker);
+                this.defender.pawnAgent.battleSideDic.Remove(this.attacker);
                 this.attacker.pawnAgent.opponents.Remove(this.defender);
+                this.attacker.pawnAgent.battleSideDic.Remove(this.defender);
                 this.attacker.ShowBattleHint(false);
                 this.defender.ShowBattleHint(false);
 
                 this.defender.pawnAgent.MoraleChange(-10.0f);
-                this.attacker.CheckIfBattleResult(this.defender, true);//检查周围是否还有其他的敌人正在攻击自己
+                this.attacker.CheckIfBattleResult();//检查周围是否还有其他的敌人正在攻击自己
                 this.forceEnd = true;
             }
             else if (this.attacker.State == PawnState.Walk)
             {
                 this.defender.pawnAgent.opponents.Remove(this.attacker);
+                this.defender.pawnAgent.battleSideDic.Remove(this.attacker);
                 this.attacker.pawnAgent.opponents.Remove(this.defender);
+                this.attacker.pawnAgent.battleSideDic.Remove(this.defender);
                 this.attacker.ShowBattleHint(false);
                 this.defender.ShowBattleHint(false);
 
                 this.attacker.pawnAgent.MoraleChange(-10.0f);
-                this.defender.CheckIfBattleResult(this.attacker, false);//检查周围是否还有其他的敌人正在攻击自己
+                this.defender.CheckIfBattleResult();//检查周围是否还有其他的敌人正在攻击自己
                 this.forceEnd = true;
                 //this.attacker.gameObject.SetActive(false); 
             }
             return isEnd || this.forceEnd;
+        }
+
+
+        void CalculatePosition()
+        {
+            Vector3 dir3 =   this.defender.transform.position - this.attacker.transform.position ;
+            Vector3 cross = Vector3.Cross(Vector3.up, dir3);
+            float angle = cross.z > 0 ? Vector2.Angle(Vector3.up, dir3) : -Vector2.Angle(Vector3.up, dir3);
+            this.transform.localEulerAngles = new Vector3(0, 0, angle);
+            this.transform.position = (this.attacker.transform.position + this.defender.transform.position) / 2;
+            //float dot = Vector2.Dot(dir3,)
         }
 
     }

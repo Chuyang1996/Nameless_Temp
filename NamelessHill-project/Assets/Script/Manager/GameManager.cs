@@ -20,8 +20,8 @@ namespace Nameless.Manager {
         /// </summary>
         /// 
         public int totalTime = 720;//本场战斗总时间//待修改
-        public int totalAmmo;//我方的弹药数量//待修改
-        public int totalMedicine;//我方的药品数量//待修改
+        public string levelgoalDes = "Hold for 12 hours";//本场战斗总时间//待修改
+        public int totalMilitaryRes;//我方的补给数量//待修改
         [HideInInspector]
         public int enemiesDieNum = 0;//敌人死亡数量//待修改
 
@@ -39,14 +39,20 @@ namespace Nameless.Manager {
 
         public Area[] areas;//待修改 所有玩家角色区域
         public List<PawnAvatar> playerPawns;//待修改 所有玩家角色
+
         public Area[] enemyAreas;//待修改 所有敌方角色区域
         public List<PawnAvatar> enemyPawns;//待修改 所有敌方角色
- 
+
+
+        private List<Area> playerOccupyAreas = new List<Area>();//待修改 所有玩家占领的区域
+        private List<Area> enemyOccupyAreas = new List<Area>();//待修改 所有敌方占领的区域
+
         // Start is called before the first frame update
         void Start()
         {
             this.isPlay = true;
             RTSCamera.Instance.InitCamera();
+            PathManager.Instance.InitPath();
             DataManager.Instance.InitData();
             AudioManager.Instance.InitAudio();
             MatManager.Instance.InitMat();
@@ -54,16 +60,15 @@ namespace Nameless.Manager {
             //Debug.Log(DataManager.Instance.GetCharacter(1001).name);
 
 
-
-            this.battleView.Init(this.totalTime);
-            this.battleView.resourceInfoView.Init(this.totalAmmo, this.totalMedicine);
+            this.battleView.Init(this.totalTime, this.levelgoalDes);
+            this.battleView.resourceInfoView.Init(this.totalMilitaryRes);
             Time.timeScale = 1.0f;
             this.RESULTEVENT += this.Result;
             for(int i = 0; i < this.playerPawns.Count; i++)
             {
                 this.playerPawns[i].characterView = this.characterView;
                 this.playerPawns[i].currentArea = this.areas[i];
-                this.areas[i].Init();
+                //this.areas[i].Init();
                 this.areas[i].AddPawn(this.playerPawns[i]);
                 this.playerPawns[i].transform.position = this.areas[i].centerNode.transform.position;
                 this.playerPawns[i].Init(0);
@@ -75,7 +80,7 @@ namespace Nameless.Manager {
             {
                 this.enemyPawns[i].characterView = this.characterView;
                 this.enemyPawns[i].currentArea = this.enemyAreas[i];
-                this.enemyAreas[i].Init();
+                //this.enemyAreas[i].Init();
                 this.enemyAreas[i].AddPawn(this.enemyPawns[i]);
                 this.enemyPawns[i].transform.position = this.enemyAreas[i].centerNode.transform.position;
                 this.enemyPawns[i].Init(0);
@@ -102,19 +107,49 @@ namespace Nameless.Manager {
             this.battleView.resultInfoView.SetResultTxt(title, isWin);
         }
 
-        public void ChangeAmmo(int cost)
+        public void ChangeMilitaryRes(int cost)
         {
-            EventTriggerManager.Instance.CheckRelateAmmoEvent(cost);
-            this.totalAmmo += cost;
-            this.battleView.resourceInfoView.Init(this.totalAmmo, this.totalMedicine);
+            EventTriggerManager.Instance.CheckRelateMilitaryResEvent(cost);
+            this.totalMilitaryRes += cost;
+            this.battleView.resourceInfoView.Init(this.totalMilitaryRes);
         }
-        public void ChangeMedicine(int cost)
+
+
+        public void AddAreaForPlayer(Area area)//待修改 等写框架的时候改
         {
-            EventTriggerManager.Instance.CheckRelateMedicineEvent(cost);
-            this.totalMedicine += cost;
-            this.battleView.resourceInfoView.Init(this.totalAmmo, this.totalMedicine);
+            if(!this.playerOccupyAreas.Contains(area))
+                this.playerOccupyAreas.Add(area);
+            if (this.enemyOccupyAreas.Contains(area))
+                this.enemyOccupyAreas.Remove(area);
+            area.ChangeColor(false);
+            
         }
-        public void EnemiesKillNum(int num)
+        public void AddAreaForEnemy(Area area)//待修改 等写框架的时候改
+        {
+            if (!this.enemyOccupyAreas.Contains(area))
+                this.enemyOccupyAreas.Add(area);
+            if (this.playerOccupyAreas.Contains(area))
+                this.playerOccupyAreas.Remove(area);
+            area.ChangeColor(true);
+        }
+        public bool IsBelongToSameSide(Area area,PawnAvatar pawn)//待修改 等写框架的时候改
+        {
+            if (pawn.isAI)
+            {
+                if (this.enemyOccupyAreas.Contains(area))
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                if (this.playerOccupyAreas.Contains(area))
+                    return true;
+                else
+                    return false;
+            }
+        }
+        public void EnemiesKillNum(int num)//待修改 等写框架的时候改
         {
             EventTriggerManager.Instance.CheckRelateEnemyKillEvent(num);
             this.enemiesDieNum += num;

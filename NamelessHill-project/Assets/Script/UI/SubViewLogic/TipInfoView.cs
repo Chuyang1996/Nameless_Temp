@@ -27,7 +27,7 @@ namespace Nameless.UI
         public List<GameObject> RreshPanels = new List<GameObject>();
         private List<GameObject> supportsItem = new List<GameObject>();
         private PawnAvatar currentPawn;
-        private bool isShowSupport = false;
+        //private bool isShowSupport = false;
         // Start is called before the first frame update
 
         // Update is called once per frame

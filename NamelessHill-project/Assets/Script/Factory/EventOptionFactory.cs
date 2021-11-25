@@ -31,14 +31,11 @@ namespace Nameless.Agent
                 {
                     effects.Add(new AllMoraleEventEffect(intArray[1]));
                 }
-                else if(intArray[0] == (int)EventEffectType.AmmoChange)
+                else if(intArray[0] == (int)EventEffectType.MilitaryResourceChange)
                 {
                     effects.Add(new AmmoEventEffect((float)intArray[1]));
                 }
-                else if(intArray[0] == (int)EventEffectType.MedicineChange)
-                {
-                    effects.Add(new MedicineEventEffect((float)intArray[1]));
-                }else if(intArray[0] == (int)EventEffectType.NextEvent)
+                else if(intArray[0] == (int)EventEffectType.NextEvent)
                 {
                     effects.Add(new NextEventEffect((long)intArray[1]));
                 }

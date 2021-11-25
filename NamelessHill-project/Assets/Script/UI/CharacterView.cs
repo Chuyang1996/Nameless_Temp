@@ -8,14 +8,14 @@ namespace Nameless.UI {
     public class CharacterView : MonoBehaviour
     {
         public Button closeBtn;
+        public Sprite[] stateSprite;
 
         public Text name;
         public Text rank;
 
         public Slider healthBar;
-        public Slider moraleBar;
-        public Slider ammoBar;
-        public Slider foodBar;
+        public Image moraleIm;
+        public Text ammoText;
 
         public Text attack;
         public Text defend;
@@ -37,8 +37,8 @@ namespace Nameless.UI {
             this.rank.text = this.currentPawn.pawnAgent.rank;
 
             this.healthBar.value = this.currentPawn.pawnAgent.pawn.curHealth/this.currentPawn.pawnAgent.pawn.maxHealth;
-            this.moraleBar.value = this.currentPawn.pawnAgent.pawn.curMorale/this.currentPawn.pawnAgent.pawn.maxMorale;
-            this.ammoBar.value = this.currentPawn.pawnAgent.pawn.curAmmo/this.currentPawn.pawnAgent.pawn.maxAmmo;
+            this.MoraleChange(pawnAvatar.pawnAgent);
+            this.AmmoChange(pawnAvatar.pawnAgent);
 
 
             this.attack.text = ((int)this.currentPawn.pawnAgent.pawn.curAttack).ToString();
@@ -79,17 +79,26 @@ namespace Nameless.UI {
         {
             this.healthBar.value = value;
         }
-        public void MoraleChange(float value)
+        public void MoraleChange(PawnAgent value)
         {
-            this.moraleBar.value = value;
+            float curMorale = (float)value.pawn.curMorale;
+            float maxMorale = (float)value.pawn.maxMorale;
+            if (curMorale >= maxMorale / 2)
+            {
+                this.moraleIm.sprite = stateSprite[0];
+            }
+            else if (maxMorale / 4 <= curMorale && curMorale < maxMorale / 2)
+            {
+                this.moraleIm.sprite = stateSprite[1];
+            }
+            else
+            {
+                this.moraleIm.sprite = stateSprite[2];
+            }
         }
-        public void AmmoChange(float value)
+        public void AmmoChange(PawnAgent value)
         {
-            this.ammoBar.value = value;
-        }
-        public void FoodChange(float value)
-        {
-            this.foodBar.value = value;
+            this.ammoText.text = value.pawn.curAmmo.ToString() + "/" + value.pawn.maxAmmo.ToString(); 
         }
 
         public void AttackChange(float value)

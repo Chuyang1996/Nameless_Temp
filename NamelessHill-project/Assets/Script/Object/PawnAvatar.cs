@@ -37,12 +37,7 @@ namespace Nameless.DataMono
         private List<Area> endAreaList = new List<Area>();
         private List<Path> pathList = new List<Path>();
         private int nodeCount = 0;
-        private int walkedNodes = 0;
-
-        private float durationTime = 0;
-        private float walkTime = 0;
-        private int currentNode = 0;
-        private int currentPhysicsNode = 0;
+        private int currentWalkNode = 0;
 
         private GameObject Wire;
         private GameObject walkWire;
@@ -79,7 +74,7 @@ namespace Nameless.DataMono
             {
                 this.ResetAllSupport();
                 this.fixbtn.gameObject.SetActive(false);
-                this.PlayCharacterAnim(value);
+                this.StateTriggerEvent(value);
                 //if (value == PawnState.Wait)
                 //    this.PlayCharacterAnim(value);
                 //else if (value == PawnState.Walk)
@@ -154,12 +149,25 @@ namespace Nameless.DataMono
             if (this.currentArea == null || this.pawnAgent == null || RTSCamera.Instance._isTranstionTo)
                 return;
 
+
+
+            Ray targetRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit targetHit;
+            if (Physics.Raycast(targetRay, out targetHit))
+            {
+                if (targetHit.transform.gameObject == this.gameObject)
+                {
+                    PathManager.Instance.ShowPath(this);
+                }
+            }
+
+
             if (this.State == PawnState.Wait)
                 this.CheckSupport();
             else if (this.State == PawnState.Draw && !this.isAI)
                 this.MouseDrawPath();
-            else if (this.State == PawnState.Walk)
-                this.WalkPath();
+            //else if (this.State == PawnState.Walk)
+            //    this.WalkPath();
             this.pawnAgent.RunningTimePropertyUpdate(this.State);
             //this.CheckBattleState();
 
@@ -171,7 +179,7 @@ namespace Nameless.DataMono
                 this.AIDrawPath();
                 return;
             }
-            if (this.characterView.gameObject.activeInHierarchy)
+            if (this.characterView.gameObject.activeInHierarchy || this.isAI)
                 return;
             if (Input.GetMouseButtonDown(1))
             {
@@ -199,6 +207,7 @@ namespace Nameless.DataMono
                         this.State = PawnState.Draw;
                         AreasManager.Instance.mouseFollower.gameObject.GetComponent<SpriteRenderer>().sprite = this.pawnAgent.pawn.icon;
                         this.InitLine();
+                        this.ShowPath(true);
                     }
                     else if (TargetHit.transform.gameObject == this.fixbtn && !this.isAI)//待修改.AI
                     {
@@ -216,10 +225,12 @@ namespace Nameless.DataMono
                     AreasManager.Instance.mouseFollower.ResetState();
                     if (this.endAreaList.Count > 0 && this.distanceDic.Count > 0)
                     {
-                        this.walkTime = this.distanceDic[this.endAreaList[this.currentNode].centerNode] / this.pawnAgent.pawn.curSpeed;
+                        
+                        this.ShowPath(false);
+                        PathManager.Instance.AddPath(this);
                         this.State = PawnState.Walk;
-                        float t = this.walkTime / (float)(this.pathList[this.currentNode].nodes.Length - 1);
-                        int start = 0;
+                        List<Vector3> tempNode = this.nodePath;
+                        StartCoroutine(WalkLineByNode(tempNode));
                         //this.InitWalkLine();
                         //StartCoroutine(ShowWalkPath(start, this.pathList[0].nodes.Length - 1, t));
                     }
@@ -230,7 +241,6 @@ namespace Nameless.DataMono
 
                 }
             }
-
             if (Input.GetMouseButtonDown(0))
             {
                 //Debug.Log("sssss");
@@ -252,46 +262,59 @@ namespace Nameless.DataMono
         void InitLine()
         {
             Destroy(Wire);
-            this.durationTime = 0;
-            this.walkTime = 0;
-            this.currentNode = 0;
-            this.currentPhysicsNode = 0;
-            this.walkedNodes = 0;
+            Destroy(walkWire);
+            this.currentWalkNode = 0;
             this.nodePath = new List<Vector3>();
             this.Wire = new GameObject();
+            this.walkWire = new GameObject();
             this.areaDic = new Dictionary<GameObject, bool>();
             this.distanceDic = new Dictionary<GameObject, float>();
             this.endAreaList = new List<Area>();
             this.pathList = new List<Path>();
-            this.Wire.name = "Wire";
+            this.Wire.name = "Wire: " + this.pawnAgent.pawn.name;
+            this.walkWire.name = "walkWire";
             this.renderWire = Wire.AddComponent<LineRenderer>();
+            this.walkRenderWire = walkWire.AddComponent<LineRenderer>();
             this.renderWire.material = WireMaterial;
+            this.walkRenderWire.material = WireMaterial;
             //renderWire.material.SetTextureScale("_MainTex", new Vector2(2f, 2f));
             this.renderWire.SetWidth(0.4f, 0.4f);
-            this.renderWire.SetColors(this.isAI?Color.yellow: Color.blue, this.isAI ? Color.yellow : Color.blue);
+            this.walkRenderWire.SetWidth(0.4f, 0.4f);
+            Color playerPath = new Color(0, 0, 1, 1);
+            Color aiPath = new Color(1, 1, 0, 0.05f);
+            this.renderWire.SetColors(this.isAI ? aiPath : playerPath, this.isAI ? aiPath : playerPath);
+            Color playerWalk = new Color(0, 1, 1, 1);
+            Color aiWalk = new Color(1, 0.5f, 0, 0.05f);
+            this.walkRenderWire.SetColors(this.isAI? aiWalk : playerWalk, this.isAI ? aiWalk : playerWalk);
             
             this.renderWire.sortingOrder = 0;
+            this.walkRenderWire.sortingOrder = 1;
             this.currentIndex = 0;
             this.nodePath.Add(this.startPoint.centerNode.transform.position);
             this.renderWire.sortingOrder = 1;
+            this.walkRenderWire.sortingOrder = 2;
             this.renderWire.positionCount = 1;
+            this.walkRenderWire.positionCount = 1;
             this.renderWire.SetPosition(0, this.startPoint.centerNode.transform.position);
+            this.walkRenderWire.SetPosition(0, this.startPoint.centerNode.transform.position);
             this.areaDic.Add(this.targetArea.gameObject, true);
 
         }
-        //void InitWalkLine()
-        //{
-        //    Destroy(this.walkWire);
-        //    this.walkWire = new GameObject();
-        //    this.walkWire.name = "walkWire";
-        //    this.walkRenderWire = walkWire.AddComponent<LineRenderer>();
-        //    this.walkRenderWire.material = WireMaterial;
-        //    this.walkRenderWire.SetWidth(0.4f, 0.4f);
-        //    this.walkRenderWire.SetColors(Color.yellow, Color.yellow);
-        //    this.walkRenderWire.sortingOrder = 1;
-        //    this.walkRenderWire.positionCount = 1;
-        //    this.walkRenderWire.SetPosition(0, this.CurrentArea.centerNode.transform.position);
-        //}//待修改
+        public void ShowPath(bool isShow)
+        {
+            if(this.renderWire!=null && this.walkRenderWire != null)
+            {
+                float alpha = isShow ? 1.0f : 0.05f;
+                Color playerPath = new Color(0, 0, 1, alpha);
+                Color aiPath = new Color(1, 1, 0, alpha);
+                Color playerWalk = new Color(0, 1, 1, alpha);
+                Color aiWalk = new Color(1, 0.5f, 0, alpha);
+
+                this.renderWire.SetColors(this.isAI ? aiPath : playerPath, this.isAI ? aiPath : playerPath);
+                this.walkRenderWire.SetColors(this.isAI ? aiWalk : playerWalk, this.isAI ? aiWalk : playerWalk);
+
+            }
+        }
         void MouseDrawPath()
         {
 
@@ -349,7 +372,7 @@ namespace Nameless.DataMono
                     this.nodePath.Add(AreasManager.Instance.pathDic[temp1].nodes[i].transform.position);
                 }
                 this.nodeCount = AreasManager.Instance.pathDic[temp1].nodes.Length;
-                Debug.Log(AreasManager.Instance.pathDic[temp1].name + "新区域AAAAAAAAAA");
+                //Debug.Log(AreasManager.Instance.pathDic[temp1].name + "新区域AAAAAAAAAA");
 
                 this.startPoint = this.targetArea;
 
@@ -378,7 +401,7 @@ namespace Nameless.DataMono
                 }
 
                 this.nodeCount = AreasManager.Instance.pathDic[temp2].nodes.Length;
-                Debug.Log(AreasManager.Instance.pathDic[temp2].name + "新区域BBBBBBBBB");
+                //Debug.Log(AreasManager.Instance.pathDic[temp2].name + "新区域BBBBBBBBB");
 
                 this.startPoint = this.targetArea;
 
@@ -404,68 +427,58 @@ namespace Nameless.DataMono
                     AreasManager.Instance.mouseFollower.LabelChange(0.0f, TipState.UnWalk);
             }
         }//路径绘制
-        void WalkPath()
+        //void WalkPath()
+        //{
+        //    if (this.durationTime >= this.walkTime)
+        //    {
+        //        if (this.endAreaList[this.currentWalkNode].pawns.Count > 0 && this.isAI != this.endAreaList[this.currentWalkNode].pawns[0].isAI)//待修改 判断是否战斗
+        //        {
+        //            if (this.endAreaList[this.currentWalkNode].pawns[0].State != PawnState.Battle)
+        //            {
+        //                this.State = PawnState.Battle;
+        //                this.endAreaList[this.currentWalkNode].pawns[0].State = PawnState.Battle;
+        //                BattleManager.Instance.GenerateBattle(this, this.endAreaList[this.currentWalkNode].pawns[0]);
+        //            }
+        //            return;
+        //        }
+        //        int nodes = (this.pathList[this.currentWalkNode].nodes.Length - 1);
+        //        this.walkedNodes += nodes;
+        //        this.ReDrawLine(this.walkedNodes);
+        //        this.gameObject.transform.position = this.endAreaList[this.currentWalkNode].centerNode.gameObject.transform.position;
+        //        this.CurrentArea.RemovePawn(this);
+        //        this.UpdateCurrentArea(this.endAreaList[this.currentWalkNode]);
+        //        this.CurrentArea.AddPawn(this);
+        //        if (!this.isAI)
+        //        {
+        //            this.TryGetMat();//到达该区域后试图获取当地材料
+        //        }
+        //        this.currentWalkNode++;
+        //        if (this.currentWalkNode < this.endAreaList.Count)
+        //        {
+        //            this.durationTime = 0.0f;
+        //            this.walkTime = this.distanceDic[this.endAreaList[this.currentWalkNode].centerNode] / this.pawnAgent.pawn.curSpeed;
+        //            //this.InitWalkLine();
+        //            //StartCoroutine(ShowWalkPath(start, end, t));    
+        //        }
+        //        else
+        //        {
+        //            this.InitLine();
+        //            this.State = PawnState.Wait;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        this.durationTime += Time.deltaTime;
+        //    }
+        //}//路径绘制完毕后进行行走
+        void ReDrawWalkLine(int startInt)
         {
-            if (this.durationTime >= this.walkTime)
+            for (int i = startInt; i < walkRenderWire.positionCount; i++)
             {
-                if (this.endAreaList[this.currentNode].pawns.Count > 0 && this.isAI != this.endAreaList[this.currentNode].pawns[0].isAI )//待修改 判断是否战斗
-                {
-                    if (this.endAreaList[this.currentNode].pawns[0].State != PawnState.Battle)
-                    {
-                        this.State = PawnState.Battle;
-                        this.endAreaList[this.currentNode].pawns[0].State = PawnState.Battle;
-                        BattleManager.Instance.GenerateBattle(this, this.endAreaList[this.currentNode].pawns[0]);
-                    }
-                    return;
-                }
-                int nodes = (this.pathList[this.currentNode].nodes.Length - 1);
-                this.walkedNodes += nodes;
-                this.ReDrawLine(this.walkedNodes);
-                this.gameObject.transform.position = this.endAreaList[this.currentNode].centerNode.gameObject.transform.position;
-                this.CurrentArea.RemovePawn(this);
-                this.UpdateCurrentArea(this.endAreaList[this.currentNode]);
-                this.CurrentArea.AddPawn(this);
-                if (!this.isAI)
-                {
-                    this.TryGetMat();//到达该区域后试图获取当地材料
-                }
-                this.currentNode++;
-                if (this.currentNode < this.endAreaList.Count)
-                {
-                    this.durationTime = 0.0f;
-                    this.walkTime = this.distanceDic[this.endAreaList[this.currentNode].centerNode] / this.pawnAgent.pawn.curSpeed;
-                    float t = this.walkTime / (float)(this.pathList[this.currentNode].nodes.Length - 1);
-                    int start = this.walkedNodes - 1;
-                    int end = this.walkedNodes + this.pathList[this.currentNode].nodes.Length - 1;
-                    //this.InitWalkLine();
-                    //StartCoroutine(ShowWalkPath(start, end, t));    
-                }
-                else
-                {
-                    this.InitLine();
-                    this.State = PawnState.Wait;
-                }
-            }
-            else
-            {
-                this.durationTime += Time.deltaTime;
-            }
-        }//路径绘制完毕后进行行走
-        void ReDrawLine(int startInt)
-        {
-            if (nodePath != null)
-            {
-                if (0 < nodePath.Count)
-                {
-                    renderWire.positionCount = nodePath.Count - startInt;
+                walkRenderWire.SetPosition(i, walkRenderWire.GetPosition(startInt));
 
-                    for (int i = startInt; i < nodePath.Count; i++)
-                    {
-                        renderWire.SetPosition(i - startInt, nodePath[i]);
-
-                    }
-                }
             }
+
         }
         IEnumerator DrawLineByNode(int currentPath,bool isAuto)
         {
@@ -474,13 +487,13 @@ namespace Nameless.DataMono
                 if (0 < currentPath)
                 {
                     renderWire.positionCount = currentPath;
-                    Debug.Log("开画！！！！！！！this.currentIndex: " + this.currentIndex);
+                    //Debug.Log("开画！！！！！！！this.currentIndex: " + this.currentIndex);
                     float segmentDuration = this.animationDuration / this.nodeCount;
                     this.isPlay = true;
                     for (int i = this.currentIndex; i < renderWire.positionCount - 1; i++)
                     {
                         float startTime = Time.time;
-                        Debug.Log("i:" + i);
+                        //Debug.Log("i:" + i);
                         Vector3 startPos = nodePath[i];
                         Vector3 endPos = nodePath[i + 1];
 
@@ -514,47 +527,159 @@ namespace Nameless.DataMono
                     }
                     this.currentIndex = renderWire.positionCount - 1;
                     this.isPlay = false;
-                    Debug.Log("结束播放");
+                    //Debug.Log("结束播放");
                     if (this.nodePath.Count != renderWire.positionCount)
                     {
-                        Debug.Log("新轮回！！！");
+                        //Debug.Log("新轮回！！！");
                         StartCoroutine(DrawLineByNode(this.nodePath.Count,isAuto));
                     }
                     else if (isAuto)
                     {
                         this.State = PawnState.Walk;
+                        List<Vector3> tempNode = this.nodePath;
+                        StartCoroutine(WalkLineByNode(tempNode));
                     }
                 }
             }
         }
-        //IEnumerator ShowWalkPath(int start, int end, float t)
-        //{
-        //    this.walkRenderWire.positionCount = end - start + 1;
-        //    Debug.Log("走路！！！！！！！" );
-        //    float segmentDuration = this.animationDuration / this.nodeCount;
-        //    this.isPlay = true;
-        //    for (int i = start; i <= end; i++)
-        //    {
-        //        float startTime = Time.time;
-        //        Debug.Log("i:" + i);
-        //        Vector3 startPos = nodePath[i];
-        //        Vector3 endPos = nodePath[i + 1];
+        IEnumerator WalkLineByNode(List<Vector3> nodeWalk)
+        {
+            if (nodeWalk != null)
+            {
+                if (0 < nodeWalk.Count)
+                {
+                    int lastNode = -1;
+                    this.walkRenderWire.positionCount = nodeWalk.Count;
+                    //Debug.Log("开画走路！！！！！！！");
+                    for (int i = 0; i < this.walkRenderWire.positionCount - 1; i++)
+                    {
+                        float startTime = Time.time;
+                        //Debug.Log("i:" + i);
+                        Vector3 startPos = nodeWalk[i];
+                        Vector3 endPos = nodeWalk[i + 1];
 
-        //        Vector3 pos = startPos;
-        //        while (pos != endPos)
-        //        {
-        //            float ft = (Time.time - startTime)/ segmentDuration;
-        //            pos = Vector3.Lerp(startPos, endPos, ft);
+                        Vector3 pos = startPos;
+                        float distance = Vector2.Distance(new Vector2(startPos.x,startPos.y), new Vector2(endPos.x,endPos.y));
+                        float segmentTime = distance / this.pawnAgent.pawn.curSpeed;
+                        segmentTime = GameManager.Instance.IsBelongToSameSide(this.currentArea, this) ? segmentTime : segmentTime/2;
+                        while (pos != endPos)
+                        {
+                            if (!GameManager.Instance.isPlay)
+                            {
+                                yield return null;
+                            }
+                            else
+                            {
+                                float t = (Time.time - startTime) / segmentTime;
+                                pos = Vector3.Lerp(startPos, endPos, t);
 
-        //            for (int j = i + 1; j <= 5; j++)
-        //            {
-        //                this.walkRenderWire.SetPosition(j, pos);
-        //            }
-        //            yield return null;
-        //        }
-        //        //Debug.Log("结束播放");
-        //    }
-        //}//待修改
+                                for (int j = i + 1; j < this.walkRenderWire.positionCount; j++)
+                                {
+                                    while (this.State != PawnState.Walk)
+                                    {
+                                        if (this.State == PawnState.Draw)
+                                        {
+
+                                            Debug.Log("画新路线");
+                                            yield break;
+                                        }
+                                        yield return null;
+                                    }
+
+                                    try
+                                    {
+                                        this.walkRenderWire.SetPosition(j, pos);
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        Debug.LogError(renderWire.positionCount + " : " + "j" + " : " + j);
+                                    }
+                                    Debug.Log("画画画画画画画画画画ing");
+                                }
+                                yield return null;
+                            }
+                            Debug.Log("走走走走走走走ing");
+                            while(this.State != PawnState.Walk)
+                            {
+                                if(this.State == PawnState.Draw)
+                                {
+
+                                    Debug.Log("画新路线");
+                                    yield break;
+                                }
+                                yield return null;
+                            }
+                        }
+                        Debug.Log("下一个点ing");
+                        if (endPos == this.endAreaList[this.currentWalkNode].centerNode.gameObject.transform.position)
+                        {
+                            bool ifBlock = false;
+                            if (this.endAreaList[this.currentWalkNode].pawns.Count > 0 )
+                            {
+                                ifBlock = true;
+                                this.ReDrawWalkLine(lastNode+1);
+                                i = lastNode;
+                                if ( this.isAI != this.endAreaList[this.currentWalkNode].pawns[0].isAI)//待修改 判断是否战斗
+                                {
+                                    this.State = PawnState.Battle;
+                                    bool defenderisInBattle = false;
+                                    if (this.endAreaList[this.currentWalkNode].pawns[0].State == PawnState.Battle)
+                                        defenderisInBattle = true;
+                                    else
+                                        this.endAreaList[this.currentWalkNode].pawns[0].State = PawnState.Battle;
+
+                                    BattleManager.Instance.GenerateBattle(this, this.endAreaList[this.currentWalkNode].pawns[0],defenderisInBattle);
+                                }
+                                while (this.State != PawnState.Draw && this.endAreaList[this.currentWalkNode].pawns.Count > 0)
+                                {
+                                    if (this.State == PawnState.Walk)
+                                    {
+                                        this.StateTriggerEvent(PawnState.Wait);
+                                        this.CheckSupport();
+                                    }
+                                    yield return null;
+                                }
+                                this.StateTriggerEvent(PawnState.Walk);
+                                this.CheckSupport();
+                                if (this.State == PawnState.Draw)
+                                {
+
+                                    Debug.Log("画新路线");
+                                    yield break;
+                                }
+
+                            }
+                            if (!ifBlock)
+                            {
+                                if (this.endAreaList[this.currentWalkNode].AddPawn(this))//如果两个角色正好同时到达 则让最后添加的人回去等着
+                                {
+                                    this.gameObject.transform.position = this.endAreaList[this.currentWalkNode].centerNode.gameObject.transform.position;
+                                    this.CurrentArea.RemovePawn(this);
+                                    this.UpdateCurrentArea(this.endAreaList[this.currentWalkNode]);
+                                    if (!this.isAI)
+                                    {
+                                        this.TryGetMat();//到达该区域后试图获取当地材料
+                                    }
+                                    this.currentWalkNode++;
+                                    lastNode = i;
+                                }
+                                else
+                                {
+                                    this.ReDrawWalkLine(lastNode + 1);
+                                    i = lastNode;
+                                }
+                            }
+                        }
+                        //Debug.Log("结束播放");
+                    }
+
+                    this.InitLine();
+                    if (this.currentWalkNode >= this.endAreaList.Count)
+                        this.State = PawnState.Wait;
+                    //}
+                }
+            }
+        }
         #endregion
 
         #region//战斗
@@ -597,7 +722,7 @@ namespace Nameless.DataMono
         public void CheckResult(bool ifRetreat)
         {
             this.pawnAgent.MoraleChange(-10.0f);//待修改
-            this.pawnAgent.battleSide = BattleSide.Peace;//待修改
+            this.pawnAgent.battleSideDic = new Dictionary<PawnAvatar, BattleSide>();//待修改
             //this.ClearPawn();
             this.PlayDeathAnim();
             //if (this.pawnAgent.pawn.curMorale <= 0 || this.CheckIfSurround())
@@ -619,25 +744,26 @@ namespace Nameless.DataMono
             //    }
             //}
         }//检查战败后的结果（死亡）
-        public void CheckIfBattleResult(PawnAvatar opponent, bool ifForward)
+        public void CheckIfBattleResult()
         {
-            this.pawnAgent.battleSide = BattleSide.Peace;
             this.pawnAgent.MoraleChange(10.0f);//待修改
             this.PlayDialogue(this.pawnAgent.pawn.winTxt);
-            this.pawnAgent.ResetBattleInfo();
-            this.State = this.lastState;
-            //if (this.pawnAgent.opponents.Count > 0)
-            //{
-            //    this.pawnAgent.ChooseMyOpponents();
-            //}
-            //else
-            //{
-            //    this.pawnAgent.ResetBattleInfo();
-            //    if (ifForward)
-            //        StartCoroutine(CheckFrontArea(opponent));//检查前方区域是否还有敌人
-            //    else
-            //        this.State = this.lastState;
-            //}
+            //this.pawnAgent.ResetBattleInfo();
+            //this.State = this.lastState;
+            if (this.pawnAgent.opponents.Count > 0)
+            {
+                this.pawnAgent.ChooseMyOpponents();
+            }
+            else
+            {
+                this.pawnAgent.ResetBattleInfo();
+                this.State = this.lastState;
+                Debug.Log(this.name+":"+this.State);
+                //if (ifForward)
+                //    StartCoroutine(CheckFrontArea(opponent));//检查前方区域是否还有敌人
+                //else
+                //    this.State = this.lastState;
+            }
         }//检查战胜后的结果（是否还战斗）
         private void CheckSupport()//检查支援
         {
@@ -671,7 +797,7 @@ namespace Nameless.DataMono
                 }
                 else
                 {
-                    if(this.CurrentArea.neighboors[i].pawns.Count <= 0 || this.CurrentArea.neighboors[i].pawns[0].State != PawnState.Battle )
+                    if(this.CurrentArea.neighboors[i].pawns.Count <= 0 || this.CurrentArea.neighboors[i].pawns[0].State != PawnState.Battle || this.CurrentArea.neighboors[i].pawns[0].isAI != this.isAI)
                     {
                         this.supportRenderWireDic[this.CurrentArea.neighboors[i]].GetComponent<Support>().RemoveSupport();
                         LineRenderer tempLine = this.supportRenderWireDic[this.CurrentArea.neighboors[i]];
@@ -744,30 +870,32 @@ namespace Nameless.DataMono
         //        }
         //    }
         //}//检查当前的战斗状态
-        public void Retreat()
-        {
-            List<Area> tempAreaList = new List<Area>();
-            for (int i = 0; i < this.currentArea.neighboors.Count; i++)
-            {
-                if (this.currentArea.neighboors[i].pawns.Count <= 0 || this.isAI == this.currentArea.neighboors[i].pawns[0].isAI)
-                {
-                    tempAreaList.Add(this.currentArea.neighboors[i]);
-                }
-            }
-            int index = UnityEngine.Random.Range(0, tempAreaList.Count - 1);
-            this.InitLine();
-            this.DrawPath(tempAreaList[index], true);
+        //public void Retreat()
+        //{
+        //    List<Area> tempAreaList = new List<Area>();
+        //    for (int i = 0; i < this.currentArea.neighboors.Count; i++)
+        //    {
+        //        if (this.currentArea.neighboors[i].pawns.Count <= 0 || this.isAI == this.currentArea.neighboors[i].pawns[0].isAI)
+        //        {
+        //            tempAreaList.Add(this.currentArea.neighboors[i]);
+        //        }
+        //    }
+        //    int index = UnityEngine.Random.Range(0, tempAreaList.Count - 1);
+        //    this.InitLine();
+        //    this.DrawPath(tempAreaList[index], true);
 
 
-        }//撤退
-         //IEnumerator CheckFrontArea(PawnAvatar opponent)
-         //{
-         //    while ((opponent!=null && opponent.currentArea == this.endAreaList[this.currentNode]) || this.pawnAgent.opponents.Count > 0)//在周围没有敌人攻击我的情况我等待前方敌人撤退
-         //    {
-         //        yield return new WaitForSecondsRealtime(0.1f);
-         //    }
+        //}//撤退
 
-        //    if(this.pawnAgent.opponents.Count<=0)//确定前方没有敌人后 再确定一下周围有没有人在打我
+
+        //IEnumerator CheckFrontArea(PawnAvatar opponent)
+        //{
+        //    while ((opponent != null && opponent.currentArea == this.endAreaList[this.currentWalkNode]) || this.pawnAgent.opponents.Count > 0)//在周围没有敌人攻击我的情况我等待前方敌人撤退
+        //    {
+        //        yield return new WaitForSecondsRealtime(0.1f);
+        //    }
+
+        //    if (this.pawnAgent.opponents.Count <= 0)//确定前方没有敌人后 再确定一下周围有没有人在打我
         //        this.State = this.lastState;
         //}//检查前方区域是否还有敌人
         #endregion
@@ -795,7 +923,7 @@ namespace Nameless.DataMono
         }
         #endregion
 
-        #region//效果
+        #region//动画效果
         public void UpdateCurrentArea(Area area)
         {
             this.CurrentArea = area;
@@ -804,17 +932,6 @@ namespace Nameless.DataMono
                 GameManager.Instance.RESULTEVENT("You Lose!!", false);
             }
         }
-        private void PlayCharacterAnim(PawnState pawnState)
-        {
-            if (pawnState == PawnState.Wait)
-                this.PlayWaitAnim();
-            else if (pawnState == PawnState.Walk)
-                this.PlayWalkAnim();
-            else if (pawnState == PawnState.Battle)
-                this.PlayAttackAnim();
-
-        }
-
         public void PlayDialogue(string txt)//播放对话
         {
             this.dialogueTxt.text = txt;
@@ -840,23 +957,36 @@ namespace Nameless.DataMono
         {
             this.battleHint.gameObject.SetActive(isShow);
         }
+        #endregion
+        private void StateTriggerEvent(PawnState pawnState)
+        {
+            if (pawnState == PawnState.Wait)
+            {
+                this.currentArea.OccupyArea();
+                this.PlayWaitAnim();
+            }
+            else if (pawnState == PawnState.Walk)
+                this.PlayWalkAnim();
+            else if (pawnState == PawnState.Battle)
+                this.PlayAttackAnim();
+
+        }
         public void TryGetMat()
         {
-            int index = 0;
-            int lenght = this.currentArea.mats.Count;
-            while(index < lenght)
+
+            List<Mat> mats = new List<Mat>();
+            foreach(var child in this.currentArea.mats)
             {
-                if(this.currentArea.mats[this.currentArea.mats.Count - 1].type == MatType.AMMO)
+                if(child.Key == MatType.MilitryResource)
                 {
-                    GameManager.Instance.ChangeAmmo(this.currentArea.mats[this.currentArea.mats.Count - 1].num);
+                    GameManager.Instance.ChangeMilitaryRes(child.Value.Nums());
                 }
-                else if (this.currentArea.mats[this.currentArea.mats.Count - 1].type == MatType.MEDICINE)
-                {
-                    GameManager.Instance.ChangeMedicine(this.currentArea.mats[this.currentArea.mats.Count - 1].num);
-                }
-                this.currentArea.RemoveMat(this.currentArea.mats[this.currentArea.mats.Count - 1]);
-                index++;
+                mats.Add(child.Value);
+
                 
+            }
+            for (int i = 0; i < mats.Count; i++) {
+                this.currentArea.RemoveMat(mats[0]);
             }
         }
         public void ReceiveCurrentTime(int time)
@@ -868,8 +998,7 @@ namespace Nameless.DataMono
         {
             if (this.isAI)
             {
-                MatManager.Instance.GenerateMat(this.CurrentArea, MatType.AMMO, 100);
-                MatManager.Instance.GenerateMat(this.CurrentArea, MatType.MEDICINE, 100);
+                MatManager.Instance.GenerateMat(this.CurrentArea, MatType.MilitryResource, 100);
                 GameManager.Instance.EnemiesKillNum(1);
                 GameManager.Instance.enemyPawns.Remove(this);
             }
@@ -885,11 +1014,10 @@ namespace Nameless.DataMono
                     Destroy(this.walkWire.gameObject);
             }
             this.CurrentArea.RemovePawn(this);
-            this.CurrentArea.Init();
+            //this.CurrentArea.Init();
             DialogueTriggerManager.Instance.TimeTriggerEvent -= this.ReceiveCurrentTime;
             Destroy(this.gameObject);
         }//清除掉棋子
-        #endregion
     }
 
 }

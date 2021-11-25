@@ -46,17 +46,14 @@ namespace Nameless.UI
             {
                 this.currentArea.Ammo += this.currentBuild.addAmmoBuild;
                 this.currentArea.Medicine += this.currentBuild.addMedicineBuild;
-                int costAmmo = -this.currentBuild.costAmmo;
-                int costMedicine = -this.currentBuild.costMedicine;
+                int costMilitaryRes = -this.currentBuild.costMilitartRes;
                 List<Skill> skills = this.currentPawn.pawnAgent.skills;
                 for(int i = 0;i< skills.Count; i++)
                 {
                     PropertySkillEffect propertySkillEffect = skills[i].Execute(this.currentPawn,this.currentPawn);
-                    costAmmo -= (int)propertySkillEffect.changeAmmo;
-                    costMedicine -= (int)propertySkillEffect.changeMedicine;
+                    costMilitaryRes -= (int)propertySkillEffect.changeAmmo;
                 }
-                GameManager.Instance.ChangeAmmo(costAmmo);
-                GameManager.Instance.ChangeMedicine(costMedicine);
+                GameManager.Instance.ChangeMilitaryRes(costMilitaryRes);
                 this.setBtn.interactable = this.IsSetBtnActiveAfterClick();
             });
         }
@@ -73,8 +70,8 @@ namespace Nameless.UI
             Transform Obj1 = Instantiate(this.buildTemplate.transform, this.contentBuildSelect.transform);
             Obj0.gameObject.SetActive(true);
             Obj1.gameObject.SetActive(true);
-            Obj0.GetComponent<BuildSelectUI>().Init(this.medicineSprite,0, 0, 1, 50, "When your own unit is fighting in the area, if its health is lower than 20%, it will restore 50% of its maximum health");
-            Obj1.GetComponent<BuildSelectUI>().Init(this.ammoSprite, 1, 100, 0, 0, "When your own unit is fighting in the area, when the ammunition is 0, it will automatically restore full ammunition");
+            Obj0.GetComponent<BuildSelectUI>().Init(this.medicineSprite,50,0, 1,  "When your own unit is fighting in the area, if its health is lower than 20%, it will restore 50% of its maximum health");
+            Obj1.GetComponent<BuildSelectUI>().Init(this.ammoSprite, 100,1, 0,  "When your own unit is fighting in the area, when the ammunition is 0, it will automatically restore full ammunition");
             this.buildList.Add(Obj0.gameObject);
             this.buildList.Add(Obj1.gameObject);
 
@@ -83,24 +80,17 @@ namespace Nameless.UI
 
         }
 
-        public void ResetDescription(string txt, int costAmmo, int costMedicine)
+        public void ResetDescription(string txt, int costMilitary)
         {
             for (int i = 0; i < this.costList.Count; i++)
                 DestroyImmediate(this.costList[i]);
             this.costList.Clear();
             this.descTxt.text = "Med Kit: " + txt;
 
-            if (costAmmo > 0) {
+            if (costMilitary > 0) {
                 Transform Obj0 = Instantiate(this.infoTemplate.transform, this.contentInfoSelect.transform);
                 Obj0.gameObject.SetActive(true);
-                Obj0.GetComponent<BuildInfoUI>().Init(this.ammoCostSprite,costAmmo);
-                this.costList.Add(Obj0.gameObject);
-            }
-            if (costMedicine > 0)
-            {
-                Transform Obj0 = Instantiate(this.infoTemplate.transform, this.contentInfoSelect.transform);
-                Obj0.gameObject.SetActive(true);
-                Obj0.GetComponent<BuildInfoUI>().Init(this.medicineCostSprite, costMedicine);
+                Obj0.GetComponent<BuildInfoUI>().Init(this.ammoCostSprite,costMilitary);
                 this.costList.Add(Obj0.gameObject);
             }
         }
@@ -116,7 +106,7 @@ namespace Nameless.UI
 
         private bool IsSetBtnActiveAfterClick()
         {
-            if (GameManager.Instance.totalAmmo < this.currentBuild.costAmmo || GameManager.Instance.totalAmmo < this.currentBuild.costMedicine)
+            if (GameManager.Instance.totalMilitaryRes < this.currentBuild.costMilitartRes)
             {
                 return false;
             }

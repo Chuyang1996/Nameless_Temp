@@ -151,7 +151,7 @@ namespace Nameless.Data
                 }
                 else if (child.Key == BuffConditionType.IsAttacker)
                 {
-                    if (pawnAvatar.pawnAgent.battleSide == BattleSide.Attacker)
+                    if (pawnAvatar.pawnAgent.battleSideDic.ContainsValue(BattleSide.Attacker))
                     {
                         continue;
                     }
@@ -160,7 +160,7 @@ namespace Nameless.Data
                 }
                 else if (child.Key == BuffConditionType.IsDefender)
                 {
-                    if (pawnAvatar.pawnAgent.battleSide == BattleSide.Defender)
+                    if (pawnAvatar.pawnAgent.battleSideDic.ContainsValue(BattleSide.Defender))
                     {
                         continue;
                     }

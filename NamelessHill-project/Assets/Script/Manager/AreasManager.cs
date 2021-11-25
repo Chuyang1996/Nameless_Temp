@@ -68,6 +68,7 @@ namespace Nameless.Manager
             for(int i = 0;i< this.areas.Count; i++)
             {
                 this.areas[i].id = i;
+                this.areas[i].Init();
             }
             this.areaMatrix = new float[areas.Count, areas.Count];
             for(int i = 0; i < this.areaMatrix.GetLength(0); i++)
@@ -95,25 +96,13 @@ namespace Nameless.Manager
                     }
                 }
             }
+             
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
-                //Debug.Log("µã»÷: "+ raySelect);
 
-                if (hit.collider != null && hit.collider.gameObject.tag == "Area")
-                {
-                    //Debug.Log("»÷ÖÐ");
-                    //ResetAllAreas();
-
-                    //hit.collider.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-                }
-            }
 
         }
 
