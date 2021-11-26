@@ -45,7 +45,7 @@ namespace Nameless.DataMono
         private LineRenderer walkRenderWire;
         private Dictionary<Area, LineRenderer> supportRenderWireDic = new Dictionary<Area, LineRenderer>();
         private List<LineRenderer> supportRenderWires = new List<LineRenderer>();
-        private Area targetArea;
+        public Area targetArea;
         public PawnState state = PawnState.Wait;
 
         public Area currentArea;
@@ -171,12 +171,12 @@ namespace Nameless.DataMono
             this.pawnAgent.RunningTimePropertyUpdate(this.State);
             //this.CheckBattleState();
 
-            if (this.isAI && this.State == PawnState.Wait)
+            if (this.isAI/* && this.State == PawnState.Wait*/)
             {
-                this.targetArea = this.CurrentArea;
-                this.startPoint = this.CurrentArea;
-                this.InitLine();
-                this.AIDrawPath();
+                //this.targetArea = this.CurrentArea;
+                //this.startPoint = this.CurrentArea;
+                //this.InitLine();
+                this.AIBehavior();
                 return;
             }
             if (this.characterView.gameObject.activeInHierarchy || this.isAI)
@@ -337,25 +337,75 @@ namespace Nameless.DataMono
                 }
             }
         }//用鼠标画路径
-        void AIDrawPath(/*int goal*/)
+        void AIBehavior(/*int goal*/)
         {
-            if (this.currentArea.id == goal)
-                return;
-            this.State = PawnState.Draw;
-            //this.goal = goal;
-            List<int>[] tempPath = AreasManager.Instance.Dijkstra(AreasManager.Instance.areaMatrix, this.currentArea.id);
-            List<int> targetPath = new List<int>();
-            for (int i = 0; i < tempPath.Length; i++)
+            if(this.State == PawnState.Wait)
             {
-                if (tempPath[i][tempPath[i].Count - 1] == this.goal)
+                if (!GameManager.Instance.IsBelongToSameSide(this.currentArea, this))//如果当前区域还不是AI的 则继续等待
+                    return;
+
+                List<Area> oppoArea = new List<Area>();
+                List<Area> occupyArea = new List<Area>();
+                int samePawnNum = 0;
+                for (int i = 0; i < this.currentArea.neighboors.Count; i++)
                 {
-                    targetPath = tempPath[i];
+                    if (this.currentArea.neighboors[i].pawns.Count > 0 && !this.currentArea.neighboors[i].pawns[0].isAI)//待修改 等框架搭建确定阵营
+                    {
+                        oppoArea.Add(this.currentArea.neighboors[i]);
+                    }
+                    if (this.currentArea.neighboors[i].pawns.Count <= 0 && !GameManager.Instance.IsBelongToSameSide( this.currentArea.neighboors[i],this))//待修改 等框架搭建确定阵营
+                    {
+                        occupyArea.Add(this.currentArea.neighboors[i]);
+                    }
+                    if(this.currentArea.neighboors[i].pawns.Count > 0 && GameManager.Instance.IsBelongToSameSide(this.currentArea.neighboors[i], this))
+                    {
+                        samePawnNum++;
+                    }
                 }
+                if (this.currentArea.neighboors.Count == samePawnNum)
+                    return;
+                Area tagArea;
+                if (oppoArea.Count > 0)
+                    tagArea = oppoArea[UnityEngine.Random.Range(0, oppoArea.Count - 1)];
+                else if (occupyArea.Count > 0)
+                    tagArea = occupyArea[UnityEngine.Random.Range(0, occupyArea.Count - 1)];
+                else
+                {
+                    List<int>[] tempPath = AreasManager.Instance.Dijkstra(AreasManager.Instance.areaMatrix, this.currentArea.id);
+                    List<int> targetPath = new List<int>();
+                    for (int i = 0; i < tempPath.Length; i++)
+                    {
+                        if (tempPath[i][tempPath[i].Count - 1] == this.goal)
+                        {
+                            targetPath = tempPath[i];
+                        }
+                    }
+                    tagArea = AreasManager.Instance.areas[targetPath[1]];
+                }
+                this.targetArea = this.CurrentArea;
+                this.startPoint = this.CurrentArea;
+                this.InitLine();
+                this.State = PawnState.Draw;
+                this.DrawPath(tagArea, true);
             }
-            for (int i = 0; i < targetPath.Count; i++)
-            {
-                this.DrawPath(AreasManager.Instance.areas[targetPath[i]], true);
-            }
+
+            //if (this.currentArea.id == goal)
+            //    return;
+            //this.State = PawnState.Draw;
+            ////this.goal = goal;
+            //List<int>[] tempPath = AreasManager.Instance.Dijkstra(AreasManager.Instance.areaMatrix, this.currentArea.id);
+            //List<int> targetPath = new List<int>();
+            //for (int i = 0; i < tempPath.Length; i++)
+            //{
+            //    if (tempPath[i][tempPath[i].Count - 1] == this.goal)
+            //    {
+            //        targetPath = tempPath[i];
+            //    }
+            //}
+            //for (int i = 0; i < targetPath.Count; i++)
+            //{
+            //    this.DrawPath(AreasManager.Instance.areas[targetPath[i]], true);
+            //}
         }//AI自动画路径
         void DrawPath(Area targetArea,bool isAuto)
         {
@@ -533,7 +583,7 @@ namespace Nameless.DataMono
                         //Debug.Log("新轮回！！！");
                         StartCoroutine(DrawLineByNode(this.nodePath.Count,isAuto));
                     }
-                    else if (isAuto)
+                    else if (isAuto)//用于AI自动走路
                     {
                         this.State = PawnState.Walk;
                         List<Vector3> tempNode = this.nodePath;
@@ -579,8 +629,6 @@ namespace Nameless.DataMono
                                     {
                                         if (this.State == PawnState.Draw)
                                         {
-
-                                            Debug.Log("画新路线");
                                             yield break;
                                         }
                                         yield return null;
@@ -594,23 +642,20 @@ namespace Nameless.DataMono
                                     {
                                         Debug.LogError(renderWire.positionCount + " : " + "j" + " : " + j);
                                     }
-                                    Debug.Log("画画画画画画画画画画ing");
+
                                 }
                                 yield return null;
                             }
-                            Debug.Log("走走走走走走走ing");
+
                             while(this.State != PawnState.Walk)
                             {
                                 if(this.State == PawnState.Draw)
                                 {
-
-                                    Debug.Log("画新路线");
                                     yield break;
                                 }
                                 yield return null;
                             }
                         }
-                        Debug.Log("下一个点ing");
                         if (endPos == this.endAreaList[this.currentWalkNode].centerNode.gameObject.transform.position)
                         {
                             bool ifBlock = false;
@@ -643,8 +688,6 @@ namespace Nameless.DataMono
                                 this.CheckSupport();
                                 if (this.State == PawnState.Draw)
                                 {
-
-                                    Debug.Log("画新路线");
                                     yield break;
                                 }
 
@@ -962,6 +1005,7 @@ namespace Nameless.DataMono
         {
             if (pawnState == PawnState.Wait)
             {
+                Debug.LogError("PawnState.Wait");
                 this.currentArea.OccupyArea();
                 this.PlayWaitAnim();
             }

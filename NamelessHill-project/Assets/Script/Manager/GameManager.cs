@@ -122,6 +122,7 @@ namespace Nameless.Manager {
             if (this.enemyOccupyAreas.Contains(area))
                 this.enemyOccupyAreas.Remove(area);
             area.ChangeColor(false);
+
             
         }
         public void AddAreaForEnemy(Area area)//待修改 等写框架的时候改
