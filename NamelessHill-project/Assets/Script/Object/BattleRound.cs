@@ -12,6 +12,7 @@ namespace Nameless.DataMono
     {
         public Battle battle;
         public SpriteRenderer sprite;
+        public SpriteRenderer arrowSprite;
         private PawnAvatar attacker;
         private PawnAvatar defender;
         private bool forceEnd = false;
@@ -21,7 +22,7 @@ namespace Nameless.DataMono
             this.attacker = attacker;
             this.defender = defender;
             this.name = this.attacker.gameObject.name + " vs " + this.defender.gameObject.name;
-            this.sprite.color = this.attacker.isAI ? Color.red : Color.green;
+            this.arrowSprite.color = this.attacker.isAI ? Color.red : Color.green;
             this.CalculatePosition();
             this.attacker.pawnAgent.battleSideDic.Add(this.defender,BattleSide.Attacker);
             this.defender.pawnAgent.battleSideDic.Add(this.attacker, BattleSide.Defender);
@@ -162,7 +163,7 @@ namespace Nameless.DataMono
             Vector3 dir3 =   this.defender.transform.position - this.attacker.transform.position ;
             Vector3 cross = Vector3.Cross(Vector3.up, dir3);
             float angle = cross.z > 0 ? Vector2.Angle(Vector3.up, dir3) : -Vector2.Angle(Vector3.up, dir3);
-            this.transform.localEulerAngles = new Vector3(0, 0, angle);
+            this.arrowSprite.transform.localEulerAngles = new Vector3(0, 0, angle);
             this.transform.position = (this.attacker.transform.position + this.defender.transform.position) / 2;
             //float dot = Vector2.Dot(dir3,)
         }
