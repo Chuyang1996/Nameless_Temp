@@ -248,17 +248,17 @@ namespace Nameless.DataMono
         {
             float countTime = 0.0f;
             bool occupySuccess = true;
-            while(this.pawns[0].State == PawnState.Walk)//这里由于执行顺序问题
+            while(this.pawns.Count > 0 && this.pawns[0].State != PawnState.Wait)//这里由于执行顺序问题
             {
                 yield return null;
             }
             while (countTime<waitTime)
             {
-                Debug.LogError("占领中ing");
+                //Debug.LogError("占领中ing");
                 countTime+=Time.deltaTime;
                 if (this.pawns.Count <= 0 || this.pawns[0].State != PawnState.Wait)
                 {
-                    Debug.LogError(this.pawns.Count + "+占领失败+" + this.pawns[0].State);
+                    //Debug.LogError(this.pawns.Count + "+占领失败+" + this.pawns[0].State);
                     occupySuccess = false;
                     break;
                 }
