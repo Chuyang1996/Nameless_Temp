@@ -678,6 +678,8 @@ namespace Nameless.DataMono
 
                                 while (this.State != PawnState.Draw && this.endAreaList[this.currentWalkNode].pawns.Count > 0)
                                 {
+                                    if (this.State != PawnState.Battle && this.pawnAgent.curOpponent != null)
+                                        this.State = PawnState.Battle;
                                     if (this.State == PawnState.Walk)
                                     {
                                         this.StateTriggerEvent(PawnState.Wait);

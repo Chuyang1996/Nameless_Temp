@@ -82,7 +82,10 @@ namespace Nameless.Data
             yield return new WaitForSecondsRealtime(this.currentGroup.waitGenerateTime);
             for (int i = 0; i < currentGroup.pawns.Count; i++)
             {
-
+                while (area.pawns.Count > 0)
+                {
+                    yield return null;
+                }
                 area.GenPawn(currentGroup.pawns[i].id);
                 while (area.pawns.Count > 0)
                 {
@@ -131,7 +134,10 @@ namespace Nameless.Data
 
                     for (int i = 0; i < currentGroup.pawns.Count; i++)
                     {
-
+                        while (area.pawns.Count > 0)
+                        {
+                            yield return null;
+                        }
                         this.pawnAvatars.Add(area.GenPawn(currentGroup.pawns[i].id));
                         while (area.pawns.Count > 0)
                         {
