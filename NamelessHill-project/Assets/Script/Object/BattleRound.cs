@@ -66,6 +66,8 @@ namespace Nameless.DataMono
                         float defenderDef = this.defender.pawnAgent.battleInfo.actualDefend;
 
                         float damage = (attackerAtk - defenderDef)/* * this.attacker.pawnAgent.pawn.curMorale / this.attacker.pawnAgent.pawn.maxMorale*/;
+                        if (damage < 0)
+                            damage = 0;
                         this.defender.pawnAgent.HealthChange(-damage);
                         this.defender.currentArea.CostMedicine(this.defender);
                     }
@@ -77,6 +79,8 @@ namespace Nameless.DataMono
                         float defenderDef = this.attacker.pawnAgent.battleInfo.actualDefend;
 
                         float damage = (attackerAtk - defenderDef) /** this.defender.pawnAgent.pawn.curMorale / this.defender.pawnAgent.pawn.maxMorale*/;
+                        if (damage < 0)
+                            damage = 0;
                         this.attacker.pawnAgent.HealthChange(-damage);
                         this.attacker.currentArea.CostMedicine(this.attacker);
                     }
