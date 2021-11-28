@@ -601,6 +601,7 @@ namespace Nameless.DataMono
                     int lastNode = -1;
                     this.walkRenderWire.positionCount = nodeWalk.Count;
                     //Debug.Log("开画走路！！！！！！！");
+                    this.ChangeDirection(this.endAreaList[this.currentWalkNode].centerNode.gameObject);
                     for (int i = 0; i < this.walkRenderWire.positionCount - 1; i++)
                     {
                         float startTime = Time.time;
@@ -664,7 +665,6 @@ namespace Nameless.DataMono
                                 ifBlock = true;
                                 this.ReDrawWalkLine(lastNode+1);
                                 i = lastNode;
-                                bool onBattle = false;
                                 if ( this.isAI != this.endAreaList[this.currentWalkNode].pawns[0].isAI)//待修改 判断是否战斗
                                 {
                                     this.State = PawnState.Battle;
@@ -673,7 +673,6 @@ namespace Nameless.DataMono
                                         defenderisInBattle = true;
                                     else
                                         this.endAreaList[this.currentWalkNode].pawns[0].State = PawnState.Battle;
-                                    onBattle = true;
                                     BattleManager.Instance.GenerateBattle(this, this.endAreaList[this.currentWalkNode].pawns[0],defenderisInBattle);
                                 }
 
@@ -709,6 +708,8 @@ namespace Nameless.DataMono
                                         this.TryGetMat();//到达该区域后试图获取当地材料
                                     }
                                     this.currentWalkNode++;
+                                    if (this.currentWalkNode < this.endAreaList.Count)
+                                        this.ChangeDirection(this.endAreaList[this.currentWalkNode].centerNode.gameObject);
                                     lastNode = i;
                                 }
                                 else
@@ -759,6 +760,11 @@ namespace Nameless.DataMono
             }
             this.pawnAgent.battleInfo = new PawnAgent.BattleInfo(attack, defend);
         }
+        public void UpdateCurrentOppo(PawnAvatar oppo)
+        {
+            this.pawnAgent.curOpponent = oppo;
+            this.ChangeDirection(oppo.gameObject);
+        }
         public bool IsFail()
         {
             if (this.pawnAgent.pawn.curHealth <= 0)
@@ -800,7 +806,7 @@ namespace Nameless.DataMono
             //this.State = this.lastState;
             if (this.pawnAgent.opponents.Count > 0)
             {
-                this.pawnAgent.ChooseMyOpponents();
+                this.pawnAgent.ChooseMyOpponents(this);
             }
             else
             {
@@ -1006,6 +1012,15 @@ namespace Nameless.DataMono
             this.battleHint.gameObject.SetActive(isShow);
         }
         #endregion
+        private void ChangeDirection(GameObject tag)
+        {
+            Vector2 dir = tag.transform.position - this.transform.position;
+            if(dir.x < 0)
+                this._root.transform.localScale = new Vector3(1, 1, 1);
+            else if(dir.x > 0)
+                this._root.transform.localScale = new Vector3(-1, 1, 1);
+            
+        }
         private void StateTriggerEvent(PawnState pawnState)
         {
             if (pawnState == PawnState.Wait)

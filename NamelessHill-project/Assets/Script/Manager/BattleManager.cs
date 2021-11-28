@@ -43,10 +43,10 @@ namespace Nameless.Manager
             
             GameObject newBattle = Instantiate( Resources.Load("Prefabs/Battle")) as GameObject;
             newBattle.GetComponent<BattleRound>().Init(attacker, defender);
-            attacker.pawnAgent.curOpponent = defender;
+            attacker.UpdateCurrentOppo(defender);
             if (!defenderisInBattle)
             {
-                defender.pawnAgent.curOpponent = attacker;
+                defender.UpdateCurrentOppo(attacker);
             }
             Battle battle = new Battle(attacker, defender);
             this.battleDic.Add(battle, newBattle.GetComponent<BattleRound>());

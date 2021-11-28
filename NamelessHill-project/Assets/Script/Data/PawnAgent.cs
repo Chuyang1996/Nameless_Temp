@@ -278,10 +278,10 @@ namespace Nameless.DataMono
         #endregion
 
         #region//角色战斗
-        public void ChooseMyOpponents()//选择其他正在打我的敌人战斗
+        public void ChooseMyOpponents(PawnAvatar mine)//选择其他正在打我的敌人战斗
         {
             int index = UnityEngine.Random.Range(0, this.opponents.Count - 1);
-            this.curOpponent = this.opponents[index];
+            mine.UpdateCurrentOppo(this.opponents[index]);
             this.opponents[index].pawnAgent.opponentIsInBattle = false;
         }
         public void ResetBattleInfo()
