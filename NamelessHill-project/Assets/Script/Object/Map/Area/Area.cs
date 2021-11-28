@@ -92,16 +92,7 @@ namespace Nameless.DataMono
         protected SpriteRenderer areaSprite;
         //[HideInInspector]
         public List<Area> neighboors = new List<Area>();
-        //private void Start()//待修改 等框架搭建完成
-        //{
-        //    this.centerNode = this.transform.Find("CenterNode").gameObject;
-        //    this.matPoint = this.transform.Find("MatPos").gameObject;
-        //    this.ammoPoint = this.transform.Find("AmmoPos").gameObject;
-        //    this.meidicalPoint = this.transform.Find("MedicialPos").gameObject;
-        //    this.areaSprite = this.GetComponent<SpriteRenderer>();
-        //    this.type = AreaType.Normal;
-            
-        //}
+
         public virtual void Init(int id, AreaAgent areaAgent)//待修改 等框架搭建完成
         {
             this.id = id;
@@ -112,14 +103,6 @@ namespace Nameless.DataMono
             this.areaSprite = this.GetComponent<SpriteRenderer>();
             this.type = areaAgent.type;
             GameManager.Instance.AddAreaForPlayer(this);
-            //if (this.pawns.Count > 0)
-            //{
-            //    this.areaSprite.color = this.pawns[0].isAI ? new Color(1, 0, 0, 0.2f) : new Color(0, 1, 0, 0.2f);
-            //}
-            //else
-            //{
-            //    this.areaSprite.color = new Color(1, 1, 1, 0.2f);
-            //}
 
         }
         public virtual bool AddPawn(PawnAvatar pawn)
@@ -138,11 +121,7 @@ namespace Nameless.DataMono
         public virtual void RemovePawn(PawnAvatar pawn)
         {
             this.pawns.Remove(pawn);
-            //if (this.pawns.Count > 0)
-            //{
-            //    this.areaSprite.color = this.pawns[0].isAI ? new Color(1, 0, 0, 0.2f) : new Color(0, 1, 0, 0.2f);
-            //}
-            //this.ResetPawnPos();
+
         }//本区域移除一个角色
         public virtual void ChangeColor(bool isAi)
         {

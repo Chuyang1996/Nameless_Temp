@@ -127,7 +127,7 @@ namespace Nameless.DataMono
                 isEnd = true;
                 //this.attacker.gameObject.SetActive(false); 
             }
-            else if(this.defender.State == PawnState.Walk)
+            else if(this.defender.State == PawnState.Walk || this.defender.State == PawnState.Draw || this.defender.State == PawnState.Wait)
             {
                 this.defender.pawnAgent.opponents.Remove(this.attacker);
                 this.defender.pawnAgent.battleSideDic.Remove(this.attacker);
@@ -140,7 +140,7 @@ namespace Nameless.DataMono
                 this.attacker.CheckIfBattleResult();//检查周围是否还有其他的敌人正在攻击自己
                 this.forceEnd = true;
             }
-            else if (this.attacker.State == PawnState.Walk)
+            else if (this.attacker.State == PawnState.Walk || this.attacker.State == PawnState.Draw || this.attacker.State == PawnState.Wait)
             {
                 this.defender.pawnAgent.opponents.Remove(this.attacker);
                 this.defender.pawnAgent.battleSideDic.Remove(this.attacker);

@@ -664,6 +664,7 @@ namespace Nameless.DataMono
                                 ifBlock = true;
                                 this.ReDrawWalkLine(lastNode+1);
                                 i = lastNode;
+                                bool onBattle = false;
                                 if ( this.isAI != this.endAreaList[this.currentWalkNode].pawns[0].isAI)//´ýÐÞ¸Ä ÅÐ¶ÏÊÇ·ñÕ½¶·
                                 {
                                     this.State = PawnState.Battle;
@@ -672,9 +673,10 @@ namespace Nameless.DataMono
                                         defenderisInBattle = true;
                                     else
                                         this.endAreaList[this.currentWalkNode].pawns[0].State = PawnState.Battle;
-
+                                    onBattle = true;
                                     BattleManager.Instance.GenerateBattle(this, this.endAreaList[this.currentWalkNode].pawns[0],defenderisInBattle);
                                 }
+
                                 while (this.State != PawnState.Draw && this.endAreaList[this.currentWalkNode].pawns.Count > 0)
                                 {
                                     if (this.State == PawnState.Walk)
@@ -682,8 +684,11 @@ namespace Nameless.DataMono
                                         this.StateTriggerEvent(PawnState.Wait);
                                         this.CheckSupport();
                                     }
+                                    if (this.endAreaList[this.currentWalkNode].pawns[0].isAI != this.isAI && this.endAreaList[this.currentWalkNode].pawns[0].State != PawnState.Battle)
+                                        break;
                                     yield return null;
                                 }
+
                                 this.StateTriggerEvent(PawnState.Walk);
                                 this.CheckSupport();
                                 if (this.State == PawnState.Draw)
