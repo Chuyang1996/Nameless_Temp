@@ -30,6 +30,8 @@ namespace Nameless.Manager
         public Dictionary<long, Dictionary<string, string>> eventOptionData;
         public Dictionary<long, Dictionary<string, string>> dialogueData;
         public Dictionary<long, Dictionary<string, string>> dialogueGroupData;
+        public Dictionary<long, Dictionary<string, string>> areaData;
+        public Dictionary<long, Dictionary<string, string>> pawnGroupData;
 
         #endregion
         ///////////////////////////////数据//////////////////////////
@@ -96,6 +98,16 @@ namespace Nameless.Manager
             StreamReader dialogueGroupReader = new StreamReader(dialogueGroupFile);
             data = dialogueGroupReader.ReadLine();
             this.dialogueGroupData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
+
+            FileStream areaFile = File.Open(Application.streamingAssetsPath + "/" + "Area_Data.txt", FileMode.Open, FileAccess.Read);
+            StreamReader areaReader = new StreamReader(areaFile);
+            data = areaReader.ReadLine();
+            this.areaData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
+
+            FileStream pawnGroupFile = File.Open(Application.streamingAssetsPath + "/" + "PawnGroup_Data.txt", FileMode.Open, FileAccess.Read);
+            StreamReader pawnGroupReader = new StreamReader(pawnGroupFile);
+            data = pawnGroupReader.ReadLine();
+            this.pawnGroupData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
         }
         #endregion
 
@@ -399,6 +411,60 @@ namespace Nameless.Manager
                 else
                 {
                     Debug.LogError("楚洋：DialogueData数据转换错误，数据中未能找到此id = " + id + " 的物品，请在逻辑层检查是否对数据进行了初始化,或者Id出了问题，或是否配表出了问题");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("楚洋:表中的数据名称可能发生改动或者删除，请检查表中的数据title名称是否正确，如果正确请联系楚洋进行核对");
+                return null;
+            }
+        }
+        public AreaData GetAreaData(long id)
+        {
+            try
+            {
+                if (this.areaData.ContainsKey(id))
+                {
+                    AreaData skill = new AreaData
+                            (id,
+                            this.areaData[id]["name"],
+                            this.areaData[id]["descrption"],
+                            int.Parse(this.areaData[id]["type"]),
+                            int.Parse(this.areaData[id]["rule"] == "null" ? "0" : this.areaData[id]["rule"]),
+                            this.areaData[id]["parameter"]
+                            );
+                    return skill;
+                }
+                else
+                {
+                    Debug.LogError("楚洋：AreaData数据转换错误，数据中未能找到此id = " + id + " 的物品，请在逻辑层检查是否对数据进行了初始化,或者Id出了问题，或是否配表出了问题");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("楚洋:表中的数据名称可能发生改动或者删除，请检查表中的数据title名称是否正确，如果正确请联系楚洋进行核对");
+                return null;
+            }
+        }
+        public PawnGroupData GetPawnGroupData(long id)
+        {
+            try
+            {
+                if (this.pawnGroupData.ContainsKey(id))
+                {
+                    PawnGroupData skill = new PawnGroupData
+                            (id,
+                            this.pawnGroupData[id]["group"],
+                            int.Parse(this.pawnGroupData[id]["waitGenerateTime"]),
+                            int.Parse(this.pawnGroupData[id]["durationTime"])
+                            );
+                    return skill;
+                }
+                else
+                {
+                    Debug.LogError("楚洋：AreaData数据转换错误，数据中未能找到此id = " + id + " 的物品，请在逻辑层检查是否对数据进行了初始化,或者Id出了问题，或是否配表出了问题");
                     return null;
                 }
             }

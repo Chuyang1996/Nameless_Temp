@@ -448,16 +448,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6423575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 7201164}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &6423579
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -519,7 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7201165}
   m_Layer: 0
-  m_Name: CenterNode33
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -725,16 +720,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 19313591}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 418823439}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &19313595
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -897,16 +887,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 19394755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 474737980}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &19394759
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1118,7 +1103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 34378617}
   m_Layer: 0
-  m_Name: CenterNode20
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1330,16 +1315,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 47538868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 179294318}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &47538872
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1569,16 +1549,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 57268482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1912736836}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &57268486
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2032,7 +2007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 81609511}
   m_Layer: 0
-  m_Name: CenterNode5
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2154,7 +2129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 85323559}
   m_Layer: 0
-  m_Name: CenterNode35
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2271,7 +2246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 88620918}
   m_Layer: 0
-  m_Name: CenterNode3
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2929,16 +2904,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 116884961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1756059038}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &116884965
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3329,7 +3299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 138181416}
   m_Layer: 0
-  m_Name: CenterNode12
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3478,16 +3448,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 149194490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 2005861368}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &149194494
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3624,16 +3589,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 159723422}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1023104453}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &159723426
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3755,7 +3715,7 @@ GameObject:
   m_Component:
   - component: {fileID: 179294319}
   m_Layer: 0
-  m_Name: CenterNode15
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -4318,7 +4278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 211456401}
   m_Layer: 0
-  m_Name: CenterNode30
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -4712,10 +4672,10 @@ MonoBehaviour:
   buildView: {fileID: 1512733783}
   eventView: {fileID: 5843025245591029898}
   areas:
+  - {fileID: 384011984}
   - {fileID: 414148573}
+  - {fileID: 413381533}
   - {fileID: 571519392}
-  - {fileID: 1043457994}
-  - {fileID: 1872200037}
   playerPawns:
   - {fileID: 285042176}
   - {fileID: 1726379287}
@@ -4892,7 +4852,7 @@ GameObject:
   m_Component:
   - component: {fileID: 257156777}
   m_Layer: 0
-  m_Name: CenterNode24
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -4922,7 +4882,7 @@ GameObject:
   m_Component:
   - component: {fileID: 259301823}
   m_Layer: 0
-  m_Name: CenterNode42
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -4982,7 +4942,7 @@ GameObject:
   m_Component:
   - component: {fileID: 262439066}
   m_Layer: 0
-  m_Name: CenterNode48
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5530,16 +5490,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 282382387}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 2045777245}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &282382391
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6039,7 +5994,7 @@ GameObject:
   m_Component:
   - component: {fileID: 302632330}
   m_Layer: 0
-  m_Name: CenterNode56
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -6898,16 +6853,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 356363848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1168868802}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &356363852
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7521,16 +7471,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 384011981}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1389858575}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &384011985
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7719,16 +7664,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 385041109}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 2106751012}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &385041113
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8054,16 +7994,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 388789309}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1237195298}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &388789313
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8560,16 +8495,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 409457942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 561396541}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &409457946
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8853,16 +8783,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 413381530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 492546153}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &413381534
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9063,16 +8988,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 414148570}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 257156776}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &414148574
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9164,7 +9084,7 @@ GameObject:
   m_Component:
   - component: {fileID: 418823440}
   m_Layer: 0
-  m_Name: CenterNode26
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -9194,7 +9114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 428963309}
   m_Layer: 0
-  m_Name: CenterNode17
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -9307,16 +9227,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 430998743}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1505519156}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &430998747
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9528,16 +9443,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 434163171}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 259301822}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &434163175
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9686,16 +9596,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 436251213}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1746847745}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &436251217
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10105,7 +10010,7 @@ GameObject:
   m_Component:
   - component: {fileID: 474737981}
   m_Layer: 0
-  m_Name: CenterNode40
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -10301,7 +10206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 492546154}
   m_Layer: 0
-  m_Name: CenterNode21
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -10635,16 +10540,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 505082115}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1296123388}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &505082119
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10941,16 +10841,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 513453544}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 616609038}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &513453548
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11112,16 +11007,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 517023447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1088842254}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &517023451
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11267,16 +11157,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 518765977}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1749677256}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &518765981
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11402,7 +11287,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 17.07
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -11442,7 +11327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 521362897}
   m_Layer: 0
-  m_Name: CenterNode27
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -11595,16 +11480,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 523255362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 834144885}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &523255366
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11866,16 +11746,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 533134742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 211456400}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &533134746
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12333,7 +12208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 561396542}
   m_Layer: 0
-  m_Name: CenterNode39
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -12484,16 +12359,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 563496875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1994946884}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &563496879
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12775,16 +12645,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 571519389}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1166514426}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &571519393
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13129,16 +12994,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 582008376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1739183718}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &582008380
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13374,7 +13234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 593803121}
   m_Layer: 0
-  m_Name: CenterNode32
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -13758,7 +13618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 616609039}
   m_Layer: 0
-  m_Name: CenterNode63
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -14180,7 +14040,7 @@ GameObject:
   m_Component:
   - component: {fileID: 654904431}
   m_Layer: 0
-  m_Name: CenterNode65
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -14388,16 +14248,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 670036070}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 262439065}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &670036074
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14804,16 +14659,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 697097745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1212597381}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &697097749
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15281,7 +15131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 719817612}
   m_Layer: 0
-  m_Name: CenterNode60
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -15692,7 +15542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 730041547}
   m_Layer: 0
-  m_Name: CenterNode58
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -15828,7 +15678,7 @@ GameObject:
   m_Component:
   - component: {fileID: 736784124}
   m_Layer: 0
-  m_Name: CenterNode43
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -16008,7 +15858,7 @@ GameObject:
   m_Component:
   - component: {fileID: 745877451}
   m_Layer: 0
-  m_Name: CenterNode10
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -16771,16 +16621,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 774766978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 88620917}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &774766982
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17103,16 +16948,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 795311029}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 521362896}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &795311033
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17260,16 +17100,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 797894978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1215940456}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &797894982
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17845,7 +17680,7 @@ GameObject:
   m_Component:
   - component: {fileID: 826082985}
   m_Layer: 0
-  m_Name: CenterNode6
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -18039,7 +17874,7 @@ GameObject:
   m_Component:
   - component: {fileID: 834144886}
   m_Layer: 0
-  m_Name: CenterNode34
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -18357,16 +18192,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 848514063}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 745877450}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &848514067
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18709,16 +18539,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 853137969}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1684012847}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &853137973
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19284,16 +19109,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 886202103}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1353036722}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &886202107
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19551,7 +19371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 915947268}
   m_Layer: 0
-  m_Name: CenterNode53
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -19828,16 +19648,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 929872923}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1105269862}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &929872927
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20568,16 +20383,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 966248833}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 736784123}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &966248837
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21298,7 +21108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1010778161}
   m_Layer: 0
-  m_Name: CenterNode4
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -21532,7 +21342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1023104454}
   m_Layer: 0
-  m_Name: CenterNode51
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -22051,16 +21861,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1043457991}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1010778160}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1043457995
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22391,16 +22196,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1063547579}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 302632329}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1063547583
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22499,7 +22299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2782149106178587399, guid: 2ddb7be589d7c8848b14def77dee7865, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.86
+      value: -27.1
       objectReference: {fileID: 0}
     - target: {fileID: 2782149106178587399, guid: 2ddb7be589d7c8848b14def77dee7865, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22670,7 +22470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1074498527}
   m_Layer: 0
-  m_Name: CenterNode7
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -22863,16 +22663,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1081695890}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1391250157}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1081695894
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22994,7 +22789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1088842255}
   m_Layer: 0
-  m_Name: CenterNode9
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -23164,16 +22959,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1095665577}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 85323558}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1095665581
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23427,7 +23217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1105269863}
   m_Layer: 0
-  m_Name: CenterNode54
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -23533,7 +23323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1114019045}
   m_Layer: 0
-  m_Name: CenterNode31
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -24089,7 +23879,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1166514427}
   m_Layer: 0
-  m_Name: CenterNode25
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -24119,7 +23909,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1166754263}
   m_Layer: 0
-  m_Name: CenterNode16
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -24235,16 +24025,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1166817748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1114019044}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1166817752
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24306,7 +24091,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1168868803}
   m_Layer: 0
-  m_Name: CenterNode46
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -24366,7 +24151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1169960080}
   m_Layer: 0
-  m_Name: CenterNode67
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -24568,8 +24353,6 @@ MonoBehaviour:
   type: 0
   neighboors: []
   spawnAI: 1
-  limiltedNum: 5
-  durationTimeSpawn: 10
   pawnPath: Prefabs/Pawn
 --- !u!60 &1175302455
 PolygonCollider2D:
@@ -24777,16 +24560,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1178833047}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 915947267}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1178833051
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25136,20 +24914,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1186093648}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adbaa64c5c188b648b12da4f92eeba03, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1169960079}
-  pawns: []
-  type: 0
-  neighboors: []
-  spawnAI: 1
-  limiltedNum: 5
-  durationTimeSpawn: 10
-  pawnPath: Prefabs/Pawn
+  localId: 0
+  areaId: 1005
 --- !u!212 &1186093652
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25241,7 +25010,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1197416042}
   m_Layer: 0
-  m_Name: CenterNode1
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -25377,7 +25146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1212597382}
   m_Layer: 0
-  m_Name: CenterNode13
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -25407,7 +25176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1215940457}
   m_Layer: 0
-  m_Name: CenterNode41
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -25557,7 +25326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1237195299}
   m_Layer: 0
-  m_Name: CenterNode18
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -26209,7 +25978,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1296123389}
   m_Layer: 0
-  m_Name: CenterNode45
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -26521,19 +26290,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1311411302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db653fdc22f98b045a7b7f3828921b99, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 23
-  costMorale: 0
-  costTimeMorale: 0
-  centerNode: {fileID: 1947788204}
-  pawns: []
-  type: 0
-  neighboors: []
-  battleView: {fileID: 1844554423}
-  supportAmmo: 0
-  supportDeltaTime: 0
+  localId: 0
+  areaId: 1002
 --- !u!212 &1311411306
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26625,7 +26386,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1312236893}
   m_Layer: 0
-  m_Name: CenterNode14
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -27213,16 +26974,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1339980952}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 428963308}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1339980956
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27480,7 +27236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1353036723}
   m_Layer: 0
-  m_Name: CenterNode57
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -27617,16 +27373,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1360638172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 826082984}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1360638176
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27938,16 +27689,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1383988537}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1783092022}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1383988541
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28154,16 +27900,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1385549209}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1582985632}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1385549213
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28301,7 +28042,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1389858576}
   m_Layer: 0
-  m_Name: CenterNode38
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -28331,7 +28072,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1391250158}
   m_Layer: 0
-  m_Name: CenterNode29
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -28651,16 +28392,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1397097281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1755908962}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1397097285
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29008,7 +28744,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1410802551}
   m_Layer: 0
-  m_Name: CenterNode52
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -29128,16 +28864,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1420593888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1074498526}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1420593892
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29761,16 +29492,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1449564318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1637475978}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1449564322
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29931,16 +29657,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1454092501}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 654904430}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1454092505
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30002,7 +29723,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1454833523}
   m_Layer: 0
-  m_Name: CenterNode66
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -30032,7 +29753,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1456547074}
   m_Layer: 0
-  m_Name: CenterNode64
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -30610,7 +30331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseFollower: {fileID: 769163868}
-  areas:
+  initAreas:
   - {fileID: 1723858751}
   - {fileID: 430998746}
   - {fileID: 774766981}
@@ -30678,6 +30399,7 @@ MonoBehaviour:
   - {fileID: 1454092504}
   - {fileID: 1730277985}
   - {fileID: 1186093651}
+  areas: []
   paths:
   - {fileID: 1714156729}
   - {fileID: 1174301733}
@@ -30820,7 +30542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1505519157}
   m_Layer: 0
-  m_Name: CenterNode2
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -31140,16 +30862,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1513897053}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 593803120}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1513897057
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31979,7 +31696,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1582985633}
   m_Layer: 0
-  m_Name: CenterNode47
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -32314,16 +32031,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1602194375}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1685668918}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1602194379
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32627,7 +32339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1637475979}
   m_Layer: 0
-  m_Name: CenterNode59
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -33048,16 +32760,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1661696874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1456547073}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1661696878
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33523,7 +33230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1684012848}
   m_Layer: 0
-  m_Name: CenterNode11
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -33599,7 +33306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1685668919}
   m_Layer: 0
-  m_Name: CenterNode61
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -34045,16 +33752,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1716295538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 730041546}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1716295542
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34316,16 +34018,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1723858747}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1197416041}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!1001 &1726379286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34612,16 +34309,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1730277982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1454833522}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1730277986
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34871,7 +34563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1739183719}
   m_Layer: 0
-  m_Name: CenterNode44
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -34991,7 +34683,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1746847746}
   m_Layer: 0
-  m_Name: CenterNode22
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -35021,7 +34713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1749677257}
   m_Layer: 0
-  m_Name: CenterNode8
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -35141,7 +34833,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1755908963}
   m_Layer: 0
-  m_Name: CenterNode28
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -35171,7 +34863,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1756059039}
   m_Layer: 0
-  m_Name: CenterNode50
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -35522,7 +35214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1783092023}
   m_Layer: 0
-  m_Name: CenterNode55
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -37431,16 +37123,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1872200034}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 81609510}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1872200038
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37735,6 +37422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseFollower: {fileID: 769163868}
+  initAreas: []
   areas:
   - {fileID: 184838758}
   - {fileID: 121778962}
@@ -37980,16 +37668,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1899090762}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 34378616}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1899090766
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38141,16 +37824,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1899708262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1410802550}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &1899708266
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38600,7 +38278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1912736837}
   m_Layer: 0
-  m_Name: CenterNode36
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -39062,7 +38740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1947788205}
   m_Layer: 0
-  m_Name: CenterNode23
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -39828,7 +39506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1994946885}
   m_Layer: 0
-  m_Name: CenterNode19
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -39978,7 +39656,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2005861369}
   m_Layer: 0
-  m_Name: CenterNode62
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -40459,20 +40137,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2029149054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adbaa64c5c188b648b12da4f92eeba03, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1312236892}
-  pawns: []
-  type: 0
-  neighboors: []
-  spawnAI: 1
-  limiltedNum: 20
-  durationTimeSpawn: 10
-  pawnPath: Prefabs/Pawn
+  localId: 0
+  areaId: 1004
 --- !u!212 &2029149058
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -40918,16 +40587,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2037919779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 1166754262}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &2037919783
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -41111,7 +40775,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2045777246}
   m_Layer: 0
-  m_Name: CenterNode49
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -41417,16 +41081,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2056671170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 719817611}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &2056671174
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -42387,7 +42046,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2106751013}
   m_Layer: 0
-  m_Name: CenterNode37
+  m_Name: CenterNode
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -42783,16 +42442,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2119991499}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360af34cdd2e3c04ea5e5f85ad50d0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  costMorale: -1
-  costTimeMorale: 1
-  centerNode: {fileID: 138181415}
-  pawns: []
-  type: 0
-  neighboors: []
+  localId: 0
+  areaId: 1001
 --- !u!212 &2119991503
 SpriteRenderer:
   m_ObjectHideFlags: 0

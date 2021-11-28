@@ -1,0 +1,1 @@
+{"1":{"group":"[1005,1005,1005]","waitGenerateTime":"3","durationTime":"3"},"2":{"group":"[1006,1006,1006]","waitGenerateTime":"3","durationTime":"3"},"3":{"group":"[1006,1006,1006]","waitGenerateTime":"3","durationTime":"3"},"4":{"group":"[1006,1006,1006]","waitGenerateTime":"3","durationTime":"3"}}

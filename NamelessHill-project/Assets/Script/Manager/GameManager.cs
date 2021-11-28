@@ -37,10 +37,10 @@ namespace Nameless.Manager {
         public BuildView buildView;
         public EventView eventView;
 
-        public Area[] areas;//待修改 所有玩家角色区域
+        public InitArea[] areas;//待修改 所有玩家角色区域
         public List<PawnAvatar> playerPawns;//待修改 所有玩家角色
 
-        public Area[] enemyAreas;//待修改 所有敌方角色区域
+        public InitArea[] enemyAreas;//待修改 所有敌方角色区域
         public List<PawnAvatar> enemyPawns;//待修改 所有敌方角色
 
 
@@ -57,6 +57,7 @@ namespace Nameless.Manager {
             AudioManager.Instance.InitAudio();
             GenerateManager.Instance.InitMat();
             SpriteManager.Instance.InitTexturePackage();
+            AreasManager.Instance.InitArea();
             //Debug.Log(DataManager.Instance.GetCharacter(1001).name);
 
 
@@ -67,10 +68,10 @@ namespace Nameless.Manager {
             for(int i = 0; i < this.playerPawns.Count; i++)
             {
                 this.playerPawns[i].characterView = this.characterView;
-                this.playerPawns[i].currentArea = this.areas[i];
+                this.playerPawns[i].currentArea = this.areas[i].GetArea();
                 //this.areas[i].Init();
-                this.areas[i].AddPawn(this.playerPawns[i]);
-                this.playerPawns[i].transform.position = this.areas[i].centerNode.transform.position;
+                this.areas[i].GetArea().AddPawn(this.playerPawns[i]);
+                this.playerPawns[i].transform.position = this.areas[i].GetArea().centerNode.transform.position;
                 this.playerPawns[i].Init(0);
                 DialogueTriggerManager.Instance.TimeTriggerEvent += this.playerPawns[i].ReceiveCurrentTime;
                 DialogueTriggerManager.Instance.CheckGameStartEvent(this.playerPawns[i]);
@@ -79,10 +80,10 @@ namespace Nameless.Manager {
             for(int i = 0; i < this.enemyPawns.Count; i++)
             {
                 this.enemyPawns[i].characterView = this.characterView;
-                this.enemyPawns[i].currentArea = this.enemyAreas[i];
+                this.enemyPawns[i].currentArea = this.enemyAreas[i].GetArea();
                 //this.enemyAreas[i].Init();
-                this.enemyAreas[i].AddPawn(this.enemyPawns[i]);
-                this.enemyPawns[i].transform.position = this.enemyAreas[i].centerNode.transform.position;
+                this.enemyAreas[i].GetArea().AddPawn(this.enemyPawns[i]);
+                this.enemyPawns[i].transform.position = this.enemyAreas[i].GetArea().centerNode.transform.position;
                 this.enemyPawns[i].Init(0);
                 DialogueTriggerManager.Instance.TimeTriggerEvent += this.enemyPawns[i].ReceiveCurrentTime;
                 DialogueTriggerManager.Instance.CheckGameStartEvent(this.enemyPawns[i]);

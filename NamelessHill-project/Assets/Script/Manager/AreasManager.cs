@@ -42,13 +42,19 @@ namespace Nameless.Manager
 
         public MouseFollower mouseFollower;
         public float[,] areaMatrix;
+        public List<InitArea> initAreas;
         public List<Area> areas;
         public List<Path> paths;
         public Dictionary<NodeToNode, Path> pathDic = new Dictionary<NodeToNode, Path>();
 
         // Start is called before the first frame update
-        void Start()
+        public void InitArea()
         {
+            for(int i = 0;i<this.initAreas.Count;i++)
+            {
+                this.initAreas[i].InitAreaInfo();
+                this.areas.Add(this.initAreas[i].GetArea());
+            }
             for (int i = 0; i < paths.Count; i++)
             {
                 NodeToNode temp = new NodeToNode(paths[i].nodes[0], paths[i].nodes[paths[i].nodes.Length - 1]);
@@ -68,7 +74,6 @@ namespace Nameless.Manager
             for(int i = 0;i< this.areas.Count; i++)
             {
                 this.areas[i].id = i;
-                this.areas[i].Init();
             }
             this.areaMatrix = new float[areas.Count, areas.Count];
             for(int i = 0; i < this.areaMatrix.GetLength(0); i++)

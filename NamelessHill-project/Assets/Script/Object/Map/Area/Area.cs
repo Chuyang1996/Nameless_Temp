@@ -1,3 +1,4 @@
+using Nameless.Data;
 using Nameless.Manager;
 using System.Collections;
 using System.Collections.Generic;
@@ -90,24 +91,26 @@ namespace Nameless.DataMono
 
         protected SpriteRenderer areaSprite;
         //[HideInInspector]
-        public List<Area> neighboors;
-        private void Start()//待修改 等框架搭建完成
-        {
-            this.matPoint = transform.Find("MatPos").gameObject;
-            this.ammoPoint = transform.Find("AmmoPos").gameObject;
-            this.meidicalPoint = transform.Find("MedicialPos").gameObject;
-            this.areaSprite = GetComponent<SpriteRenderer>();
-            this.type = AreaType.Normal;
+        public List<Area> neighboors = new List<Area>();
+        //private void Start()//待修改 等框架搭建完成
+        //{
+        //    this.centerNode = this.transform.Find("CenterNode").gameObject;
+        //    this.matPoint = this.transform.Find("MatPos").gameObject;
+        //    this.ammoPoint = this.transform.Find("AmmoPos").gameObject;
+        //    this.meidicalPoint = this.transform.Find("MedicialPos").gameObject;
+        //    this.areaSprite = this.GetComponent<SpriteRenderer>();
+        //    this.type = AreaType.Normal;
             
-        }
-        public void Init()//待修改 等框架搭建完成
+        //}
+        public virtual void Init(int id, AreaAgent areaAgent)//待修改 等框架搭建完成
         {
-
-            this.matPoint = transform.Find("MatPos").gameObject;
-            this.ammoPoint = transform.Find("AmmoPos").gameObject;
-            this.meidicalPoint = transform.Find("MedicialPos").gameObject;
-            Debug.Log(this.matPoint);
-            this.areaSprite = GetComponent<SpriteRenderer>();
+            this.id = id;
+            this.centerNode = this.transform.Find("CenterNode").gameObject;
+            this.matPoint = this.transform.Find("MatPos").gameObject;
+            this.ammoPoint = this.transform.Find("AmmoPos").gameObject;
+            this.meidicalPoint = this.transform.Find("MedicialPos").gameObject;
+            this.areaSprite = this.GetComponent<SpriteRenderer>();
+            this.type = areaAgent.type;
             GameManager.Instance.AddAreaForPlayer(this);
             //if (this.pawns.Count > 0)
             //{

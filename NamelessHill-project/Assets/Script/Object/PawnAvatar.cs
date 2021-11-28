@@ -1005,7 +1005,7 @@ namespace Nameless.DataMono
         {
             if (pawnState == PawnState.Wait)
             {
-                Debug.LogError("PawnState.Wait");
+                //Debug.LogError("PawnState.Wait");
                 this.currentArea.OccupyArea();
                 this.PlayWaitAnim();
             }
@@ -1033,7 +1033,7 @@ namespace Nameless.DataMono
                 this.currentArea.RemoveMat(mats[0]);
             }
         }
-        public void ReceiveCurrentTime(int time)
+        public void ReceiveCurrentTime(int time)//用于检查时间流逝对该角色的影响
         {
             int passTime = GameManager.Instance.totalTime - time;
             DialogueTriggerManager.Instance.CheckTimeflowEvent(this, passTime);

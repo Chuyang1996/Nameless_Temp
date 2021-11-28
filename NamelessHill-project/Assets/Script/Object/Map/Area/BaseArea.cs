@@ -1,3 +1,4 @@
+using Nameless.Data;
 using Nameless.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,12 +13,18 @@ namespace Nameless.DataMono
         public int supportAmmo;
         public float supportDeltaTime;
 
-        private void Start()//待修改 等框架搭建完成
+        public override void Init(int id,AreaAgent areaAgent)
         {
-            this.areaSprite = GetComponent<SpriteRenderer>();
-            this.areaSprite.color = Color.Lerp(Color.blue,Color.green,0.5F);
-            this.type = AreaType.Base;
+            base.Init(id, areaAgent);
+            this.areaSprite.color = Color.Lerp(Color.blue, Color.green, 0.5F);
+            
         }
+        //private void Start()//待修改 等框架搭建完成
+        //{
+        //    this.areaSprite = GetComponent<SpriteRenderer>();
+        //    this.areaSprite.color = Color.Lerp(Color.blue,Color.green,0.5F);
+        //    this.type = AreaType.Base;
+        //}
         public override bool AddPawn(PawnAvatar pawn)
         {
             this.pawns.Add(pawn);
