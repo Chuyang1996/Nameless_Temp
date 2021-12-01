@@ -8,15 +8,17 @@ namespace Nameless.Manager
     {
         EventImage = 0,
         CharacterImage = 1,
+        CharacterCampImage = 2,
     }
     public class SpriteManager : Singleton<SpriteManager>
     {
         private const string loadPath = "TexturePackage/";
         private Dictionary<string, AtlasType> atlasIndex = new Dictionary<string, AtlasType>
-    {
-        { "EventImage", AtlasType.EventImage},
-        { "CharacterImage", AtlasType.CharacterImage},
-    };
+        {
+            { "EventImage", AtlasType.EventImage},
+            { "CharacterImage", AtlasType.CharacterImage},
+            { "CampCharacterImage", AtlasType.CharacterCampImage}
+         };
         public Dictionary<AtlasType, SpriteAtlas> atlasCollection = new Dictionary<AtlasType, SpriteAtlas>();
         // Start is called before the first frame update
 

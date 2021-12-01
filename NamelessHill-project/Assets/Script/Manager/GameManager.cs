@@ -9,10 +9,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Nameless.Manager {
+    public enum GameScene
+    {
+        Battle =0,
+        Camp = 1,
+    }
     public class GameManager : SingletonMono<GameManager>
     {
         public bool isPlay = true;
-
+        public GameScene GameScene;
         public Action<string, bool> RESULTEVENT;
 
         /// <summary>
@@ -38,10 +43,10 @@ namespace Nameless.Manager {
         public EventView eventView;
 
         public InitArea[] areas;//待修改 所有玩家角色区域
-        public List<PawnAvatar> playerPawns;//待修改 所有玩家角色
+        public List<PawnAvatar> curplayerPawns;//待修改 当前玩家角色
 
         public InitArea[] enemyAreas;//待修改 所有敌方角色区域
-        public List<PawnAvatar> enemyPawns;//待修改 所有敌方角色
+        public List<PawnAvatar> curenemyPawns;//待修改 当前敌方角色
 
 
         private List<Area> playerOccupyAreas = new List<Area>();//待修改 所有玩家占领的区域
@@ -51,6 +56,7 @@ namespace Nameless.Manager {
         void Start()
         {
             this.isPlay = true;
+            this.GameScene = GameScene.Battle;
             RTSCamera.Instance.InitCamera();
             PathManager.Instance.InitPath();
             DataManager.Instance.InitData();
@@ -58,6 +64,7 @@ namespace Nameless.Manager {
             GenerateManager.Instance.InitMat();
             SpriteManager.Instance.InitTexturePackage();
             AreasManager.Instance.InitArea();
+            PawnManager.Instance.InitPawns();
             //Debug.Log(DataManager.Instance.GetCharacter(1001).name);
 
 
@@ -65,28 +72,30 @@ namespace Nameless.Manager {
             this.battleView.resourceInfoView.Init(this.totalMilitaryRes);
             Time.timeScale = 1.0f;
             this.RESULTEVENT += this.Result;
-            for(int i = 0; i < this.playerPawns.Count; i++)
+            for(int i = 0; i < this.curplayerPawns.Count; i++)
             {
-                this.playerPawns[i].characterView = this.characterView;
-                this.playerPawns[i].currentArea = this.areas[i].GetArea();
+                this.curplayerPawns[i].characterView = this.characterView;
+                this.curplayerPawns[i].currentArea = this.areas[i].GetArea();
                 //this.areas[i].Init();
-                this.areas[i].GetArea().AddPawn(this.playerPawns[i]);
-                this.playerPawns[i].transform.position = this.areas[i].GetArea().centerNode.transform.position;
-                this.playerPawns[i].Init(0);
-                DialogueTriggerManager.Instance.TimeTriggerEvent += this.playerPawns[i].ReceiveCurrentTime;
-                DialogueTriggerManager.Instance.CheckGameStartEvent(this.playerPawns[i]);
+                this.areas[i].GetArea().AddPawn(this.curplayerPawns[i]);
+                this.curplayerPawns[i].transform.position = this.areas[i].GetArea().centerNode.transform.position;
+                this.curplayerPawns[i].Init(0);
+                DialogueTriggerManager.Instance.TimeTriggerEvent += this.curplayerPawns[i].ReceiveCurrentTime;
+                DialogueTriggerManager.Instance.CheckGameStartEvent(this.curplayerPawns[i]);
+                PawnManager.Instance.AddPawnForFaction(this.curplayerPawns[i], false);
             }
 
-            for(int i = 0; i < this.enemyPawns.Count; i++)
+            for(int i = 0; i < this.curenemyPawns.Count; i++)
             {
-                this.enemyPawns[i].characterView = this.characterView;
-                this.enemyPawns[i].currentArea = this.enemyAreas[i].GetArea();
+                this.curenemyPawns[i].characterView = this.characterView;
+                this.curenemyPawns[i].currentArea = this.enemyAreas[i].GetArea();
                 //this.enemyAreas[i].Init();
-                this.enemyAreas[i].GetArea().AddPawn(this.enemyPawns[i]);
-                this.enemyPawns[i].transform.position = this.enemyAreas[i].GetArea().centerNode.transform.position;
-                this.enemyPawns[i].Init(0);
-                DialogueTriggerManager.Instance.TimeTriggerEvent += this.enemyPawns[i].ReceiveCurrentTime;
-                DialogueTriggerManager.Instance.CheckGameStartEvent(this.enemyPawns[i]);
+                this.enemyAreas[i].GetArea().AddPawn(this.curenemyPawns[i]);
+                this.curenemyPawns[i].transform.position = this.enemyAreas[i].GetArea().centerNode.transform.position;
+                this.curenemyPawns[i].Init(0);
+                DialogueTriggerManager.Instance.TimeTriggerEvent += this.curenemyPawns[i].ReceiveCurrentTime;
+                DialogueTriggerManager.Instance.CheckGameStartEvent(this.curenemyPawns[i]);
+                PawnManager.Instance.AddPawnForFaction(this.curenemyPawns[i], true);
             }
             #region//获取本次场景里的事件
             List<EventResult> eventResults = new List<EventResult>();
@@ -156,7 +165,6 @@ namespace Nameless.Manager {
             EventTriggerManager.Instance.CheckRelateEnemyKillEvent(num);
             this.enemiesDieNum += num;
         }
-
         public void PlayCamera(Stack<DialoguePawn> pawns)
         {
             //TransitionTarget[] transitionTargets = new TransitionTarget[pawns.Count + 1];
@@ -169,6 +177,20 @@ namespace Nameless.Manager {
             //transitionTargets[pawns.Count] = new TransitionTarget(pos, 5.0f, 2.0f, 2.0f, 0.5f);
             RTSCamera.Instance.StartTransition(pawns);
         }
+
+        public void EnterCamp()
+        {
+            AreasManager.Instance.gameObject.SetActive(false);
+            this.battleView.gameObject.SetActive(false);//待修改 等UI管理器到位
+            this.buildView.gameObject.SetActive(false);//待修改 等UI管理器到位
+            this.characterView.gameObject.SetActive(false);//待修改 等UI管理器到位
+            this.eventView.gameObject.SetActive(false);//待修改 等UI管理器到位
+            this.GameScene = GameScene.Camp;
+            RTSCamera.Instance.ResetCameraPos();
+            CampManager.Instance.InitCamp(PawnManager.Instance.GetPawnAvatars(false));
+            PawnManager.Instance.ClearAllPawn();
+            
+        }
         public void PauseOrPlay(bool isPlay)
         {
             this.isPlay = isPlay;
@@ -177,5 +199,6 @@ namespace Nameless.Manager {
             else
                 Time.timeScale = 0.0f;
         }
+
     }
 }

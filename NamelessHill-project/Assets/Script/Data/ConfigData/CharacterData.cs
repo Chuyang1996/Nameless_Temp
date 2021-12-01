@@ -19,8 +19,6 @@ namespace Nameless.ConfigData
         public float crMorale;
         public int ammo;
         public float crAmmo;
-        public float food;
-        public float crFood;
         public float speed;
         public float crSpeed;
         public float hit;
@@ -35,6 +33,9 @@ namespace Nameless.ConfigData
         public string dialogue;
         public string animName;
         public string iconName;
+        public string campName;
+        public int campPosIndex;
+        public int btnLRpos;
 
         public CharacterData
             (
@@ -51,8 +52,6 @@ namespace Nameless.ConfigData
             float crMorale, 
             int ammo, 
             float crAmmo, 
-            float food, 
-            float crFood, 
             float speed, 
             float crSpeed, 
             float hit, 
@@ -64,7 +63,10 @@ namespace Nameless.ConfigData
             string buildSkills,
             string dialogue,
             string animName,
-            string iconName
+            string iconName,
+            string campName,
+            int campPosIndex,
+            int btnLRpos
             )
         {
             this.Id = Id;
@@ -80,8 +82,6 @@ namespace Nameless.ConfigData
             this.crMorale = crMorale;
             this.ammo = ammo;
             this.crAmmo = crAmmo;
-            this.food = food;
-            this.crFood = crFood;
             this.speed = speed;
             this.crSpeed = crSpeed;
             this.hit = hit;
@@ -94,6 +94,9 @@ namespace Nameless.ConfigData
             this.dialogue = dialogue;
             this.animName = animName;
             this.iconName = iconName;
+            this.campName = campName;
+            this.campPosIndex = campPosIndex;
+            this.btnLRpos = btnLRpos;
 
         }
 
@@ -112,8 +115,6 @@ namespace Nameless.ConfigData
     float crMorale,
     int ammo,
     float crAmmo,
-    float food,
-    float crFood,
     float speed,
     float crSpeed,
     float hit,
@@ -125,7 +126,10 @@ namespace Nameless.ConfigData
             string buildSkills,
             string dialogue,
             string animName,
-            string iconName
+            string iconName,
+            string campName,
+            int campPosIndex,
+            int btnLRpos
             )
         {
             this.Id = Id;
@@ -141,8 +145,6 @@ namespace Nameless.ConfigData
             this.crMorale = crMorale;
             this.ammo = ammo;
             this.crAmmo = crAmmo;
-            this.food = food;
-            this.crFood = crFood;
             this.speed = speed;
             this.crSpeed = crSpeed;
             this.hit = hit;
@@ -155,6 +157,9 @@ namespace Nameless.ConfigData
             this.dialogue = dialogue;
             this.animName = animName;
             this.iconName = iconName;
+            this.campName = campName;
+            this.campPosIndex = campPosIndex;
+            this.btnLRpos = btnLRpos;
 
         }
         // Start is called before the first frame update

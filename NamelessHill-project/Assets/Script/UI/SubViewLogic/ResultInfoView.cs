@@ -13,18 +13,23 @@ namespace Nameless.UI {
         // Start is called before the first frame update
         void Start()
         {
-            this.restartBtn.onClick.AddListener(() => { Time.timeScale = 1.0f; Application.LoadLevel(0); });
+            this.restartBtn.onClick.AddListener(() => { Time.timeScale = 1.0f;  });
         }
 
         public void SetResultTxt(string result, bool isWin)
         {
             StopAllCoroutines();
+            this.restartBtn.onClick.RemoveAllListeners();
             Time.timeScale = 0.0f;
             this.gameObject.SetActive(true);
             this.resultTxt.text = result;
             this.resultTxt.color = isWin ? Color.green : Color.red;
             string audioFile = isWin ? "Win" : "Lose";
             AudioManager.Instance.PlayAudio(transform, audioFile);
+            if (isWin)
+                this.restartBtn.onClick.AddListener(() => { Time.timeScale = 1.0f; GameManager.Instance.EnterCamp(); });
+            else
+                Application.LoadLevel(0);//待修改 等框架搭建完成 看看使用什么方式
         } 
     }
 }

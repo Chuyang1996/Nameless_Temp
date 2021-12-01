@@ -215,8 +215,11 @@ namespace Nameless.Data
         public Dictionary<long, DialogueGroup> dialogueDic = new Dictionary<long, DialogueGroup>();
 
         public string animName;
-        public Sprite icon;
-        public Pawn(long id, string name,float health, float crHealth, float attack, float crAttack, float morale, float crMorale, int ammo, float crAmmo, float speed, float crSpeed, float hit, float crHit, float dex, float crDex, float defend, float crDefend, List<long> fightSkillIds, List<long> supportSkillIds, List<long> buildSkillIds, Dictionary<long, DialogueGroup> dialogueDic,string animName,string iconName)
+        public Sprite selectIcon;
+        public Sprite campIcon;
+        public int campPosIndex;
+        public int leftOrRight;
+        public Pawn(long id, string name,float health, float crHealth, float attack, float crAttack, float morale, float crMorale, int ammo, float crAmmo, float speed, float crSpeed, float hit, float crHit, float dex, float crDex, float defend, float crDefend, List<long> fightSkillIds, List<long> supportSkillIds, List<long> buildSkillIds, Dictionary<long, DialogueGroup> dialogueDic,string animName,string iconName, string campName, int campPosIndex, int btnLRpos)
         {
             this.id = id;
             this.name = name;
@@ -250,7 +253,10 @@ namespace Nameless.Data
 
             this.dialogueDic = dialogueDic;
             this.animName = animName;
-            this.icon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterImage, iconName);
+            this.selectIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterImage, iconName);
+            this.campIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterCampImage, campName);
+            this.campPosIndex = campPosIndex;
+            this.leftOrRight = btnLRpos;
 
         }
 

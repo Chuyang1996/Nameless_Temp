@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CharacterImage
+  m_Name: CampCharacterImage
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -23,7 +23,7 @@ SpriteAtlas:
     platformSettings:
     - serializedVersion: 3
       m_BuildTarget: DefaultTexturePlatform
-      m_MaxTextureSize: 4096
+      m_MaxTextureSize: 2048
       m_ResizeAlgorithm: 0
       m_TextureFormat: -1
       m_TextureCompression: 1
@@ -43,24 +43,24 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
-    - {fileID: 102900000, guid: d9474c532717d0448b975f0608ed13e1, type: 3}
-    totalSpriteSurfaceArea: 510480
+    - {fileID: 102900000, guid: 7b96377962a29df42a11e5f48feab71b, type: 3}
+    totalSpriteSurfaceArea: 3250000
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: 20c7cb60a2248434ba3bbcc86bf302f2, type: 3}
-  - {fileID: 21300000, guid: becdd2e307be21044b1bf6e25915dfdb, type: 3}
-  - {fileID: 21300000, guid: b2f051c4e064c9e4b943c6acc277c785, type: 3}
-  - {fileID: 21300000, guid: b7aa031a5d96ed344a27350743d30f27, type: 3}
-  - {fileID: 21300000, guid: f19dbbca15928254398001150c0b12be, type: 3}
+  - {fileID: 21300000, guid: 74e414606cf2a34458c4ae6fd2dc128c, type: 3}
+  - {fileID: 21300000, guid: bd0f6c017fca4414195c64402538fb4c, type: 3}
+  - {fileID: 21300000, guid: 60df24f1ceaf662498d779e99c6e3ccf, type: 3}
+  - {fileID: 21300000, guid: b9317febfddf5d848b7b5e1458b04082, type: 3}
+  - {fileID: 21300000, guid: b2da24adcf227d2439c433d8a9307be8, type: 3}
   m_PackedSpriteNamesToIndex:
+  - sniper
   - engineer
   - medical
-  - sniper
-  - soldier
   - enemy
+  - soldier
   m_RenderDataMap: {}
-  m_Tag: CharacterImage
+  m_Tag: CampCharacterImage
   m_IsVariant: 0

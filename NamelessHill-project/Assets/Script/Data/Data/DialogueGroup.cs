@@ -73,9 +73,9 @@ namespace Nameless.Data
         {
             if (this.nextPawnId != -1)
             {
-                var pawn = GameManager.Instance.playerPawns.Where(_pawn => _pawn.Id == this.nextPawnId).FirstOrDefault();
+                var pawn = PawnManager.Instance.GetPawnAvatars(false).Where(_pawn => _pawn.Id == this.nextPawnId).FirstOrDefault();
                 if (pawn != null) return pawn;
-                pawn = GameManager.Instance.enemyPawns.Where(_pawn => _pawn.Id == this.nextPawnId).FirstOrDefault();
+                pawn = PawnManager.Instance.GetPawnAvatars(true).Where(_pawn => _pawn.Id == this.nextPawnId).FirstOrDefault();
                 if (pawn != null) return pawn;
                 else return null;
 

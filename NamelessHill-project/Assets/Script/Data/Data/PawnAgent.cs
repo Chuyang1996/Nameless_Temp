@@ -1,5 +1,6 @@
 using Nameless.Agent;
 using Nameless.Data;
+using Nameless.DataMono;
 using Nameless.Manager;
 using System;
 using System.Collections;
@@ -7,7 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Nameless.DataMono
+namespace Nameless.Data
 {
     public enum PropertyState
     {

@@ -91,7 +91,11 @@ namespace Nameless.Controller
             this._isTranstionTo = true;
             StartCoroutine(TransitionToCoroutine(transitionTargets));
         }
-
+        public void ResetCameraPos()
+        {
+            this.transform.position = new Vector3(0,0,-10);
+            Camera.main.orthographicSize = 17;
+        }
         IEnumerator TransitionToCoroutine(Stack<DialoguePawn> transitionTargets)//´ýÐÞ¸Ä
         {
             if (transitionTargets.Count > 0)
@@ -266,6 +270,8 @@ namespace Nameless.Controller
         // Update is called once per frame
         void LateUpdate()
         {
+            if (GameManager.Instance.GameScene == GameScene.Camp)
+                return;
             if (Input.GetMouseButton(2))
             {
                 Cursor.visible = false;

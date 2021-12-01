@@ -205,7 +205,7 @@ namespace Nameless.DataMono
                         this.targetArea = this.CurrentArea;
                         this.startPoint = this.CurrentArea;
                         this.State = PawnState.Draw;
-                        AreasManager.Instance.mouseFollower.gameObject.GetComponent<SpriteRenderer>().sprite = this.pawnAgent.pawn.icon;
+                        AreasManager.Instance.mouseFollower.gameObject.GetComponent<SpriteRenderer>().sprite = this.pawnAgent.pawn.selectIcon;
                         this.InitLine();
                         this.ShowPath(true);
                     }
@@ -1066,11 +1066,11 @@ namespace Nameless.DataMono
             {
                 GenerateManager.Instance.GenerateMat(this.CurrentArea, MatType.MilitryResource, 100);
                 GameManager.Instance.EnemiesKillNum(1);
-                GameManager.Instance.enemyPawns.Remove(this);
+                PawnManager.Instance.RemovePawn(this);
             }
             else
             {
-                GameManager.Instance.playerPawns.Remove(this);
+                PawnManager.Instance.RemovePawn(this);
             }
 
             if (this.Wire != null)

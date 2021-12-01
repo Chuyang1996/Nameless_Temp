@@ -140,8 +140,6 @@ namespace Nameless.Manager
                             float.Parse(this.characterData[id]["crMorale"]),
                             int.Parse(this.characterData[id]["ammo"]),
                             float.Parse(this.characterData[id]["crAmmo"]),
-                            float.Parse(this.characterData[id]["food"]),
-                            float.Parse(this.characterData[id]["crFood"]),
                             float.Parse(this.characterData[id]["speed"]),
                             float.Parse(this.characterData[id]["crSpeed"]),
                             float.Parse(this.characterData[id]["hit"]),
@@ -153,7 +151,10 @@ namespace Nameless.Manager
                             this.characterData[id]["buildSkill"],
                             this.characterData[id]["dialogue"],
                             this.characterData[id]["animName"],
-                            this.characterData[id]["iconName"]
+                            this.characterData[id]["iconName"],
+                            this.characterData[id]["campName"],
+                            int.Parse(this.characterData[id]["campPosIndex"]),
+                            int.Parse(this.characterData[id]["BtnLRpos"])
                             );
                     return skill;
                 }

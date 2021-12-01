@@ -38,8 +38,8 @@ namespace Nameless.Data
 
         public override void Execute()
         {
-            List<PawnAvatar> pawnAvatars = GameManager.Instance.playerPawns;
-            for(int i = 0; i < pawnAvatars.Count; i++)
+            List<PawnAvatar> pawnAvatars = PawnManager.Instance.GetPawnAvatars(false);
+            for (int i = 0; i < pawnAvatars.Count; i++)
             {
                 if(pawnAvatars[i].Id == this.pawnId)
                 {
@@ -80,7 +80,7 @@ namespace Nameless.Data
 
         public override void Execute()
         {
-            List<PawnAvatar> pawnAvatars = GameManager.Instance.playerPawns;
+            List<PawnAvatar> pawnAvatars = PawnManager.Instance.GetPawnAvatars(false);
             for (int i = 0; i < pawnAvatars.Count; i++)
             {
                 float curMorale = pawnAvatars[i].pawnAgent.pawn.curMorale;
