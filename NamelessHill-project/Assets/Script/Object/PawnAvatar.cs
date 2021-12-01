@@ -675,7 +675,7 @@ namespace Nameless.DataMono
                                 ifBlock = true;
                                 this.ReDrawWalkLine(lastNode+1);
                                 i = lastNode;
-                                if ( this.isAI != this.endAreaList[this.currentWalkNode].pawns[0].isAI)//´ýÐÞ¸Ä ÅÐ¶ÏÊÇ·ñÕ½¶·
+                                if ( this.isAI != this.endAreaList[this.currentWalkNode].pawns[0].isAI && !this.pawnAgent.battleSideDic.ContainsKey(this.endAreaList[this.currentWalkNode].pawns[0]))//´ýÐÞ¸Ä ÅÐ¶ÏÊÇ·ñÕ½¶·
                                 {
                                     this.State = PawnState.Battle;
                                     bool defenderisInBattle = false;
