@@ -280,10 +280,10 @@ namespace Nameless.DataMono
             this.renderWire.SetWidth(0.4f, 0.4f);
             this.walkRenderWire.SetWidth(0.4f, 0.4f);
             Color playerPath = new Color(0, 0, 1, 1);
-            Color aiPath = new Color(1, 1, 0, 0.05f);
+            Color aiPath = new Color(1, 1, 0, 0.3f);
             this.renderWire.SetColors(this.isAI ? aiPath : playerPath, this.isAI ? aiPath : playerPath);
             Color playerWalk = new Color(0, 1, 1, 1);
-            Color aiWalk = new Color(1, 0.5f, 0, 0.05f);
+            Color aiWalk = new Color(1, 0.5f, 0, 0.3f);
             this.walkRenderWire.SetColors(this.isAI? aiWalk : playerWalk, this.isAI ? aiWalk : playerWalk);
             
             this.renderWire.sortingOrder = 0;
@@ -303,7 +303,7 @@ namespace Nameless.DataMono
         {
             if(this.renderWire!=null && this.walkRenderWire != null)
             {
-                float alpha = isShow ? 1.0f : 0.05f;
+                float alpha = isShow ? 1.0f : 0.3f;
                 Color playerPath = new Color(0, 0, 1, alpha);
                 Color aiPath = new Color(1, 1, 0, alpha);
                 Color playerWalk = new Color(0, 1, 1, alpha);
