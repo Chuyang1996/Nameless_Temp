@@ -32,7 +32,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 2109f14ec77415744aaee59c0b1e2559, type: 3}
-    totalSpriteSurfaceArea: 1134948
+    totalSpriteSurfaceArea: 1325918
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -40,19 +40,17 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: 51290800a839e1d4bb54cdff6715a9e4, type: 3}
   - {fileID: 21300000, guid: 0a5039146eb493148a15b1f9be8381fa, type: 3}
+  - {fileID: 21300000, guid: a9bc92f515b44a64592e08b4ed26fafc, type: 3}
   - {fileID: 21300000, guid: 476e011a417fc04458e3a7c92502f25a, type: 3}
   - {fileID: 21300000, guid: 4511817af093466448304d41f4e50255, type: 3}
   - {fileID: 21300000, guid: e7b9cdcd93a1d72458b6c6f8dc355a8c, type: 3}
-  - {fileID: 21300000, guid: 783dff1f418bde54e897a87b64881043, type: 3}
-  - {fileID: 21300000, guid: c0fe28ef73aff6448981e36f8009b17b, type: 3}
   m_PackedSpriteNamesToIndex:
   - Tutorial_04
   - Tutorial_03
+  - Dangerous_Mission_0_1
   - Village_Teenager_01
   - Tutorial_02
   - Tutorial_01
-  - Dangerous_Mission_0_1
-  - Village_Teenager_02
   m_RenderDataMap: {}
   m_Tag: EventImage
   m_IsVariant: 0
