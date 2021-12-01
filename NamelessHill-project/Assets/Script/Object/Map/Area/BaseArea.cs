@@ -16,7 +16,9 @@ namespace Nameless.DataMono
         public override void Init(int id,AreaAgent areaAgent)
         {
             base.Init(id, areaAgent);
-            this.areaSprite.color = Color.Lerp(Color.blue, Color.green, 0.5F);
+            //Color colorb = new Color(0, 0, 1, 0.4f); 
+            //Color colorg = new Color(0, 1, 0, 0.4f); 
+            //this.areaSprite.color = Color.Lerp(colorb, colorg, 0.5F);
             
         }
         //private void Start()//待修改 等框架搭建完成
