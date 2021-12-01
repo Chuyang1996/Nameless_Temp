@@ -4665,7 +4665,7 @@ MonoBehaviour:
   GameScene: 0
   totalTime: 720
   levelgoalDes: Hold for 12 hours
-  totalMilitaryRes: 1000
+  totalMilitaryRes: 300
   enemiesDieNum: 0
   currentMap: {fileID: 1502894495}
   characterView: {fileID: 2059111272}
@@ -14251,7 +14251,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -3
-  m_Sprite: {fileID: 21300000, guid: f3cf449e151d2b143ad0b619c5f70ded, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d69664b10db3edb40b8c6db1fde72f3c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
