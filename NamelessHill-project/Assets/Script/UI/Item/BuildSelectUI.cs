@@ -52,6 +52,10 @@ namespace Nameless.DataUI
             {
                 this.buildView.setBtn.interactable = false;
             }
+            else if ((this.buildView.currentArea.Medicine >= 1 && this.addMedicineBuild > 0))
+            {
+                this.buildView.setBtn.interactable = false;
+            }
             else
             {
                 this.buildView.setBtn.interactable = true;
