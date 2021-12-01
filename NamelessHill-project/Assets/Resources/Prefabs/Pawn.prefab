@@ -306,7 +306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 8.7, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2782149105818189965
@@ -604,6 +604,7 @@ MonoBehaviour:
   goal: 22
   isAI: 1
   characterView: {fileID: 0}
+  targetArea: {fileID: 0}
   state: 0
   currentArea: {fileID: 0}
   totalDistance: 0
@@ -614,7 +615,6 @@ MonoBehaviour:
   animationDuration: 0.5
   _root: {fileID: 1955213038444268282}
   dialogueAnim: {fileID: 3856974694694922166}
-  battleHint: {fileID: 2782149105625040914}
   healthBar: {fileID: 2782149105818189967}
   healthBarColor: {fileID: 2782149106411439583}
   nameTxt: {fileID: 2782149106756308242}
@@ -667,8 +667,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.18000078, y: 0}
+  m_SizeDelta: {x: -19.32, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2782149106295961233
 CanvasRenderer:
@@ -742,8 +742,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 0}
+  m_AnchoredPosition: {x: -3.5, y: 0}
+  m_SizeDelta: {x: 0.025, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2782149106411439568
 CanvasRenderer:
@@ -970,7 +970,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -4.999977, y: 0}
+  m_AnchoredPosition: {x: 3.7000198, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &9134814031976819070
