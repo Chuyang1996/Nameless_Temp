@@ -669,14 +669,15 @@ namespace Nameless.DataMono
                         }
                         if (endPos == this.endAreaList[this.currentWalkNode].centerNode.gameObject.transform.position)
                         {
-                            bool ifBlock = false;
+
                             if (this.endAreaList[this.currentWalkNode].pawns.Count > 0 )
                             {
-                                ifBlock = true;
+
                                 this.ReDrawWalkLine(lastNode+1);
                                 i = lastNode;
                                 if ( this.isAI != this.endAreaList[this.currentWalkNode].pawns[0].isAI && !this.pawnAgent.battleSideDic.ContainsKey(this.endAreaList[this.currentWalkNode].pawns[0]))//待修改 判断是否战斗
                                 {
+ 
                                     this.State = PawnState.Battle;
                                     bool defenderisInBattle = false;
                                     if (this.endAreaList[this.currentWalkNode].pawns[0].State == PawnState.Battle)
@@ -700,15 +701,16 @@ namespace Nameless.DataMono
                                     yield return null;
                                 }
 
-                                this.StateTriggerEvent(PawnState.Walk);
-                                this.CheckSupport();
+                                this.ResetAllSupport();
+                                if (this.State == PawnState.Walk)
+                                    this.StateTriggerEvent(PawnState.Walk);
                                 if (this.State == PawnState.Draw)
                                 {
                                     yield break;
                                 }
 
                             }
-                            if (!ifBlock)
+                            else
                             {
                                 if (this.endAreaList[this.currentWalkNode].AddPawn(this))//如果两个角色正好同时到达 则让最后添加的人回去等着
                                 {
@@ -791,6 +793,7 @@ namespace Nameless.DataMono
             this.pawnAgent.MoraleChange(-10.0f);//待修改
             this.pawnAgent.battleSideDic = new Dictionary<PawnAvatar, BattleSide>();//待修改
             //this.ClearPawn();
+            this.ResetAllSupport();
             this.PlayDeathAnim();
             //if (this.pawnAgent.pawn.curMorale <= 0 || this.CheckIfSurround())
             //{
@@ -1090,6 +1093,7 @@ namespace Nameless.DataMono
                 if (this.walkWire != null)
                     Destroy(this.walkWire.gameObject);
             }
+            
             this.CurrentArea.RemovePawn(this);
             //this.CurrentArea.Init();
             DialogueTriggerManager.Instance.TimeTriggerEvent -= this.ReceiveCurrentTime;
