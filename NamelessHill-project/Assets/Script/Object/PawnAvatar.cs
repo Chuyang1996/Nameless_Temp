@@ -529,6 +529,16 @@ namespace Nameless.DataMono
             }
 
         }
+
+        void RemoveBehindLine(int startInt)
+        {
+            for (int i = 0; i <= startInt; i++)
+            {
+                this.walkRenderWire.SetPosition(i, walkRenderWire.GetPosition(startInt));
+                this.renderWire.SetPosition(i, walkRenderWire.GetPosition(startInt));
+
+            }
+        }
         IEnumerator DrawLineByNode(int currentPath,bool isAuto)
         {
             if (nodePath != null)
@@ -704,6 +714,7 @@ namespace Nameless.DataMono
                                     this.gameObject.transform.position = this.endAreaList[this.currentWalkNode].centerNode.gameObject.transform.position;
                                     this.CurrentArea.RemovePawn(this);
                                     this.UpdateCurrentArea(this.endAreaList[this.currentWalkNode]);
+                                    this.RemoveBehindLine(lastNode+2);
                                     if (!this.isAI)
                                     {
                                         this.TryGetMat();//到达该区域后试图获取当地材料
