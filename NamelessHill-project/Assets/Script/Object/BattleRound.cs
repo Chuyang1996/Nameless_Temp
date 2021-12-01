@@ -39,8 +39,7 @@ namespace Nameless.DataMono
             this.attacker.pawnAgent.opponentIsInBattle = defenderisInBattle;
             //this.defender.pawnAgent.opponentIsInBattle = true;
             bool attackerTurn = true;
-            this.attacker.ShowBattleHint(true);
-            this.defender.ShowBattleHint(true);
+
 
             while (true)
             {
@@ -102,8 +101,6 @@ namespace Nameless.DataMono
                 this.defender.pawnAgent.battleSideDic.Remove(this.attacker);
                 this.attacker.pawnAgent.opponents.Remove(this.defender);
                 this.attacker.pawnAgent.battleSideDic.Remove(this.defender);
-                this.attacker.ShowBattleHint(false);
-                this.defender.ShowBattleHint(false);
 
                 if (this.defender.pawnAgent.opponents.Count == 0)//判断是否可以进行战斗结算
                 {
@@ -120,8 +117,6 @@ namespace Nameless.DataMono
                 this.defender.pawnAgent.battleSideDic.Remove(this.attacker);
                 this.attacker.pawnAgent.opponents.Remove(this.defender);
                 this.attacker.pawnAgent.battleSideDic.Remove(this.defender);
-                this.attacker.ShowBattleHint(false);
-                this.defender.ShowBattleHint(false);
 
                 if (this.attacker.pawnAgent.opponents.Count == 0)//判断是否可以进行战斗结算
                 {
@@ -137,8 +132,6 @@ namespace Nameless.DataMono
                 this.defender.pawnAgent.battleSideDic.Remove(this.attacker);
                 this.attacker.pawnAgent.opponents.Remove(this.defender);
                 this.attacker.pawnAgent.battleSideDic.Remove(this.defender);
-                this.attacker.ShowBattleHint(false);
-                this.defender.ShowBattleHint(false);
 
                 this.defender.pawnAgent.MoraleChange(-10.0f);
                 this.attacker.CheckIfBattleResult();//检查周围是否还有其他的敌人正在攻击自己
@@ -150,8 +143,7 @@ namespace Nameless.DataMono
                 this.defender.pawnAgent.battleSideDic.Remove(this.attacker);
                 this.attacker.pawnAgent.opponents.Remove(this.defender);
                 this.attacker.pawnAgent.battleSideDic.Remove(this.defender);
-                this.attacker.ShowBattleHint(false);
-                this.defender.ShowBattleHint(false);
+
 
                 this.attacker.pawnAgent.MoraleChange(-10.0f);
                 this.defender.CheckIfBattleResult();//检查周围是否还有其他的敌人正在攻击自己

@@ -105,7 +105,6 @@ namespace Nameless.DataMono
         #endregion
 
         #region//UI
-        public Image battleHint;
         public Slider healthBar;
         public Image healthBarColor;
         public Text nameTxt;
@@ -1008,10 +1007,6 @@ namespace Nameless.DataMono
         public void StopDialogue()
         {
             this.dialogueIm.SetActive(false);
-        }
-        public void ShowBattleHint(bool isShow)
-        {
-            this.battleHint.gameObject.SetActive(isShow);
         }
         #endregion
         private void ChangeDirection(GameObject tag)
