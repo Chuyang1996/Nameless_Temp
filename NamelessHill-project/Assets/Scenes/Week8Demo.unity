@@ -5521,7 +5521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   localId: 0
-  areaId: 1001
+  areaId: 1007
 --- !u!212 &282382391
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24336,7 +24336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   localId: 0
-  areaId: 1001
+  areaId: 1006
 --- !u!212 &1166817752
 SpriteRenderer:
   m_ObjectHideFlags: 0
