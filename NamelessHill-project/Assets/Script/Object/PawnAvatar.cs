@@ -180,18 +180,18 @@ namespace Nameless.DataMono
             }
             if (this.characterView.gameObject.activeInHierarchy || this.isAI)
                 return;
-            if (Input.GetMouseButtonDown(1))
-            {
-                Ray targetray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit TargetHit;
-                if (Physics.Raycast(targetray, out TargetHit))
-                {
-                    if (TargetHit.transform.gameObject == this.gameObject)
-                    {
-                        this.characterView.SetNewPawn(this);
-                    }
-                }
-            }
+            //if (Input.GetMouseButtonDown(1))//待修改 打开角色面板暂时屏蔽
+            //{
+            //    Ray targetray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //    RaycastHit TargetHit;
+            //    if (Physics.Raycast(targetray, out TargetHit))
+            //    {
+            //        if (TargetHit.transform.gameObject == this.gameObject)
+            //        {
+            //            this.characterView.SetNewPawn(this);
+            //        }
+            //    }
+            //}
             if (Input.GetMouseButtonDown(0) /*&& this.State != PawnState.Battle*/)
             {
                 //Debug.Log("sssss");
@@ -280,10 +280,10 @@ namespace Nameless.DataMono
             this.renderWire.SetWidth(0.4f, 0.4f);
             this.walkRenderWire.SetWidth(0.4f, 0.4f);
             Color playerPath = new Color(0, 0, 1, 1);
-            Color aiPath = new Color(1, 1, 0, 0.05f);
+            Color aiPath = new Color(1, 1, 0, 0.3f);
             this.renderWire.SetColors(this.isAI ? aiPath : playerPath, this.isAI ? aiPath : playerPath);
             Color playerWalk = new Color(0, 1, 1, 1);
-            Color aiWalk = new Color(1, 0.5f, 0, 0.05f);
+            Color aiWalk = new Color(1, 0.5f, 0, 0.3f);
             this.walkRenderWire.SetColors(this.isAI? aiWalk : playerWalk, this.isAI ? aiWalk : playerWalk);
             
             this.renderWire.sortingOrder = 0;
@@ -303,7 +303,7 @@ namespace Nameless.DataMono
         {
             if(this.renderWire!=null && this.walkRenderWire != null)
             {
-                float alpha = isShow ? 1.0f : 0.05f;
+                float alpha = isShow ? 1.0f : 0.3f;
                 Color playerPath = new Color(0, 0, 1, alpha);
                 Color aiPath = new Color(1, 1, 0, alpha);
                 Color playerWalk = new Color(0, 1, 1, alpha);

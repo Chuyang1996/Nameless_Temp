@@ -12,7 +12,6 @@ namespace Nameless.UI
     public class TipInfoView : SelectViewLogic
     {
         public GameObject ownTip;
-        public GameObject opponentTip;
 
 
         public Sprite[] stateSprite;
@@ -20,7 +19,6 @@ namespace Nameless.UI
         public Slider ownAmmoSlider;
 
 
-        public Slider oppoMoraleSlider;
 
         public GameObject content;
         public GameObject supportTemplate;
@@ -40,7 +38,6 @@ namespace Nameless.UI
                 if (TargetHit.transform.gameObject.GetComponent<PawnAvatar>() != null && !TargetHit.transform.gameObject.GetComponent<PawnAvatar>().isAI)//´ýÐÞ¸Ä.AI
                 {
                     this.ownTip.SetActive(true);
-                    this.opponentTip.SetActive(false);
                     this.FollowMouseMove(ownTip);
                     //if (this.currentPawn != TargetHit.transform.gameObject.GetComponent<PawnAvatar>() || TargetHit.transform.gameObject.GetComponent<PawnAvatar>().pawnAgent.supporters.Count == 0)
                     //{
@@ -70,25 +67,15 @@ namespace Nameless.UI
                     }
                     this.ownAmmoSlider.value = (float)currentPawn.pawnAgent.pawn.curAmmo / (float)currentPawn.pawnAgent.pawn.maxAmmo;
                 }
-                else if (TargetHit.transform.gameObject.GetComponent<PawnAvatar>() != null && TargetHit.transform.gameObject.GetComponent<PawnAvatar>().isAI)//´ýÐÞ¸Ä.AI
-                {
-                    this.currentPawn = TargetHit.transform.gameObject.GetComponent<PawnAvatar>();
-                    this.opponentTip.SetActive(true);
-                    this.ownTip.SetActive(false);
-                    this.FollowMouseMove(opponentTip);
-                    this.oppoMoraleSlider.value = currentPawn.pawnAgent.pawn.curMorale / currentPawn.pawnAgent.pawn.maxMorale;
-
-                }
                 else
                 {
                     this.ownTip.SetActive(false);
-                    this.opponentTip.SetActive(false);
+
                 }
             }
             else
             {
                 this.ownTip.SetActive(false);
-                this.opponentTip.SetActive(false);
             }
         }
 
