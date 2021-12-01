@@ -234,6 +234,7 @@ namespace Nameless.DataMono
             {
                 yield return null;
             }
+            this.pawns[0].ocuppyBar.gameObject.SetActive(true);
             while (countTime<waitTime)
             {
                 //Debug.LogError("Õ¼ÁìÖÐing");
@@ -244,8 +245,10 @@ namespace Nameless.DataMono
                     occupySuccess = false;
                     break;
                 }
+                this.pawns[0].OcuppyLoading(countTime / waitTime);
                 yield return null;
             }
+            this.pawns[0].ocuppyBar.gameObject.SetActive(false);
             if (occupySuccess)
             {
                 if (this.pawns[0].isAI)

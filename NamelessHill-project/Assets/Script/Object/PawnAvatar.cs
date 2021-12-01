@@ -106,6 +106,7 @@ namespace Nameless.DataMono
 
         #region//UI
         public Slider healthBar;
+        public Slider ocuppyBar;
         public Image healthBarColor;
         public Text nameTxt;
         public GameObject dialogueIm;
@@ -1042,6 +1043,10 @@ namespace Nameless.DataMono
             else if (pawnState == PawnState.Battle)
                 this.PlayAttackAnim();
 
+        }
+        public void OcuppyLoading(float value)//待修改 占领进度以后可能改成用shader
+        {
+            this.ocuppyBar.value = value;
         }
         public void TryGetMat()
         {
