@@ -180,18 +180,18 @@ namespace Nameless.DataMono
             }
             if (this.characterView.gameObject.activeInHierarchy || this.isAI)
                 return;
-            if (Input.GetMouseButtonDown(1))
-            {
-                Ray targetray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit TargetHit;
-                if (Physics.Raycast(targetray, out TargetHit))
-                {
-                    if (TargetHit.transform.gameObject == this.gameObject)
-                    {
-                        this.characterView.SetNewPawn(this);
-                    }
-                }
-            }
+            //if (Input.GetMouseButtonDown(1))//待修改 打开角色面板暂时屏蔽
+            //{
+            //    Ray targetray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //    RaycastHit TargetHit;
+            //    if (Physics.Raycast(targetray, out TargetHit))
+            //    {
+            //        if (TargetHit.transform.gameObject == this.gameObject)
+            //        {
+            //            this.characterView.SetNewPawn(this);
+            //        }
+            //    }
+            //}
             if (Input.GetMouseButtonDown(0) /*&& this.State != PawnState.Battle*/)
             {
                 //Debug.Log("sssss");
