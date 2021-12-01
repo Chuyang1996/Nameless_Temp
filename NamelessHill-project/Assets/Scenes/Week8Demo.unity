@@ -4735,9 +4735,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee730d1795ddcb4da29a7fac8721cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  militarySprite: {fileID: -7441382367286639308, guid: d63499dfb031c5941abb90e81797c3dd, type: 3}
-  ammoSprite: {fileID: 21300000, guid: c9371238e0b9ea341abe5f9a1be40fa4, type: 3}
-  medicialSprite: {fileID: 21300000, guid: 2df1497038068b444a31b81a9e8c18b3, type: 3}
+  militarySprite: {fileID: 21300000, guid: af0e3036f71910042bbdaf8edc0b4d80, type: 3}
+  ammoSprite: {fileID: 21300000, guid: cb785e458299d04498475f0a066feee7, type: 3}
+  medicialSprite: {fileID: 21300000, guid: 16c3d68121045884383d4252119474d5, type: 3}
 --- !u!1 &248727438
 GameObject:
   m_ObjectHideFlags: 0
@@ -8291,7 +8291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401926363}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0.84, y: 0.36, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0}
   m_Children: []
   m_Father: {fileID: 414148571}
@@ -13600,7 +13600,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605426920}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 0.2, z: 0}
+  m_LocalPosition: {x: -0.5, y: -0.84, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0}
   m_Children: []
   m_Father: {fileID: 414148571}
@@ -31715,7 +31715,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549879567}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0.38, y: -0.47, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0}
   m_Children: []
   m_Father: {fileID: 414148571}
@@ -42330,7 +42330,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5252757078494935022, guid: 696cab3c5054d284eb7df8433e3436df, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.34074402
+      value: -0.34072876
       objectReference: {fileID: 0}
     - target: {fileID: 5252757078710538915, guid: 696cab3c5054d284eb7df8433e3436df, type: 3}
       propertyPath: m_AnchoredPosition.y
