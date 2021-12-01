@@ -52,7 +52,7 @@ namespace Nameless.DataMono
         {
             set
             {
-                if (value > 0 && medicine == 0)
+                if (value > 0 && ammo == 0)
                 {
                     GenerateManager.Instance.GenerateBuild(this, BuildType.AmmoBuild);
                 }
