@@ -622,7 +622,7 @@ namespace Nameless.DataMono
                         Vector3 pos = startPos;
                         float distance = Vector2.Distance(new Vector2(startPos.x,startPos.y), new Vector2(endPos.x,endPos.y));
                         float segmentTime = distance / this.pawnAgent.pawn.curSpeed;
-                        segmentTime = GameManager.Instance.IsBelongToSameSide(this.currentArea, this) ? segmentTime : segmentTime/2;
+                        segmentTime = GameManager.Instance.IsBelongToSameSide(this.currentArea, this) ? segmentTime : 2 * segmentTime;
                         while (pos != endPos)
                         {
                             if (!GameManager.Instance.isPlay)
