@@ -168,9 +168,14 @@ namespace Nameless.DataMono
             {
                 this.builds.Add(build.type, build);
                 if (build.type == BuildType.AmmoBuild)
+                {
                     build.gameObject.transform.position = this.ammoPoint.transform.position;
+                }
                 else if (build.type == BuildType.MeidicalBuild)
+                {
                     build.gameObject.transform.position = meidicalPoint.transform.position;
+                }
+                build.gameObject.transform.localScale = new Vector3(1, 1, 1);
             }
         }//本区域添加建筑
         public virtual void RemoveBuild(Build build)
@@ -234,7 +239,8 @@ namespace Nameless.DataMono
             {
                 yield return null;
             }
-            this.pawns[0].ocuppyBar.gameObject.SetActive(true);
+            if(this.pawns.Count>0)
+               this.pawns[0].ocuppyBar.gameObject.SetActive(true);
             while (countTime<waitTime)
             {
                 //Debug.LogError("占领中ing");
@@ -245,10 +251,12 @@ namespace Nameless.DataMono
                     occupySuccess = false;
                     break;
                 }
-                this.pawns[0].OcuppyLoading(countTime / waitTime);
+                if (this.pawns.Count > 0)
+                    this.pawns[0].OcuppyLoading(countTime / waitTime);
                 yield return null;
             }
-            this.pawns[0].ocuppyBar.gameObject.SetActive(false);
+            if (this.pawns.Count > 0)
+                this.pawns[0].ocuppyBar.gameObject.SetActive(false);
             if (occupySuccess)
             {
                 if (this.pawns[0].isAI)
