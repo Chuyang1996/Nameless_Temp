@@ -33,11 +33,27 @@ namespace Nameless.Agent
                 }
                 else if(intArray[0] == (int)EventEffectType.MilitaryResourceChange)
                 {
-                    effects.Add(new AmmoEventEffect((float)intArray[1]));
+                    effects.Add(new MilitaryResEventEffect((float)intArray[1]));
                 }
                 else if(intArray[0] == (int)EventEffectType.NextEvent)
                 {
                     effects.Add(new NextEventEffect((long)intArray[1]));
+                }
+                else if (intArray[0] == (int)EventEffectType.UnlockNote)
+                {
+                    List<NoteInfo> noteInfos = new List<NoteInfo>();
+                    if (intArray.Length >= 3)
+                    {
+                        for(int n = 2; n < intArray.Length; n++)
+                        {
+                            noteInfos.Add(new NoteInfo(DataManager.Instance.GetNoteData((long)intArray[n])));
+                        }
+                    }
+                    effects.Add(new UnlockNoteEffect((long)intArray[1], noteInfos));
+                }
+                else if (intArray[0] == (int)EventEffectType.UnlockConversation)
+                {
+                    effects.Add(new UnlockConversationEffect((long)intArray[1], ConversationFactory.GetConversationById((long)(intArray[2]))));
                 }
             }
 

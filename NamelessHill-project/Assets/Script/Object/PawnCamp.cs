@@ -13,8 +13,9 @@ namespace Nameless.DataMono
         public GameObject rightSide;
         public SpriteRenderer pawnIcon;
 
+        Stack<Conversation> conversationsInCamp = new Stack<Conversation>();
         public Pawn pawn;
-        public void Init(Pawn pawn)
+        public void Init(Pawn pawn, Stack<Conversation> conversationsInCamp)
         {
             if(pawn.leftOrRight < 0)
             {
@@ -29,7 +30,8 @@ namespace Nameless.DataMono
             this.btnDialogue.SetActive(true);
             this.pawnIcon.sprite = pawn.campIcon;
             this.pawn = pawn;
-            if (!this.pawn.conversationMapDic.ContainsKey(0))//待修改 根据地图ID和其他相关的条件去判断是否有对话
+            this.conversationsInCamp = conversationsInCamp;
+            if (!this.pawn.conversationMapDic.ContainsKey(0) && this.conversationsInCamp.Count == 0)//待修改 根据地图ID和其他相关的条件去判断是否有对话
                 this.btnDialogue.SetActive(false);
             else
                 this.btnDialogue.SetActive(true);
@@ -43,8 +45,17 @@ namespace Nameless.DataMono
 
         public void ClickToConversation()
         {
-            ConversationManager.Instance.GoToConversation(this.pawn.conversationMapDic[0]);//待修改 根据地图ID去索引
-            this.btnDialogue.SetActive(false);
+            if(this.conversationsInCamp.Count > 0) 
+            { 
+                ConversationManager.Instance.GoToConversation(this.conversationsInCamp.Pop());
+            }
+            else if (this.pawn.conversationMapDic.ContainsKey(0))//待修改 根据地图ID去索引
+            {
+                ConversationManager.Instance.GoToConversation(this.pawn.conversationMapDic[0]);
+            }
+
+            if(this.conversationsInCamp.Count == 0 && !this.pawn.conversationMapDic.ContainsKey(0))
+                this.btnDialogue.SetActive(false);
         }
 
 

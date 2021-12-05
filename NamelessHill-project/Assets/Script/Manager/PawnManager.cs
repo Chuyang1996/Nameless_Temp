@@ -1,6 +1,7 @@
 using Nameless.DataMono;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Nameless.Manager
@@ -38,6 +39,11 @@ namespace Nameless.Manager
             else if (this.playerPawns.Contains(pawnAvatar))
                 this.playerPawns.Remove(pawnAvatar);
 
+        }
+        public PawnAvatar GetPawnAvatarById(long id, bool isAi)//待修改 阵营确定之后
+        {
+            PawnAvatar pawnAvatar = isAi?this.enemyPawns.Where(_pawn => _pawn.pawnAgent.pawn.id == id).FirstOrDefault() : this.playerPawns.Where(_pawn => _pawn.pawnAgent.pawn.id == id).FirstOrDefault();
+            return pawnAvatar;
         }
         public List<PawnAvatar> GetPawnAvatars(bool isAi)
         {

@@ -1,3 +1,4 @@
+using Nameless.ConfigData;
 using Nameless.DataMono;
 using Nameless.Manager;
 using System.Collections;
@@ -15,7 +16,7 @@ namespace Nameless.Data
         MilitaryResourceChange = 102,
         NextEvent = 104,
         UnlockNote = 105,
-        DialogueTrigger = 106
+        UnlockConversation = 106
     }
 
     abstract public class EventEffect 
@@ -107,11 +108,11 @@ namespace Nameless.Data
         }
     }
 
-    public class AmmoEventEffect : EventEffect
+    public class MilitaryResEventEffect : EventEffect
     {
         public float ammoChange;
 
-        public AmmoEventEffect(float ammoChange)
+        public MilitaryResEventEffect(float ammoChange)
         {
             this.type = EventEffectType.MilitaryResourceChange;
             this.ammoChange = ammoChange;
@@ -122,8 +123,6 @@ namespace Nameless.Data
             GameManager.Instance.ChangeMilitaryRes((int)this.ammoChange);
         }
     }
-
-
 
     public class NextEventEffect : EventEffect
     {
@@ -136,6 +135,42 @@ namespace Nameless.Data
         public override void Execute()
         {
             EventTriggerManager.Instance.AddNewEvent(this.eventId);
+        }
+    }
+
+    public class UnlockNoteEffect : EventEffect
+    {
+        public long notePageId;
+        public List<NoteInfo> noteIds = new List<NoteInfo>();
+
+        public UnlockNoteEffect(long notePageId, List<NoteInfo> noteIds)
+        {
+            this.type = EventEffectType.UnlockNote;
+            this.notePageId = notePageId;
+            this.noteIds = noteIds;
+        }
+        public override void Execute()
+        {
+            NoteManager.Instance.AddNote(this.notePageId, this.noteIds);
+        }
+    }
+
+    public class UnlockConversationEffect : EventEffect
+    {
+        public long pawnId;
+        public Conversation conversation;
+        public UnlockConversationEffect(long pawnId, Conversation conversation)
+        {
+            this.type = EventEffectType.UnlockConversation;
+            this.pawnId = pawnId;
+            this.conversation = conversation;
+        }
+        public override void Execute()
+        {
+            if (PawnManager.Instance.GetPawnAvatarById(this.pawnId, false)!=null)
+            {
+                PawnManager.Instance.GetPawnAvatarById(this.pawnId, false).pawnAgent.PushConversation(this.conversation);
+            }
         }
     }
 }

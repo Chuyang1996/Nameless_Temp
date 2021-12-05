@@ -130,7 +130,7 @@ namespace Nameless.Manager {
             //this.battleView.resourceInfoView.Init(this.totalMilitaryRes);
         }
 
-
+        
         public void AddAreaForPlayer(Area area)//待修改 等写框架的时候改
         {
             if(!this.playerOccupyAreas.Contains(area))

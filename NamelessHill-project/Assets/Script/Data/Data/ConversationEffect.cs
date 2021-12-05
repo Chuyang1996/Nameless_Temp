@@ -96,10 +96,7 @@ namespace Nameless.Data
         }
         public override void Execute()
         {
-            if (!NoteManager.Instance.AddNewNote(this.noteId))
-            {
-                NoteManager.Instance.AddOldNote(this.noteId, this.noteInfos);
-            }
+            NoteManager.Instance.AddNote(this.noteId, this.noteInfos);
         }
     }
 

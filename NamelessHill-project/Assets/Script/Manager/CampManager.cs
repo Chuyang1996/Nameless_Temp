@@ -32,16 +32,16 @@ namespace Nameless.Manager
         {
             for(int i = 0; i < pawnAvatars.Count; i++)
             {
-                this.allCampPawns.Add(this.GenerateCampPawn(pawnAvatars[i].pawnAgent.pawn));
+                this.allCampPawns.Add(this.GenerateCampPawn(pawnAvatars[i]));
             }
         }
 
-        public PawnCamp GenerateCampPawn(Pawn pawn)
+        public PawnCamp GenerateCampPawn(PawnAvatar pawn)
         {
             GameObject pawnCamp = Instantiate(Resources.Load(pawnPath)) as GameObject;
-            pawnCamp.GetComponent<PawnCamp>().Init(pawn);
-            if (pawn.campPosIndex < this.pawnsPos.Length)
-                pawnCamp.transform.parent = pawnsPos[pawn.campPosIndex].transform;
+            pawnCamp.GetComponent<PawnCamp>().Init(pawn.pawnAgent.pawn, pawn.pawnAgent.conversations);
+            if (pawn.pawnAgent.pawn.campPosIndex < this.pawnsPos.Length)
+                pawnCamp.transform.parent = pawnsPos[pawn.pawnAgent.pawn.campPosIndex].transform;
             else
                 pawnCamp.transform.parent = pawnsPos[0].transform;
             pawnCamp.transform.localPosition = new Vector3(0, 0, 0);

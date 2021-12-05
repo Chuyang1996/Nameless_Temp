@@ -163,6 +163,9 @@ namespace Nameless.Data
         public DialogueGroup dialogueGroup;
         #endregion
 
+        #region//角色营地对话内容
+        public Stack<Conversation> conversations = new Stack<Conversation>();
+        #endregion
         public PawnAgent(Slider healthBar,Area currentArea, Pawn pawn, int mapId)
         {
             this.healthBar = healthBar;
@@ -204,7 +207,7 @@ namespace Nameless.Data
             this.countBTimeMorale = 0.0f;
             this.countConTimeMorale = 0.0f;
             this.battleSideDic = new Dictionary<PawnAvatar, BattleSide>();
-
+            this.conversations = new Stack<Conversation>();
             ResetBattleInfo();
         }
 
@@ -395,6 +398,14 @@ namespace Nameless.Data
             this.pawn.curAttack = value;
             if (this.AttackValueEvent != null)
                 this.AttackValueEvent(this.pawn.curAttack);
+        }
+        #endregion
+
+        //角色营地
+        #region
+        public void PushConversation(Conversation conversation)
+        {
+            this.conversations.Push(conversation);
         }
         #endregion
     }

@@ -21,17 +21,19 @@ namespace Nameless.Manager {
             GameManager.Instance.noteBookView.InitNoteBook();
         }
 
-        public bool AddNewNote(long id)
+        public bool AddNote(long id, List<NoteInfo> noteInfos)
         {
             if (!this.notePageDic.ContainsKey(id))
             {
                 this.notePageDic.Add(id, NotePageFactory.GetNotePageById(id));
+                this.UpdateNote(id, noteInfos);
                 return true;
             }
+            this.UpdateNote(id, noteInfos);
             return false;
         }
 
-        public void AddOldNote(long id, List<NoteInfo> noteInfos)
+        public void UpdateNote(long id, List<NoteInfo> noteInfos)
         {
             if (this.notePageDic.ContainsKey(id))
             {
