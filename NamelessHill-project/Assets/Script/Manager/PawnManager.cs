@@ -80,13 +80,13 @@ namespace Nameless.Manager
         {
             for (int i = 0; i < this.playerPawns.Count; i++)
             {
-                DestroyImmediate(this.playerPawns[i].gameObject);
+                Destroy(this.playerPawns[i].gameObject);
             }
             this.playerPawns.Clear();
 
             for (int i = 0; i < this.enemyPawns.Count; i++)
             {
-                DestroyImmediate(this.enemyPawns[i].gameObject);
+                Destroy(this.enemyPawns[i].gameObject);
             }
             this.enemyPawns.Clear();
         }

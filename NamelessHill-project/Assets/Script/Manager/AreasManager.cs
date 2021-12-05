@@ -38,8 +38,9 @@ namespace Nameless.Manager
 {
     public class AreasManager : SingletonMono<AreasManager>
     {
-        
-
+        public GameObject Map;//待修改 以后会写一个Map类 用于地图导入
+        public GameObject PathLine;
+        public GameObject Battle;
         public MouseFollower mouseFollower;
         public float[,] areaMatrix;
         public List<InitArea> initAreas;
@@ -105,11 +106,6 @@ namespace Nameless.Manager
         }
 
         // Update is called once per frame
-        void Update()
-        {
-
-
-        }
 
         public  List<int>[] Dijkstra(float[,] graphic, int start)//打印结果为以start为起始点到达其他位置的所有最短路径
         {
@@ -164,6 +160,11 @@ namespace Nameless.Manager
             }
 
             return path;
+        }
+
+        public void ClearMap()
+        {
+            Destroy(this.Map.gameObject);
         }
 
     }
