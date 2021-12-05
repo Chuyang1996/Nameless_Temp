@@ -482,7 +482,7 @@ RectTransform:
   m_GameObject: {fileID: 335768078}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.19802171, y: 0.19802171, z: 0.19802171}
+  m_LocalScale: {x: 0.21006142, y: 0.21006142, z: 0.21006142}
   m_Children:
   - {fileID: 1059373953}
   m_Father: {fileID: 878599902}
@@ -490,7 +490,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 366.3, y: 124.2}
+  m_AnchoredPosition: {x: 372.9, y: 108.3}
   m_SizeDelta: {x: 1336.17, y: 477.47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &335768080
@@ -546,8 +546,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.3
-  m_Text: By the fifth day, it was obvious to us that the sound of gunfire from the
-    8th Platoon's position was thinning out.
+  m_Text: By the fifth day, we noticed that the sound of gunfire from the 8th Platoon's
+    position was thinning out.
 --- !u!222 &335768082
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -904,14 +904,14 @@ RectTransform:
   m_GameObject: {fileID: 591643660}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.1934414, y: 3.6464708, z: 3.6464708}
+  m_LocalScale: {x: 4.1095724, y: 3.5735414, z: 3.5735414}
   m_Children: []
   m_Father: {fileID: 1134939280}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 553, y: -168}
+  m_AnchoredPosition: {x: 553, y: -175}
   m_SizeDelta: {x: 15.285, y: 15.285}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &591643662
@@ -1044,8 +1044,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.3
-  m_Text: "We were defending their flanks. \n\nTheir positions were in the front
-    and was under more artillery fire and attacks than we did."
+  m_Text: "We were defending their flanks. \n\nTheir positions were in the middle,
+    and was under more pressure than we were."
 --- !u!222 &718758655
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1492,7 +1492,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 648, y: -208}
+  m_AnchoredPosition: {x: 580, y: -168}
   m_SizeDelta: {x: 15.285, y: 15.285}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1059373954
@@ -1625,8 +1625,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.3
-  m_Text: The enemy is still attacking hard. Perhaps, the 8th Platoon is not going
-    to make it......
+  m_Text: The enemy is still attacking. Perhaps, the 8th Platoon can't hold it anymore......
 --- !u!222 &1134939283
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1860,8 +1859,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.3
-  m_Text: I have always known that we would not have lasted that long without the
-    8th Platoon holding off the enemy main force in the front.
+  m_Text: The whole defense line would not have lasted that long without the 8th
+    Platoon not stepping down and fighting courageously.
 --- !u!222 &1373346026
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2217,7 +2216,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.3
-  m_Text: During the first few days, the 8th Platoon was with us at all times.
+  m_Text: In the first few days, the 8th Platoon fought with us side by side.
 --- !u!222 &1605990015
 CanvasRenderer:
   m_ObjectHideFlags: 0
