@@ -2,6 +2,7 @@ using Nameless.Data;
 using Nameless.DataMono;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Nameless.Manager
@@ -10,13 +11,22 @@ namespace Nameless.Manager
     {
         public GameObject campScene;
         public GameObject[] pawnsPos;
-        public List<PawnCamp> allCampPawns;
+        public List<PawnCamp> allCampPawns = new List<PawnCamp>();
+
+
+        public GameObject noteBtn;
+
 
         private string pawnPath = "Prefabs/PawnCamp";
-        public void InitCamp(List<PawnAvatar> pawnAvatars)
+        public void InitCamp(List<PawnAvatar> pawnAvatars,int militaryRes)
         {
-            this.campScene.SetActive(true);
             this.ReceivePawnFromBattle(pawnAvatars);
+            GameManager.Instance.campView.InitCamp(militaryRes, pawnAvatars.Count);
+        }
+        public void ActiveCamp()
+        {
+            AreasManager.Instance.gameObject.SetActive(false);
+            this.campScene.SetActive(true);
         }
         public void ReceivePawnFromBattle(List<PawnAvatar> pawnAvatars)
         {
@@ -30,13 +40,19 @@ namespace Nameless.Manager
         {
             GameObject pawnCamp = Instantiate(Resources.Load(pawnPath)) as GameObject;
             pawnCamp.GetComponent<PawnCamp>().Init(pawn);
-            if (pawn.campPosIndex < pawnsPos.Length)
+            if (pawn.campPosIndex < this.pawnsPos.Length)
                 pawnCamp.transform.parent = pawnsPos[pawn.campPosIndex].transform;
             else
                 pawnCamp.transform.parent = pawnsPos[0].transform;
             pawnCamp.transform.localPosition = new Vector3(0, 0, 0);
 
             return pawnCamp.GetComponent<PawnCamp>();
+        }
+
+        public PawnCamp FindPawnInCamp(long id)
+        {
+            PawnCamp pawnCamp = this.allCampPawns.Where(_pawn => _pawn.pawn.id == id).FirstOrDefault();
+            return pawnCamp;
         }
 
         public void ResetPawnAvatars()

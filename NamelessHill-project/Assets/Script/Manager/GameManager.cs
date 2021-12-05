@@ -27,6 +27,7 @@ namespace Nameless.Manager {
         public int totalTime = 720;//本场战斗总时间//待修改
         public string levelgoalDes = "Hold for 12 hours";//本场战斗总时间//待修改
         public int totalMilitaryRes;//我方的补给数量//待修改
+        public Action<int> TotalMilitartEvent;
         [HideInInspector]
         public int enemiesDieNum = 0;//敌人死亡数量//待修改
 
@@ -39,8 +40,11 @@ namespace Nameless.Manager {
         public AreasManager currentMap;
         public CharacterView characterView;
         public BattleView battleView;
+        public CampView campView;
         public BuildView buildView;
         public EventView eventView;
+        public ConversationView conversationView;
+        public NoteBookView noteBookView;
 
         public InitArea[] areas;//待修改 所有玩家角色区域
         public List<PawnAvatar> curplayerPawns;//待修改 当前玩家角色
@@ -65,11 +69,11 @@ namespace Nameless.Manager {
             SpriteManager.Instance.InitTexturePackage();
             AreasManager.Instance.InitArea();
             PawnManager.Instance.InitPawns();
+            NoteManager.Instance.InitNote();
             //Debug.Log(DataManager.Instance.GetCharacter(1001).name);
 
 
-            this.battleView.Init(this.totalTime, this.levelgoalDes);
-            this.battleView.resourceInfoView.Init(this.totalMilitaryRes);
+            this.battleView.InitBattle(this.totalTime, this.levelgoalDes, this.totalMilitaryRes);
             Time.timeScale = 1.0f;
             this.RESULTEVENT += this.Result;
             for(int i = 0; i < this.curplayerPawns.Count; i++)
@@ -121,7 +125,9 @@ namespace Nameless.Manager {
         {
             EventTriggerManager.Instance.CheckRelateMilitaryResEvent(cost);
             this.totalMilitaryRes += cost;
-            this.battleView.resourceInfoView.Init(this.totalMilitaryRes);
+            if (this.TotalMilitartEvent != null)
+                this.TotalMilitartEvent(this.totalMilitaryRes);
+            //this.battleView.resourceInfoView.Init(this.totalMilitaryRes);
         }
 
 
@@ -180,14 +186,14 @@ namespace Nameless.Manager {
 
         public void EnterCamp()
         {
-            AreasManager.Instance.gameObject.SetActive(false);
-            this.battleView.gameObject.SetActive(false);//待修改 等UI管理器到位
+           
+            this.battleView.ExitBattle();//待修改 等UI管理器到位
             this.buildView.gameObject.SetActive(false);//待修改 等UI管理器到位
             this.characterView.gameObject.SetActive(false);//待修改 等UI管理器到位
             this.eventView.gameObject.SetActive(false);//待修改 等UI管理器到位
             this.GameScene = GameScene.Camp;
             RTSCamera.Instance.ResetCameraPos();
-            CampManager.Instance.InitCamp(PawnManager.Instance.GetPawnAvatars(false));
+            CampManager.Instance.InitCamp(PawnManager.Instance.GetPawnAvatars(false),this.totalMilitaryRes);
             PawnManager.Instance.ClearAllPawn();
             
         }

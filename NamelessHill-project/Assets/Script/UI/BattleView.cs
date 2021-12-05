@@ -45,8 +45,11 @@ namespace Nameless.UI
         private int hour;
         #endregion
         // Start is called before the first frame update
-        public void Init(int totalTime, string goalDes)
+        public void InitBattle(int totalTime, string goalDes,int militartRes)
         {
+            this.gameObject.SetActive(true);
+            this.resourceInfoView.Init(militartRes);
+            GameManager.Instance.TotalMilitartEvent += this.resourceInfoView.Init;
             this.totalTime = totalTime;
             this.golaDes.text = goalDes;
             string shour = this.totalTime / 60 > 10 ? (this.totalTime / 60).ToString() : "0" + (this.totalTime / 60).ToString();
@@ -121,6 +124,12 @@ namespace Nameless.UI
             {
                 this.seconds += (Time.deltaTime * 48);
             }
+        }
+
+        public void ExitBattle()
+        {
+            GameManager.Instance.TotalMilitartEvent -= this.resourceInfoView.Init;
+            this.gameObject.SetActive(false);
         }
         //void ResetAreaInfo()
         //{

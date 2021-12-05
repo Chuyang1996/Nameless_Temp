@@ -1,4 +1,5 @@
 using Nameless.Data;
+using Nameless.Manager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,25 +25,28 @@ namespace Nameless.DataMono
             {
                 this.btnDialogue.transform.parent = this.rightSide.transform;
             }
+            this.btnDialogue.transform.localPosition = new Vector3(0, 0, 0);
             this.btnDialogue.SetActive(true);
             this.pawnIcon.sprite = pawn.campIcon;
-        }
-        private void Update()
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                //Debug.Log("sssss");
-                Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
-                if (hit.collider != null)
-                {
-                    if (hit.collider.gameObject == this.btnDialogue.gameObject)//待修改.AI
-                    {
-                        
+            this.pawn = pawn;
+            if (!this.pawn.conversationMapDic.ContainsKey(0))//待修改 根据地图ID和其他相关的条件去判断是否有对话
+                this.btnDialogue.SetActive(false);
+            else
+                this.btnDialogue.SetActive(true);
 
-                    }
-                }
-            }
         }
+
+        public void InitMorale(float value)
+        {
+            this.pawn.curMorale = value;
+        }
+
+        public void ClickToConversation()
+        {
+            ConversationManager.Instance.GoToConversation(this.pawn.conversationMapDic[0]);//待修改 根据地图ID去索引
+            this.btnDialogue.SetActive(false);
+        }
+
+
     }
 }

@@ -33,7 +33,13 @@ namespace Nameless.Agent
                 long[] temp = StringToLong2Array(dialogueString[i]);
                 dialogueGroupDic.Add(temp[0], DialogueGroupFactory.GetDialogueGroupById(temp[1]));
             }
-
+            List<string> conversationInfo = StringToStringArray(characterData.converIds);
+            Dictionary<long, Conversation> conversationMapDic = new Dictionary<long, Conversation>();
+            for(int i = 0; i < conversationInfo.Count; i++)
+            {
+                long[] temp = StringToLong2Array(conversationInfo[i]);
+                conversationMapDic.Add(temp[0], ConversationFactory.GetConversationById(temp[1]));
+            }
             return new Pawn(
                 characterData.Id,
                 characterData.name,
@@ -57,11 +63,12 @@ namespace Nameless.Agent
                 StringToLongArray(characterData.supportSkills),
                 StringToLongArray(characterData.buildSkills),
                 dialogueGroupDic,
-                characterData.animName,
-                characterData.iconName,
-                characterData.campName,
+                characterData.animPrefab,
+                characterData.selectIcon,
+                characterData.campIcon,
                 characterData.campPosIndex,
-                characterData.btnLRpos
+                characterData.btnLRpos,
+                conversationMapDic
                 );
         }
 

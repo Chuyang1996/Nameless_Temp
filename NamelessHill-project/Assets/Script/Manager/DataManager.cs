@@ -23,15 +23,26 @@ namespace Nameless.Manager
         public Dictionary<long, Dictionary<string, string>> characterData;
         public Dictionary<long, Dictionary<string, string>> fightSkillData;
         public Dictionary<long, Dictionary<string, string>> supportSkillData;
+
         public Dictionary<long, Dictionary<string, string>> buildSkillData;
         public Dictionary<long, Dictionary<string, string>> buffSkillData;
+
         public Dictionary<long, Dictionary<string, string>> eventTriggerData;
         public Dictionary<long, Dictionary<string, string>> eventResultData;
         public Dictionary<long, Dictionary<string, string>> eventOptionData;
+
         public Dictionary<long, Dictionary<string, string>> dialogueData;
         public Dictionary<long, Dictionary<string, string>> dialogueGroupData;
+
         public Dictionary<long, Dictionary<string, string>> areaData;
         public Dictionary<long, Dictionary<string, string>> pawnGroupData;
+
+        public Dictionary<long, Dictionary<string, string>> conversationData;
+        public Dictionary<long, Dictionary<string, string>> conversationOptionData;
+        public Dictionary<long, Dictionary<string, string>> conversationEffectData;
+
+        public Dictionary<long, Dictionary<string, string>> notePageData;
+        public Dictionary<long, Dictionary<string, string>> noteData;
 
         #endregion
         ///////////////////////////////数据//////////////////////////
@@ -47,67 +58,36 @@ namespace Nameless.Manager
         /// 初始化读表数据
         public void InitData()
         {
+            this.characterData = this.ReadFile("Character_Data.txt");
+            this.fightSkillData = this.ReadFile("FightSkill_Data.txt");
+            this.supportSkillData = this.ReadFile("SupportSkill_Data.txt");
+            this.buildSkillData = this.ReadFile("BuildSkill_Data.txt");
+            this.buffSkillData = this.ReadFile("Buff_Data.txt");
+            this.eventTriggerData = this.ReadFile("EventTrigger_Data.txt");
+            this.eventResultData = this.ReadFile("EventResult_Data.txt");
+            this.eventOptionData = this.ReadFile("EventOption_Data.txt");
+            this.dialogueData = this.ReadFile("Dialogue_Data.txt");
+            this.dialogueGroupData = this.ReadFile("DialogueGroup_Data.txt");
+            this.areaData = this.ReadFile("Area_Data.txt");
+            this.pawnGroupData = this.ReadFile("PawnGroup_Data.txt");
+            this.conversationData = this.ReadFile("Conversation_Data.txt");
+            this.conversationOptionData = this.ReadFile("ConversationOption_Data.txt");
+            this.conversationEffectData = this.ReadFile("ConversationEffect_Data.txt");
+            this.notePageData = this.ReadFile("NotePage_Data.txt");
+            this.noteData = this.ReadFile("Note_Data.txt");
+            //string data;
+
+
+
+        }
+
+        private Dictionary<long, Dictionary<string, string>> ReadFile(string fileName)
+        {
             string data;
-
-            FileStream characterFile = File.Open(Application.streamingAssetsPath + "/" + "Character_Data.txt", FileMode.Open, FileAccess.Read);
-            StreamReader characterReader = new StreamReader(characterFile);
-            data = characterReader.ReadLine();
-            this.characterData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
-
-            FileStream fightSkillFile = File.Open(Application.streamingAssetsPath + "/" + "FightSkill_Data.txt", FileMode.Open, FileAccess.Read);
-            StreamReader fightSkillReader = new StreamReader(fightSkillFile);
-            data = fightSkillReader.ReadLine();
-            this.fightSkillData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
-
-            FileStream supportSkillFile = File.Open(Application.streamingAssetsPath + "/" + "SupportSkill_Data.txt", FileMode.Open, FileAccess.Read);
-            StreamReader supportSkillReader = new StreamReader(supportSkillFile);
-            data = supportSkillReader.ReadLine();
-            this.supportSkillData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
-
-            FileStream buildSkillFile = File.Open(Application.streamingAssetsPath + "/" + "BuildSkill_Data.txt", FileMode.Open, FileAccess.Read);
-            StreamReader buildSkillReader = new StreamReader(buildSkillFile);
-            data = buildSkillReader.ReadLine();
-            this.buildSkillData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
-
-            FileStream buffSkillFile = File.Open(Application.streamingAssetsPath + "/" + "Buff_Data.txt", FileMode.Open, FileAccess.Read);
-            StreamReader buffSkillReader = new StreamReader(buffSkillFile);
-            data = buffSkillReader.ReadLine();
-            this.buffSkillData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
-
-            FileStream eventTriggerFile = File.Open(Application.streamingAssetsPath + "/" + "EventTrigger_Data.txt", FileMode.Open, FileAccess.Read);
-            StreamReader eventTriggerReader = new StreamReader(eventTriggerFile);
-            data = eventTriggerReader.ReadLine();
-            this.eventTriggerData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
-
-            FileStream eventResultFile = File.Open(Application.streamingAssetsPath + "/" + "EventResult_Data.txt", FileMode.Open, FileAccess.Read);
-            StreamReader eventResultReader = new StreamReader(eventResultFile);
-            data = eventResultReader.ReadLine();
-            this.eventResultData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
-
-            FileStream eventOptionFile = File.Open(Application.streamingAssetsPath + "/" + "EventOption_Data.txt", FileMode.Open, FileAccess.Read);
-            StreamReader eventOptionReader = new StreamReader(eventOptionFile);
-            data = eventOptionReader.ReadLine();
-            this.eventOptionData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
-
-            FileStream dialogueFile = File.Open(Application.streamingAssetsPath + "/" + "Dialogue_Data.txt", FileMode.Open, FileAccess.Read);
-            StreamReader dialogueReader = new StreamReader(dialogueFile);
-            data = dialogueReader.ReadLine();
-            this.dialogueData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
-
-            FileStream dialogueGroupFile = File.Open(Application.streamingAssetsPath + "/" + "DialogueGroup_Data.txt", FileMode.Open, FileAccess.Read);
-            StreamReader dialogueGroupReader = new StreamReader(dialogueGroupFile);
-            data = dialogueGroupReader.ReadLine();
-            this.dialogueGroupData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
-
-            FileStream areaFile = File.Open(Application.streamingAssetsPath + "/" + "Area_Data.txt", FileMode.Open, FileAccess.Read);
-            StreamReader areaReader = new StreamReader(areaFile);
-            data = areaReader.ReadLine();
-            this.areaData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
-
-            FileStream pawnGroupFile = File.Open(Application.streamingAssetsPath + "/" + "PawnGroup_Data.txt", FileMode.Open, FileAccess.Read);
-            StreamReader pawnGroupReader = new StreamReader(pawnGroupFile);
-            data = pawnGroupReader.ReadLine();
-            this.pawnGroupData = JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
+            FileStream file = File.Open(Application.streamingAssetsPath + "/" + fileName, FileMode.Open, FileAccess.Read);
+            StreamReader reader = new StreamReader(file);
+            data = reader.ReadLine();
+            return JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
         }
         #endregion
 
@@ -150,11 +130,12 @@ namespace Nameless.Manager
                             this.characterData[id]["supportSkill"],
                             this.characterData[id]["buildSkill"],
                             this.characterData[id]["dialogue"],
-                            this.characterData[id]["animName"],
-                            this.characterData[id]["iconName"],
-                            this.characterData[id]["campName"],
+                            this.characterData[id]["animPrefab"],
+                            this.characterData[id]["selectIcon"],
+                            this.characterData[id]["campIcon"],
                             int.Parse(this.characterData[id]["campPosIndex"]),
-                            int.Parse(this.characterData[id]["BtnLRpos"])
+                            int.Parse(this.characterData[id]["BtnLRpos"]),
+                            this.characterData[id]["converIds"]
                             );
                     return skill;
                 }
@@ -380,8 +361,8 @@ namespace Nameless.Manager
                             float.Parse(this.dialogueData[id]["zoom"]),
                             float.Parse(this.dialogueData[id]["zoomSpeed"]),
                             float.Parse(this.dialogueData[id]["waitTime"]),
-                            long.Parse(this.dialogueData[id]["nextId"] == "null"? "-1": this.dialogueData[id]["nextId"]),
-                            long.Parse(this.dialogueData[id]["nextPawn"] == "null"? "-1": this.dialogueData[id]["nextPawn"])
+                            long.Parse(this.dialogueData[id]["nextId"] == "null" ? "-1" : this.dialogueData[id]["nextId"]),
+                            long.Parse(this.dialogueData[id]["nextPawn"] == "null" ? "-1" : this.dialogueData[id]["nextPawn"])
                             );
                     return skill;
                 }
@@ -475,26 +456,143 @@ namespace Nameless.Manager
                 return null;
             }
         }
-        //将字符串转换成整型数组
-        public int[] StringToIntArray(string stringlist)
+        public ConversationData GetConversationData(long id)
         {
-            int[] array;
-            if (stringlist.Contains("]") && stringlist.Contains("["))
+            try
             {
-                stringlist = stringlist.Remove(0, 1);
-                stringlist = stringlist.Remove(stringlist.Length - 1, 1);
-                array = stringlist.Contains(",") ? Array.ConvertAll<string, int>(stringlist.Split(new char[] { ',' }), s => int.Parse(s)) : new int[1] { int.Parse(stringlist) };
+                if (this.conversationData.ContainsKey(id))
+                {
+                    ConversationData skill = new ConversationData
+                            (id,
+                            this.conversationData[id]["name"],
+                            this.conversationData[id]["descrption"],
+                            this.conversationData[id]["conversationPawns"],
+                            this.conversationData[id]["options"],
+                            int.Parse(this.conversationData[id]["side"])
+                            );
+                    return skill;
+                }
+                else
+                {
+                    Debug.LogError("楚洋：ConversationData数据转换错误，数据中未能找到此id = " + id + " 的物品，请在逻辑层检查是否对数据进行了初始化,或者Id出了问题，或是否配表出了问题");
+                    return null;
+                }
             }
-            else
+            catch (Exception e)
             {
-                array = new int[1];
-                array[0] = 0;
+                Debug.LogError("楚洋:表中的数据名称可能发生改动或者删除，请检查表中的数据title名称是否正确，如果正确请联系楚洋进行核对");
+                return null;
             }
-            return array;
+        }
+        public ConversationOptionData GetConversationOptionData(long id)
+        {
+            try
+            {
+                if (this.conversationOptionData.ContainsKey(id))
+                {
+                    ConversationOptionData skill = new ConversationOptionData
+                            (id,
+                            this.conversationOptionData[id]["name"],
+                            this.conversationOptionData[id]["descrption"],
+                            this.conversationOptionData[id]["effects"]
+                            );
+                    return skill;
+                }
+                else
+                {
+                    Debug.LogError("楚洋：ConversationOptionData数据转换错误，数据中未能找到此id = " + id + " 的物品，请在逻辑层检查是否对数据进行了初始化,或者Id出了问题，或是否配表出了问题");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("楚洋:表中的数据名称可能发生改动或者删除，请检查表中的数据title名称是否正确，如果正确请联系楚洋进行核对");
+                return null;
+            }
+        }
+        public ConversationEffectData GetConversationEffectData(long id)
+        {
+            try
+            {
+                if (this.conversationEffectData.ContainsKey(id))
+                {
+                    ConversationEffectData skill = new ConversationEffectData
+                            (id,
+                            this.conversationEffectData[id]["name"],
+                            this.conversationEffectData[id]["descrption"],
+                            int.Parse(this.conversationEffectData[id]["type"]),
+                            this.conversationEffectData[id]["parameter"]
+                            );
+                    return skill;
+                }
+                else
+                {
+                    Debug.LogError("楚洋：ConversationEffectData数据转换错误，数据中未能找到此id = " + id + " 的物品，请在逻辑层检查是否对数据进行了初始化,或者Id出了问题，或是否配表出了问题");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("楚洋:表中的数据名称可能发生改动或者删除，请检查表中的数据title名称是否正确，如果正确请联系楚洋进行核对");
+                return null;
+            }
+        }
+        public NotePageData GetNotePageData(long id)
+        {
+            try
+            {
+                if (this.notePageData.ContainsKey(id))
+                {
+                    NotePageData skill = new NotePageData
+                            (id,
+                            this.notePageData[id]["name"],
+                            this.notePageData[id]["descrption"],
+                            this.notePageData[id]["noteTemplate"],
+                            this.notePageData[id]["noteIds"]
+                            );
+                    return skill;
+                }
+                else
+                {
+                    Debug.LogError("楚洋：NotePageData数据转换错误，数据中未能找到此id = " + id + " 的物品，请在逻辑层检查是否对数据进行了初始化,或者Id出了问题，或是否配表出了问题");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("楚洋:表中的数据名称可能发生改动或者删除，请检查表中的数据title名称是否正确，如果正确请联系楚洋进行核对");
+                return null;
+            }
+        }
+        public NoteData GetNoteData(long id)
+        {
+            try
+            {
+                if (this.noteData.ContainsKey(id))
+                {
+                    NoteData skill = new NoteData
+                            (id,
+                            this.noteData[id]["name"],
+                            this.noteData[id]["descrption"],
+                            this.noteData[id]["noteImage"]
+                            );
+                    return skill;
+                }
+                else
+                {
+                    Debug.LogError("楚洋：NoteData数据转换错误，数据中未能找到此id = " + id + " 的物品，请在逻辑层检查是否对数据进行了初始化,或者Id出了问题，或是否配表出了问题");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("楚洋:表中的数据名称可能发生改动或者删除，请检查表中的数据title名称是否正确，如果正确请联系楚洋进行核对");
+                return null;
+            }
         }
 
-        //将字符串转换成字典
         #endregion
         /////////////////////////////////////方法///////////////////////////////////////////
+
     }
 }

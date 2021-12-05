@@ -31,11 +31,12 @@ namespace Nameless.ConfigData
         public string buildSkills;
 
         public string dialogue;
-        public string animName;
-        public string iconName;
-        public string campName;
+        public string animPrefab;
+        public string selectIcon;
+        public string campIcon;
         public int campPosIndex;
         public int btnLRpos;
+        public string converIds;
 
         public CharacterData
             (
@@ -62,11 +63,12 @@ namespace Nameless.ConfigData
             string supportSkills,
             string buildSkills,
             string dialogue,
-            string animName,
-            string iconName,
-            string campName,
+            string animPrefab,
+            string selectIcon,
+            string campIcon,
             int campPosIndex,
-            int btnLRpos
+            int btnLRpos,
+            string converIds
             )
         {
             this.Id = Id;
@@ -92,11 +94,12 @@ namespace Nameless.ConfigData
             this.supportSkills = supportSkills;
             this.buildSkills = buildSkills;
             this.dialogue = dialogue;
-            this.animName = animName;
-            this.iconName = iconName;
-            this.campName = campName;
+            this.animPrefab = animPrefab;
+            this.selectIcon = selectIcon;
+            this.campIcon = campIcon;
             this.campPosIndex = campPosIndex;
             this.btnLRpos = btnLRpos;
+            this.converIds = converIds;
 
         }
 
@@ -129,7 +132,8 @@ namespace Nameless.ConfigData
             string iconName,
             string campName,
             int campPosIndex,
-            int btnLRpos
+            int btnLRpos,
+            string converIds
             )
         {
             this.Id = Id;
@@ -155,11 +159,12 @@ namespace Nameless.ConfigData
             this.supportSkills = supportSkills;
             this.buildSkills = buildSkills;
             this.dialogue = dialogue;
-            this.animName = animName;
-            this.iconName = iconName;
-            this.campName = campName;
+            this.animPrefab = animName;
+            this.selectIcon = iconName;
+            this.campIcon = campName;
             this.campPosIndex = campPosIndex;
             this.btnLRpos = btnLRpos;
+            this.converIds = converIds;
 
         }
         // Start is called before the first frame update
