@@ -1,0 +1,1 @@
+{"1":{"name":"option1","descrption":"option1","effects":"[3]"},"2":{"name":"option2","descrption":"option2","effects":"[6]"},"3":{"name":"option3","descrption":"option3","effects":"[4]"},"4":{"name":"option4","descrption":"option4","effects":"[4]"},"5":{"name":"option5","descrption":"option5","effects":"[5]"}}

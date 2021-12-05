@@ -214,12 +214,13 @@ namespace Nameless.Data
 
         public Dictionary<long, DialogueGroup> dialogueDic = new Dictionary<long, DialogueGroup>();
 
-        public string animName;
+        public string animPrefab;
         public Sprite selectIcon;
         public Sprite campIcon;
         public int campPosIndex;
         public int leftOrRight;
-        public Pawn(long id, string name,float health, float crHealth, float attack, float crAttack, float morale, float crMorale, int ammo, float crAmmo, float speed, float crSpeed, float hit, float crHit, float dex, float crDex, float defend, float crDefend, List<long> fightSkillIds, List<long> supportSkillIds, List<long> buildSkillIds, Dictionary<long, DialogueGroup> dialogueDic,string animName,string iconName, string campName, int campPosIndex, int btnLRpos)
+        public Dictionary<long, Conversation> conversationMapDic = new Dictionary<long, Conversation>();//后面会改成new Dictionary<long, List<Conversation>>()将符合条件的选出
+        public Pawn(long id, string name,float health, float crHealth, float attack, float crAttack, float morale, float crMorale, int ammo, float crAmmo, float speed, float crSpeed, float hit, float crHit, float dex, float crDex, float defend, float crDefend, List<long> fightSkillIds, List<long> supportSkillIds, List<long> buildSkillIds, Dictionary<long, DialogueGroup> dialogueDic,string animPrefab,string selectIcon, string campIcon, int campPosIndex, int btnLRpos, Dictionary<long, Conversation> conversationMapDic)
         {
             this.id = id;
             this.name = name;
@@ -252,11 +253,12 @@ namespace Nameless.Data
 
 
             this.dialogueDic = dialogueDic;
-            this.animName = animName;
-            this.selectIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterImage, iconName);
-            this.campIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterCampImage, campName);
+            this.animPrefab = animPrefab;
+            this.selectIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterImage, selectIcon);
+            this.campIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterCampImage, campIcon);
             this.campPosIndex = campPosIndex;
             this.leftOrRight = btnLRpos;
+            this.conversationMapDic = conversationMapDic;
 
         }
 

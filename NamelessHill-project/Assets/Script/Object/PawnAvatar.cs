@@ -137,7 +137,7 @@ namespace Nameless.DataMono
             this.State = PawnState.Wait;
             this.nameTxt.text = DataManager.Instance.GetCharacter(Id).name;
             this.fixbtn.gameObject.SetActive(false);
-            GameObject animObj = Instantiate(Resources.Load(pathFindAnim + this.pawnAgent.pawn.animName), this._root.transform) as GameObject;
+            GameObject animObj = Instantiate(Resources.Load(pathFindAnim + this.pawnAgent.pawn.animPrefab), this._root.transform) as GameObject;
             animObj.transform.localPosition = new Vector3(0, -9 ,0);
             animObj.transform.localScale = new Vector3(1, 1, 1);
             animObj.GetComponent<CharacterAnim>().Init(this);

@@ -1,0 +1,1 @@
+{"1001":{"name":"conver1","descrption":"conver1","conversationPawns":"[1001,1002]","options":"[1,2,4]","side":"0"},"1002":{"name":"conver2","descrption":"conver2","conversationPawns":"[1003,1002]","options":"[5]","side":"1"}}

@@ -13,7 +13,6 @@ namespace Nameless.DataMono
         private Area area;
         public void InitAreaInfo()
         {
-            
             AreaAgent areaAgent = AreaFactory.GetAreaById(this.areaId);
             if (areaAgent.type == AreaType.Normal)
             {
@@ -36,9 +35,6 @@ namespace Nameless.DataMono
                 this.gameObject.AddComponent<SpawnArea>().Init(this.localId, areaAgent);
                 this.area = this.GetComponent<SpawnArea>();
             }
-            
-
-
         }
 
         public Area GetArea()
