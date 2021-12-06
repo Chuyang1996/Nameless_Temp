@@ -42,6 +42,7 @@ namespace Nameless.Manager {
         {
             this.eventTriggerDic.Clear();
             this.currentAllEvent.Clear();
+            
         }
         public void CheckRelateTimeEvent(int currentTime)
         {
@@ -166,7 +167,7 @@ namespace Nameless.Manager {
             {
                 if (GameManager.Instance.GameScene == GameScene.Camp)
                     yield break;
-                //Debug.Log("我还在监听");
+                //Debug.Log("我还在监听EventTriggerManager");
                 if (this.currentAllEvent.Count > 0)
                 {
                     GameManager.Instance.PauseOrPlay(false);

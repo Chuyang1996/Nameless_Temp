@@ -15,7 +15,10 @@ namespace Nameless.Manager
         public Stack<DialoguePawn> dialoguePawns = new Stack<DialoguePawn>();
         public bool isShowDialogue = false;
 
-
+        public void ClearEvent()
+        {
+            this.dialoguePawns.Clear();
+        }
         public void CheckGameStartEvent(PawnAvatar pawn)
         {
             if (pawn.pawnAgent.dialogueGroup != null)
@@ -65,7 +68,7 @@ namespace Nameless.Manager
             {
                 if (GameManager.Instance.GameScene == GameScene.Camp)
                     yield break;
-                //Debug.Log("我还在监听");
+                //Debug.Log("我还在监听DialogueTriggerManager");
                 if (this.dialoguePawns.Count > 0 && !this.isShowDialogue)
                 {
                     this.isShowDialogue = true;

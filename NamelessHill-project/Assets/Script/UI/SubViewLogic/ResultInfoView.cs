@@ -29,7 +29,7 @@ namespace Nameless.UI {
             if (isWin)
                 this.restartBtn.onClick.AddListener(() => { Time.timeScale = 1.0f; GameManager.Instance.EnterCamp(); });
             else
-                Application.LoadLevel(0);//待修改 等框架搭建完成 看看使用什么方式
+                this.restartBtn.onClick.AddListener(() => { Time.timeScale = 1.0f; GameManager.Instance.RestartBattle(); });
         } 
     }
 }

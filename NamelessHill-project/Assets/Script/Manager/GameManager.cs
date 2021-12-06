@@ -38,7 +38,6 @@ namespace Nameless.Manager {
 
 
 
-        public Map currentMap;
         public CharacterView characterView;
         public BattleView battleView;
         public CampView campView;
@@ -47,11 +46,7 @@ namespace Nameless.Manager {
         public ConversationView conversationView;
         public NoteBookView noteBookView;
 
-        public InitArea[] areas;//待修改 所有玩家角色区域
-        public List<PawnAvatar> curplayerPawns;//待修改 当前玩家角色
 
-        public InitArea[] enemyAreas;//待修改 所有敌方角色区域
-        public List<PawnAvatar> curenemyPawns;//待修改 当前敌方角色
 
 
         private List<Area> playerOccupyAreas = new List<Area>();//待修改 所有玩家占领的区域
@@ -70,14 +65,15 @@ namespace Nameless.Manager {
             SpriteManager.Instance.InitTexturePackage();
             PawnManager.Instance.InitPawns();
             NoteManager.Instance.InitNote();
-            //MapManager.Instance.InitMap();
+            MapManager.Instance.InitMap();
 
 
 
         }
         public void EnterBattle()
         {
-            Map.Instance.InitArea();
+            MapManager.Instance.NewMap(MapManager.Instance.currentMapData);
+            MapManager.Instance.currentMap.InitArea();
             List<EventResult> eventResults = new List<EventResult>();
             foreach (var child in DataManager.Instance.eventResultData)
             {
@@ -91,12 +87,15 @@ namespace Nameless.Manager {
             Time.timeScale = 1.0f;
             this.RESULTEVENT += this.Result;
 
-            PawnManager.Instance.AddPawnOnArea(1001, Map.Instance.FindAreaByLocalId(38), 0, false);
-            PawnManager.Instance.AddPawnOnArea(1002, Map.Instance.FindAreaByLocalId(24), 0, false);
-            PawnManager.Instance.AddPawnOnArea(1003, Map.Instance.FindAreaByLocalId(21), 0, false);
-            PawnManager.Instance.AddPawnOnArea(1004, Map.Instance.FindAreaByLocalId(25), 0, false);
-            PawnManager.Instance.AddPawnOnArea(1005, Map.Instance.FindAreaByLocalId(14), 0, true);
-            PawnManager.Instance.AddPawnOnArea(1005, Map.Instance.FindAreaByLocalId(34), 0, true);
+            PawnManager.Instance.AddPawnOnArea(1001, MapManager.Instance.currentMap.FindAreaByLocalId(38), 0, false);
+            PawnManager.Instance.AddPawnOnArea(1002, MapManager.Instance.currentMap.FindAreaByLocalId(24), 0, false);
+         //   PawnManager.Instance.AddPawnOnArea(1003, MapManager.Instance.currentMap.FindAreaByLocalId(21), 0, false);
+            PawnManager.Instance.AddPawnOnArea(1004, MapManager.Instance.currentMap.FindAreaByLocalId(25), 0, false);
+            PawnManager.Instance.AddPawnOnArea(1005, MapManager.Instance.currentMap.FindAreaByLocalId(14), 0, true);
+            //PawnManager.Instance.AddPawnOnArea(1005, MapManager.Instance.currentMap.FindAreaByLocalId(22), 0, true);
+            //PawnManager.Instance.AddPawnOnArea(1005, MapManager.Instance.currentMap.FindAreaByLocalId(4), 0, true);
+            //PawnManager.Instance.AddPawnOnArea(1005, MapManager.Instance.currentMap.FindAreaByLocalId(21), 0, true);
+            //PawnManager.Instance.AddPawnOnArea(1005, MapManager.Instance.currentMap.FindAreaByLocalId(2), 0, true);
             #region//获取本次场景里的事件
 
 
@@ -107,6 +106,11 @@ namespace Nameless.Manager {
             #endregion
 
             this.battleView.gameObject.SetActive(true);
+        }
+        public void RestartBattle()
+        {
+            this.ClearScene();
+            this.EnterBattle();
         }
         public void EnterCamp()
         {
@@ -192,8 +196,14 @@ namespace Nameless.Manager {
 
         public void ClearScene()
         {
+            this.enemyOccupyAreas.Clear();
+            this.playerOccupyAreas.Clear();
+            EventTriggerManager.Instance.ClearEvent();
+            DialogueTriggerManager.Instance.ClearEvent();
+            StopCoroutine(EventTriggerManager.Instance.StartListenEvent());
+            StopCoroutine(DialogueTriggerManager.Instance.StartListenEvent());
             PawnManager.Instance.ClearAllPawn();
-            Map.Instance.ClearMap();
+            MapManager.Instance.ClearMap();
 
         }
         public void PauseOrPlay(bool isPlay)
