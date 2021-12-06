@@ -27,17 +27,7 @@ namespace Nameless.DataMono
         //    this.areaSprite.color = Color.Lerp(Color.blue,Color.green,0.5F);
         //    this.type = AreaType.Base;
         //}
-        public override bool AddPawn(PawnAvatar pawn)
-        {
-            this.pawns.Add(pawn);
-            if(this.pawns.Count>1)
-            {
-                this.pawns.Remove(pawn);
-                return false;
-            }
 
-            return true;
-        }
 
         public override void RemovePawn(PawnAvatar pawn)
         {
