@@ -41,37 +41,49 @@ public class TempTextReader : MonoBehaviour
             if (showChar == content)
             {
                 nextIcon.gameObject.SetActive(true);
+                isDone = true;
+                isShowingText = false;
                 //展示完成
             }
 
-            if (Input.GetMouseButtonDown(0))
+            //if (Input.GetMouseButtonDown(0))
+            //{
+            if (!isShowingText&&!isDone)
             {
-                if (!isShowingText)
-                {
-                    Debug.Log("StartProcess!!");
-                    StartCoroutine(ShowText(showChar.Length));
-                    isShowingText = true;
-                }
-                else
+                Debug.Log("StartProcess!!");
+                StartCoroutine(ShowText(showChar.Length));
+                isShowingText = true;
+            }
+            else
+            {
+                if (Input.GetMouseButtonDown(0))
                 {
                     ShowAllText();
                     Debug.Log("isDOne!!");
-                    if (nextLine != null)
-                    {
-                        nextLine.isAllowToShow = true;
-                    }
-                    else
-                    {
-                        //ShowPic
-                        tcsm.showMap = true;
-                    }
+                }
+            }
+
+            if (isDone && !isShowingText)
+            {
+
+            }
+            //}
+        }
+        else if (isAllowToShow && isDone)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (nextLine != null)
+                {
+                    nextLine.isAllowToShow = true;
                     nextIcon.gameObject.SetActive(false);
                 }
-
-                if (isDone && !isShowingText)
+                else
                 {
-
+                    //ShowPic
+                    tcsm.showMap = true;
                 }
+                nextIcon.gameObject.SetActive(false);
             }
         }
 
@@ -83,7 +95,7 @@ public class TempTextReader : MonoBehaviour
         int i = 0;
         while (i < content.Length)
         {
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.03f);
             showChar += content[i].ToString();
             text.text = showChar;
             i += 1;
@@ -97,6 +109,10 @@ public class TempTextReader : MonoBehaviour
             isShowingText = false;
             isDone = true;
             nextIcon.gameObject.SetActive(true);
+            // if(nextLine!=null)
+            // {
+            //     nextLine.isAllowToShow = true;
+            // }
             //展示完成
         }
         else
