@@ -265,7 +265,7 @@ namespace Nameless.DataMono
                 RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
                 if (hit.collider != null)
                 {
-                    if (hit.collider.gameObject == this.currentArea.gameObject && !this.isAI && GameManager.Instance.IsBelongToSameSide(this.currentArea,this) )//���޸�.AI
+                    if (hit.collider.gameObject == this.currentArea.gameObject && !this.isAI && GameManager.Instance.IsBelongToSameSide(this.currentArea,this) && this.State == PawnState.Wait)//���޸�.AI
                     {
                         this.FixBtnActive = !this.FixBtnActive;
 
