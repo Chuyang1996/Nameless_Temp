@@ -20,7 +20,7 @@ namespace Nameless.DataMono
         }
         public PawnAvatar GenPawn(long id)
         {
-            return PawnManager.Instance.GeneratePawn(id, this, spawnAI, 0);//待修改 确定了地图的配表之后
+            return PawnManager.Instance.AddPawnOnArea(id, this, 0, spawnAI);//待修改 确定了地图的配表之后
             //GameObject pawnAvatar = Instantiate(Resources.Load(pawnPath)) as GameObject;
             //pawnAvatar.GetComponent<PawnAvatar>().currentArea = this;
             //pawnAvatar.GetComponent<PawnAvatar>().Id = id;

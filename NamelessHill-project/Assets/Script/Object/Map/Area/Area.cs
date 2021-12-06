@@ -15,7 +15,7 @@ namespace Nameless.DataMono
     }
     public class Area : MonoBehaviour
     {
-        public int id;
+        public int localId;
         public float costMorale = -1.0f;
         public float costTimeMorale = 1.0f;
 
@@ -95,7 +95,7 @@ namespace Nameless.DataMono
 
         public virtual void Init(int id, AreaAgent areaAgent)//待修改 等框架搭建完成
         {
-            this.id = id;
+            this.localId = id;
             this.centerNode = this.transform.Find("CenterNode").gameObject;
             this.matPoint = this.transform.Find("MatPos").gameObject;
             this.ammoPoint = this.transform.Find("AmmoPos").gameObject;
@@ -114,7 +114,7 @@ namespace Nameless.DataMono
                 return false;
             }
 
-            EventTriggerManager.Instance.CheckPawnArriveArea(pawn.pawnAgent.pawn.id, this.id);
+            EventTriggerManager.Instance.CheckPawnArriveArea(pawn.pawnAgent.pawn.id, this.localId);
             //this.ResetPawnPos();
             return true;
         }//本区域添加一个角色

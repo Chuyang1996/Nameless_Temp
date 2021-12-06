@@ -50,17 +50,13 @@ namespace Nameless.Manager
             return isAi ? this.enemyPawns : this.playerPawns;
         }
 
-        public PawnAvatar GeneratePawn(long id, Area area,bool spawnAI, int mapId)//待修改 阵营确定之后
+        public PawnAvatar AddPawnOnArea(long id, Area area, int mapId,bool spawnAI = true)//待修改 阵营确定之后
         {
+            if (area == null)
+                return null;
             GameObject pawnAvatar = Instantiate(Resources.Load(pawnPath)) as GameObject;
-            pawnAvatar.GetComponent<PawnAvatar>().currentArea = area;
             pawnAvatar.GetComponent<PawnAvatar>().Id = id;
-            pawnAvatar.gameObject.transform.position = area.transform.position;
-            if (spawnAI)
-            {
-                pawnAvatar.GetComponent<PawnAvatar>().isAI = true;
-            }
-            area.AddPawn(pawnAvatar.GetComponent<PawnAvatar>());
+            pawnAvatar.GetComponent<PawnAvatar>().isAI = spawnAI;
             pawnAvatar.GetComponent<PawnAvatar>().Init(mapId, area);
             DialogueTriggerManager.Instance.TimeTriggerEvent += pawnAvatar.GetComponent<PawnAvatar>().ReceiveCurrentTime;
 
