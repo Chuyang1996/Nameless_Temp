@@ -2198,7 +2198,7 @@ MonoBehaviour:
   GameScene: 0
   accessbility: 0
   totalTime: 200
-  levelgoalDes: Hold for 12 hours
+  levelgoalDes: 
   totalMilitaryRes: 1000
   enemiesDieNum: 0
   characterView: {fileID: 2059111272}
