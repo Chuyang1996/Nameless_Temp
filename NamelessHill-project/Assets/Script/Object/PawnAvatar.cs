@@ -39,7 +39,7 @@ namespace Nameless.DataMono
         private int nodeCount = 0;
         private int currentWalkNode = 0;
 
-        private GameObject Wire;
+        private GameObject wire;
         private GameObject walkWire;
         private LineRenderer renderWire;
         private LineRenderer walkRenderWire;
@@ -261,19 +261,19 @@ namespace Nameless.DataMono
         #region//Â·¾¶
         void InitLine()
         {
-            Destroy(Wire);
+            Destroy(wire);
             Destroy(walkWire);
             this.currentWalkNode = 0;
             this.nodePath = new List<Vector3>();
-            this.Wire = new GameObject();
+            this.wire = new GameObject();
             this.walkWire = new GameObject();
             this.areaDic = new Dictionary<GameObject, bool>();
             this.distanceDic = new Dictionary<GameObject, float>();
             this.endAreaList = new List<Area>();
             this.pathList = new List<Path>();
-            this.Wire.name = "Wire: " + this.pawnAgent.pawn.name;
+            this.wire.name = "Wire: " + this.pawnAgent.pawn.name;
             this.walkWire.name = "walkWire";
-            this.renderWire = Wire.AddComponent<LineRenderer>();
+            this.renderWire = wire.AddComponent<LineRenderer>();
             this.walkRenderWire = walkWire.AddComponent<LineRenderer>();
             this.renderWire.material = WireMaterial;
             this.walkRenderWire.material = WireMaterial;
@@ -298,6 +298,8 @@ namespace Nameless.DataMono
             this.renderWire.SetPosition(0, this.startPoint.centerNode.transform.position);
             this.walkRenderWire.SetPosition(0, this.startPoint.centerNode.transform.position);
             this.areaDic.Add(this.targetArea.gameObject, true);
+            this.wire.transform.parent = AreasManager.Instance.PathLine.transform;
+            this.walkWire.transform.parent = AreasManager.Instance.PathLine.transform;
 
         }
         public void ShowPath(bool isShow)
@@ -1087,9 +1089,9 @@ namespace Nameless.DataMono
                 PawnManager.Instance.RemovePawn(this);
             }
 
-            if (this.Wire != null)
+            if (this.wire != null)
             {
-                Destroy(this.Wire.gameObject);
+                Destroy(this.wire.gameObject);
                 if (this.walkWire != null)
                     Destroy(this.walkWire.gameObject);
             }

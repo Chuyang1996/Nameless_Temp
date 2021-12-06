@@ -19,7 +19,7 @@ namespace Nameless.Manager {
         public bool isPlay = true;
         public GameScene GameScene;
         public Action<string, bool> RESULTEVENT;
-
+        public Action<int> TotalMilitartEvent;
         /// <summary>
         /// 临时数据
         /// </summary>
@@ -27,7 +27,7 @@ namespace Nameless.Manager {
         public int totalTime = 720;//本场战斗总时间//待修改
         public string levelgoalDes = "Hold for 12 hours";//本场战斗总时间//待修改
         public int totalMilitaryRes;//我方的补给数量//待修改
-        public Action<int> TotalMilitartEvent;
+
         [HideInInspector]
         public int enemiesDieNum = 0;//敌人死亡数量//待修改
 
@@ -194,8 +194,14 @@ namespace Nameless.Manager {
             this.GameScene = GameScene.Camp;
             RTSCamera.Instance.ResetCameraPos();
             CampManager.Instance.InitCamp(PawnManager.Instance.GetPawnAvatars(false),this.totalMilitaryRes);
-            PawnManager.Instance.ClearAllPawn();
             
+        }
+
+        public void ClearScene()
+        {
+            PawnManager.Instance.ClearAllPawn();
+            AreasManager.Instance.ClearMap();
+
         }
         public void PauseOrPlay(bool isPlay)
         {

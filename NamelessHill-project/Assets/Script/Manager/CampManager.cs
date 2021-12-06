@@ -25,7 +25,7 @@ namespace Nameless.Manager
         }
         public void ActiveCamp()
         {
-            AreasManager.Instance.gameObject.SetActive(false);
+            GameManager.Instance.ClearScene();
             this.campScene.SetActive(true);
         }
         public void ReceivePawnFromBattle(List<PawnAvatar> pawnAvatars)
