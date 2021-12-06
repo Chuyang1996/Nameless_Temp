@@ -44,6 +44,8 @@ namespace Nameless.Manager
         public Dictionary<long, Dictionary<string, string>> notePageData;
         public Dictionary<long, Dictionary<string, string>> noteData;
 
+        public Dictionary<long, Dictionary<string, string>> mapData;
+
         #endregion
         ///////////////////////////////数据//////////////////////////
 
@@ -75,6 +77,7 @@ namespace Nameless.Manager
             this.conversationEffectData = this.ReadFile("ConversationEffect_Data.txt");
             this.notePageData = this.ReadFile("NotePage_Data.txt");
             this.noteData = this.ReadFile("Note_Data.txt");
+            this.mapData = this.ReadFile("Map_Data.txt");
             //string data;
 
 
@@ -590,7 +593,33 @@ namespace Nameless.Manager
                 return null;
             }
         }
-
+        public MapData GetMapData(long id)
+        {
+            try
+            {
+                if (this.mapData.ContainsKey(id))
+                {
+                    MapData skill = new MapData
+                            (id,
+                            this.mapData[id]["name"],
+                            this.mapData[id]["descrption"],
+                            this.mapData[id]["mapName"],
+                            long.Parse(this.mapData[id]["nextId"])
+                            );
+                    return skill;
+                }
+                else
+                {
+                    Debug.LogError("楚洋：MapData数据转换错误，数据中未能找到此id = " + id + " 的物品，请在逻辑层检查是否对数据进行了初始化,或者Id出了问题，或是否配表出了问题");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("楚洋:表中的数据名称可能发生改动或者删除，请检查表中的数据title名称是否正确，如果正确请联系楚洋进行核对");
+                return null;
+            }
+        }
         #endregion
         /////////////////////////////////////方法///////////////////////////////////////////
 

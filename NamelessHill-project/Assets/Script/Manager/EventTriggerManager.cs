@@ -38,6 +38,11 @@ namespace Nameless.Manager {
                 this.eventTriggerDic.Add(EventTriggerFactory.GetEventTriggerById(child.Key), child.Value);
             }
         }
+        public void ClearEvent()
+        {
+            this.eventTriggerDic.Clear();
+            this.currentAllEvent.Clear();
+        }
         public void CheckRelateTimeEvent(int currentTime)
         {
             foreach (var child in this.eventTriggerDic)

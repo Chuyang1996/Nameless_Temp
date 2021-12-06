@@ -70,6 +70,7 @@ namespace Nameless.Manager {
             SpriteManager.Instance.InitTexturePackage();
             PawnManager.Instance.InitPawns();
             NoteManager.Instance.InitNote();
+            MapManager.Instance.InitMap();
 
 
 
