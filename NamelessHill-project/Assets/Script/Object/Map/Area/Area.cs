@@ -125,7 +125,11 @@ namespace Nameless.DataMono
         }//本区域移除一个角色
         public virtual void ChangeColor(bool isAi)
         {
-            this.areaSprite.color = isAi? new Color(1, 0, 0, 0.2f) : new Color(0, 1, 0, 0.2f);
+            if(GameManager.Instance.accessbility)
+                this.areaSprite.color = isAi ? new Color(0.91f, 0.82f, 0.34f, 0.2f) : new Color(0.56f, 0.65f, 0.94f, 0.2f);
+            else 
+               this.areaSprite.color = isAi ? new Color(1, 0, 0, 0.2f) : new Color(0, 1, 0, 0.2f);
+
             
         }//本区域改变颜色
         public virtual bool IsMatExist(MatType type ,int num)

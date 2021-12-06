@@ -92,7 +92,7 @@ namespace Nameless.DataMono
         public float animationDuration;
 
         public PawnAgent pawnAgent;
-        #region//¶¯»­
+        #region//ï¿½ï¿½ï¿½ï¿½
         private const string pathFindAnim = "Prefabs/CharacterAnim/";
 
         public GameObject _root;
@@ -132,6 +132,19 @@ namespace Nameless.DataMono
         public void Init(int mapId, Area initArea)
         {
             this.healthBar.value = 1;
+            if (GameManager.Instance.accessbility)
+            {
+                this.healthBar.gameObject.transform.Find("Fill Area/Fill").gameObject.GetComponent<Image>().color = this.isAI ? new Color(0.74f, 0.64f, 0.08f, 1) : new Color(0.47f, 0.51f, 0.66f, 1);
+                this.ocuppyBar.gameObject.transform.Find("Fill Area/Fill").gameObject.GetComponent<Image>().color = new Color(0.33f, 0.33f, 0.33f, 1);
+                this.nameTxt.color = this.isAI ? new Color(0.74f, 0.64f, 0.08f, 1) : new Color(0.47f, 0.51f, 0.66f, 1);
+            }
+            else
+            {
+                this.healthBar.gameObject.transform.Find("Fill Area/Fill").gameObject.GetComponent<Image>().color = this.isAI ? new Color(1, 0, 0, 1) : new Color(0, 1, 0, 1);
+                this.ocuppyBar.gameObject.transform.Find("Fill Area/Fill").gameObject.GetComponent<Image>().color = new Color(0, 1, 1, 1);
+                this.nameTxt.color = this.isAI ? new Color(1, 0, 0, 1) : new Color(0, 1, 0, 1);
+            }
+            
             this.characterView = GameManager.Instance.characterView;
             this.pawnAgent = new PawnAgent(this.healthBar, this.CurrentArea,PawnFactory.GetPawnById(Id),mapId);
             initArea.AddPawn(this);
@@ -182,7 +195,7 @@ namespace Nameless.DataMono
             }
             if (this.characterView.gameObject.activeInHierarchy || this.isAI)
                 return;
-            //if (Input.GetMouseButtonDown(1))//´ýÐÞ¸Ä ´ò¿ª½ÇÉ«Ãæ°åÔÝÊ±ÆÁ±Î
+            //if (Input.GetMouseButtonDown(1))//ï¿½ï¿½ï¿½Þ¸ï¿½ ï¿½ò¿ª½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
             //{
             //    Ray targetray = Camera.main.ScreenPointToRay(Input.mousePosition);
             //    RaycastHit TargetHit;
@@ -210,7 +223,7 @@ namespace Nameless.DataMono
                         this.InitLine();
                         this.ShowPath(true);
                     }
-                    else if (TargetHit.transform.gameObject == this.fixbtn && !this.isAI)//´ýÐÞ¸Ä.AI
+                    else if (TargetHit.transform.gameObject == this.fixbtn && !this.isAI)//ï¿½ï¿½ï¿½Þ¸ï¿½.AI
                     {
                         GameManager.Instance.buildView.gameObject.SetActive(true);
                         GameManager.Instance.buildView.ResetBuild(this);
@@ -249,7 +262,7 @@ namespace Nameless.DataMono
                 RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
                 if (hit.collider != null)
                 {
-                    if (hit.collider.gameObject == this.currentArea.gameObject && !this.isAI)//´ýÐÞ¸Ä.AI
+                    if (hit.collider.gameObject == this.currentArea.gameObject && !this.isAI)//ï¿½ï¿½ï¿½Þ¸ï¿½.AI
                     {
                         this.FixBtnActive = !this.FixBtnActive;
 
@@ -259,7 +272,7 @@ namespace Nameless.DataMono
 
         }
 
-        #region//Â·¾¶
+        #region//Â·ï¿½ï¿½
         void InitLine()
         {
             Destroy(wire);
@@ -281,11 +294,11 @@ namespace Nameless.DataMono
             //renderWire.material.SetTextureScale("_MainTex", new Vector2(2f, 2f));
             this.renderWire.SetWidth(0.4f, 0.4f);
             this.walkRenderWire.SetWidth(0.4f, 0.4f);
-            Color playerPath = new Color(0, 0, 1, 1);
-            Color aiPath = new Color(1, 1, 0, 0.3f);
+            Color playerPath = GameManager.Instance.accessbility?new Color(0.12f, 0.20f, 0.41f, 1):new Color(0, 0, 1, 1);
+            Color aiPath = GameManager.Instance.accessbility ? new Color(0.33f, 0.31f, 0.14f, 0.3f) : new Color(1, 1, 0, 0.3f);
             this.renderWire.SetColors(this.isAI ? aiPath : playerPath, this.isAI ? aiPath : playerPath);
-            Color playerWalk = new Color(0, 1, 1, 1);
-            Color aiWalk = new Color(1, 0.5f, 0, 0.3f);
+            Color playerWalk = GameManager.Instance.accessbility ? new Color(0.47f, 0.51f, 0.66f, 1) : new Color(0, 1, 1, 1);
+            Color aiWalk = GameManager.Instance.accessbility ? new Color(0.74f, 0.64f, 0.08f, 0.3f) : new Color(1, 0.5f, 0, 0.3f);
             this.walkRenderWire.SetColors(this.isAI? aiWalk : playerWalk, this.isAI ? aiWalk : playerWalk);
             
             this.renderWire.sortingOrder = 0;
@@ -308,10 +321,10 @@ namespace Nameless.DataMono
             if(this.renderWire!=null && this.walkRenderWire != null)
             {
                 float alpha = isShow ? 1.0f : 0.3f;
-                Color playerPath = new Color(0, 0, 1, alpha);
-                Color aiPath = new Color(1, 1, 0, alpha);
-                Color playerWalk = new Color(0, 1, 1, alpha);
-                Color aiWalk = new Color(1, 0.5f, 0, alpha);
+                Color playerPath = GameManager.Instance.accessbility ? new Color(0.12f, 0.20f, 0.41f, alpha) : new Color(0, 0, 1, alpha);
+                Color aiPath = GameManager.Instance.accessbility ? new Color(0.33f, 0.31f, 0.14f, alpha) : new Color(1, 1, 0, alpha);
+                Color playerWalk = GameManager.Instance.accessbility ? new Color(0.47f, 0.51f, 0.66f, alpha) : new Color(0, 1, 1, alpha);
+                Color aiWalk = GameManager.Instance.accessbility ? new Color(0.74f, 0.64f, 0.08f, alpha) : new Color(1, 0.5f, 0, alpha);
 
                 this.renderWire.SetColors(this.isAI ? aiPath : playerPath, this.isAI ? aiPath : playerPath);
                 this.walkRenderWire.SetColors(this.isAI ? aiWalk : playerWalk, this.isAI ? aiWalk : playerWalk);
@@ -339,12 +352,12 @@ namespace Nameless.DataMono
                     }
                 }
             }
-        }//ÓÃÊó±ê»­Â·¾¶
+        }//ï¿½ï¿½ï¿½ï¿½ê»­Â·ï¿½ï¿½
         void AIBehavior(/*int goal*/)
         {
             if(this.State == PawnState.Wait)
             {
-                if (!GameManager.Instance.IsBelongToSameSide(this.currentArea, this))//Èç¹ûµ±Ç°ÇøÓò»¹²»ÊÇAIµÄ Ôò¼ÌÐøµÈ´ý
+                if (!GameManager.Instance.IsBelongToSameSide(this.currentArea, this))//ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ò»¹²ï¿½ï¿½ï¿½AIï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È´ï¿½
                     return;
 
                 List<Area> oppoArea = new List<Area>();
@@ -352,11 +365,11 @@ namespace Nameless.DataMono
                 int samePawnNum = 0;
                 for (int i = 0; i < this.currentArea.neighboors.Count; i++)
                 {
-                    if (this.currentArea.neighboors[i].pawns.Count > 0 && !this.currentArea.neighboors[i].pawns[0].isAI)//´ýÐÞ¸Ä µÈ¿ò¼Ü´î½¨È·¶¨ÕóÓª
+                    if (this.currentArea.neighboors[i].pawns.Count > 0 && !this.currentArea.neighboors[i].pawns[0].isAI)//ï¿½ï¿½ï¿½Þ¸ï¿½ ï¿½È¿ï¿½Ü´î½¨È·ï¿½ï¿½ï¿½ï¿½Óª
                     {
                         oppoArea.Add(this.currentArea.neighboors[i]);
                     }
-                    if (this.currentArea.neighboors[i].pawns.Count <= 0 && !GameManager.Instance.IsBelongToSameSide( this.currentArea.neighboors[i],this))//´ýÐÞ¸Ä µÈ¿ò¼Ü´î½¨È·¶¨ÕóÓª
+                    if (this.currentArea.neighboors[i].pawns.Count <= 0 && !GameManager.Instance.IsBelongToSameSide( this.currentArea.neighboors[i],this))//ï¿½ï¿½ï¿½Þ¸ï¿½ ï¿½È¿ï¿½Ü´î½¨È·ï¿½ï¿½ï¿½ï¿½Óª
                     {
                         occupyArea.Add(this.currentArea.neighboors[i]);
                     }
@@ -409,7 +422,7 @@ namespace Nameless.DataMono
             //{
             //    this.DrawPath(AreasManager.Instance.areas[targetPath[i]], true);
             //}
-        }//AI×Ô¶¯»­Â·¾¶
+        }//AIï¿½Ô¶ï¿½ï¿½ï¿½Â·ï¿½ï¿½
         void DrawPath(Area targetArea,bool isAuto)
         {
             this.targetArea = targetArea;
@@ -425,7 +438,7 @@ namespace Nameless.DataMono
                     this.nodePath.Add(AreasManager.Instance.pathDic[temp1].nodes[i].transform.position);
                 }
                 this.nodeCount = AreasManager.Instance.pathDic[temp1].nodes.Length;
-                //Debug.Log(AreasManager.Instance.pathDic[temp1].name + "ÐÂÇøÓòAAAAAAAAAA");
+                //Debug.Log(AreasManager.Instance.pathDic[temp1].name + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½AAAAAAAAAA");
 
                 this.startPoint = this.targetArea;
 
@@ -454,7 +467,7 @@ namespace Nameless.DataMono
                 }
 
                 this.nodeCount = AreasManager.Instance.pathDic[temp2].nodes.Length;
-                //Debug.Log(AreasManager.Instance.pathDic[temp2].name + "ÐÂÇøÓòBBBBBBBBB");
+                //Debug.Log(AreasManager.Instance.pathDic[temp2].name + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BBBBBBBBB");
 
                 this.startPoint = this.targetArea;
 
@@ -479,12 +492,12 @@ namespace Nameless.DataMono
                 if (!isAuto)
                     AreasManager.Instance.mouseFollower.LabelChange(0.0f, TipState.UnWalk);
             }
-        }//Â·¾¶»æÖÆ
+        }//Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         //void WalkPath()
         //{
         //    if (this.durationTime >= this.walkTime)
         //    {
-        //        if (this.endAreaList[this.currentWalkNode].pawns.Count > 0 && this.isAI != this.endAreaList[this.currentWalkNode].pawns[0].isAI)//´ýÐÞ¸Ä ÅÐ¶ÏÊÇ·ñÕ½¶·
+        //        if (this.endAreaList[this.currentWalkNode].pawns.Count > 0 && this.isAI != this.endAreaList[this.currentWalkNode].pawns[0].isAI)//ï¿½ï¿½ï¿½Þ¸ï¿½ ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Õ½ï¿½ï¿½
         //        {
         //            if (this.endAreaList[this.currentWalkNode].pawns[0].State != PawnState.Battle)
         //            {
@@ -503,7 +516,7 @@ namespace Nameless.DataMono
         //        this.CurrentArea.AddPawn(this);
         //        if (!this.isAI)
         //        {
-        //            this.TryGetMat();//µ½´ï¸ÃÇøÓòºóÊÔÍ¼»ñÈ¡µ±µØ²ÄÁÏ
+        //            this.TryGetMat();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ø²ï¿½ï¿½ï¿½
         //        }
         //        this.currentWalkNode++;
         //        if (this.currentWalkNode < this.endAreaList.Count)
@@ -523,7 +536,7 @@ namespace Nameless.DataMono
         //    {
         //        this.durationTime += Time.deltaTime;
         //    }
-        //}//Â·¾¶»æÖÆÍê±Ïºó½øÐÐÐÐ×ß
+        //}//Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         void ReDrawWalkLine(int startInt)
         {
             for (int i = startInt; i < walkRenderWire.positionCount; i++)
@@ -550,7 +563,7 @@ namespace Nameless.DataMono
                 if (0 < currentPath)
                 {
                     renderWire.positionCount = currentPath;
-                    //Debug.Log("¿ª»­£¡£¡£¡£¡£¡£¡£¡this.currentIndex: " + this.currentIndex);
+                    //Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½this.currentIndex: " + this.currentIndex);
                     float segmentDuration = this.animationDuration / this.nodeCount;
                     this.isPlay = true;
                     for (int i = this.currentIndex; i < renderWire.positionCount - 1; i++)
@@ -586,17 +599,17 @@ namespace Nameless.DataMono
                                 yield return null;
                             }
                         }
-                        //Debug.Log("½áÊø²¥·Å");
+                        //Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                     }
                     this.currentIndex = renderWire.positionCount - 1;
                     this.isPlay = false;
-                    //Debug.Log("½áÊø²¥·Å");
+                    //Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                     if (this.nodePath.Count != renderWire.positionCount)
                     {
-                        //Debug.Log("ÐÂÂÖ»Ø£¡£¡£¡");
+                        //Debug.Log("ï¿½ï¿½ï¿½Ö»Ø£ï¿½ï¿½ï¿½ï¿½ï¿½");
                         StartCoroutine(DrawLineByNode(this.nodePath.Count,isAuto));
                     }
-                    else if (isAuto)//ÓÃÓÚAI×Ô¶¯×ßÂ·
+                    else if (isAuto)//ï¿½ï¿½ï¿½ï¿½AIï¿½Ô¶ï¿½ï¿½ï¿½Â·
                     {
                         this.State = PawnState.Walk;
                         List<Vector3> tempNode = this.nodePath;
@@ -613,7 +626,7 @@ namespace Nameless.DataMono
                 {
                     int lastNode = -1;
                     this.walkRenderWire.positionCount = nodeWalk.Count;
-                    //Debug.Log("¿ª»­×ßÂ·£¡£¡£¡£¡£¡£¡£¡");
+                    //Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                     this.ChangeDirection(this.endAreaList[this.currentWalkNode].centerNode.gameObject);
                     for (int i = 0; i < this.walkRenderWire.positionCount - 1; i++)
                     {
@@ -678,7 +691,7 @@ namespace Nameless.DataMono
 
                                 this.ReDrawWalkLine(lastNode+1);
                                 i = lastNode;
-                                if ( this.isAI != this.endAreaList[this.currentWalkNode].pawns[0].isAI && !this.pawnAgent.battleSideDic.ContainsKey(this.endAreaList[this.currentWalkNode].pawns[0]))//´ýÐÞ¸Ä ÅÐ¶ÏÊÇ·ñÕ½¶·
+                                if ( this.isAI != this.endAreaList[this.currentWalkNode].pawns[0].isAI && !this.pawnAgent.battleSideDic.ContainsKey(this.endAreaList[this.currentWalkNode].pawns[0]))//ï¿½ï¿½ï¿½Þ¸ï¿½ ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Õ½ï¿½ï¿½
                                 {
  
                                     this.State = PawnState.Battle;
@@ -715,7 +728,7 @@ namespace Nameless.DataMono
                             }
                             else
                             {
-                                if (this.endAreaList[this.currentWalkNode].AddPawn(this))//Èç¹ûÁ½¸ö½ÇÉ«ÕýºÃÍ¬Ê±µ½´ï ÔòÈÃ×îºóÌí¼ÓµÄÈË»ØÈ¥µÈ×Å
+                                if (this.endAreaList[this.currentWalkNode].AddPawn(this))//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½Í¬Ê±ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½Ë»ï¿½È¥ï¿½ï¿½ï¿½ï¿½
                                 {
                                     this.gameObject.transform.position = this.endAreaList[this.currentWalkNode].centerNode.gameObject.transform.position;
                                     this.CurrentArea.RemovePawn(this);
@@ -723,7 +736,7 @@ namespace Nameless.DataMono
                                     this.RemoveBehindLine(lastNode+2);
                                     if (!this.isAI)
                                     {
-                                        this.TryGetMat();//µ½´ï¸ÃÇøÓòºóÊÔÍ¼»ñÈ¡µ±µØ²ÄÁÏ
+                                        this.TryGetMat();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ø²ï¿½ï¿½ï¿½
                                     }
                                     this.currentWalkNode++;
                                     if (this.currentWalkNode < this.endAreaList.Count)
@@ -737,7 +750,7 @@ namespace Nameless.DataMono
                                 }
                             }
                         }
-                        //Debug.Log("½áÊø²¥·Å");
+                        //Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                     }
 
                     this.InitLine();
@@ -749,7 +762,7 @@ namespace Nameless.DataMono
         }
         #endregion
 
-        #region//Õ½¶·
+        #region//Õ½ï¿½ï¿½
         public void CalcuateBattleInfo()
         {
             float attack = this.pawnAgent.pawn.curAttack;
@@ -790,11 +803,11 @@ namespace Nameless.DataMono
                 return true;
             }
             return false;
-        }//¼ì²éÊÇ·ñÊäÁË
+        }//ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
         public void CheckResult(bool ifRetreat)
         {
-            this.pawnAgent.MoraleChange(-10.0f);//´ýÐÞ¸Ä
-            this.pawnAgent.battleSideDic = new Dictionary<PawnAvatar, BattleSide>();//´ýÐÞ¸Ä
+            this.pawnAgent.MoraleChange(-10.0f);//ï¿½ï¿½ï¿½Þ¸ï¿½
+            this.pawnAgent.battleSideDic = new Dictionary<PawnAvatar, BattleSide>();//ï¿½ï¿½ï¿½Þ¸ï¿½
             //this.ClearPawn();
             this.ResetAllSupport();
             this.PlayDeathAnim();
@@ -816,10 +829,10 @@ namespace Nameless.DataMono
             //        this.Retreat();
             //    }
             //}
-        }//¼ì²éÕ½°ÜºóµÄ½á¹û£¨ËÀÍö£©
+        }//ï¿½ï¿½ï¿½Õ½ï¿½Üºï¿½Ä½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         public void CheckIfBattleResult()
         {
-            this.pawnAgent.MoraleChange(10.0f);//´ýÐÞ¸Ä
+            this.pawnAgent.MoraleChange(10.0f);//ï¿½ï¿½ï¿½Þ¸ï¿½
             this.PlayDialogue(this.pawnAgent.pawn.winTxt);
             //this.pawnAgent.ResetBattleInfo();
             //this.State = this.lastState;
@@ -833,12 +846,12 @@ namespace Nameless.DataMono
                 this.State = this.lastState;
                 Debug.Log(this.name+":"+this.State);
                 //if (ifForward)
-                //    StartCoroutine(CheckFrontArea(opponent));//¼ì²éÇ°·½ÇøÓòÊÇ·ñ»¹ÓÐµÐÈË
+                //    StartCoroutine(CheckFrontArea(opponent));//ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ðµï¿½ï¿½ï¿½
                 //else
                 //    this.State = this.lastState;
             }
-        }//¼ì²éÕ½Ê¤ºóµÄ½á¹û£¨ÊÇ·ñ»¹Õ½¶·£©
-        private void CheckSupport()//¼ì²éÖ§Ô®
+        }//ï¿½ï¿½ï¿½Õ½Ê¤ï¿½ï¿½Ä½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Õ½ï¿½ï¿½ï¿½ï¿½
+        private void CheckSupport()//ï¿½ï¿½ï¿½Ö§Ô®
         {
             for(int i = 0; i < this.CurrentArea.neighboors.Count; i++)
             {
@@ -881,7 +894,7 @@ namespace Nameless.DataMono
                 }
             }
         }
-        private void ResetAllSupport()//ÖØÖÃÖ§Ô®
+        private void ResetAllSupport()//ï¿½ï¿½ï¿½ï¿½Ö§Ô®
         {
             for (int i = 0; i < this.supportRenderWires.Count; i++)
             {
@@ -906,7 +919,7 @@ namespace Nameless.DataMono
         //        return true;
 
         //    return false;
-        //}//¼ì²éÊÇ·ñÖÜÎ§¶¼ÊÇµÐÈË
+        //}//ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Î§ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½
         //public void CheckBattleState()
         //{
         //    if (this.pawnAgent.BattleState == BattleState.Normal)
@@ -942,7 +955,7 @@ namespace Nameless.DataMono
         //            this.pawnAgent.BattleState = BattleState.Pinch;
         //        }
         //    }
-        //}//¼ì²éµ±Ç°µÄÕ½¶·×´Ì¬
+        //}//ï¿½ï¿½éµ±Ç°ï¿½ï¿½Õ½ï¿½ï¿½×´Ì¬
         //public void Retreat()
         //{
         //    List<Area> tempAreaList = new List<Area>();
@@ -958,22 +971,22 @@ namespace Nameless.DataMono
         //    this.DrawPath(tempAreaList[index], true);
 
 
-        //}//³·ÍË
+        //}//ï¿½ï¿½ï¿½ï¿½
 
 
         //IEnumerator CheckFrontArea(PawnAvatar opponent)
         //{
-        //    while ((opponent != null && opponent.currentArea == this.endAreaList[this.currentWalkNode]) || this.pawnAgent.opponents.Count > 0)//ÔÚÖÜÎ§Ã»ÓÐµÐÈË¹¥»÷ÎÒµÄÇé¿öÎÒµÈ´ýÇ°·½µÐÈË³·ÍË
+        //    while ((opponent != null && opponent.currentArea == this.endAreaList[this.currentWalkNode]) || this.pawnAgent.opponents.Count > 0)//ï¿½ï¿½ï¿½ï¿½Î§Ã»ï¿½Ðµï¿½ï¿½Ë¹ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ÒµÈ´ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½
         //    {
         //        yield return new WaitForSecondsRealtime(0.1f);
         //    }
 
-        //    if (this.pawnAgent.opponents.Count <= 0)//È·¶¨Ç°·½Ã»ÓÐµÐÈËºó ÔÙÈ·¶¨Ò»ÏÂÖÜÎ§ÓÐÃ»ÓÐÈËÔÚ´òÎÒ
+        //    if (this.pawnAgent.opponents.Count <= 0)//È·ï¿½ï¿½Ç°ï¿½ï¿½Ã»ï¿½Ðµï¿½ï¿½Ëºï¿½ ï¿½ï¿½È·ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Î§ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½
         //        this.State = this.lastState;
-        //}//¼ì²éÇ°·½ÇøÓòÊÇ·ñ»¹ÓÐµÐÈË
+        //}//ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ðµï¿½ï¿½ï¿½
         #endregion
 
-        #region//¶¯»­ÊÂ¼þ
+        #region//ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
         private void PlayWaitAnim()
         {
             if (this._waitEvent != null)
@@ -996,7 +1009,7 @@ namespace Nameless.DataMono
         }
         #endregion
 
-        #region//¶¯»­Ð§¹û
+        #region//ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
         public void UpdateCurrentArea(Area area)
         {
             this.CurrentArea = area;
@@ -1005,7 +1018,7 @@ namespace Nameless.DataMono
                 GameManager.Instance.RESULTEVENT("You Lose!!", false);
             }
         }
-        public void PlayDialogue(string txt)//²¥·Å¶Ô»°
+        public void PlayDialogue(string txt)//ï¿½ï¿½ï¿½Å¶Ô»ï¿½
         {
             this.dialogueTxt.text = txt;
             this.dialogueAnim.Play();
@@ -1050,7 +1063,7 @@ namespace Nameless.DataMono
                 this.PlayAttackAnim();
 
         }
-        public void OcuppyLoading(float value)//´ýÐÞ¸Ä Õ¼Áì½ø¶ÈÒÔºó¿ÉÄÜ¸Ä³ÉÓÃshader
+        public void OcuppyLoading(float value)//ï¿½ï¿½ï¿½Þ¸ï¿½ Õ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½Ü¸Ä³ï¿½ï¿½ï¿½shader
         {
             this.ocuppyBar.value = value;
         }
@@ -1072,7 +1085,7 @@ namespace Nameless.DataMono
                 this.currentArea.RemoveMat(mats[0]);
             }
         }
-        public void ReceiveCurrentTime(int time)//ÓÃÓÚ¼ì²éÊ±¼äÁ÷ÊÅ¶Ô¸Ã½ÇÉ«µÄÓ°Ïì
+        public void ReceiveCurrentTime(int time)//ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Å¶Ô¸Ã½ï¿½É«ï¿½ï¿½Ó°ï¿½ï¿½
         {
             int passTime = GameManager.Instance.totalTime - time;
             DialogueTriggerManager.Instance.CheckTimeflowEvent(this, passTime);
@@ -1101,7 +1114,7 @@ namespace Nameless.DataMono
             //this.CurrentArea.Init();
             DialogueTriggerManager.Instance.TimeTriggerEvent -= this.ReceiveCurrentTime;
             Destroy(this.gameObject);
-        }//Çå³ýµôÆå×Ó
+        }//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
 }

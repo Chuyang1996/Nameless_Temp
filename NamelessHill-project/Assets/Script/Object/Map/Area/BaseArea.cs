@@ -35,14 +35,13 @@ namespace Nameless.DataMono
                 this.pawns.Remove(pawn);
                 return false;
             }
-            this.areaSprite.color = Color.Lerp(Color.blue, Color.green, 0.5F);
+
             return true;
         }
 
         public override void RemovePawn(PawnAvatar pawn)
         {
             this.pawns.Remove(pawn);
-            this.areaSprite.color = Color.Lerp(Color.blue, Color.green, 0.5F);
         }
 
         public override void ChangeColor(bool isAi)

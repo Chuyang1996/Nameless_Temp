@@ -18,6 +18,7 @@ namespace Nameless.Manager {
     {
         public bool isPlay = true;
         public GameScene GameScene;
+        public bool accessbility = false;
         public Action<string, bool> RESULTEVENT;
         public Action<int> TotalMilitartEvent;
         /// <summary>
@@ -67,10 +68,15 @@ namespace Nameless.Manager {
             AudioManager.Instance.InitAudio();
             GenerateManager.Instance.InitMat();
             SpriteManager.Instance.InitTexturePackage();
-            AreasManager.Instance.InitArea();
             PawnManager.Instance.InitPawns();
             NoteManager.Instance.InitNote();
 
+
+
+        }
+        public void EnterBattle()
+        {
+            AreasManager.Instance.InitArea();
             List<EventResult> eventResults = new List<EventResult>();
             foreach (var child in DataManager.Instance.eventResultData)
             {
@@ -83,7 +89,7 @@ namespace Nameless.Manager {
             this.battleView.InitBattle(this.totalTime, this.levelgoalDes, this.totalMilitaryRes);
             Time.timeScale = 1.0f;
             this.RESULTEVENT += this.Result;
-            for(int i = 0; i < this.curplayerPawns.Count; i++)
+            for (int i = 0; i < this.curplayerPawns.Count; i++)
             {
                 this.curplayerPawns[i].characterView = this.characterView;
                 this.curplayerPawns[i].currentArea = this.areas[i].GetArea();
@@ -95,7 +101,7 @@ namespace Nameless.Manager {
                 PawnManager.Instance.AddPawnForFaction(this.curplayerPawns[i], false);
             }
 
-            for(int i = 0; i < this.curenemyPawns.Count; i++)
+            for (int i = 0; i < this.curenemyPawns.Count; i++)
             {
                 this.curenemyPawns[i].characterView = this.characterView;
                 this.curenemyPawns[i].currentArea = this.enemyAreas[i].GetArea();
@@ -115,8 +121,20 @@ namespace Nameless.Manager {
             StartCoroutine(DialogueTriggerManager.Instance.StartListenEvent());
             #endregion
 
+            this.battleView.gameObject.SetActive(true);
         }
+        public void EnterCamp()
+        {
 
+            this.battleView.ExitBattle();//待修改 等UI管理器到位
+            this.buildView.gameObject.SetActive(false);//待修改 等UI管理器到位
+            this.characterView.gameObject.SetActive(false);//待修改 等UI管理器到位
+            this.eventView.gameObject.SetActive(false);//待修改 等UI管理器到位
+            this.GameScene = GameScene.Camp;
+            RTSCamera.Instance.ResetCameraPos();
+            CampManager.Instance.InitCamp(PawnManager.Instance.GetPawnAvatars(false), this.totalMilitaryRes);
+
+        }
         private void Result(string title, bool isWin)
         {
             this.battleView.resultInfoView.SetResultTxt(title, isWin);
@@ -185,18 +203,7 @@ namespace Nameless.Manager {
             RTSCamera.Instance.StartTransition(pawns);
         }
 
-        public void EnterCamp()
-        {
-           
-            this.battleView.ExitBattle();//待修改 等UI管理器到位
-            this.buildView.gameObject.SetActive(false);//待修改 等UI管理器到位
-            this.characterView.gameObject.SetActive(false);//待修改 等UI管理器到位
-            this.eventView.gameObject.SetActive(false);//待修改 等UI管理器到位
-            this.GameScene = GameScene.Camp;
-            RTSCamera.Instance.ResetCameraPos();
-            CampManager.Instance.InitCamp(PawnManager.Instance.GetPawnAvatars(false),this.totalMilitaryRes);
-            
-        }
+
 
         public void ClearScene()
         {

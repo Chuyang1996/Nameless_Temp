@@ -22,7 +22,10 @@ namespace Nameless.DataMono
             this.attacker = attacker;
             this.defender = defender;
             this.name = this.attacker.gameObject.name + " vs " + this.defender.gameObject.name;
-            this.arrowSprite.color = this.attacker.isAI ? Color.red : Color.green;
+            if(GameManager.Instance.accessbility)
+                this.arrowSprite.color = this.attacker.isAI ?new Color(0.91f, 0.82f, 0.34f, 1) : new Color(0.56f, 0.65f, 0.94f, 1);
+            else
+                this.arrowSprite.color = this.attacker.isAI ? Color.red : Color.green;
             this.CalculatePosition();
             this.attacker.pawnAgent.battleSideDic.Add(this.defender,BattleSide.Attacker);
             this.defender.pawnAgent.battleSideDic.Add(this.attacker, BattleSide.Defender);

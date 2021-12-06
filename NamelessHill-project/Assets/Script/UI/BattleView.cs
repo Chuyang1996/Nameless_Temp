@@ -13,6 +13,7 @@ namespace Nameless.UI
     {
         #region
         public ResourceInfoView resourceInfoView;
+        public TipInfoView tipInfoView;
         #endregion
 
         #region//¹Ø¿¨½á¹û
@@ -48,6 +49,7 @@ namespace Nameless.UI
         public void InitBattle(int totalTime, string goalDes,int militartRes)
         {
             this.gameObject.SetActive(true);
+            this.tipInfoView.InitTipInfo();
             this.resourceInfoView.Init(militartRes);
             GameManager.Instance.TotalMilitartEvent += this.resourceInfoView.Init;
             this.totalTime = totalTime;

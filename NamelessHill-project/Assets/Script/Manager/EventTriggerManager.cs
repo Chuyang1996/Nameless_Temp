@@ -159,6 +159,8 @@ namespace Nameless.Manager {
         {
             while (true)
             {
+                if (GameManager.Instance.GameScene == GameScene.Camp)
+                    yield break;
                 //Debug.Log("ÎÒ»¹ÔÚ¼àÌý");
                 if (this.currentAllEvent.Count > 0)
                 {

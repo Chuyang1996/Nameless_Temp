@@ -29,13 +29,14 @@ namespace Nameless.UI
         // Start is called before the first frame update
 
         // Update is called once per frame
+        
         void Update()
         {
             Ray targetray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit TargetHit;
             if (Physics.Raycast(targetray, out TargetHit))
             {
-                if (TargetHit.transform.gameObject.GetComponent<PawnAvatar>() != null && !TargetHit.transform.gameObject.GetComponent<PawnAvatar>().isAI)//´ýÐÞ¸Ä.AI
+                if (TargetHit.transform.gameObject.GetComponent<PawnAvatar>() != null && !TargetHit.transform.gameObject.GetComponent<PawnAvatar>().isAI)//ï¿½ï¿½ï¿½Þ¸ï¿½.AI
                 {
                     this.ownTip.SetActive(true);
                     this.FollowMouseMove(ownTip);
@@ -50,7 +51,7 @@ namespace Nameless.UI
                     //    this.isShowSupport = true;
                     //}
                     this.currentPawn = TargetHit.transform.gameObject.GetComponent<PawnAvatar>();
-                    this.RreshPanel();//´ýÐÞ¸Ä ²»ÒªÈÃÆä·´¸´µ÷ÓÃ
+                    this.RreshPanel();
                     float curMorale = (float)currentPawn.pawnAgent.pawn.curMorale;
                     float maxMorale = (float)currentPawn.pawnAgent.pawn.maxMorale;
                     if (curMorale >= maxMorale / 2)
@@ -79,7 +80,10 @@ namespace Nameless.UI
             }
         }
 
-
+        public void InitTipInfo()
+        {
+            this.ownAmmoSlider.gameObject.transform.Find("Background").gameObject.GetComponent<Image>().color = GameManager.Instance.accessbility ? new Color(0.33f, 0.33f, 0.33f, 1) : new Color(0, 1, 1, 1);
+        }
         public override void FollowMouseMove(GameObject item)
         {
             base.FollowMouseMove(item);
@@ -143,7 +147,7 @@ namespace Nameless.UI
                 List<Buff> buffs = new List<Buff>();
                 for(int i = 0; i < supportSkills.Count; i++)
                 {
-                    if(supportSkills[i].attackRate != 0.0f || supportSkills[i].defendRate != 0.0f)//´ýÐÞ¸Ä
+                    if(supportSkills[i].attackRate != 0.0f || supportSkills[i].defendRate != 0.0f)//ï¿½ï¿½ï¿½Þ¸ï¿½
                         this.GenerateSupportTip(supportSkills[i].descrption);
                     for(int j = 0; j < supportSkills[i].buffs.Count; j++)
                     {
