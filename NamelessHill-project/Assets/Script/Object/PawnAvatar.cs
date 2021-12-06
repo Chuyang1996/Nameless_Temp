@@ -219,7 +219,7 @@ namespace Nameless.DataMono
                         this.targetArea = this.CurrentArea;
                         this.startPoint = this.CurrentArea;
                         this.State = PawnState.Draw;
-                        AreasManager.Instance.mouseFollower.gameObject.GetComponent<SpriteRenderer>().sprite = this.pawnAgent.pawn.selectIcon;
+                        Map.Instance.mouseFollower.gameObject.GetComponent<SpriteRenderer>().sprite = this.pawnAgent.pawn.selectIcon;
                         this.InitLine();
                         this.ShowPath(true);
                     }
@@ -235,8 +235,8 @@ namespace Nameless.DataMono
             {
                 if (this.State == PawnState.Draw)
                 {
-                    AreasManager.Instance.mouseFollower.gameObject.GetComponent<SpriteRenderer>().sprite = null;
-                    AreasManager.Instance.mouseFollower.ResetState();
+                    Map.Instance.mouseFollower.gameObject.GetComponent<SpriteRenderer>().sprite = null;
+                    Map.Instance.mouseFollower.ResetState();
                     if (this.endAreaList.Count > 0 && this.distanceDic.Count > 0)
                     {
                         
@@ -312,8 +312,8 @@ namespace Nameless.DataMono
             this.renderWire.SetPosition(0, this.startPoint.centerNode.transform.position);
             this.walkRenderWire.SetPosition(0, this.startPoint.centerNode.transform.position);
             this.areaDic.Add(this.targetArea.gameObject, true);
-            this.wire.transform.parent = AreasManager.Instance.PathLine.transform;
-            this.walkWire.transform.parent = AreasManager.Instance.PathLine.transform;
+            this.wire.transform.parent = Map.Instance.PathLine.transform;
+            this.walkWire.transform.parent = Map.Instance.PathLine.transform;
 
         }
         public void ShowPath(bool isShow)
@@ -338,7 +338,7 @@ namespace Nameless.DataMono
             {
 
                 Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                AreasManager.Instance.mouseFollower.gameObject.transform.position = new Vector3(raySelect.x, raySelect.y, 0);
+                Map.Instance.mouseFollower.gameObject.transform.position = new Vector3(raySelect.x, raySelect.y, 0);
                 RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
 
                 if (hit.collider != null && hit.collider.gameObject.tag == "Area" && !this.areaDic.ContainsKey(hit.collider.gameObject))
@@ -387,7 +387,7 @@ namespace Nameless.DataMono
                     tagArea = occupyArea[UnityEngine.Random.Range(0, occupyArea.Count - 1)];
                 else
                 {
-                    List<int>[] tempPath = AreasManager.Instance.Dijkstra(AreasManager.Instance.areaMatrix, this.currentArea.id);
+                    List<int>[] tempPath = Map.Instance.Dijkstra(Map.Instance.areaMatrix, this.currentArea.id);
                     List<int> targetPath = new List<int>();
                     for (int i = 0; i < tempPath.Length; i++)
                     {
@@ -396,7 +396,7 @@ namespace Nameless.DataMono
                             targetPath = tempPath[i];
                         }
                     }
-                    tagArea = AreasManager.Instance.areas[targetPath[1]];
+                    tagArea = Map.Instance.areas[targetPath[1]];
                 }
                 this.targetArea = this.CurrentArea;
                 this.startPoint = this.CurrentArea;
@@ -429,60 +429,60 @@ namespace Nameless.DataMono
             this.endPoint = targetArea;
             NodeToNode temp1 = new NodeToNode(this.startPoint.centerNode, this.endPoint.centerNode);
             NodeToNode temp2 = new NodeToNode(this.endPoint.centerNode, this.startPoint.centerNode);
-            if (AreasManager.Instance.pathDic.ContainsKey(temp1))
+            if (Map.Instance.pathDic.ContainsKey(temp1))
             {
 
                 this.nodePath.RemoveAt(this.nodePath.Count - 1);
-                for (int i = 0; i < AreasManager.Instance.pathDic[temp1].nodes.Length; i++)
+                for (int i = 0; i < Map.Instance.pathDic[temp1].nodes.Length; i++)
                 {
-                    this.nodePath.Add(AreasManager.Instance.pathDic[temp1].nodes[i].transform.position);
+                    this.nodePath.Add(Map.Instance.pathDic[temp1].nodes[i].transform.position);
                 }
-                this.nodeCount = AreasManager.Instance.pathDic[temp1].nodes.Length;
+                this.nodeCount = Map.Instance.pathDic[temp1].nodes.Length;
                 //Debug.Log(AreasManager.Instance.pathDic[temp1].name + "������AAAAAAAAAA");
 
                 this.startPoint = this.targetArea;
 
                 this.areaDic.Add(this.targetArea.gameObject, true);
-                this.pathList.Add(AreasManager.Instance.pathDic[temp1]);
-                this.distanceDic.Add(this.endPoint.centerNode, AreasManager.Instance.pathDic[temp1].Distance());
+                this.pathList.Add(Map.Instance.pathDic[temp1]);
+                this.distanceDic.Add(this.endPoint.centerNode, Map.Instance.pathDic[temp1].Distance());
                 this.endAreaList.Add(this.endPoint);
 
-                this.totalDistance += AreasManager.Instance.pathDic[temp1].Distance();
+                this.totalDistance += Map.Instance.pathDic[temp1].Distance();
                 if (!isAuto)
                 {
                     if (this.targetArea.pawns.Count > 0 && this.targetArea.pawns[0].isAI)
-                        AreasManager.Instance.mouseFollower.LabelChange(this.totalDistance / this.pawnAgent.pawn.curSpeed, TipState.Battle);
+                        Map.Instance.mouseFollower.LabelChange(this.totalDistance / this.pawnAgent.pawn.curSpeed, TipState.Battle);
                     else
-                        AreasManager.Instance.mouseFollower.LabelChange(this.totalDistance / this.pawnAgent.pawn.curSpeed, TipState.Walk);
+                        Map.Instance.mouseFollower.LabelChange(this.totalDistance / this.pawnAgent.pawn.curSpeed, TipState.Walk);
                 }
                 if (!this.isPlay)
                     StartCoroutine(this.DrawLineByNode(nodePath.Count,isAuto));
             }
-            else if (AreasManager.Instance.pathDic.ContainsKey(temp2))
+            else if (Map.Instance.pathDic.ContainsKey(temp2))
             {
                 this.nodePath.RemoveAt(this.nodePath.Count - 1);
-                for (int i = AreasManager.Instance.pathDic[temp2].nodes.Length - 1; i >= 0; i--)
+                for (int i = Map.Instance.pathDic[temp2].nodes.Length - 1; i >= 0; i--)
                 {
-                    this.nodePath.Add(AreasManager.Instance.pathDic[temp2].nodes[i].transform.position);
+                    this.nodePath.Add(Map.Instance.pathDic[temp2].nodes[i].transform.position);
                 }
 
-                this.nodeCount = AreasManager.Instance.pathDic[temp2].nodes.Length;
+                this.nodeCount = Map.Instance.pathDic[temp2].nodes.Length;
                 //Debug.Log(AreasManager.Instance.pathDic[temp2].name + "������BBBBBBBBB");
 
                 this.startPoint = this.targetArea;
 
                 this.areaDic.Add(this.targetArea.gameObject, true);
-                this.pathList.Add(AreasManager.Instance.pathDic[temp2]);
-                this.distanceDic.Add(this.endPoint.centerNode, AreasManager.Instance.pathDic[temp2].Distance());
+                this.pathList.Add(Map.Instance.pathDic[temp2]);
+                this.distanceDic.Add(this.endPoint.centerNode, Map.Instance.pathDic[temp2].Distance());
                 this.endAreaList.Add(this.endPoint);
 
-                this.totalDistance += AreasManager.Instance.pathDic[temp2].Distance();
+                this.totalDistance += Map.Instance.pathDic[temp2].Distance();
                 if (!isAuto)
                 {
                     if (this.targetArea.pawns.Count > 0 && this.targetArea.pawns[0].isAI)
-                        AreasManager.Instance.mouseFollower.LabelChange(this.totalDistance / this.pawnAgent.pawn.curSpeed, TipState.Battle);
+                        Map.Instance.mouseFollower.LabelChange(this.totalDistance / this.pawnAgent.pawn.curSpeed, TipState.Battle);
                     else
-                        AreasManager.Instance.mouseFollower.LabelChange(this.totalDistance / this.pawnAgent.pawn.curSpeed, TipState.Walk);
+                        Map.Instance.mouseFollower.LabelChange(this.totalDistance / this.pawnAgent.pawn.curSpeed, TipState.Walk);
                 }
                 if (!this.isPlay)
                     StartCoroutine(this.DrawLineByNode(nodePath.Count, isAuto));
@@ -490,7 +490,7 @@ namespace Nameless.DataMono
             else
             {
                 if (!isAuto)
-                    AreasManager.Instance.mouseFollower.LabelChange(0.0f, TipState.UnWalk);
+                    Map.Instance.mouseFollower.LabelChange(0.0f, TipState.UnWalk);
             }
         }//·������
         //void WalkPath()

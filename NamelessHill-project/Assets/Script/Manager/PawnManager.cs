@@ -59,8 +59,6 @@ namespace Nameless.Manager
             if (spawnAI)
             {
                 pawnAvatar.GetComponent<PawnAvatar>().isAI = true;
-                pawnAvatar.GetComponent<PawnAvatar>().nameTxt.color = Color.red;
-                pawnAvatar.GetComponent<PawnAvatar>().healthBarColor.color = Color.red;
             }
             area.AddPawn(pawnAvatar.GetComponent<PawnAvatar>());
             pawnAvatar.GetComponent<PawnAvatar>().Init(mapId, area);

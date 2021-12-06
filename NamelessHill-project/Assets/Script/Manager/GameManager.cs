@@ -38,7 +38,7 @@ namespace Nameless.Manager {
 
 
 
-        public AreasManager currentMap;
+        public Map currentMap;
         public CharacterView characterView;
         public BattleView battleView;
         public CampView campView;
@@ -76,7 +76,7 @@ namespace Nameless.Manager {
         }
         public void EnterBattle()
         {
-            AreasManager.Instance.InitArea();
+            Map.Instance.InitArea();
             List<EventResult> eventResults = new List<EventResult>();
             foreach (var child in DataManager.Instance.eventResultData)
             {
@@ -208,7 +208,7 @@ namespace Nameless.Manager {
         public void ClearScene()
         {
             PawnManager.Instance.ClearAllPawn();
-            AreasManager.Instance.ClearMap();
+            Map.Instance.ClearMap();
 
         }
         public void PauseOrPlay(bool isPlay)

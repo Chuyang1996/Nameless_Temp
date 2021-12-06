@@ -30870,7 +30870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf4965796cbff34d8bf5df30fb42a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Map: {fileID: 1502894494}
+  map: {fileID: 1502894494}
   PathLine: {fileID: 1934433840}
   Battle: {fileID: 1959090987}
   mouseFollower: {fileID: 769163868}
@@ -38400,7 +38400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf4965796cbff34d8bf5df30fb42a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Map: {fileID: 0}
+  map: {fileID: 0}
   PathLine: {fileID: 0}
   Battle: {fileID: 0}
   mouseFollower: {fileID: 769163868}
