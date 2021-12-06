@@ -129,11 +129,12 @@ namespace Nameless.DataMono
         private bool fixBtnActive = false;
         #endregion
         // Start is called before the first frame update
-        public void Init(int mapId)
+        public void Init(int mapId, Area initArea)
         {
             this.healthBar.value = 1;
             this.characterView = GameManager.Instance.characterView;
             this.pawnAgent = new PawnAgent(this.healthBar, this.CurrentArea,PawnFactory.GetPawnById(Id),mapId);
+            initArea.AddPawn(this);
             this.State = PawnState.Wait;
             this.nameTxt.text = DataManager.Instance.GetCharacter(Id).name;
             this.fixbtn.gameObject.SetActive(false);

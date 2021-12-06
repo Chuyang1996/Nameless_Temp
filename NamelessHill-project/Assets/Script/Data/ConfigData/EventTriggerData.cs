@@ -11,9 +11,9 @@ namespace Nameless.ConfigData
         public string name;
         public string descrption;
         public int type;
-        public float parameter;
+        public string parameter;
 
-        public EventTriggerData(long id, string name, string descrption,int type, float parameter)
+        public EventTriggerData(long id, string name, string descrption,int type, string parameter)
         {
             this.Id = id;
             this.name = name;

@@ -1,5 +1,6 @@
 using Nameless.Agent;
 using Nameless.Data;
+using Nameless.DataMono;
 using Nameless.UI;
 using System;
 using System.Collections;
@@ -37,17 +38,34 @@ namespace Nameless.Manager {
                 this.eventTriggerDic.Add(EventTriggerFactory.GetEventTriggerById(child.Key), child.Value);
             }
         }
-
+        public void CheckRelateTimeEvent(int currentTime)
+        {
+            foreach (var child in this.eventTriggerDic)
+            {
+                if (child.Key.type == EventTriggerType.TimePass)
+                {
+                    int passTime = GameManager.Instance.totalTime - currentTime;
+                    if (((EventTimePass)child.Key).IsTrigger(passTime))
+                    {
+                        for (int i = 0; i < child.Value.Count; i++)
+                        {
+                            this.currentAllEvent.Push(child.Value[i]);
+                        }
+                    }
+                }
+            }
+        }
 
         public void CheckRelateMilitaryResEvent(int cost)
         {
             foreach(var child in this.eventTriggerDic)
             {
-                if(child.Key.type == EventTriggerType.AmmoLess)
+                if(child.Key.type == EventTriggerType.MilitaryResLess)
                 {
+
                     int lastAmmo = GameManager.Instance.totalMilitaryRes;
                     int afterAmmo = GameManager.Instance.totalMilitaryRes + cost;
-                    if(afterAmmo < (int)child.Key.parameter  && (int)child.Key.parameter <= lastAmmo)
+                    if (((EventMilitaryResLess)child.Key).IsTrigger(lastAmmo,afterAmmo))
                     {
                        for(int i = 0; i < child.Value.Count; i++)
                         {
@@ -58,24 +76,6 @@ namespace Nameless.Manager {
             }
         }
 
-        //public void CheckRelateMedicineEvent(int cost)
-        //{
-        //    foreach (var child in this.eventTriggerDic)
-        //    {
-        //        if (child.Key.type == EventTriggerType.MedicineLess)
-        //        {
-        //            int lastMedicine = GameManager.Instance.totalMedicine;
-        //            int afterMedicine = GameManager.Instance.totalMedicine + cost;
-        //            if (afterMedicine < (int)child.Key.parameter && (int)child.Key.parameter <= lastMedicine)
-        //            {
-        //                for (int i = 0; i < child.Value.Count; i++)
-        //                {
-        //                    this.currentAllEvent.Push(child.Value[i]);
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
 
         public void CheckRelateEnemyKillEvent(int num)
         {
@@ -85,7 +85,7 @@ namespace Nameless.Manager {
                 {
                     int lastEnemies = GameManager.Instance.enemiesDieNum;
                     int afterEnemies = GameManager.Instance.enemiesDieNum + num;
-                    if (lastEnemies < (int)child.Key.parameter && (int)child.Key.parameter <= afterEnemies)
+                    if (((EventEnemyKillLess)child.Key).IsTrigger(lastEnemies,afterEnemies))
                     {
                         for (int i = 0; i < child.Value.Count; i++)
                         {
@@ -96,14 +96,13 @@ namespace Nameless.Manager {
             }
         }
 
-        public void CheckRelateTimeEvent(int currentTime)
+        public void CheckPawnArriveArea(long pawnId, int areaLocalId)
         {
             foreach (var child in this.eventTriggerDic)
             {
-                if (child.Key.type == EventTriggerType.TimePass)
+                if (child.Key.type == EventTriggerType.PawnArriveOnArea)
                 {
-                    int passTime = GameManager.Instance.totalTime - currentTime;
-                    if (((float)passTime )== child.Key.parameter)
+                    if (((EventPawnArrive)child.Key).IsTrigger(pawnId, areaLocalId))
                     {
                         for (int i = 0; i < child.Value.Count; i++)
                         {
@@ -114,6 +113,39 @@ namespace Nameless.Manager {
             }
         }
 
+        public void CheckEventBuildOnArea(BuildType buildType)
+        {
+            foreach (var child in this.eventTriggerDic)
+            {
+                if (child.Key.type == EventTriggerType.BuildOnArea)
+                {
+                    if (((EventBuildOnArea)child.Key).IsTrigger(buildType))
+                    {
+                        for (int i = 0; i < child.Value.Count; i++)
+                        {
+                            this.currentAllEvent.Push(child.Value[i]);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void CheckPawnStartBattle(long pawnId)
+        {
+            foreach (var child in this.eventTriggerDic)
+            {
+                if (child.Key.type == EventTriggerType.PawnEnterBattle)
+                {
+                    if (((EventPawnStartBattle)child.Key).IsTrigger(pawnId))
+                    {
+                        for (int i = 0; i < child.Value.Count; i++)
+                        {
+                            this.currentAllEvent.Push(child.Value[i]);
+                        }
+                    }
+                }
+            }
+        }
         public void AddNewEvent(long eventId)
         {
             if (eventId != -1)
@@ -130,8 +162,9 @@ namespace Nameless.Manager {
                 //Debug.Log("ÎÒ»¹ÔÚ¼àÌý");
                 if (this.currentAllEvent.Count > 0)
                 {
-                    GameManager.Instance.eventView.NewEvent();
                     GameManager.Instance.PauseOrPlay(false);
+                    GameManager.Instance.eventView.NewEvent();
+
                 }
                 yield return null;
             }

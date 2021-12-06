@@ -42,7 +42,7 @@ namespace Nameless.UI
                 GameManager.Instance.PauseOrPlay(true);
                 this.gameObject.SetActive(false);
             });
-            this.setBtn.onClick.AddListener(() =>
+            this.setBtn.onClick.AddListener(() =>//待修改 改成判断当前建造的东西是啥
             {
                 this.currentArea.Ammo += this.currentBuild.addAmmoBuild;
                 this.currentArea.Medicine += this.currentBuild.addMedicineBuild;
@@ -58,6 +58,11 @@ namespace Nameless.UI
                 this.setBtn.interactable = this.IsSetBtnActiveAfterClick();
                 GameManager.Instance.PauseOrPlay(true);
                 this.gameObject.SetActive(false);
+
+                if (this.currentBuild.addAmmoBuild > 0)
+                    EventTriggerManager.Instance.CheckEventBuildOnArea(BuildType.AmmoBuild);
+                else if(this.currentBuild.addMedicineBuild > 0)
+                    EventTriggerManager.Instance.CheckEventBuildOnArea(BuildType.MeidicalBuild);
             });
         }
 

@@ -40,7 +40,8 @@ namespace Nameless.DataMono
             //this.defender.pawnAgent.opponentIsInBattle = true;
             bool attackerTurn = true;
 
-
+            EventTriggerManager.Instance.CheckPawnStartBattle(this.attacker.pawnAgent.pawn.id);
+            EventTriggerManager.Instance.CheckPawnStartBattle(this.defender.pawnAgent.pawn.id);
             while (true)
             {
                 if (!GameManager.Instance.isPlay)

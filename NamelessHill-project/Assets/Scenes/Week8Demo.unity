@@ -4666,7 +4666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlay: 1
   GameScene: 0
-  totalTime: 2
+  totalTime: 200
   levelgoalDes: Hold for 12 hours
   totalMilitaryRes: 1000
   enemiesDieNum: 0

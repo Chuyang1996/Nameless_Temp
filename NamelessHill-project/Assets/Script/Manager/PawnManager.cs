@@ -63,7 +63,7 @@ namespace Nameless.Manager
                 pawnAvatar.GetComponent<PawnAvatar>().healthBarColor.color = Color.red;
             }
             area.AddPawn(pawnAvatar.GetComponent<PawnAvatar>());
-            pawnAvatar.GetComponent<PawnAvatar>().Init(mapId);
+            pawnAvatar.GetComponent<PawnAvatar>().Init(mapId, area);
             DialogueTriggerManager.Instance.TimeTriggerEvent += pawnAvatar.GetComponent<PawnAvatar>().ReceiveCurrentTime;
 
             if (spawnAI)

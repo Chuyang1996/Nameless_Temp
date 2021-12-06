@@ -114,7 +114,7 @@ namespace Nameless.DataMono
                 return false;
             }
 
-
+            EventTriggerManager.Instance.CheckPawnArriveArea(pawn.pawnAgent.pawn.id, this.id);
             //this.ResetPawnPos();
             return true;
         }//本区域添加一个角色
@@ -224,8 +224,7 @@ namespace Nameless.DataMono
         {
             if (this.pawns.Count > 0)
             {
-                bool isArealyBelonged = false;
-                isArealyBelonged = GameManager.Instance.IsBelongToSameSide(this,this.pawns[0]);
+                bool isArealyBelonged = GameManager.Instance.IsBelongToSameSide(this,this.pawns[0]);
                 if (!isArealyBelonged)
                     StartCoroutine(OcuppyProcess(5.0f));
                     

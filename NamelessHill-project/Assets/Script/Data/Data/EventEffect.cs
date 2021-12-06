@@ -16,7 +16,8 @@ namespace Nameless.Data
         MilitaryResourceChange = 102,
         NextEvent = 104,
         UnlockNote = 105,
-        UnlockConversation = 106
+        UnlockConversation = 106,
+        
     }
 
     abstract public class EventEffect 

@@ -74,7 +74,7 @@ namespace Nameless.Manager
             }
             for(int i = 0;i< this.areas.Count; i++)
             {
-                this.areas[i].id = i;
+                this.areas[i].id = i + 1;
             }
             this.areaMatrix = new float[areas.Count, areas.Count];
             for(int i = 0; i < this.areaMatrix.GetLength(0); i++)

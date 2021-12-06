@@ -70,8 +70,15 @@ namespace Nameless.Manager {
             AreasManager.Instance.InitArea();
             PawnManager.Instance.InitPawns();
             NoteManager.Instance.InitNote();
-            //Debug.Log(DataManager.Instance.GetCharacter(1001).name);
 
+            List<EventResult> eventResults = new List<EventResult>();
+            foreach (var child in DataManager.Instance.eventResultData)
+            {
+                eventResults.Add(EventResultFactory.GetEventResultById(child.Key));
+            }
+            EventTriggerManager.Instance.InitEventTrigger(eventResults);
+            //Debug.Log(DataManager.Instance.GetCharacter(1001).name);
+            StartCoroutine(EventTriggerManager.Instance.StartListenEvent());
 
             this.battleView.InitBattle(this.totalTime, this.levelgoalDes, this.totalMilitaryRes);
             Time.timeScale = 1.0f;
@@ -81,9 +88,8 @@ namespace Nameless.Manager {
                 this.curplayerPawns[i].characterView = this.characterView;
                 this.curplayerPawns[i].currentArea = this.areas[i].GetArea();
                 //this.areas[i].Init();
-                this.areas[i].GetArea().AddPawn(this.curplayerPawns[i]);
+                this.curplayerPawns[i].Init(0, this.areas[i].GetArea());
                 this.curplayerPawns[i].transform.position = this.areas[i].GetArea().centerNode.transform.position;
-                this.curplayerPawns[i].Init(0);
                 DialogueTriggerManager.Instance.TimeTriggerEvent += this.curplayerPawns[i].ReceiveCurrentTime;
                 DialogueTriggerManager.Instance.CheckGameStartEvent(this.curplayerPawns[i]);
                 PawnManager.Instance.AddPawnForFaction(this.curplayerPawns[i], false);
@@ -94,23 +100,18 @@ namespace Nameless.Manager {
                 this.curenemyPawns[i].characterView = this.characterView;
                 this.curenemyPawns[i].currentArea = this.enemyAreas[i].GetArea();
                 //this.enemyAreas[i].Init();
-                this.enemyAreas[i].GetArea().AddPawn(this.curenemyPawns[i]);
+                this.curenemyPawns[i].Init(0, this.enemyAreas[i].GetArea());
                 this.curenemyPawns[i].transform.position = this.enemyAreas[i].GetArea().centerNode.transform.position;
-                this.curenemyPawns[i].Init(0);
                 DialogueTriggerManager.Instance.TimeTriggerEvent += this.curenemyPawns[i].ReceiveCurrentTime;
                 DialogueTriggerManager.Instance.CheckGameStartEvent(this.curenemyPawns[i]);
                 PawnManager.Instance.AddPawnForFaction(this.curenemyPawns[i], true);
             }
             #region//获取本次场景里的事件
-            List<EventResult> eventResults = new List<EventResult>();
-            foreach (var child in DataManager.Instance.eventResultData)
-            {
-                eventResults.Add(EventResultFactory.GetEventResultById(child.Key));
-            }
-            EventTriggerManager.Instance.InitEventTrigger(eventResults);
+
+
 
             //开始监听事件
-            StartCoroutine(EventTriggerManager.Instance.StartListenEvent());
+
             StartCoroutine(DialogueTriggerManager.Instance.StartListenEvent());
             #endregion
 

@@ -276,7 +276,7 @@ namespace Nameless.Manager
                             this.eventTriggerData[id]["name"],
                             this.eventTriggerData[id]["descrption"],
                             int.Parse(this.eventTriggerData[id]["type"]),
-                            float.Parse(this.eventTriggerData[id]["parameter"])
+                            this.eventTriggerData[id]["parameter"]
                             );
                     return skill;
                 }
