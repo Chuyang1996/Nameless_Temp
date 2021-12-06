@@ -37,6 +37,7 @@ namespace Nameless.DataMono
         private List<Path> pathList = new List<Path>();
         private int nodeCount = 0;
         private int currentWalkNode = 0;
+        private Vector2 lastDragPos;
 
         private GameObject wire;
         private GameObject walkWire;
@@ -72,7 +73,7 @@ namespace Nameless.DataMono
             set
             {
                 this.ResetAllSupport();
-                this.fixbtn.gameObject.SetActive(false);
+                this.FixBtnActive = false;
                 this.StateTriggerEvent(value);
                 //if (value == PawnState.Wait)
                 //    this.PlayCharacterAnim(value);
@@ -210,28 +211,50 @@ namespace Nameless.DataMono
             //        }
             //    }
             //}
-            if (Input.GetMouseButtonDown(0) /*&& this.State != PawnState.Battle*/)
+            if (Input.GetMouseButtonDown(0))
             {
                 //Debug.Log("sssss");
-                Ray targetray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit TargetHit;
-                if (Physics.Raycast(targetray, out TargetHit))
+                Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
+                if (hit.collider != null)
                 {
-                    if (TargetHit.transform.gameObject == this.gameObject)
-                    {
-                        this.targetArea = this.CurrentArea;
-                        this.startPoint = this.CurrentArea;
-                        this.State = PawnState.Draw;
-                        MapManager.Instance.mouseFollower.gameObject.GetComponent<SpriteRenderer>().sprite = this.pawnAgent.pawn.selectIcon;
-                        this.InitLine();
-                        this.ShowPath(true);
-                    }
-                    else if (TargetHit.transform.gameObject == this.fixbtn && !this.isAI)//���޸�.AI
+                    this.lastDragPos = raySelect;
+                    if (hit.collider.transform.gameObject == this.fixbtn && !this.isAI)//���޸�.AI
                     {
                         GameManager.Instance.buildView.gameObject.SetActive(true);
                         GameManager.Instance.buildView.ResetBuild(this);
                         GameManager.Instance.PauseOrPlay(false);
                     }
+                    else if ((hit.collider.gameObject == this.currentArea.gameObject || hit.collider.gameObject == this.gameObject)
+                        && !this.isAI
+                        && GameManager.Instance.IsBelongToSameSide(this.currentArea, this)
+                        && this.State == PawnState.Wait)//���޸�.AI
+                    {
+                        this.FixBtnActive = !this.FixBtnActive;
+
+                    }
+                }
+            }
+            if (Input.GetMouseButton(0) /*&& this.State != PawnState.Battle*/)
+            {
+                //Debug.Log("sssss");
+                Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
+                if (hit.collider != null)
+                {
+                    if (hit.collider.transform.gameObject == this.gameObject)
+                    {
+                        if (Vector2.Distance(raySelect, this.lastDragPos) > 0.0f)
+                        {
+                            this.targetArea = this.CurrentArea;
+                            this.startPoint = this.CurrentArea;
+                            this.State = PawnState.Draw;
+                            MapManager.Instance.mouseFollower.gameObject.GetComponent<SpriteRenderer>().sprite = this.pawnAgent.pawn.selectIcon;
+                            this.InitLine();
+                            this.ShowPath(true);
+                        }
+                    }
+
                 }
             }
             else if (Input.GetMouseButtonUp(0))
@@ -258,20 +281,7 @@ namespace Nameless.DataMono
 
                 }
             }
-            if (Input.GetMouseButtonDown(0))
-            {
-                //Debug.Log("sssss");
-                Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
-                if (hit.collider != null)
-                {
-                    if (hit.collider.gameObject == this.currentArea.gameObject && !this.isAI && GameManager.Instance.IsBelongToSameSide(this.currentArea,this) && this.State == PawnState.Wait)//���޸�.AI
-                    {
-                        this.FixBtnActive = !this.FixBtnActive;
 
-                    }
-                }
-            }
 
         }
 
@@ -1060,13 +1070,20 @@ namespace Nameless.DataMono
             if (pawnState == PawnState.Wait)
             {
                 //Debug.LogError("PawnState.Wait");
+
                 this.currentArea.OccupyArea();
                 this.PlayWaitAnim();
             }
             else if (pawnState == PawnState.Walk)
+            {
+
                 this.PlayWalkAnim();
+            }
             else if (pawnState == PawnState.Battle)
+            {
+
                 this.PlayAttackAnim();
+            }
 
         }
         public void OcuppyLoading(float value)//���޸� ռ������Ժ���ܸĳ���shader
