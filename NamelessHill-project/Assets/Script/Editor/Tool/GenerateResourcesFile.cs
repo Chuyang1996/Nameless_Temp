@@ -11,7 +11,7 @@ public class GenerateResourcesFile
     {
         string currentPath = Assembly.GetExecutingAssembly().Location;
 
-        string savePath = currentPath + "/../../../.." + "/WarChessProject/Assets/StreamingAssets";
+        string savePath = currentPath + "/../../../.." + "/NamelessHill-project/Assets/StreamingAssets";
 
         string newfilepath = savePath + "/" + "AudiosResources" + ".txt";
         FileStream newfile = new FileStream(newfilepath, FileMode.Create, FileAccess.ReadWrite);

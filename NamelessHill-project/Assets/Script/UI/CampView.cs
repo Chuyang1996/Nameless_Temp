@@ -104,7 +104,6 @@ namespace Nameless.UI
                             if (hitBtn.collider.gameObject == CampManager.Instance.allCampPawns[i].btnDialogue.gameObject)//待修改.AI
                             {
                                 CampManager.Instance.allCampPawns[i].ClickToConversation();
-                                Debug.Log("点击出对话");
                                 break;
                             }
                         }

@@ -1,0 +1,1 @@
+["Attack","Lose","Pinch","Surround","Walk","Win"]

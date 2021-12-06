@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using Nameless.Manager;
 using Nameless.Data;
+using System.IO;
+using Newtonsoft.Json;
 //声音对象池
 namespace Nameless.Data
 {
@@ -83,7 +85,7 @@ namespace Nameless.Manager
 	{
 		private const string audioPath = "Audio/";
 		//audioClip列表
-		private string[] audioList;
+		private List<string> audioList;
 		//初始声音预设数量
 		public int initAudioPrefabCount = 5;
 
@@ -173,12 +175,11 @@ namespace Nameless.Manager
 		public void InitAudio()
 		{
 			//Debug.Log(Application.dataPath);
-			int pathLength = (Application.dataPath + "/Resources/Audio").Length;
-			this.audioList = System.IO.Directory.GetFiles(Application.dataPath + "/Resources/Audio", "*.wav");
-			for(int i = 0; i < audioList.Length; i++)
-            {
-				this.audioList[i] = this.audioList[i].ToString().Remove(0, pathLength).Remove(0, 1).Replace(".wav", "");
-			}
+			string data;
+			FileStream file = File.Open(Application.streamingAssetsPath + "/" + "AudiosResources.txt", FileMode.Open, FileAccess.Read);
+			StreamReader reader = new StreamReader(file);
+			data = reader.ReadLine();
+			this.audioList = JsonConvert.DeserializeObject<List<string>>(data);
 			//SceneManager.sceneUnloaded += scene =>
 			//{
 			//	//StopAllCoroutines();
