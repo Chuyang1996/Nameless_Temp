@@ -49,6 +49,7 @@ namespace Nameless.UI
         public void InitBattle(int totalTime, string goalDes,int militartRes)
         {
             this.gameObject.SetActive(true);
+            this.resultInfoView.gameObject.SetActive(false);
             this.tipInfoView.InitTipInfo();
             this.resourceInfoView.Init(militartRes);
             GameManager.Instance.TotalMilitartEvent += this.resourceInfoView.Init;

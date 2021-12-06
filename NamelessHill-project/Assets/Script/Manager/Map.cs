@@ -37,12 +37,11 @@ namespace Nameless.Data
 }
 namespace Nameless.Manager
 {
-    public class Map : SingletonMono<Map>
+    public class Map : MonoBehaviour
     {
-        public GameObject map;//待修改 以后会写一个Map类 用于地图导入
+        public long id;
         public GameObject PathLine;
         public GameObject Battle;
-        public MouseFollower mouseFollower;
         public float[,] areaMatrix;
         public List<InitArea> initAreas;
         public List<Area> areas;
@@ -168,10 +167,6 @@ namespace Nameless.Manager
         }
 
 
-        public void ClearMap()
-        {
-            Destroy(this.map.gameObject);
-        }
 
     }
 }
