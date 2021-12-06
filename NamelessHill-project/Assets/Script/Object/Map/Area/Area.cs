@@ -204,23 +204,23 @@ namespace Nameless.DataMono
         }//本区域重置材料位置
         public virtual void CostMedicine(PawnAvatar pawn)
         {
-            if (pawn.pawnAgent.pawn.curHealth/ pawn.pawnAgent.pawn.maxHealth < 0.2)
+            if (pawn.pawnAgent.pawn.curHealth/ pawn.pawnAgent.pawn.maxHealth <= 0.7)
             {
                 if (this.Medicine > 0)
                 {
                     this.Medicine--;
-                    pawn.pawnAgent.InitHealth(0.5f * pawn.pawnAgent.pawn.maxHealth);
+                    pawn.pawnAgent.HealthChange(0.3f * pawn.pawnAgent.pawn.maxHealth);
                 }
             }
         }
         public virtual void CostAmmo(PawnAvatar pawn)
         {
-            if (pawn.pawnAgent.pawn.curAmmo <= 0)
+            if (pawn.pawnAgent.pawn.curAmmo / pawn.pawnAgent.pawn.maxAmmo <= 0.7)
             {
                 if (this.Ammo > 0)
                 {
                     this.Ammo--;
-                    pawn.pawnAgent.InitAmmo(pawn.pawnAgent.pawn.maxAmmo);
+                    pawn.pawnAgent.AmmoChange((int)0.3f * pawn.pawnAgent.pawn.maxAmmo);
                 }
             }
         }

@@ -35,7 +35,7 @@ namespace Nameless.Data
 
     }
 }
-namespace Nameless.Manager
+namespace Nameless.DataMono
 {
     public class Map : MonoBehaviour
     {

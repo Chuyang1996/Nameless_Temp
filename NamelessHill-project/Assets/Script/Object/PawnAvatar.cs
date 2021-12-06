@@ -734,8 +734,11 @@ namespace Nameless.DataMono
                                 if (this.endAreaList[this.currentWalkNode].AddPawn(this))//���������ɫ����ͬʱ���� ���������ӵ��˻�ȥ����
                                 {
                                     this.gameObject.transform.position = this.endAreaList[this.currentWalkNode].centerNode.gameObject.transform.position;
+                                    
                                     this.CurrentArea.RemovePawn(this);
                                     this.UpdateCurrentArea(this.endAreaList[this.currentWalkNode]);
+                                    this.CurrentArea.CostAmmo(this);
+                                    this.CurrentArea.CostMedicine(this);
                                     this.RemoveBehindLine(lastNode+2);
                                     if (!this.isAI)
                                     {
