@@ -28,7 +28,6 @@ namespace Nameless.DataMono
         public bool isAI;
         #endregion
 
-        public CharacterView characterView;
         private List<Vector3> nodePath;
         private Area startPoint;
         private Area endPoint;
@@ -131,6 +130,7 @@ namespace Nameless.DataMono
         // Start is called before the first frame update
         public void Init(int mapId, Area initArea)
         {
+            
             this.healthBar.value = 1;
             if (GameManager.Instance.accessbility)
             {
@@ -144,10 +144,10 @@ namespace Nameless.DataMono
                 this.ocuppyBar.gameObject.transform.Find("Fill Area/Fill").gameObject.GetComponent<Image>().color = new Color(0, 1, 1, 1);
                 this.nameTxt.color = this.isAI ? new Color(1, 0, 0, 1) : new Color(0, 1, 0, 1);
             }
-            
-            this.characterView = GameManager.Instance.characterView;
+            this.currentArea = initArea;
             this.pawnAgent = new PawnAgent(this.healthBar, this.CurrentArea,PawnFactory.GetPawnById(Id),mapId);
             initArea.AddPawn(this);
+            this.transform.position = initArea.centerNode.transform.position; 
             this.State = PawnState.Wait;
             this.nameTxt.text = DataManager.Instance.GetCharacter(Id).name;
             this.fixbtn.gameObject.SetActive(false);
@@ -155,6 +155,9 @@ namespace Nameless.DataMono
             animObj.transform.localPosition = new Vector3(0, -9 ,0);
             animObj.transform.localScale = new Vector3(1, 1, 1);
             animObj.GetComponent<CharacterAnim>().Init(this);
+
+            DialogueTriggerManager.Instance.TimeTriggerEvent += this.ReceiveCurrentTime;
+            DialogueTriggerManager.Instance.CheckGameStartEvent(this);
             //this.InitLine();
         }
         // Update is called once per frame
@@ -193,7 +196,7 @@ namespace Nameless.DataMono
                 this.AIBehavior();
                 return;
             }
-            if (this.characterView.gameObject.activeInHierarchy || this.isAI)
+            if (GameManager.Instance.characterView.gameObject.activeInHierarchy || this.isAI)
                 return;
             //if (Input.GetMouseButtonDown(1))//���޸� �򿪽�ɫ�����ʱ����
             //{
@@ -387,7 +390,7 @@ namespace Nameless.DataMono
                     tagArea = occupyArea[UnityEngine.Random.Range(0, occupyArea.Count - 1)];
                 else
                 {
-                    List<int>[] tempPath = Map.Instance.Dijkstra(Map.Instance.areaMatrix, this.currentArea.id);
+                    List<int>[] tempPath = Map.Instance.Dijkstra(Map.Instance.areaMatrix, this.currentArea.localId);
                     List<int> targetPath = new List<int>();
                     for (int i = 0; i < tempPath.Length; i++)
                     {

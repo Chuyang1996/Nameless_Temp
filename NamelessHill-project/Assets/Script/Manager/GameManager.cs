@@ -89,29 +89,13 @@ namespace Nameless.Manager {
             this.battleView.InitBattle(this.totalTime, this.levelgoalDes, this.totalMilitaryRes);
             Time.timeScale = 1.0f;
             this.RESULTEVENT += this.Result;
-            for (int i = 0; i < this.curplayerPawns.Count; i++)
-            {
-                this.curplayerPawns[i].characterView = this.characterView;
-                this.curplayerPawns[i].currentArea = this.areas[i].GetArea();
-                //this.areas[i].Init();
-                this.curplayerPawns[i].Init(0, this.areas[i].GetArea());
-                this.curplayerPawns[i].transform.position = this.areas[i].GetArea().centerNode.transform.position;
-                DialogueTriggerManager.Instance.TimeTriggerEvent += this.curplayerPawns[i].ReceiveCurrentTime;
-                DialogueTriggerManager.Instance.CheckGameStartEvent(this.curplayerPawns[i]);
-                PawnManager.Instance.AddPawnForFaction(this.curplayerPawns[i], false);
-            }
 
-            for (int i = 0; i < this.curenemyPawns.Count; i++)
-            {
-                this.curenemyPawns[i].characterView = this.characterView;
-                this.curenemyPawns[i].currentArea = this.enemyAreas[i].GetArea();
-                //this.enemyAreas[i].Init();
-                this.curenemyPawns[i].Init(0, this.enemyAreas[i].GetArea());
-                this.curenemyPawns[i].transform.position = this.enemyAreas[i].GetArea().centerNode.transform.position;
-                DialogueTriggerManager.Instance.TimeTriggerEvent += this.curenemyPawns[i].ReceiveCurrentTime;
-                DialogueTriggerManager.Instance.CheckGameStartEvent(this.curenemyPawns[i]);
-                PawnManager.Instance.AddPawnForFaction(this.curenemyPawns[i], true);
-            }
+            PawnManager.Instance.AddPawnOnArea(1001, Map.Instance.FindAreaByLocalId(38), 0, false);
+            PawnManager.Instance.AddPawnOnArea(1002, Map.Instance.FindAreaByLocalId(24), 0, false);
+            PawnManager.Instance.AddPawnOnArea(1003, Map.Instance.FindAreaByLocalId(21), 0, false);
+            PawnManager.Instance.AddPawnOnArea(1004, Map.Instance.FindAreaByLocalId(25), 0, false);
+            PawnManager.Instance.AddPawnOnArea(1005, Map.Instance.FindAreaByLocalId(14), 0, true);
+            PawnManager.Instance.AddPawnOnArea(1005, Map.Instance.FindAreaByLocalId(34), 0, true);
             #region//获取本次场景里的事件
 
 

@@ -1,6 +1,7 @@
 using Nameless.Data;
 using Nameless.DataMono;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Nameless.Data
@@ -74,7 +75,7 @@ namespace Nameless.Manager
             }
             for(int i = 0;i< this.areas.Count; i++)
             {
-                this.areas[i].id = i + 1;
+                this.areas[i].localId = i + 1;
             }
             this.areaMatrix = new float[areas.Count, areas.Count];
             for(int i = 0; i < this.areaMatrix.GetLength(0); i++)
@@ -107,6 +108,10 @@ namespace Nameless.Manager
 
         // Update is called once per frame
 
+        public Area FindAreaByLocalId(int id)
+        {
+            return this.areas.Where(_area => _area.localId == id).FirstOrDefault();
+        }
         public  List<int>[] Dijkstra(float[,] graphic, int start)//打印结果为以start为起始点到达其他位置的所有最短路径
         {
             int n = graphic.GetLength(0);
@@ -161,6 +166,7 @@ namespace Nameless.Manager
 
             return path;
         }
+
 
         public void ClearMap()
         {
