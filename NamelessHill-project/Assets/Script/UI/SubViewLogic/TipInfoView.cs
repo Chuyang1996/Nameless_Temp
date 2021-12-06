@@ -105,11 +105,11 @@ namespace Nameless.UI
         {
             yield return new WaitForSecondsRealtime(1.0f);
             this.RemoveAllTips();
-            foreach (GameObject child in this.RreshPanels)
-            {
-                LayoutRebuilder.ForceRebuildLayoutImmediate(child.GetComponent<RectTransform>());
-            }
-            LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
+            //foreach (GameObject child in this.RreshPanels)
+            //{
+            //    LayoutRebuilder.ForceRebuildLayoutImmediate(child.GetComponent<RectTransform>());
+            //}
+            //LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
         }
         private IEnumerator RreshEnumerator()
         {
@@ -160,11 +160,11 @@ namespace Nameless.UI
                     this.GenerateSupportTip(buffs[i].descrption);
                 }
             }
-            foreach (GameObject child in this.RreshPanels)
-            {
-                LayoutRebuilder.ForceRebuildLayoutImmediate(child.GetComponent<RectTransform>());
-            }
-            LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
+            //foreach (GameObject child in this.RreshPanels)
+            //{
+            //    LayoutRebuilder.ForceRebuildLayoutImmediate(child.GetComponent<RectTransform>());
+            //}
+            //LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
         }
 
 
