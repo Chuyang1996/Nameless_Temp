@@ -66,22 +66,22 @@ namespace Nameless.Manager
             {
                 this.playerPawns.Add(pawnAvatar.GetComponent<PawnAvatar>());
             }
-            pawnAvatar.gameObject.transform.parent = this.gameObject.transform;
+            pawnAvatar.gameObject.transform.parent = MapManager.Instance.currentMap.PawnCollect.transform;
             return pawnAvatar.GetComponent<PawnAvatar>();
         }
 
         public void ClearAllPawn()
         {
-            for (int i = 0; i < this.playerPawns.Count; i++)
-            {
-                Destroy(this.playerPawns[i].gameObject);
-            }
+            //for (int i = 0; i < this.playerPawns.Count; i++)
+            //{
+            //    Destroy(this.playerPawns[i].gameObject);
+            //}
             this.playerPawns.Clear();
 
-            for (int i = 0; i < this.enemyPawns.Count; i++)
-            {
-                Destroy(this.enemyPawns[i].gameObject);
-            }
+            //for (int i = 0; i < this.enemyPawns.Count; i++)
+            //{
+            //    Destroy(this.enemyPawns[i].gameObject);
+            //}
             this.enemyPawns.Clear();
         }
     }

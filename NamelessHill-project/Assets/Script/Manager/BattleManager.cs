@@ -43,7 +43,7 @@ namespace Nameless.Manager
             
             GameObject newBattle = Instantiate( Resources.Load("Prefabs/Battle")) as GameObject;
             newBattle.GetComponent<BattleRound>().Init(attacker, defender);
-            newBattle.gameObject.transform.parent = MapManager.Instance.currentMap.Battle.transform;//待修改 加了Map数据之后
+            newBattle.gameObject.transform.parent = MapManager.Instance.currentMap.BattleCollect.transform;//待修改 加了Map数据之后
             attacker.UpdateCurrentOppo(defender);
             if (!defenderisInBattle)
             {
