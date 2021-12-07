@@ -74,9 +74,9 @@ SpriteAtlas:
   - JournalImage_Liu_VillageBoy_A_Text_02
   - map
   - JournalImage_Liu_VillageBoy_A_Text_04
-  - JournalImage_Liu_DangerousMission_Image_02
-  - JournalImage_Liu_DefenseCollasped_Image
   - JournalImage_Liu_DangerousMission_Image_01
+  - JournalImage_Liu_DefenseCollasped_Image
+  - JournalImage_Liu_DangerousMission_Image_02
   - JournalImage_Liu_VillageBoy_B_Image01
   - JournalImage_Liu_VillageBoy_A_Text_03
   - JournalImage_Liu_VillageBoy_A_Text_01
