@@ -11,6 +11,7 @@ namespace Nameless.UI
 {
     public class BattleView : MonoBehaviour
     {
+        public Button pauseBtn;
         #region
         public ResourceInfoView resourceInfoView;
         public TipInfoView tipInfoView;
@@ -46,6 +47,10 @@ namespace Nameless.UI
         private int hour;
         #endregion
         // Start is called before the first frame update
+        private void Start()
+        {
+            this.pauseBtn.onClick.AddListener(this.resultInfoView.PausePanelShow);
+        }
         public void InitBattle(int totalTime, string goalDes,int militartRes)
         {
             this.gameObject.SetActive(true);

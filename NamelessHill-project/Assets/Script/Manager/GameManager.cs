@@ -47,6 +47,7 @@ namespace Nameless.Manager {
         public EventView eventView;
         public ConversationView conversationView;
         public NoteBookView noteBookView;
+        public MainMenuView mainMenuView;
 
 
 
@@ -122,7 +123,7 @@ namespace Nameless.Manager {
         }
         public void RestartBattle()
         {
-            this.ClearScene();
+            this.ClearBattle();
             this.InitBattle();
             RTSCamera.Instance.ResetCameraPos();
         }
@@ -138,6 +139,18 @@ namespace Nameless.Manager {
             CampManager.Instance.InitCamp(PawnManager.Instance.GetPawnAvatars(false), this.totalMilitaryRes);
 
         }
+
+        public void BackToMainMenu()
+        {
+            GameManager.Instance.ClearBattle();
+            GameManager.Instance.ClearCamp();
+            RTSCamera.Instance.ResetCameraPos();
+            AudioManager.Instance.PlayMusic(mainMenuBgmName);
+            this.battleView.gameObject.SetActive(false);
+            this.campView.gameObject.SetActive(false);
+            this.mainMenuView.gameObject.SetActive(true);
+        }
+
         private void Result(string title, bool isWin)
         {
             this.battleView.resultInfoView.SetResultTxt(title, isWin);
@@ -208,7 +221,7 @@ namespace Nameless.Manager {
 
 
 
-        public void ClearScene()
+        public void ClearBattle()
         {
             this.enemyOccupyAreas.Clear();
             this.playerOccupyAreas.Clear();
@@ -218,6 +231,11 @@ namespace Nameless.Manager {
             StopCoroutine(DialogueTriggerManager.Instance.StartListenEvent());
             PawnManager.Instance.ClearAllPawn();
             MapManager.Instance.ClearMap();
+
+        }
+        public void ClearCamp()
+        {
+            CampManager.Instance.ClearCamp();
 
         }
         public void PauseOrPlay(bool isPlay)

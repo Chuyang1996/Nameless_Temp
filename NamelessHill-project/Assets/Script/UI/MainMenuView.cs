@@ -17,6 +17,8 @@ namespace Nameless.UI
         public Button backBtn;
 
         public Toggle accessbilityToggle;
+        public Slider musicSlider;
+        public Slider soundSlider;
 
         private void Start()
         {
@@ -25,6 +27,10 @@ namespace Nameless.UI
             this.backBtn.onClick.AddListener(this.MainMenu);
             this.exitBtn.onClick.AddListener(this.Exit);
             this.accessbilityToggle.onValueChanged.AddListener(this.ActiveAccessbility);
+            this.musicSlider.value = AudioManager.Instance.MusicVolume;
+            this.soundSlider.value = AudioManager.Instance.SoundVolume;
+            this.musicSlider.onValueChanged.AddListener((float value) => { AudioManager.Instance.MusicVolume = value; });
+            this.soundSlider.onValueChanged.AddListener((float value) => { AudioManager.Instance.SoundVolume = value; });
         }
 
         public void NewStart()

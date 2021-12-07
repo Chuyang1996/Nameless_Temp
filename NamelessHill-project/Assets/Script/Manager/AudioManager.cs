@@ -14,7 +14,7 @@ namespace Nameless.Data
 		//要生成的对象池预设  
 		private GameObject prefab;
 		//对象池列表  
-		private List<GameObject> soundPool;
+		public List<GameObject> soundPool;
 		//构造函数  
 		public AudioObjectPool(GameObject prefab, int initialSize)
 		{
@@ -99,9 +99,36 @@ namespace Nameless.Manager
 		//是否Sound静音
 		public bool isSoundMute = false;
 
-		public float soundVolume = 1;
+		public float SoundVolume
+        {
+			set
+			{
+				soundVolume = value;
+			}
+			get
+            {
+				return soundVolume;
 
-		public float musicVolume = 1;
+            }
+            
+        }
+		private float soundVolume = 0.5f;
+
+
+		public float MusicVolume
+        {
+			set
+			{
+				this.backGroundMusic.volume = value;
+				musicVolume = value;
+			}
+			get
+			{
+				return musicVolume;
+
+			}
+		}
+		private float musicVolume = 0.5f;
 		[HideInInspector]
 		public AudioSource backGroundMusic;
 		[HideInInspector]

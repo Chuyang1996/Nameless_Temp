@@ -1597,7 +1597,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 5.15
+  - time: 5.983333
     functionName: InitBattle
     data: 
     objectReferenceParameter: {fileID: 0}

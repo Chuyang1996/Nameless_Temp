@@ -56,7 +56,7 @@ namespace Nameless.DataMono
                     //if (this.attacker == null || this.defender == null)
                     //    break;
 
-                    if (this.IsTheBattleEnd())
+                    if (this.attacker == null || this.defender == null || this.IsTheBattleEnd())
                         break;
                     this.attacker.CalcuateBattleInfo();//计算本次战斗实际的角色数据
                     this.defender.CalcuateBattleInfo();
@@ -93,7 +93,9 @@ namespace Nameless.DataMono
             }
             BattleManager.Instance.battleDic.Remove(this.battle);
 
-            DestroyImmediate(this.gameObject);
+
+            if (this != null)
+                DestroyImmediate(this.gameObject);
         }
 
         bool IsTheBattleEnd()

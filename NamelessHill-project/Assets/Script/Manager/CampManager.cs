@@ -29,7 +29,7 @@ namespace Nameless.Manager
         }
         public void ActiveCamp()
         {
-            GameManager.Instance.ClearScene();
+            GameManager.Instance.ClearBattle();
             this.campScene.SetActive(true);
             AudioManager.Instance.PlayMusic(campBgmName);
         }
@@ -60,11 +60,12 @@ namespace Nameless.Manager
             return pawnCamp;
         }
 
-        public void ResetPawnAvatars()
+        public void ClearCamp()
         {
             for (int i = 0; i < this.allCampPawns.Count; i++)
                 DestroyImmediate(allCampPawns[i].gameObject);
             this.allCampPawns.Clear();
+
         }
 
     }

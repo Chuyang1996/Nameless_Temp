@@ -46,6 +46,7 @@ namespace Nameless.DataMono
         public Sprite spriteAccessbility;
         public SpriteRenderer bg;
         public GameObject PathLine;
+        public GameObject SupportLine;
         public GameObject BattleCollect;
         public GameObject PawnCollect;
         public float[,] areaMatrix;

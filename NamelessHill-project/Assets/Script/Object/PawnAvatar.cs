@@ -120,12 +120,12 @@ namespace Nameless.DataMono
         {
             set
             {
-                fixbtn.gameObject.SetActive(value);
-                fixBtnActive = value;
+                this.fixbtn.gameObject.SetActive(value);
+                this.fixBtnActive = value;
             }
             get
             {
-                return fixBtnActive;
+                return this.fixBtnActive;
             }
         }
         private bool fixBtnActive = false;
@@ -884,7 +884,8 @@ namespace Nameless.DataMono
                             GameObject newLine = new GameObject();
                             newLine.name = "SupportLine";
                             newLine.AddComponent<Support>();
-                            newLine.GetComponent<Support>().InitSupport(this, this.CurrentArea.neighboors[i].pawns[0]); 
+                            newLine.GetComponent<Support>().InitSupport(this, this.CurrentArea.neighboors[i].pawns[0]);
+                            newLine.transform.parent = MapManager.Instance.currentMap.SupportLine.transform;
                             LineRenderer supportLine = newLine.AddComponent<LineRenderer>();
                             supportLine.material = this.WireMaterial;
                             supportLine.SetWidth(0.2f, 0.2f);
@@ -1067,7 +1068,8 @@ namespace Nameless.DataMono
         public void PlayDialogue(string txt)//���ŶԻ�
         {
             this.dialogueTxt.text = txt;
-            this.dialogueAnim.Play();
+            if(this.dialogueAnim!=null)
+                this.dialogueAnim.Play();
         }
         public void ShowDialogue(string txt)
         {

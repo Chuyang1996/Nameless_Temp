@@ -8,23 +8,49 @@ namespace Nameless.UI
 {
     public class CampView :  SelectViewLogic
     {
-        public Sprite book;
-        public Sprite bookMark;
 
-        public Sprite light;
-        public Sprite lightMark;
-        
         public Animation animation;
 
         public AnimationClip enterAnim;
         public AnimationClip exitAnim;
 
-        public GameObject selectPanel;
+
 
         public Text resourceText;
         public Text pawnNum;
-        public Text infoTxt;
 
+
+        public Button pauseBtn;
+
+        public Button resumeBtn;
+        public Button optionBtn;
+        public Button mainBtn;
+        public Button exitBtn;
+
+
+        public Button backBtn;
+        public Slider musicSlider;
+        public Slider soundSlider;
+
+        public GameObject pausePanel;
+        public GameObject resultPanel;
+        public GameObject optionPanel;
+
+        private void Start()
+        {
+            this.pauseBtn.onClick.AddListener(this.PausePanelShow);
+            this.resumeBtn.onClick.AddListener(this.BackToGame);
+            this.optionBtn.onClick.AddListener(this.OptionPanel);
+            this.mainBtn.onClick.AddListener(this.MainMenuPanel);
+            this.exitBtn.onClick.AddListener(this.ExitGame);
+
+
+            this.backBtn.onClick.AddListener(this.BackToResultPanel);
+            this.musicSlider.value = AudioManager.Instance.MusicVolume;
+            this.soundSlider.value = AudioManager.Instance.SoundVolume;
+            this.musicSlider.onValueChanged.AddListener((float value) => { AudioManager.Instance.MusicVolume = value; });
+            this.soundSlider.onValueChanged.AddListener((float value) => { AudioManager.Instance.SoundVolume = value; });
+        }
         public void InitCamp(int militartRes, int pawnNum)
         {
             this.gameObject.SetActive(true);
@@ -58,80 +84,47 @@ namespace Nameless.UI
             this.resourceText.text = value.ToString();
         }
 
-        public void InitInfo(string value)
-        {
-            this.FollowMouseMove(this.selectPanel);
-            this.selectPanel.SetActive(true);
-            this.infoTxt.text = value;
-        }
-        public override void FollowMouseMove(GameObject item)
-        {
-            base.FollowMouseMove(item);
-            item.gameObject.SetActive(true);
-            RectTransform rectTransform = item.transform as RectTransform;
-            item.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x + (item.GetComponent<RectTransform>().sizeDelta.x / 2), pos.y - (item.GetComponent<RectTransform>().sizeDelta.y / 2));
 
-        }
-        private void Update()
+
+        private void PausePanelShow()
         {
-            Vector2 raySelectBtn = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hitBtn = Physics2D.Raycast(raySelectBtn, Vector2.zero);
-            if (hitBtn.collider != null)
-            {
-                if (hitBtn.collider.gameObject == CampManager.Instance.lightBtn.gameObject)
-                {
-                    CampManager.Instance.lightBtn.GetComponent<SpriteRenderer>().sprite = this.lightMark;
-                    this.InitInfo("Wait till the next battle");
-                }
-                else if (hitBtn.collider.gameObject == CampManager.Instance.noteBtn.gameObject)
-                {
-                    CampManager.Instance.noteBtn.GetComponent<SpriteRenderer>().sprite = this.bookMark;
-                    this.InitInfo("My Daily");
-                }
-                else
-                {
-                    CampManager.Instance.lightBtn.GetComponent<SpriteRenderer>().sprite = this.light;
-                    CampManager.Instance.noteBtn.GetComponent<SpriteRenderer>().sprite = this.book;
-                    this.selectPanel.SetActive(false);
-
-                }
-            }
-            else
-            {
-                CampManager.Instance.lightBtn.GetComponent<SpriteRenderer>().sprite = this.light;
-                CampManager.Instance.noteBtn.GetComponent<SpriteRenderer>().sprite = this.book;
-                this.selectPanel.SetActive(false);
-            }
-            if (Input.GetMouseButtonDown(0) && !GameManager.Instance.noteBookView.gameObject.activeInHierarchy && !GameManager.Instance.conversationView.gameObject.activeInHierarchy)//当这些面板处于关闭状态时才能点击
-            {
-                //Debug.Log("sssss");
-                if (hitBtn.collider != null)
-                {
-
-                    if (hitBtn.collider.gameObject == CampManager.Instance.noteBtn.gameObject)
-                    {
-                        AudioManager.Instance.PlayAudio(CampManager.Instance.noteBtn.transform, AudioConfig.uiRemind);
-                        NoteManager.Instance.InitNoteBook();
-                    }
-                    else
-                    {
-                        for (int i = 0; i < CampManager.Instance.allCampPawns.Count; i++)
-                        {
-                            if (hitBtn.collider.gameObject == CampManager.Instance.allCampPawns[i].btnDialogue.gameObject)//待修改.AI
-                            {
-                                AudioManager.Instance.PlayAudio(CampManager.Instance.allCampPawns[i].btnDialogue.transform, AudioConfig.uiRemind);
-                                CampManager.Instance.allCampPawns[i].ClickToConversation();
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-
+            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
+            Time.timeScale = 0.0f;
+            this.pausePanel.gameObject.SetActive(true);
         }
-        private void LateUpdate()
+        private void BackToGame()
         {
-            LayoutRebuilder.ForceRebuildLayoutImmediate(this.selectPanel.GetComponent<RectTransform>());
+            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
+            Time.timeScale = 1.0f;
+            this.pausePanel.gameObject.SetActive(false);
         }
+        private void OptionPanel()
+        {
+            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
+            this.resultPanel.SetActive(false);
+            this.optionPanel.SetActive(true);
+        }
+        private void MainMenuPanel()
+        {
+            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
+            Time.timeScale = 1.0f;
+            this.gameObject.SetActive(false);
+            GameManager.Instance.BackToMainMenu();
+        }
+
+        private void ExitGame()
+        {
+            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
+            Application.Quit();
+        }
+
+        private void BackToResultPanel()
+        {
+            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
+            this.resultPanel.SetActive(true);
+            this.optionPanel.SetActive(false);
+        }
+
+
     } 
 }
