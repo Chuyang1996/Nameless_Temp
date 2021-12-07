@@ -53,9 +53,9 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 51290800a839e1d4bb54cdff6715a9e4, type: 3}
   - {fileID: 21300000, guid: cd49720449abdba4e9aa431b5e079ca7, type: 3}
   - {fileID: 21300000, guid: 0a5039146eb493148a15b1f9be8381fa, type: 3}
-  - {fileID: 21300000, guid: d488a06576d4c92449a2c41b905bfe79, type: 3}
   - {fileID: 21300000, guid: a9bc92f515b44a64592e08b4ed26fafc, type: 3}
   - {fileID: 21300000, guid: 4c4fe6861a266544685bcd11595b7c3c, type: 3}
+  - {fileID: 21300000, guid: 72f84a87426fe744295baed05910e243, type: 3}
   - {fileID: 21300000, guid: a1f92c87fed7cb146a016304ada961fc, type: 3}
   - {fileID: 21300000, guid: 075b22d90c123e748987b8c738812620, type: 3}
   - {fileID: 21300000, guid: 476e011a417fc04458e3a7c92502f25a, type: 3}
@@ -68,9 +68,9 @@ SpriteAtlas:
   - Tutorial_04
   - NewTutorial_04
   - Tutorial_03
-  - NewTutorial_07
   - Dangerous_Mission_0_1
   - NewTutorial_06
+  - NewTutorial_07
   - Defensive_Collasped_01
   - NewTutorial_01
   - Village_Teenager_01
