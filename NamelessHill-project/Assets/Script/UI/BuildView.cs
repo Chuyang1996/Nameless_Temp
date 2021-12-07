@@ -11,6 +11,9 @@ namespace Nameless.UI
 {
     public class BuildView : MonoBehaviour
     {
+        public string medicineString;
+        public string ammoString;
+
         public Sprite ammoSprite;
         public Sprite medicineSprite;
 
@@ -81,8 +84,8 @@ namespace Nameless.UI
             Transform Obj1 = Instantiate(this.buildTemplate.transform, this.contentBuildSelect.transform);
             Obj0.gameObject.SetActive(true);
             Obj1.gameObject.SetActive(true);
-            Obj0.GetComponent<BuildSelectUI>().Init(this.medicineSprite,50,0, 1, "Med Kit: When your own unit is fighting in the area, if its health is lower than 20%, it will restore 50% of its maximum health");
-            Obj1.GetComponent<BuildSelectUI>().Init(this.ammoSprite, 100,1, 0, "Ammo crate: When your own unit is fighting in the area, when the ammunition is 0, it will automatically restore full ammunition");
+            Obj0.GetComponent<BuildSelectUI>().Init(this.medicineSprite,50,0, 1, medicineString);
+            Obj1.GetComponent<BuildSelectUI>().Init(this.ammoSprite, 100,1, 0, ammoString);
             this.buildList.Add(Obj0.gameObject);
             this.buildList.Add(Obj1.gameObject);
 

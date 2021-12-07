@@ -18901,6 +18901,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 40.605
       objectReference: {fileID: 0}
+    - target: {fileID: 6644504619648734892, guid: 2352ed6e04e359d4185254e454023853, type: 3}
+      propertyPath: ammoString
+      value: 'Ammo crate: When a unit''s ammo is lower than 70%, restore 30% immediately'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644504619648734892, guid: 2352ed6e04e359d4185254e454023853, type: 3}
+      propertyPath: medicineString
+      value: 'Med kit: When a unit''s hp is lower than 70%, restore 30% immediately'
+      objectReference: {fileID: 0}
     - target: {fileID: 6644504619648734893, guid: 2352ed6e04e359d4185254e454023853, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
