@@ -46,6 +46,7 @@ namespace Nameless.Data
         public long id;
         public string name;
         public string descrption;
+        public Sprite icon;
         public Dictionary<SkillConditionType, float> conditions = new Dictionary<SkillConditionType, float>();
 
         protected bool IsActive(PawnAvatar pawnAvatar)
@@ -223,7 +224,7 @@ namespace Nameless.Data
     {
         public float attackRate;
         public float defendRate;
-        public FightSkill(long id, string name, string descrption, Dictionary<SkillConditionType,float> conditions, float attackRate, float defendRate)
+        public FightSkill(long id, string name, string descrption, Dictionary<SkillConditionType,float> conditions, float attackRate, float defendRate, Sprite iconName)
         {
             this.id = id;
             this.name = name;
@@ -231,6 +232,7 @@ namespace Nameless.Data
             this.conditions = conditions;
             this.attackRate = attackRate;
             this.defendRate = defendRate;
+            this.icon = iconName;
         }
 
         public float ExtraAttack(PawnAvatar conditioner, PawnAvatar receiver)
@@ -255,7 +257,7 @@ namespace Nameless.Data
         public List<Buff> buffs;
         public float attackRate;
         public float defendRate;
-        public SupportSkill(long id, string name, string descrption, Dictionary<SkillConditionType, float> conditions, List<Buff> buffs, float attackRate, float defendRate)
+        public SupportSkill(long id, string name, string descrption, Dictionary<SkillConditionType, float> conditions, List<Buff> buffs, float attackRate, float defendRate, Sprite iconName)
         {
             this.id = id;
             this.name = name;
@@ -264,6 +266,7 @@ namespace Nameless.Data
             this.buffs = buffs;
             this.attackRate = attackRate;
             this.defendRate = defendRate;
+            this.icon = iconName;
         }
         public float ExtraAttack(PawnAvatar conditioner, PawnAvatar receiver)
         {
@@ -287,7 +290,7 @@ namespace Nameless.Data
         public float costMedicineRate;
         public float costAmmoRate;
 
-        public BuildSkill(long id, string name, string descrption, Dictionary<SkillConditionType, float> conditions, float costMedicineRate, float costAmmoRate)
+        public BuildSkill(long id, string name, string descrption, Dictionary<SkillConditionType, float> conditions, float costMedicineRate, float costAmmoRate, Sprite iconName)
         {
             this.id = id;
             this.name = name;
@@ -295,6 +298,7 @@ namespace Nameless.Data
             this.conditions = conditions;
             this.costMedicineRate = costMedicineRate;
             this.costAmmoRate = costAmmoRate;
+            this.icon = iconName;
         }
 
         public float ExtraMedicine(PawnAvatar conditioner, float cost)

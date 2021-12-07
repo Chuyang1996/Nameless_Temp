@@ -36,6 +36,8 @@ namespace Nameless.DataMono
                     }
                 }
             }
+
+            this.receiver.RefreshSupportIcon();
            // Debug.Log(this.receiver.pawnAgent.pawn.curAttack);
 
         }

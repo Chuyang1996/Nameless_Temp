@@ -10,6 +10,7 @@ namespace Nameless.Manager
         CharacterImage = 1,
         CharacterCampImage = 2,
         NoteImage = 3,
+        IconImage = 4,
     }
     public class SpriteManager : Singleton<SpriteManager>
     {
@@ -19,7 +20,8 @@ namespace Nameless.Manager
             { "EventImage", AtlasType.EventImage},
             { "CharacterImage", AtlasType.CharacterImage},
             { "CampCharacterImage", AtlasType.CharacterCampImage},
-            { "NoteImage", AtlasType.NoteImage}
+            { "NoteImage", AtlasType.NoteImage},
+            { "IconImage", AtlasType.IconImage},
          };
         public Dictionary<AtlasType, SpriteAtlas> atlasCollection = new Dictionary<AtlasType, SpriteAtlas>();
         // Start is called before the first frame update

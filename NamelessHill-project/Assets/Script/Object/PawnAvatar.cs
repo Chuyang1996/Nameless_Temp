@@ -108,10 +108,12 @@ namespace Nameless.DataMono
         public Slider healthBar;
         public Slider ocuppyBar;
         public Image healthBarColor;
-        public Text nameTxt;
         public GameObject dialogueIm;
         public Text dialogueTxt;
-
+        public GameObject buffContent;
+        private List<GameObject> buffs = new List<GameObject>();
+        public Image bufficon;
+        
 
         public GameObject fixbtn;
         private bool FixBtnActive
@@ -137,20 +139,18 @@ namespace Nameless.DataMono
             {
                 this.healthBar.gameObject.transform.Find("Fill Area/Fill").gameObject.GetComponent<Image>().color = this.isAI ? new Color(0.74f, 0.64f, 0.08f, 1) : new Color(0.47f, 0.51f, 0.66f, 1);
                 this.ocuppyBar.gameObject.transform.Find("Fill Area/Fill").gameObject.GetComponent<Image>().color = new Color(0.33f, 0.33f, 0.33f, 1);
-                this.nameTxt.color = this.isAI ? new Color(0.74f, 0.64f, 0.08f, 1) : new Color(0.47f, 0.51f, 0.66f, 1);
             }
             else
             {
                 this.healthBar.gameObject.transform.Find("Fill Area/Fill").gameObject.GetComponent<Image>().color = this.isAI ? new Color(1, 0, 0, 1) : new Color(0, 1, 0, 1);
                 this.ocuppyBar.gameObject.transform.Find("Fill Area/Fill").gameObject.GetComponent<Image>().color = new Color(0, 1, 1, 1);
-                this.nameTxt.color = this.isAI ? new Color(1, 0, 0, 1) : new Color(0, 1, 0, 1);
+
             }
             this.currentArea = initArea;
             this.pawnAgent = new PawnAgent(this.healthBar, this.CurrentArea,PawnFactory.GetPawnById(Id),mapId);
             initArea.AddPawn(this);
             this.transform.position = initArea.centerNode.transform.position; 
             this.State = PawnState.Wait;
-            this.nameTxt.text = DataManager.Instance.GetCharacter(Id).name;
             this.fixbtn.gameObject.SetActive(false);
             GameObject animObj = Instantiate(Resources.Load(pathFindAnim + this.pawnAgent.pawn.animPrefab), this._root.transform) as GameObject;
             animObj.transform.localPosition = new Vector3(0, -9 ,0);
@@ -169,11 +169,12 @@ namespace Nameless.DataMono
 
 
 
-            Ray targetRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit targetHit;
-            if (Physics.Raycast(targetRay, out targetHit))
+            //Debug.Log("sssss");
+            Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
+            if (hit.collider != null)
             {
-                if (targetHit.transform.gameObject == this.gameObject)
+                if (hit.collider.transform.gameObject == this.gameObject)
                 {
                     PathManager.Instance.ShowPath(this);
                 }
@@ -199,23 +200,21 @@ namespace Nameless.DataMono
             }
             if (GameManager.Instance.characterView.gameObject.activeInHierarchy || this.isAI)
                 return;
-            //if (Input.GetMouseButtonDown(1))//���޸� �򿪽�ɫ�����ʱ����
-            //{
-            //    Ray targetray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            //    RaycastHit TargetHit;
-            //    if (Physics.Raycast(targetray, out TargetHit))
-            //    {
-            //        if (TargetHit.transform.gameObject == this.gameObject)
-            //        {
-            //            this.characterView.SetNewPawn(this);
-            //        }
-            //    }
-            //}
+            if (Input.GetMouseButtonDown(1))//���޸� �򿪽�ɫ�����ʱ����
+            {
+
+                if (hit.collider != null)
+                {
+                    if (hit.collider.transform.gameObject == this.gameObject)
+                    {
+                        GameManager.Instance.characterView.SetNewPawn(this);
+                    }
+                }
+            }
             if (Input.GetMouseButtonDown(0))
             {
                 //Debug.Log("sssss");
-                Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
+
                 if (hit.collider != null)
                 {
                     this.lastDragPos = raySelect;
@@ -238,8 +237,6 @@ namespace Nameless.DataMono
             if (Input.GetMouseButton(0) /*&& this.State != PawnState.Battle*/)
             {
                 //Debug.Log("sssss");
-                Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
                 if (hit.collider != null)
                 {
                     if (hit.collider.transform.gameObject == this.gameObject)
@@ -910,6 +907,29 @@ namespace Nameless.DataMono
                 }
             }
         }
+
+        public void RefreshSupportIcon()
+        {
+            for (int i = 0; i < this.buffs.Count; i++)
+                DestroyImmediate(this.buffs[i]);
+            this.buffs.Clear();
+
+           for(int i = 0; i < this.pawnAgent.supporters.Count; i++)
+           {
+                List<Skill> skills = this.pawnAgent.supporters[i].pawnAgent.skills;
+                for (int j =0;j< skills.Count; j++)
+                {
+                    if(skills[j] is SupportSkill)
+                    {
+                        GameObject icon = Instantiate(this.bufficon.gameObject, this.buffContent.transform);
+                        icon.GetComponent<Image>().sprite = skills[j].icon;
+                        icon.SetActive(true);
+                        this.buffs.Add(icon);
+                    }
+                }
+           }
+            
+        }
         private void ResetAllSupport()//����֧Ԯ
         {
             for (int i = 0; i < this.supportRenderWires.Count; i++)
@@ -919,7 +939,10 @@ namespace Nameless.DataMono
             }
             this.supportRenderWires.Clear();
             this.supportRenderWireDic.Clear();
-            
+            for (int i = 0; i < this.buffs.Count; i++)
+                DestroyImmediate(this.buffs[i]);
+            this.buffs.Clear();
+
         }
         //public bool CheckIfSurround()
         //{

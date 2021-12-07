@@ -14,8 +14,9 @@ namespace Nameless.ConfigData
         public string buff;
         public float attackRate;
         public float defendRate;
+        public string iconName;
 
-        public SupportSkillData(long Id, string name, string description, string condition, string buff, float attackRate, float defendRate)
+        public SupportSkillData(long Id, string name, string description, string condition, string buff, float attackRate, float defendRate, string iconName )
         {
             this.Id = Id;
             this.name = name;
@@ -24,6 +25,7 @@ namespace Nameless.ConfigData
             this.buff = buff;
             this.attackRate = attackRate;
             this.defendRate = defendRate;
+            this.iconName = iconName;
         }
     }
 }

@@ -33,7 +33,7 @@ namespace Nameless.Agent
             {
                 tempDic = GetConditions(fightSkillData.condition);
             }
-            return new FightSkill(fightSkillData.Id, fightSkillData.name, fightSkillData.description, tempDic,fightSkillData.attackRate, fightSkillData.defendRate);
+            return new FightSkill(fightSkillData.Id, fightSkillData.name, fightSkillData.description, tempDic,fightSkillData.attackRate, fightSkillData.defendRate,SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, fightSkillData.iconName));
         }
         public static Skill Get(SupportSkillData supportSkillData)
         {
@@ -51,7 +51,7 @@ namespace Nameless.Agent
                     buffs.Add(BuffFactory.GetBuffById(ids[i]));
                 }
             }
-            return new SupportSkill(supportSkillData.Id, supportSkillData.name, supportSkillData.description, tempDic, buffs, supportSkillData.attackRate, supportSkillData.defendRate);
+            return new SupportSkill(supportSkillData.Id, supportSkillData.name, supportSkillData.description, tempDic, buffs, supportSkillData.attackRate, supportSkillData.defendRate, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, supportSkillData.iconName));
         }
         public static Skill Get(BuildSkillData buildSkillData)
         {
@@ -60,7 +60,7 @@ namespace Nameless.Agent
             {
                 tempDic = GetConditions(buildSkillData.condition);
             }
-            return new BuildSkill(buildSkillData.Id, buildSkillData.name, buildSkillData.description, tempDic, buildSkillData.costMedicineRate, buildSkillData.costAmmoRate);
+            return new BuildSkill(buildSkillData.Id, buildSkillData.name, buildSkillData.description, tempDic, buildSkillData.costMedicineRate, buildSkillData.costAmmoRate, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, buildSkillData.iconName));
         }
 
 
