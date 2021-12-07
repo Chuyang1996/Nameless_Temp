@@ -223,7 +223,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e03fd5668f348e643a24f22a6109ba3a, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -270,10 +270,10 @@ RectTransform:
   m_Father: {fileID: 6644504619866498938}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -20}
-  m_SizeDelta: {x: 100, y: 40}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6644504618151756429
 MonoBehaviour:
@@ -489,7 +489,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e03fd5668f348e643a24f22a6109ba3a, type: 3}
     m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
@@ -654,9 +654,9 @@ RectTransform:
   m_Father: {fileID: 6644504618151756431}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 78.21335, y: -20}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 41.935, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6644504618720200736
@@ -737,7 +737,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -49.331207, y: -36.417328}
+  m_AnchoredPosition: {x: -20.724, y: -20.445}
   m_SizeDelta: {x: 41.4476, y: 40.8893}
   m_Pivot: {x: 0.49999946, y: 0.49999994}
 --- !u!222 &6644504618730567442
@@ -854,9 +854,9 @@ RectTransform:
   m_Father: {fileID: 6644504618151756431}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 28.21335, y: -19.7495}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 56.4267, y: 39.499}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6644504618930859600
@@ -1366,7 +1366,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -12.8518, y: 40.605164}
+  m_AnchoredPosition: {x: -0.0000047684, y: 40.605}
   m_SizeDelta: {x: 152.15, y: 46.1854}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6644504619470266728
@@ -1612,6 +1612,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f35a0582563ab3340a52ba8e17c6dce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  medicineString: 'Med kit: When a unit''s hp is lower than 70%, restore 30% immediately'
+  ammoString: 'Ammo crate: When a unit''s ammo is lower than 70%, restore 30% immediately'
   ammoSprite: {fileID: -7199854994828347765, guid: d63499dfb031c5941abb90e81797c3dd, type: 3}
   medicineSprite: {fileID: -924327008972603792, guid: d63499dfb031c5941abb90e81797c3dd, type: 3}
   ammoCostSprite: {fileID: 21300000, guid: af0e3036f71910042bbdaf8edc0b4d80, type: 3}
@@ -1910,7 +1912,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6644504619317344179}
   m_HandleRect: {fileID: 6644504619317344188}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2223,9 +2225,9 @@ RectTransform:
   m_Father: {fileID: 6644504619395717950}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75, y: -71.87}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6644504620112803059
@@ -2394,11 +2396,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: 4efa7efd2a5d7a541b6ddd444b8966af, type: 3}
+    m_FontSize: 15
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -2406,9 +2408,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew
-    TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew TextNew
-    TextNew Text
+  m_Text: ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
 --- !u!114 &4423424433226601312
 MonoBehaviour:
   m_ObjectHideFlags: 0
