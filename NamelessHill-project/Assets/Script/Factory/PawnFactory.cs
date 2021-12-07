@@ -43,6 +43,7 @@ namespace Nameless.Agent
             return new Pawn(
                 characterData.Id,
                 characterData.name,
+                characterData.descrption,
                 characterData.health, 
                 crHealth, 
                 characterData.attack, 

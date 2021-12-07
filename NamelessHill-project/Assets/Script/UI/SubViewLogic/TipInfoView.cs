@@ -13,11 +13,11 @@ namespace Nameless.UI
     {
         public GameObject ownTip;
 
-
+        public Text nameTxt;
         public Sprite[] stateSprite;
         public Image stateMorale;
         public Slider ownAmmoSlider;
-
+        
 
 
         public GameObject content;
@@ -32,11 +32,11 @@ namespace Nameless.UI
         
         void Update()
         {
-            Ray targetray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit TargetHit;
-            if (Physics.Raycast(targetray, out TargetHit))
+            Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
+            if (hit.collider != null)
             {
-                if (TargetHit.transform.gameObject.GetComponent<PawnAvatar>() != null && !TargetHit.transform.gameObject.GetComponent<PawnAvatar>().isAI)//���޸�.AI
+                if (hit.collider.transform.gameObject.GetComponent<PawnAvatar>() != null && !hit.collider.transform.gameObject.GetComponent<PawnAvatar>().isAI)//���޸�.AI
                 {
                     this.ownTip.SetActive(true);
                     this.FollowMouseMove(ownTip);
@@ -50,7 +50,7 @@ namespace Nameless.UI
                     //    this.RreshPanel();
                     //    this.isShowSupport = true;
                     //}
-                    this.currentPawn = TargetHit.transform.gameObject.GetComponent<PawnAvatar>();
+                    this.currentPawn = hit.collider.transform.gameObject.GetComponent<PawnAvatar>();
                     this.RreshPanel();
                     float curMorale = (float)currentPawn.pawnAgent.pawn.curMorale;
                     float maxMorale = (float)currentPawn.pawnAgent.pawn.maxMorale;
@@ -66,6 +66,7 @@ namespace Nameless.UI
                     {
                         stateMorale.sprite = stateSprite[2];
                     }
+                    this.nameTxt.text = currentPawn.pawnAgent.pawn.name;
                     this.ownAmmoSlider.value = (float)currentPawn.pawnAgent.pawn.curAmmo / (float)currentPawn.pawnAgent.pawn.maxAmmo;
                 }
                 else

@@ -9,6 +9,7 @@ namespace Nameless.Data
     {
         public long id;
         public string name;
+        public string descrption;
 
         public float maxHealth;
         public float maxAttack;
@@ -220,10 +221,11 @@ namespace Nameless.Data
         public int campPosIndex;
         public int leftOrRight;
         public Dictionary<long, Conversation> conversationMapDic = new Dictionary<long, Conversation>();//后面会改成new Dictionary<long, List<Conversation>>()将符合条件的选出
-        public Pawn(long id, string name,float health, float crHealth, float attack, float crAttack, float morale, float crMorale, int ammo, float crAmmo, float speed, float crSpeed, float hit, float crHit, float dex, float crDex, float defend, float crDefend, List<long> fightSkillIds, List<long> supportSkillIds, List<long> buildSkillIds, Dictionary<long, DialogueGroup> dialogueDic,string animPrefab,string selectIcon, string campIcon, int campPosIndex, int btnLRpos, Dictionary<long, Conversation> conversationMapDic)
+        public Pawn(long id, string name, string descrption, float health, float crHealth, float attack, float crAttack, float morale, float crMorale, int ammo, float crAmmo, float speed, float crSpeed, float hit, float crHit, float dex, float crDex, float defend, float crDefend, List<long> fightSkillIds, List<long> supportSkillIds, List<long> buildSkillIds, Dictionary<long, DialogueGroup> dialogueDic,string animPrefab,string selectIcon, string campIcon, int campPosIndex, int btnLRpos, Dictionary<long, Conversation> conversationMapDic)
         {
             this.id = id;
             this.name = name;
+            this.descrption = descrption;
             this.maxHealth = health;
             this.maxAttack = attack;
             this.maxMorale = morale;

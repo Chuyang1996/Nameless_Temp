@@ -12,14 +12,15 @@ namespace Nameless.ConfigData
         public string condition;
         public float costMedicineRate;
         public float costAmmoRate;
-
+        public string iconName;
         public BuildSkillData(
             long Id,
             string name,
             string description,
             string condition,
             float costMedicineRate,
-            float costAmmoRate
+            float costAmmoRate, 
+            string iconName
             )
         {
             this.Id = Id;
@@ -28,6 +29,7 @@ namespace Nameless.ConfigData
             this.condition = condition;
             this.costMedicineRate = costMedicineRate;
             this.costAmmoRate = costAmmoRate;
+            this.iconName = iconName;
         }
     }
 }

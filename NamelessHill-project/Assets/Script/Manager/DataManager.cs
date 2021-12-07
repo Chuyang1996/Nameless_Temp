@@ -167,7 +167,8 @@ namespace Nameless.Manager
                             this.fightSkillData[id]["descrption"],
                             this.fightSkillData[id]["condition"],
                             float.Parse(this.fightSkillData[id]["attackRate"]),
-                            float.Parse(this.fightSkillData[id]["defendRate"])
+                            float.Parse(this.fightSkillData[id]["defendRate"]),
+                            this.fightSkillData[id]["iconName"]
                             );
                     return skill;
                 }
@@ -196,7 +197,8 @@ namespace Nameless.Manager
                             this.supportSkillData[id]["condition"],
                             this.supportSkillData[id]["buff"],
                             float.Parse(this.supportSkillData[id]["attackRate"]),
-                            float.Parse(this.supportSkillData[id]["defendRate"])
+                            float.Parse(this.supportSkillData[id]["defendRate"]),
+                            this.supportSkillData[id]["iconName"]
                             );
                     return skill;
                 }
@@ -224,7 +226,8 @@ namespace Nameless.Manager
                             this.buildSkillData[id]["descrption"],
                             this.buildSkillData[id]["condition"],
                             float.Parse(this.buildSkillData[id]["costMedicineRate"]),
-                            float.Parse(this.buildSkillData[id]["costAmmoRate"])
+                            float.Parse(this.buildSkillData[id]["costAmmoRate"]),
+                            this.buildSkillData[id]["iconName"]
                             );
                     return skill;
                 }

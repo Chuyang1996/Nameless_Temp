@@ -53,9 +53,9 @@ namespace Nameless.Editor
 
                     string value;
                     string all;
-                    string newfilepath = savePath + "/" + tempFile + ".txt";
-                    FileStream newfile = new FileStream(newfilepath, FileMode.Create, FileAccess.ReadWrite);
-                    StreamWriter sw = new StreamWriter(newfile);
+                    string newfilepathExcel = savePath + "/" + tempFile + ".txt";
+                    FileStream newfileExcel = new FileStream(newfilepathExcel, FileMode.Create, FileAccess.ReadWrite);
+                    StreamWriter swExcel = new StreamWriter(newfileExcel);
                     Dictionary<long, Dictionary<string, string>> dataList = new Dictionary<long, Dictionary<string, string>>();
                     string[] title = new string[columns];
                     for (int n = 0; n < title.Length; n++)
@@ -82,11 +82,11 @@ namespace Nameless.Editor
                         }
                         dataList.Add(id, data);
                     }
-                    string serialData = JsonConvert.SerializeObject(dataList);
-                    sw.WriteLine(serialData);
-                    sw.Flush();
-                    sw.Close();
-                    newfile.Close();
+                    string serialDataExcel = JsonConvert.SerializeObject(dataList);
+                    swExcel.WriteLine(serialDataExcel);
+                    swExcel.Flush();
+                    swExcel.Close();
+                    newfileExcel.Close();
                     fileStream.Close();
                     Debug.Log(tempFile + ":导出完成");
                 }
@@ -96,6 +96,28 @@ namespace Nameless.Editor
                 }
             }
             Debug.Log("导出成功!!!!!!!!!!!!!");
+
+            currentPath = Assembly.GetExecutingAssembly().Location;
+
+            savePath = currentPath + "/../../../.." + "/NamelessHill-project/Assets/StreamingAssets";
+
+            string newfilepath = savePath + "/" + "AudiosResources" + ".txt";
+            FileStream newfile = new FileStream(newfilepath, FileMode.Create, FileAccess.ReadWrite);
+            StreamWriter sw = new StreamWriter(newfile);
+
+            int pathLength = (Application.dataPath + "/Resources/Audio").Length;
+            string[] audioList = System.IO.Directory.GetFiles(Application.dataPath + "/Resources/Audio", "*.wav");
+            for (int i = 0; i < audioList.Length; i++)
+            {
+                audioList[i] = audioList[i].ToString().Remove(0, pathLength).Remove(0, 1).Replace(".wav", "");
+                Debug.Log(audioList[i]);
+            }
+            string serialData = JsonConvert.SerializeObject(audioList);
+            sw.WriteLine(serialData);
+            sw.Flush();
+            sw.Close();
+            newfile.Close();
+            Debug.Log("音效资源导出成功!!!!!!!!!!!!!");
         }
     }
 }

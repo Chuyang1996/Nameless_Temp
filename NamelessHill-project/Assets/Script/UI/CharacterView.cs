@@ -1,5 +1,7 @@
 using Nameless.Data;
 using Nameless.DataMono;
+using Nameless.DataUI;
+using Nameless.Manager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +13,11 @@ namespace Nameless.UI {
         public Button closeBtn;
         public Sprite[] stateSprite;
 
+
+        public Image characterIcon;
+        public Text characterDesc;
+        
+
         public Text name;
         public Text rank;
 
@@ -21,10 +28,15 @@ namespace Nameless.UI {
         public Text attack;
         public Text defend;
         public Text speed;
-        public Text hit;
-        public Text dex;
+
+
 
         private PawnAvatar currentPawn;
+
+
+        public GameObject skillContent;
+        public SkillUI skillUITemplate;
+        private List<GameObject> skillObjs = new List<GameObject>();
         // Start is called before the first frame update
         void Start()
         {
@@ -34,19 +46,20 @@ namespace Nameless.UI {
         {
             this.currentPawn = pawnAvatar;
 
-            this.name.text = this.currentPawn.name;
+            this.name.text = this.currentPawn.pawnAgent.pawn.name ;
             this.rank.text = this.currentPawn.pawnAgent.rank;
 
             this.healthBar.value = this.currentPawn.pawnAgent.pawn.curHealth/this.currentPawn.pawnAgent.pawn.maxHealth;
             this.MoraleChange(pawnAvatar.pawnAgent);
             this.AmmoChange(pawnAvatar.pawnAgent);
 
+            this.characterIcon.sprite = this.currentPawn.pawnAgent.pawn.selectIcon;
+            this.characterDesc.text = this.currentPawn.pawnAgent.pawn.descrption;
 
             this.attack.text = ((int)this.currentPawn.pawnAgent.pawn.curAttack).ToString();
             this.defend.text = ((int)this.currentPawn.pawnAgent.pawn.curDefend).ToString();
             this.speed.text = ((int)this.currentPawn.pawnAgent.pawn.curSpeed).ToString();
-            this.hit.text = ((int)this.currentPawn.pawnAgent.pawn.curHit).ToString();
-            this.dex.text = ((int)this.currentPawn.pawnAgent.pawn.curDex).ToString();
+
 
             this.currentPawn.pawnAgent.HealthBarEvent += HealthChange;
             this.currentPawn.pawnAgent.MoraleBarEvent += MoraleChange;
@@ -56,10 +69,12 @@ namespace Nameless.UI {
             this.currentPawn.pawnAgent.AttackValueEvent += AttackChange;
             this.currentPawn.pawnAgent.DefendValueEvent += DefendChange;
             this.currentPawn.pawnAgent.SpeedValueEvent += SpeedChange;
-            this.currentPawn.pawnAgent.HitValueEvent += HitChange;
-            this.currentPawn.pawnAgent.DexValueEvent += DexChange;
+
 
             this.gameObject.SetActive(true);
+
+
+            this.ResetSkillPanel();
         }
 
         private void ResetPanel()
@@ -72,9 +87,26 @@ namespace Nameless.UI {
             this.currentPawn.pawnAgent.AttackValueEvent -= AttackChange;
             this.currentPawn.pawnAgent.DefendValueEvent -= DefendChange;
             this.currentPawn.pawnAgent.SpeedValueEvent -= SpeedChange;
-            this.currentPawn.pawnAgent.HitValueEvent -= HitChange;
-            this.currentPawn.pawnAgent.DexValueEvent -= DexChange;
+
             this.currentPawn = null;
+
+        }
+
+        private void ResetSkillPanel()
+        {
+            for (int i = 0; i < this.skillObjs.Count; i++)
+                DestroyImmediate(this.skillObjs[i]);
+            this.skillObjs.Clear();
+            List<Skill> skills = this.currentPawn.pawnAgent.skills;
+            for (int i = 0; i< skills.Count; i++)
+            {
+                GameObject skillObject = Instantiate(this.skillUITemplate.gameObject, this.skillContent.transform);
+                skillObject.GetComponent<SkillUI>().InitSkill(skills[i].icon, skills[i].descrption);
+                skillObject.SetActive(true);
+                this.skillObjs.Add(skillObject);
+            }
+
+
         }
         public void HealthChange(float value)
         {
@@ -117,14 +149,14 @@ namespace Nameless.UI {
             this.speed.text = ((int)value).ToString();
         }
 
-        public void HitChange(float value)
-        {
-            this.hit.text = ((int)value).ToString();
-        }
+        //public void HitChange(float value)
+        //{
+        //    this.hit.text = ((int)value).ToString();
+        //}
 
-        public void DexChange(float value)
-        {
-            this.dex.text = ((int)value).ToString();
-        }
+        //public void DexChange(float value)
+        //{
+        //    this.dex.text = ((int)value).ToString();
+        //}
     }
 }
