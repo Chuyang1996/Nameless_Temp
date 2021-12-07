@@ -32,18 +32,40 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: ca1e4b05faeeaca41a2379076316bdc9, type: 3}
-    totalSpriteSurfaceArea: 1080000
+    totalSpriteSurfaceArea: 9125674
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 2d053450171e85b4288443009345475b, type: 3}
+  - {fileID: 21300000, guid: 0b0eb460f8060434bbd536388703588e, type: 3}
+  - {fileID: 21300000, guid: aade10b030b51ff478eb4244a834e7a2, type: 3}
+  - {fileID: 21300000, guid: dd2aee22c54c71d48b2889be422088d6, type: 3}
+  - {fileID: 21300000, guid: a28d195746241b84492d0c24fdc7fbe7, type: 3}
+  - {fileID: 21300000, guid: 382c24388e763bb49872619a4b3d0c4d, type: 3}
   - {fileID: 21300000, guid: 4c7b864860bfa34438751ccc8a792f31, type: 3}
+  - {fileID: 21300000, guid: aa52c5a994210e844b8fb43843e5045c, type: 3}
+  - {fileID: 21300000, guid: 5d289b2a293237949a3106bc88e544d7, type: 3}
+  - {fileID: 21300000, guid: 1aba784a70ca09a4d967a137eccc9768, type: 3}
+  - {fileID: 21300000, guid: 175b752be764eb649b727a1cac30f355, type: 3}
   - {fileID: 21300000, guid: 6b565cdcb6ba0d1448de0d5edc8302cb, type: 3}
+  - {fileID: 21300000, guid: 9601150e5a0bd424cbb57473ec4e531b, type: 3}
   - {fileID: 21300000, guid: 48778a4ee78fe7f41ba43c2db5e6badf, type: 3}
   m_PackedSpriteNamesToIndex:
+  - JournalImage_Liu_VillageBoy_A_Text_02
+  - map
+  - Text4
+  - JournalImage_Liu_DefenseCollasped_Image
+  - Text3
+  - JournalImage_Liu_VillageBoy_A_Text_01
   - 1
+  - JournalImage_Liu_VillageBoy_B_Image
+  - mapScene
+  - Text5
+  - JournalImage_Liu_VillageBoy_A_Image
   - 3
+  - JournalImage_Liu_DangerousMission_Image
   - 2
   m_RenderDataMap: {}
   m_Tag: NoteImage
