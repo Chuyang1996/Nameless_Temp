@@ -10,7 +10,7 @@ namespace Nameless.Manager
     public class CampManager : SingletonMono<CampManager>
     {
 
-
+        public const string  campBgmName = "AmbienceLoop_Shelter_01";
         public GameObject campScene;
         public GameObject[] pawnsPos;
         public List<PawnCamp> allCampPawns = new List<PawnCamp>();
@@ -31,6 +31,7 @@ namespace Nameless.Manager
         {
             GameManager.Instance.ClearScene();
             this.campScene.SetActive(true);
+            AudioManager.Instance.PlayMusic(campBgmName);
         }
         public void ReceivePawnFromBattle(List<PawnAvatar> pawnAvatars)
         {

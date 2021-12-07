@@ -1,4 +1,5 @@
 using Nameless.Data;
+using Nameless.Manager;
 using Nameless.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace Nameless.DataUI
         // Start is called before the first frame update
         void Start()
         {
-            this.btnOption.onClick.AddListener(this.OptionClick);
+            this.btnOption.onClick.AddListener(()=> { AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind); this.OptionClick(); });
         }
         
         public void InitOption(ConversationOption conversationOption)

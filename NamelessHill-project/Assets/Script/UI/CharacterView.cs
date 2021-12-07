@@ -40,7 +40,7 @@ namespace Nameless.UI {
         // Start is called before the first frame update
         void Start()
         {
-            this.closeBtn.onClick.AddListener(() => { this.ResetPanel(); this.gameObject.SetActive(false); });
+            this.closeBtn.onClick.AddListener(() => { AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind); this.ResetPanel(); this.gameObject.SetActive(false); });
         }
         public void SetNewPawn(PawnAvatar pawnAvatar)
         {

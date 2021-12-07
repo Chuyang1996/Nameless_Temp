@@ -66,17 +66,20 @@ namespace Nameless.UI
         public void ExitNoteBook()
         {
             this.gameObject.SetActive(false);
+            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
         }
         public void PageToLeft()
         {
             this.IndexPage-=2;
             this.ResetNotePage();
+            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.pageTurn);
         }
 
         public void PageToRight()
         {
             this.IndexPage+=2;
             this.ResetNotePage();
+            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.pageTurn);
         }
 
         public void ResetNotePage()

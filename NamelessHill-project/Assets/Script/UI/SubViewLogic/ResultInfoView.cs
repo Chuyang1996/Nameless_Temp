@@ -13,7 +13,7 @@ namespace Nameless.UI {
         // Start is called before the first frame update
         void Start()
         {
-            this.restartBtn.onClick.AddListener(() => { Time.timeScale = 1.0f;  });
+            this.restartBtn.onClick.AddListener(() => { AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind); Time.timeScale = 1.0f;  });
         }
 
         public void SetResultTxt(string result, bool isWin)
@@ -27,9 +27,9 @@ namespace Nameless.UI {
             string audioFile = isWin ? "Win" : "Lose";
             AudioManager.Instance.PlayAudio(transform, audioFile);
             if (isWin)
-                this.restartBtn.onClick.AddListener(() => { Time.timeScale = 1.0f; GameManager.Instance.EnterCamp(); });
+                this.restartBtn.onClick.AddListener(() => { AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind); Time.timeScale = 1.0f; GameManager.Instance.EnterCamp(); });
             else
-                this.restartBtn.onClick.AddListener(() => { Time.timeScale = 1.0f; GameManager.Instance.RestartBattle(); });
+                this.restartBtn.onClick.AddListener(() => { AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind); Time.timeScale = 1.0f; GameManager.Instance.RestartBattle(); });
         } 
     }
 }

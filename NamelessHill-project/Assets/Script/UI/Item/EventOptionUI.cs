@@ -16,7 +16,7 @@ namespace Nameless.DataUI
         // Start is called before the first frame update
         void Start()
         {
-            this.button.onClick.AddListener(() => this.OptionResult());
+            this.button.onClick.AddListener(() => { AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind); this.OptionResult(); });
         }
 
         public void InitOption(EventOption eventResult)

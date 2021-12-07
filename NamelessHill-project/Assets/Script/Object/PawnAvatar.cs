@@ -207,6 +207,7 @@ namespace Nameless.DataMono
                 {
                     if (hit.collider.transform.gameObject == this.gameObject)
                     {
+                        
                         GameManager.Instance.characterView.SetNewPawn(this);
                     }
                 }
@@ -220,6 +221,7 @@ namespace Nameless.DataMono
                     this.lastDragPos = raySelect;
                     if (hit.collider.transform.gameObject == this.fixbtn && !this.isAI)//���޸�.AI
                     {
+                        AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
                         GameManager.Instance.buildView.gameObject.SetActive(true);
                         GameManager.Instance.buildView.ResetBuild(this);
                         GameManager.Instance.PauseOrPlay(false);
@@ -741,7 +743,6 @@ namespace Nameless.DataMono
                                 if (this.endAreaList[this.currentWalkNode].AddPawn(this))//���������ɫ����ͬʱ���� ���������ӵ��˻�ȥ����
                                 {
                                     this.gameObject.transform.position = this.endAreaList[this.currentWalkNode].centerNode.gameObject.transform.position;
-                                    
                                     this.CurrentArea.RemovePawn(this);
                                     this.UpdateCurrentArea(this.endAreaList[this.currentWalkNode]);
                                     this.CurrentArea.CostAmmo(this);
@@ -768,7 +769,11 @@ namespace Nameless.DataMono
 
                     this.InitLine();
                     if (this.currentWalkNode >= this.endAreaList.Count)
+                    {
+                        if (!this.isAI)
+                            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.moveEnd);
                         this.State = PawnState.Wait;
+                    }
                     //}
                 }
             }
@@ -824,6 +829,8 @@ namespace Nameless.DataMono
             //this.ClearPawn();
             this.ResetAllSupport();
             this.PlayDeathAnim();
+            if(!this.isAI)
+                AudioManager.Instance.PlayAudio(this.transform, AudioConfig.deathCharacter);
             //if (this.pawnAgent.pawn.curMorale <= 0 || this.CheckIfSurround())
             //{
             //    this.ClearPawn();
@@ -1099,12 +1106,14 @@ namespace Nameless.DataMono
             }
             else if (pawnState == PawnState.Walk)
             {
-
+                if (!this.isAI)
+                    AudioManager.Instance.PlayAudio(this.transform,AudioConfig.moveStart);
                 this.PlayWalkAnim();
             }
             else if (pawnState == PawnState.Battle)
             {
-
+                if (!this.isAI)
+                    AudioManager.Instance.PlayAudio(this.transform, AudioConfig.battleStart);
                 this.PlayAttackAnim();
             }
 

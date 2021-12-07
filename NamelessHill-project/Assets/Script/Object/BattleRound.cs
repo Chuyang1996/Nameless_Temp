@@ -18,7 +18,7 @@ namespace Nameless.DataMono
         private bool forceEnd = false;
         public void Init(PawnAvatar attacker, PawnAvatar defender)
         {
-
+            
             this.attacker = attacker;
             this.defender = defender;
             this.name = this.attacker.gameObject.name + " vs " + this.defender.gameObject.name;

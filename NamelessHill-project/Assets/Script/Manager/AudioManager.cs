@@ -296,7 +296,7 @@ namespace Nameless.Manager
 			else
 			{
 
-				Debug.LogError("不存在该音效资源请检查 表中数据是否正确，或者函数填入的参数是否正确");
+				Debug.LogError("不存在 " + audioName +" 该音效资源请检查 表中数据是否正确，或者函数填入的参数是否正确");
 			}
 
 		}

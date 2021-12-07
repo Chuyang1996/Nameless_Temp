@@ -26,6 +26,7 @@ namespace Nameless.Manager {
         /// 临时数据
         /// </summary>
         /// 
+        public const string mainMenuBgmName = "Music_MainBGM_01";
         public int totalTime = 720;//本场战斗总时间//待修改
         public string levelgoalDes = "Hold for 12 hours";//本场战斗总时间//待修改
         public int totalMilitaryRes;//我方的补给数量//待修改
@@ -67,9 +68,10 @@ namespace Nameless.Manager {
             PawnManager.Instance.InitPawns();
             NoteManager.Instance.InitNote();
             MapManager.Instance.InitMap(DataManager.Instance.GetMapData(0));
+            AudioConfig.Init();
 
             RTSCamera.Instance.ResetCameraPos();
-
+            AudioManager.Instance.PlayMusic(mainMenuBgmName);
         }
 
         public void EnterBattleWithTrans()
@@ -116,6 +118,7 @@ namespace Nameless.Manager {
             this.battleView.gameObject.SetActive(true);
 
             RTSCamera.Instance.ResetCameraPos();
+            AudioManager.Instance.PlayMusic(MapManager.Instance.currentMapData.nameBgm);
         }
         public void RestartBattle()
         {

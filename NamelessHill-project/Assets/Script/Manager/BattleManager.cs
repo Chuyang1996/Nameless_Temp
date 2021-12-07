@@ -52,7 +52,6 @@ namespace Nameless.Manager
             Battle battle = new Battle(attacker, defender);
             this.battleDic.Add(battle, newBattle.GetComponent<BattleRound>());
             //defender.CheckBattleState();
-            newBattle.transform.parent = this.transform;
             StartCoroutine(newBattle.GetComponent<BattleRound>().ProcessBattle(defenderisInBattle));
         }
     }

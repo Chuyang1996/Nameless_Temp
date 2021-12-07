@@ -29,27 +29,32 @@ namespace Nameless.UI
 
         public void NewStart()
         {
+            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             GameManager.Instance.EnterBattleWithTrans();
             this.gameObject.SetActive(false);
         }
         public void MainMenu()
         {
+            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             this.mainMenuPanel.SetActive(true);
             this.optionPanel.SetActive(false);
         }
         public void Option()
         {
+            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             this.mainMenuPanel.SetActive(false);
             this.optionPanel.SetActive(true);
 
         }
         public void ActiveAccessbility(bool value)
         {
+            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             Debug.Log(value);
             GameManager.Instance.accessbility = value;
         }
         public void Exit()
         {
+            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             Application.Quit();
         }
     }

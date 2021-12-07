@@ -44,6 +44,7 @@ namespace Nameless.UI
             {
                 GameManager.Instance.PauseOrPlay(true);
                 this.gameObject.SetActive(false);
+                AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             });
             this.setBtn.onClick.AddListener(() =>//待修改 改成判断当前建造的东西是啥
             {
@@ -69,6 +70,7 @@ namespace Nameless.UI
 
                 this.currentArea.CostAmmo(this.currentPawn);
                 this.currentArea.CostMedicine(this.currentPawn);
+                AudioManager.Instance.PlayAudio(this.transform, AudioConfig.buildEnd);
             });
         }
 

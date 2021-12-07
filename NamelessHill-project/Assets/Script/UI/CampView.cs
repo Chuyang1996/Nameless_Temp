@@ -110,6 +110,7 @@ namespace Nameless.UI
 
                     if (hitBtn.collider.gameObject == CampManager.Instance.noteBtn.gameObject)
                     {
+                        AudioManager.Instance.PlayAudio(CampManager.Instance.noteBtn.transform, AudioConfig.uiRemind);
                         NoteManager.Instance.InitNoteBook();
                     }
                     else
@@ -118,6 +119,7 @@ namespace Nameless.UI
                         {
                             if (hitBtn.collider.gameObject == CampManager.Instance.allCampPawns[i].btnDialogue.gameObject)//´ýÐÞ¸Ä.AI
                             {
+                                AudioManager.Instance.PlayAudio(CampManager.Instance.allCampPawns[i].btnDialogue.transform, AudioConfig.uiRemind);
                                 CampManager.Instance.allCampPawns[i].ClickToConversation();
                                 break;
                             }
