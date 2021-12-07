@@ -32,7 +32,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 2109f14ec77415744aaee59c0b1e2559, type: 3}
-    totalSpriteSurfaceArea: 7817547
+    totalSpriteSurfaceArea: 8230047
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -45,6 +45,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d488a06576d4c92449a2c41b905bfe79, type: 3}
   - {fileID: 21300000, guid: a9bc92f515b44a64592e08b4ed26fafc, type: 3}
   - {fileID: 21300000, guid: 4c4fe6861a266544685bcd11595b7c3c, type: 3}
+  - {fileID: 21300000, guid: a1f92c87fed7cb146a016304ada961fc, type: 3}
   - {fileID: 21300000, guid: 075b22d90c123e748987b8c738812620, type: 3}
   - {fileID: 21300000, guid: 476e011a417fc04458e3a7c92502f25a, type: 3}
   - {fileID: 21300000, guid: 5d289b2a293237949a3106bc88e544d7, type: 3}
@@ -61,6 +62,7 @@ SpriteAtlas:
   - NewTutorial_07
   - Dangerous_Mission_0_1
   - NewTutorial_06
+  - Defensive_Collasped_01
   - NewTutorial_01
   - Village_Teenager_01
   - mapScene

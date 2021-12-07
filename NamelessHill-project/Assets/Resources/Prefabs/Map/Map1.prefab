@@ -11639,7 +11639,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -3
-  m_Sprite: {fileID: 21300000, guid: c0bfb715b59537547b33fa8c36427972, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4bfb0232135f9334794e3b00426e78a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -15781,10 +15781,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf4965796cbff34d8bf5df30fb42a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map: {fileID: 837337387075070613}
+  id: 0
   PathLine: {fileID: 837337387500186939}
   Battle: {fileID: 837337387524843552}
-  mouseFollower: {fileID: 0}
   initAreas:
   - {fileID: 837337387832495156}
   - {fileID: 837337386003707857}
