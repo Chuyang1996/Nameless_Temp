@@ -397,7 +397,7 @@ namespace Nameless.DataMono
                     tagArea = occupyArea[UnityEngine.Random.Range(0, occupyArea.Count - 1)];
                 else
                 {
-                    List<int>[] tempPath = MapManager.Instance.currentMap.Dijkstra(MapManager.Instance.currentMap.areaMatrix, this.currentArea.localId);
+                    List<int>[] tempPath = MapManager.Instance.currentMap.Dijkstra(MapManager.Instance.currentMap.areaMatrix, this.currentArea.localId - 1);
                     List<int> targetPath = new List<int>();
                     for (int i = 0; i < tempPath.Length; i++)
                     {

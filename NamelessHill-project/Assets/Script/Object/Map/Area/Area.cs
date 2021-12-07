@@ -220,7 +220,7 @@ namespace Nameless.DataMono
                 if (this.Ammo > 0)
                 {
                     this.Ammo--;
-                    pawn.pawnAgent.AmmoChange((int)0.3f * pawn.pawnAgent.pawn.maxAmmo);
+                    pawn.pawnAgent.AmmoChange((int)(0.3f * pawn.pawnAgent.pawn.maxAmmo));
                 }
             }
         }
