@@ -53,6 +53,8 @@ namespace Nameless.DataMono
                     this.receiver.pawnAgent.RemoveBuff(this.receiverBuffs[i]);
                 }
             }
+
+            this.receiver.RefreshSupportIcon();
         }
     }
 }
