@@ -15,7 +15,7 @@ SpriteAtlas:
       compressionQuality: 50
       maxTextureSize: 2048
       textureCompression: 0
-      filterMode: 1
+      filterMode: 0
       generateMipMaps: 0
       readable: 0
       crunchedCompression: 0
@@ -26,7 +26,7 @@ SpriteAtlas:
       m_MaxTextureSize: 2048
       m_ResizeAlgorithm: 0
       m_TextureFormat: -1
-      m_TextureCompression: 1
+      m_TextureCompression: 2
       m_CompressionQuality: 50
       m_CrunchedCompression: 0
       m_AllowsAlphaSplitting: 0
@@ -35,7 +35,7 @@ SpriteAtlas:
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
-      padding: 4
+      padding: 8
       blockOffset: 1
       allowAlphaSplitting: 0
       enableRotation: 1
@@ -44,7 +44,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 7b96377962a29df42a11e5f48feab71b, type: 3}
-    totalSpriteSurfaceArea: 3250000
+    totalSpriteSurfaceArea: 3500000
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -54,12 +54,14 @@ SpriteAtlas:
   - {fileID: 21300000, guid: bd0f6c017fca4414195c64402538fb4c, type: 3}
   - {fileID: 21300000, guid: 60df24f1ceaf662498d779e99c6e3ccf, type: 3}
   - {fileID: 21300000, guid: b9317febfddf5d848b7b5e1458b04082, type: 3}
+  - {fileID: 21300000, guid: 05dfd66ce7296ae4da397ca7f705b7b1, type: 3}
   - {fileID: 21300000, guid: b2da24adcf227d2439c433d8a9307be8, type: 3}
   m_PackedSpriteNamesToIndex:
   - sniper
   - engineer
   - medical
   - enemy
+  - commander
   - soldier
   m_RenderDataMap: {}
   m_Tag: CampCharacterImage

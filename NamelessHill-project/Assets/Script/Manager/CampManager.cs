@@ -9,12 +9,16 @@ namespace Nameless.Manager
 {
     public class CampManager : SingletonMono<CampManager>
     {
+
+
         public GameObject campScene;
         public GameObject[] pawnsPos;
         public List<PawnCamp> allCampPawns = new List<PawnCamp>();
 
 
         public GameObject noteBtn;
+        public GameObject lightBtn;
+
 
 
         private string pawnPath = "Prefabs/PawnCamp";

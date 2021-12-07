@@ -8,6 +8,12 @@ namespace Nameless.UI
 {
     public class CampView :  SelectViewLogic
     {
+        public Sprite book;
+        public Sprite bookMark;
+
+        public Sprite light;
+        public Sprite lightMark;
+        
         public Animation animation;
 
         public AnimationClip enterAnim;
@@ -72,19 +78,28 @@ namespace Nameless.UI
             RaycastHit2D hitBtn = Physics2D.Raycast(raySelectBtn, Vector2.zero);
             if (hitBtn.collider != null)
             {
-
-                if (hitBtn.collider.gameObject == CampManager.Instance.noteBtn.gameObject)
+                if (hitBtn.collider.gameObject == CampManager.Instance.lightBtn.gameObject)
                 {
+                    CampManager.Instance.lightBtn.GetComponent<SpriteRenderer>().sprite = this.lightMark;
+                    this.InitInfo("Wait till the next battle");
+                }
+                else if (hitBtn.collider.gameObject == CampManager.Instance.noteBtn.gameObject)
+                {
+                    CampManager.Instance.noteBtn.GetComponent<SpriteRenderer>().sprite = this.bookMark;
                     this.InitInfo("My Daily");
                 }
                 else
                 {
+                    CampManager.Instance.lightBtn.GetComponent<SpriteRenderer>().sprite = this.light;
+                    CampManager.Instance.noteBtn.GetComponent<SpriteRenderer>().sprite = this.book;
                     this.selectPanel.SetActive(false);
 
                 }
             }
             else
             {
+                CampManager.Instance.lightBtn.GetComponent<SpriteRenderer>().sprite = this.light;
+                CampManager.Instance.noteBtn.GetComponent<SpriteRenderer>().sprite = this.book;
                 this.selectPanel.SetActive(false);
             }
             if (Input.GetMouseButtonDown(0) && !GameManager.Instance.noteBookView.gameObject.activeInHierarchy && !GameManager.Instance.conversationView.gameObject.activeInHierarchy)//当这些面板处于关闭状态时才能点击
@@ -111,6 +126,10 @@ namespace Nameless.UI
                 }
             }
 
+        }
+        private void LateUpdate()
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(this.selectPanel.GetComponent<RectTransform>());
         }
     } 
 }

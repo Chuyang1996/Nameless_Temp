@@ -740,6 +740,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cdfa3248d484e14faebf28c0e44338b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pos: {x: 0, y: 0}
+  book: {fileID: 21300000, guid: 868e7a5482ed4f543b6e79eaa2e692ea, type: 3}
+  bookMark: {fileID: 21300000, guid: 6199a2b592d744a4f9de1ea103e4a4d6, type: 3}
+  light: {fileID: 0}
+  lightMark: {fileID: 0}
   animation: {fileID: 3270905059592202008}
   enterAnim: {fileID: 7400000, guid: ceda167633582fc4dbcac4144144b638, type: 2}
   exitAnim: {fileID: 7400000, guid: da49e7c84a1bd9e48821c0efa0c4847d, type: 2}
