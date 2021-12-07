@@ -11,13 +11,14 @@ using UnityEngine;
 namespace Nameless.Manager {
     public enum GameScene
     {
-        Battle =0,
-        Camp = 1,
+        Menu =0,
+        Battle = 1,
+        Camp = 2,
     }
     public class GameManager : SingletonMono<GameManager>
     {
         public bool isPlay = true;
-        public GameScene GameScene;
+        public GameScene GameScene = GameScene.Menu;
         public bool accessbility = false;
         public Action<string, bool> RESULTEVENT;
         public Action<int> TotalMilitartEvent;
@@ -56,7 +57,7 @@ namespace Nameless.Manager {
         void Start()
         {
             this.isPlay = true;
-            this.GameScene = GameScene.Battle;
+            this.GameScene = GameScene.Menu;
             RTSCamera.Instance.InitCamera();
             PathManager.Instance.InitPath();
             DataManager.Instance.InitData();
@@ -65,14 +66,21 @@ namespace Nameless.Manager {
             SpriteManager.Instance.InitTexturePackage();
             PawnManager.Instance.InitPawns();
             NoteManager.Instance.InitNote();
-            MapManager.Instance.InitMap();
+            MapManager.Instance.InitMap(DataManager.Instance.GetMapData(0));
 
-
+            RTSCamera.Instance.ResetCameraPos();
 
         }
-        public void EnterBattle()
+
+        public void EnterBattleWithTrans()
         {
-            MapManager.Instance.NewMap(MapManager.Instance.currentMapData);
+            MapManager.Instance.GenerateTransInfoShow(MapManager.Instance.currentMapData);
+            MapManager.Instance.currentTransInfoShow.StartReader();
+        }
+        public void InitBattle()
+        {
+            this.GameScene = GameScene.Battle;
+            MapManager.Instance.GenerateMap(MapManager.Instance.currentMapData);
             MapManager.Instance.currentMap.InitArea();
             List<EventResult> eventResults = new List<EventResult>();
             foreach (var child in DataManager.Instance.eventResultData)
@@ -106,11 +114,14 @@ namespace Nameless.Manager {
             #endregion
 
             this.battleView.gameObject.SetActive(true);
+
+            RTSCamera.Instance.ResetCameraPos();
         }
         public void RestartBattle()
         {
             this.ClearScene();
-            this.EnterBattle();
+            this.InitBattle();
+            RTSCamera.Instance.ResetCameraPos();
         }
         public void EnterCamp()
         {

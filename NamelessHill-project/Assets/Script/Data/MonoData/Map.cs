@@ -1,5 +1,6 @@
 using Nameless.Data;
 using Nameless.DataMono;
+using Nameless.Manager;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -40,6 +41,10 @@ namespace Nameless.DataMono
     public class Map : MonoBehaviour
     {
         public long id;
+
+        public Sprite sprite;
+        public Sprite spriteAccessbility;
+        public SpriteRenderer bg;
         public GameObject PathLine;
         public GameObject Battle;
         public float[,] areaMatrix;
@@ -51,6 +56,7 @@ namespace Nameless.DataMono
         // Start is called before the first frame update
         public void InitArea()
         {
+            this.bg.sprite = GameManager.Instance.accessbility ? spriteAccessbility : sprite;
             for(int i = 0;i<this.initAreas.Count;i++)
             {
                 this.initAreas[i].InitAreaInfo();

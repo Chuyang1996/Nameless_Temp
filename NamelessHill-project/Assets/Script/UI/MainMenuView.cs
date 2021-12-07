@@ -29,7 +29,7 @@ namespace Nameless.UI
 
         public void NewStart()
         {
-            GameManager.Instance.EnterBattle();
+            GameManager.Instance.EnterBattleWithTrans();
             this.gameObject.SetActive(false);
         }
         public void MainMenu()

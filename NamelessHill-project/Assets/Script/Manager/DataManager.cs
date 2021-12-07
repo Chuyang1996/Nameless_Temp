@@ -607,7 +607,8 @@ namespace Nameless.Manager
                             this.mapData[id]["name"],
                             this.mapData[id]["descrption"],
                             this.mapData[id]["mapName"],
-                            long.Parse(this.mapData[id]["nextId"])
+                            long.Parse(this.mapData[id]["nextId"]),
+                            this.mapData[id]["transInfoShowName"]
                             );
                     return skill;
                 }

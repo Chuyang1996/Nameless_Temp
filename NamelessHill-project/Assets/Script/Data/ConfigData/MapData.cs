@@ -11,14 +11,15 @@ namespace Nameless.ConfigData
         public string descrption;
         public string mapName;
         public long nextId;
-
-        public MapData(long id, string name, string descrption,string mapName,long nextId)
+        public string transInfoShowName;
+        public MapData(long id, string name, string descrption,string mapName,long nextId, string transInfoShowName)
         {
             this.id = id;
             this.name = name;
             this.descrption = descrption;
             this.mapName = mapName;
             this.nextId = nextId;
+            this.transInfoShowName = transInfoShowName;
         }
     }
 }
