@@ -69,13 +69,13 @@ namespace Nameless.UI
         }
         public void PageToLeft()
         {
-            this.IndexPage--;
+            this.IndexPage-=2;
             this.ResetNotePage();
         }
 
         public void PageToRight()
         {
-            this.IndexPage++;
+            this.IndexPage+=2;
             this.ResetNotePage();
         }
 

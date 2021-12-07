@@ -49,7 +49,9 @@ namespace Nameless.UI
             }
             this.pictureImage.sprite = eventResult.eventImage;
             this.content.text = eventResult.descrption;
-            
+
+
+            LayoutRebuilder.ForceRebuildLayoutImmediate(this.optionContent.GetComponent<RectTransform>());
         }
     }
 }

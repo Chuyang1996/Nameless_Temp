@@ -30,7 +30,6 @@ public class TempTextReader : MonoBehaviour
         content = text.text;
         text.text = " ";
         nextIcon.gameObject.SetActive(false);
-        tcsm = GameObject.Find("CutSceneManager").GetComponent<TempCutSceneManager>();
     }
 
     // Update is called once per frame
@@ -96,6 +95,7 @@ public class TempTextReader : MonoBehaviour
         while (i < content.Length)
         {
             yield return new WaitForSeconds(0.03f);
+
             showChar += content[i].ToString();
             text.text = showChar;
             i += 1;

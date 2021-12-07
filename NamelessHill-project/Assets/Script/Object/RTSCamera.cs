@@ -270,7 +270,7 @@ namespace Nameless.Controller
         // Update is called once per frame
         void LateUpdate()
         {
-            if (GameManager.Instance.GameScene == GameScene.Camp)
+            if (GameManager.Instance.GameScene != GameScene.Battle)
                 return;
             if (Input.GetMouseButton(2))
             {
