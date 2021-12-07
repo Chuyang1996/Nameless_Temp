@@ -98,12 +98,15 @@ namespace Nameless.UI {
                 DestroyImmediate(this.skillObjs[i]);
             this.skillObjs.Clear();
             List<Skill> skills = this.currentPawn.pawnAgent.skills;
-            for (int i = 0; i< skills.Count; i++)
+            for (int i = 0; i < skills.Count; i++)
             {
-                GameObject skillObject = Instantiate(this.skillUITemplate.gameObject, this.skillContent.transform);
-                skillObject.GetComponent<SkillUI>().InitSkill(skills[i].icon, skills[i].descrption);
-                skillObject.SetActive(true);
-                this.skillObjs.Add(skillObject);
+                if (skills[i] is SupportSkill)
+                {
+                    GameObject skillObject = Instantiate(this.skillUITemplate.gameObject, this.skillContent.transform);
+                    skillObject.GetComponent<SkillUI>().InitSkill(skills[i].icon, skills[i].descrption);
+                    skillObject.SetActive(true);
+                    this.skillObjs.Add(skillObject);
+                } 
             }
 
 
