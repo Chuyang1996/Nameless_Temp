@@ -2269,7 +2269,7 @@ MonoBehaviour:
   isPlay: 1
   GameScene: 0
   accessbility: 0
-  totalTime: 100
+  totalTime: 360
   levelgoalDes: 
   totalMilitaryRes: 1000
   enemiesDieNum: 0
