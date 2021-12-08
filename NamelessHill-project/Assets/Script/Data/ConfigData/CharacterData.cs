@@ -26,6 +26,8 @@ namespace Nameless.ConfigData
         public float dex;
         public float crDex;
 
+        public int leftResNum;
+
         public string fightSkills;
         public string supportSkills;
         public string buildSkills;
@@ -57,8 +59,9 @@ namespace Nameless.ConfigData
             float crSpeed, 
             float hit, 
             float crHit, 
-            float dex, 
+            float dex,
             float crDex,
+            int leftResNum,
             string fightSkills,
             string supportSkills,
             string buildSkills,
@@ -89,6 +92,7 @@ namespace Nameless.ConfigData
             this.hit = hit;
             this.crHit = crHit;
             this.dex = dex;
+            this.leftResNum = leftResNum;
             this.crDex = crDex;
             this.fightSkills = fightSkills;
             this.supportSkills = supportSkills;
@@ -103,70 +107,7 @@ namespace Nameless.ConfigData
 
         }
 
-        public void Init
-    (
-            long Id,
-            string name,
-            string descrption,
-    float health,
-    float crHealth,
-    float attack,
-    float crAttack,
-    float defend,
-    float crDefend,
-    float morale,
-    float crMorale,
-    int ammo,
-    float crAmmo,
-    float speed,
-    float crSpeed,
-    float hit,
-    float crHit,
-    float dex,
-    float crDex,
-            string fightSkills,
-            string supportSkills,
-            string buildSkills,
-            string dialogue,
-            string animName,
-            string iconName,
-            string campName,
-            int campPosIndex,
-            int btnLRpos,
-            string converIds
-            )
-        {
-            this.Id = Id;
-            this.name = name;
-            this.name = descrption;
-            this.health = health;
-            this.crHealth = crHealth;
-            this.attack = attack;
-            this.crAttack = crAttack;
-            this.defend = defend;
-            this.crDefend = crDefend;
-            this.morale = morale;
-            this.crMorale = crMorale;
-            this.ammo = ammo;
-            this.crAmmo = crAmmo;
-            this.speed = speed;
-            this.crSpeed = crSpeed;
-            this.hit = hit;
-            this.crHit = crHit;
-            this.dex = dex;
-            this.crDex = crDex;
-            this.fightSkills = fightSkills;
-            this.supportSkills = supportSkills;
-            this.buildSkills = buildSkills;
-            this.dialogue = dialogue;
-            this.animPrefab = animName;
-            this.selectIcon = iconName;
-            this.campIcon = campName;
-            this.campPosIndex = campPosIndex;
-            this.btnLRpos = btnLRpos;
-            this.converIds = converIds;
-
-        }
+        
         // Start is called before the first frame update
 
 

@@ -21,6 +21,8 @@ namespace Nameless.Data
         public float maxDex;
         public float maxDefend;
 
+        public int leftResNum;
+
 
         public string fallBackTxt;
         public string pinchTxt;
@@ -221,7 +223,7 @@ namespace Nameless.Data
         public int campPosIndex;
         public int leftOrRight;
         public Dictionary<long, Conversation> conversationMapDic = new Dictionary<long, Conversation>();//后面会改成new Dictionary<long, List<Conversation>>()将符合条件的选出
-        public Pawn(long id, string name, string descrption, float health, float crHealth, float attack, float crAttack, float morale, float crMorale, int ammo, float crAmmo, float speed, float crSpeed, float hit, float crHit, float dex, float crDex, float defend, float crDefend, List<long> fightSkillIds, List<long> supportSkillIds, List<long> buildSkillIds, Dictionary<long, DialogueGroup> dialogueDic,string animPrefab,string selectIcon, string campIcon, int campPosIndex, int btnLRpos, Dictionary<long, Conversation> conversationMapDic)
+        public Pawn(long id, string name, string descrption, float health, float crHealth, float attack, float crAttack, float morale, float crMorale, int ammo, float crAmmo, float speed, float crSpeed, float hit, float crHit, float dex, float crDex, float defend, float crDefend, int leftResNum, List<long> fightSkillIds, List<long> supportSkillIds, List<long> buildSkillIds, Dictionary<long, DialogueGroup> dialogueDic,string animPrefab,string selectIcon, string campIcon, int campPosIndex, int btnLRpos, Dictionary<long, Conversation> conversationMapDic)
         {
             this.id = id;
             this.name = name;
@@ -243,6 +245,7 @@ namespace Nameless.Data
             this.curHit = this.maxHit * crHit;
             this.curDex = this.maxDex * crDex;
             this.curDefend = this.maxDex * crDefend;
+            this.leftResNum = leftResNum;
 
             this.fallBackTxt = "Fall back!! Fall back!!";
             this.pinchTxt = "We are attacked by two sides!!";

@@ -1154,7 +1154,7 @@ namespace Nameless.DataMono
         {
             if (this.isAI)
             {
-                GenerateManager.Instance.GenerateMat(this.CurrentArea, MatType.MilitryResource, 100);
+                GenerateManager.Instance.GenerateMat(this.CurrentArea, MatType.MilitryResource, this.pawnAgent.pawn.leftResNum);
                 GameManager.Instance.EnemiesKillNum(1);
                 PawnManager.Instance.RemovePawn(this);
             }
