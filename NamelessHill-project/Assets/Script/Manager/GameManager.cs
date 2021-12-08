@@ -142,6 +142,7 @@ namespace Nameless.Manager {
 
         public void BackToMainMenu()
         {
+            this.GameScene = GameScene.Menu;
             GameManager.Instance.ClearBattle();
             GameManager.Instance.ClearCamp();
             RTSCamera.Instance.ResetCameraPos();

@@ -8,6 +8,9 @@ namespace Nameless.DataMono
 {
     public class PawnCamp : MonoBehaviour
     {
+        public Sprite dialogueIm;
+        public Sprite dialogueImMark;
+
         public GameObject btnDialogue;
         public GameObject leftSide;
         public GameObject rightSide;

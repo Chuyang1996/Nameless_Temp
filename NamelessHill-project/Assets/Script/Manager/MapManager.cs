@@ -44,8 +44,10 @@ namespace Nameless.Manager
         }
         public void ClearMap()
         {
-            Destroy(this.currentTransInfoShow.gameObject);
-            Destroy(this.currentMap.gameObject);
+            if(this.currentTransInfoShow != null)
+                Destroy(this.currentTransInfoShow.gameObject);
+            if(this.currentMap != null)
+                Destroy(this.currentMap.gameObject);
         }
     }
 }

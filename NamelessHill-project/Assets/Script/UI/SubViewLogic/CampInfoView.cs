@@ -41,6 +41,14 @@ namespace Nameless.UI
             RaycastHit2D hitBtn = Physics2D.Raycast(raySelectBtn, Vector2.zero);
             if (hitBtn.collider != null)
             {
+                for (int i = 0; i < CampManager.Instance.allCampPawns.Count; i++)
+                {
+                    if (hitBtn.collider.gameObject == CampManager.Instance.allCampPawns[i].btnDialogue.gameObject)
+                        CampManager.Instance.allCampPawns[i].btnDialogue.GetComponent<SpriteRenderer>().sprite = CampManager.Instance.allCampPawns[i].dialogueImMark;
+                    else
+                        CampManager.Instance.allCampPawns[i].btnDialogue.GetComponent<SpriteRenderer>().sprite = CampManager.Instance.allCampPawns[i].dialogueIm;
+
+                }
                 if (hitBtn.collider.gameObject == CampManager.Instance.lightBtn.gameObject)
                 {
                     CampManager.Instance.lightBtn.GetComponent<SpriteRenderer>().sprite = this.lightMark;
@@ -63,6 +71,10 @@ namespace Nameless.UI
             {
                 CampManager.Instance.lightBtn.GetComponent<SpriteRenderer>().sprite = this.light;
                 CampManager.Instance.noteBtn.GetComponent<SpriteRenderer>().sprite = this.book;
+                for (int i = 0; i < CampManager.Instance.allCampPawns.Count; i++)
+                {
+                    CampManager.Instance.allCampPawns[i].btnDialogue.GetComponent<SpriteRenderer>().sprite = CampManager.Instance.allCampPawns[i].dialogueIm;
+                }
                 this.selectPanel.SetActive(false);
             }
             if (Input.GetMouseButtonDown(0) && !GameManager.Instance.noteBookView.gameObject.activeInHierarchy && !GameManager.Instance.conversationView.gameObject.activeInHierarchy)//当这些面板处于关闭状态时才能点击
@@ -80,7 +92,7 @@ namespace Nameless.UI
                     {
                         for (int i = 0; i < CampManager.Instance.allCampPawns.Count; i++)
                         {
-                            if (hitBtn.collider.gameObject == CampManager.Instance.allCampPawns[i].btnDialogue.gameObject)//待修改.AI
+                            if (hitBtn.collider.gameObject == CampManager.Instance.allCampPawns[i].btnDialogue.gameObject)
                             {
                                 AudioManager.Instance.PlayAudio(CampManager.Instance.allCampPawns[i].btnDialogue.transform, AudioConfig.uiRemind);
                                 CampManager.Instance.allCampPawns[i].ClickToConversation();
