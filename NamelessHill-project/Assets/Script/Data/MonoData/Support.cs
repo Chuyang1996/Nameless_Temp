@@ -54,6 +54,7 @@ namespace Nameless.DataMono
                 }
             }
 
+            
             this.receiver.RefreshSupportIcon();
         }
     }

@@ -918,24 +918,27 @@ namespace Nameless.DataMono
 
         public void RefreshSupportIcon()
         {
-            for (int i = 0; i < this.buffs.Count; i++)
-                DestroyImmediate(this.buffs[i]);
-            this.buffs.Clear();
+            if (this != null)
+            {
+                for (int i = 0; i < this.buffs.Count; i++)
+                    DestroyImmediate(this.buffs[i]);
+                this.buffs.Clear();
 
-           for(int i = 0; i < this.pawnAgent.supporters.Count; i++)
-           {
-                List<Skill> skills = this.pawnAgent.supporters[i].pawnAgent.skills;
-                for (int j =0;j< skills.Count; j++)
+                for (int i = 0; i < this.pawnAgent.supporters.Count; i++)
                 {
-                    if(skills[j] is SupportSkill)
+                    List<Skill> skills = this.pawnAgent.supporters[i].pawnAgent.skills;
+                    for (int j = 0; j < skills.Count; j++)
                     {
-                        GameObject icon = Instantiate(this.bufficon.gameObject, this.buffContent.transform);
-                        icon.GetComponent<Image>().sprite = skills[j].icon;
-                        icon.SetActive(true);
-                        this.buffs.Add(icon);
+                        if (skills[j] is SupportSkill)
+                        {
+                            GameObject icon = Instantiate(this.bufficon.gameObject, this.buffContent.transform);
+                            icon.GetComponent<Image>().sprite = skills[j].icon;
+                            icon.SetActive(true);
+                            this.buffs.Add(icon);
+                        }
                     }
                 }
-           }
+            }
             
         }
         private void ResetAllSupport()//����֧Ԯ
