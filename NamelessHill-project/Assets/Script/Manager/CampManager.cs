@@ -66,6 +66,8 @@ namespace Nameless.Manager
                 DestroyImmediate(allCampPawns[i].gameObject);
             this.allCampPawns.Clear();
 
+            this.campScene.SetActive(false);
+
         }
 
     }

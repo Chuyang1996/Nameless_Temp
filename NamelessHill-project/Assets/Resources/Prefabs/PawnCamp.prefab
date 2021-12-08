@@ -335,6 +335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc72dad61b437e44818205133e8af4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueIm: {fileID: -229256013063241344, guid: d63499dfb031c5941abb90e81797c3dd, type: 3}
+  dialogueImMark: {fileID: 546032832440536679, guid: d63499dfb031c5941abb90e81797c3dd, type: 3}
   btnDialogue: {fileID: 7004341270928582551}
   leftSide: {fileID: 7004341269714591608}
   rightSide: {fileID: 7004341270058395585}
