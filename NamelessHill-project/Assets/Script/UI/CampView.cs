@@ -109,6 +109,7 @@ namespace Nameless.UI
             AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             Time.timeScale = 1.0f;
             this.gameObject.SetActive(false);
+            this.pausePanel.gameObject.SetActive(false);
             GameManager.Instance.BackToMainMenu();
         }
 

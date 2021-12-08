@@ -173,11 +173,13 @@ namespace Nameless.DataMono
                 this.builds.Add(build.type, build);
                 if (build.type == BuildType.AmmoBuild)
                 {
-                    build.gameObject.transform.position = this.ammoPoint.transform.position;
+                    build.gameObject.transform.parent = this.ammoPoint.transform;
+                    build.gameObject.transform.localPosition =   new Vector3(0,0,0);
                 }
                 else if (build.type == BuildType.MeidicalBuild)
                 {
-                    build.gameObject.transform.position = meidicalPoint.transform.position;
+                    build.gameObject.transform.parent = meidicalPoint.transform;
+                    build.gameObject.transform.localPosition = new Vector3(0, 0, 0);
                 }
                 build.gameObject.transform.localScale = new Vector3(1, 1, 1);
             }

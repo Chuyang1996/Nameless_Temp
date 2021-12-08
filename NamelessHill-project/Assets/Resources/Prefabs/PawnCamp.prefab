@@ -242,7 +242,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.23, y: 8.394096}
+    oldSize: {x: 10.692611, y: 8.55}
     newSize: {x: 10.23, y: 8.394096}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -335,8 +335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc72dad61b437e44818205133e8af4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueIm: {fileID: -229256013063241344, guid: d63499dfb031c5941abb90e81797c3dd, type: 3}
-  dialogueImMark: {fileID: 546032832440536679, guid: d63499dfb031c5941abb90e81797c3dd, type: 3}
+  dialogueIm: {fileID: -770413965161706305, guid: d63499dfb031c5941abb90e81797c3dd, type: 3}
+  dialogueImMark: {fileID: 4611804096804191474, guid: d63499dfb031c5941abb90e81797c3dd, type: 3}
   btnDialogue: {fileID: 7004341270928582551}
   leftSide: {fileID: 7004341269714591608}
   rightSide: {fileID: 7004341270058395585}
