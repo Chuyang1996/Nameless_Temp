@@ -37,7 +37,6 @@ namespace Nameless.DataMono
         private List<Path> pathList = new List<Path>();
         private int nodeCount = 0;
         private int currentWalkNode = 0;
-        private Vector2 lastDragPos;
 
         private GameObject wire;
         private GameObject walkWire;
@@ -218,7 +217,6 @@ namespace Nameless.DataMono
 
                 if (hit.collider != null)
                 {
-                    this.lastDragPos = raySelect;
                     if (hit.collider.transform.gameObject == this.fixbtn && !this.isAI)//���޸�.AI
                     {
                         AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
@@ -243,15 +241,14 @@ namespace Nameless.DataMono
                 {
                     if (hit.collider.transform.gameObject == this.gameObject)
                     {
-                        if (Vector2.Distance(raySelect, this.lastDragPos) > 0.0f)
-                        {
+
                             this.targetArea = this.CurrentArea;
                             this.startPoint = this.CurrentArea;
                             this.State = PawnState.Draw;
                             MapManager.Instance.mouseFollower.gameObject.GetComponent<SpriteRenderer>().sprite = this.pawnAgent.pawn.selectIcon;
                             this.InitLine();
                             this.ShowPath(true);
-                        }
+                        
                     }
 
                 }
