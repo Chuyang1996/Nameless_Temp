@@ -2271,7 +2271,7 @@ MonoBehaviour:
   accessbility: 0
   totalTime: 480
   levelgoalDes: 
-  totalMilitaryRes: 1000
+  totalMilitaryRes: 300
   enemiesDieNum: 0
   characterView: {fileID: 2059111272}
   battleView: {fileID: 1844554423}
