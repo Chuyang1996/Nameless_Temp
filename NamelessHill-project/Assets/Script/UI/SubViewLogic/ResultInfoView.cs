@@ -74,9 +74,9 @@ namespace Nameless.UI {
             this.restartBtn.gameObject.SetActive(false);
             this.resumeBtn.gameObject.SetActive(false);
             this.enterCampBtn.gameObject.SetActive(true);
-            this.optionBtn.gameObject.SetActive(true);
-            this.mainBtn.gameObject.SetActive(true);
-            this.exitBtn.gameObject.SetActive(true);
+            this.optionBtn.gameObject.SetActive(false);
+            this.mainBtn.gameObject.SetActive(false);
+            this.exitBtn.gameObject.SetActive(false);
         }
 
 
