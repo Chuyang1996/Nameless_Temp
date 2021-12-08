@@ -102,6 +102,7 @@ namespace Nameless.Manager {
             PawnManager.Instance.AddPawnOnArea(1002, MapManager.Instance.currentMap.FindAreaByLocalId(24), 0, false);
             PawnManager.Instance.AddPawnOnArea(1003, MapManager.Instance.currentMap.FindAreaByLocalId(21), 0, false);
             PawnManager.Instance.AddPawnOnArea(1004, MapManager.Instance.currentMap.FindAreaByLocalId(25), 0, false);
+            PawnManager.Instance.AddPawnOnArea(1009, MapManager.Instance.currentMap.FindAreaByLocalId(42), 0, false);
             PawnManager.Instance.AddPawnOnArea(1005, MapManager.Instance.currentMap.FindAreaByLocalId(14), 0, true);
             //PawnManager.Instance.AddPawnOnArea(1005, MapManager.Instance.currentMap.FindAreaByLocalId(22), 0, true);
             //PawnManager.Instance.AddPawnOnArea(1005, MapManager.Instance.currentMap.FindAreaByLocalId(4), 0, true);

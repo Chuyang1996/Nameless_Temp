@@ -39,6 +39,10 @@ namespace Nameless.Manager
             {
                 this.allCampPawns.Add(this.GenerateCampPawn(pawnAvatars[i]));
             }
+            for(int i = 0; i < this.allCampPawns.Count; i++)
+            {
+                this.allCampPawns[i].RefreshPawnCamp();
+            }
         }
 
         public PawnCamp GenerateCampPawn(PawnAvatar pawn)

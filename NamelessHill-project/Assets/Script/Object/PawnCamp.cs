@@ -20,7 +20,7 @@ namespace Nameless.DataMono
         public Pawn pawn;
         public void Init(Pawn pawn, Stack<Conversation> conversationsInCamp)
         {
-            if(pawn.leftOrRight < 0)
+            if (pawn.leftOrRight < 0)
             {
                 this.btnDialogue.transform.parent = this.leftSide.transform;
                 this.btnDialogue.transform.localScale = new Vector3(-this.btnDialogue.transform.localScale.x, this.btnDialogue.transform.localScale.y, this.btnDialogue.transform.localScale.z);
@@ -34,11 +34,14 @@ namespace Nameless.DataMono
             this.pawnIcon.sprite = pawn.campIcon;
             this.pawn = pawn;
             this.conversationsInCamp = conversationsInCamp;
-            if (!this.pawn.conversationMapDic.ContainsKey(0) && this.conversationsInCamp.Count == 0)//待修改 根据地图ID和其他相关的条件去判断是否有对话
+
+        }
+        public void RefreshPawnCamp()
+        {
+            if ((!this.pawn.conversationMapDic.ContainsKey(0) || !ConversationManager.Instance.CanGoConversation(this.pawn.conversationMapDic[0])) && (this.conversationsInCamp.Count == 0 || !ConversationManager.Instance.CanGoConversation(this.conversationsInCamp.Peek())))//待修改 根据地图ID和其他相关的条件去判断是否有对话//待修改 根据地图ID去索引
                 this.btnDialogue.SetActive(false);
             else
                 this.btnDialogue.SetActive(true);
-
         }
 
         public void InitMorale(float value)

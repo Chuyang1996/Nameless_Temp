@@ -42,9 +42,9 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b9dac6b614238dc48b6f56dc27b91cd0, type: 3}
   - {fileID: 21300000, guid: 6222f97e18b47404488697cdfb8e6d1d, type: 3}
   m_PackedSpriteNamesToIndex:
-  - B
-  - C
-  - A
+  - AtkUP
+  - Heal
+  - DefUP
   m_RenderDataMap: {}
   m_Tag: IconImage
   m_IsVariant: 0
