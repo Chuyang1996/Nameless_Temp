@@ -44,7 +44,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: ca1e4b05faeeaca41a2379076316bdc9, type: 3}
-    totalSpriteSurfaceArea: 12480842
+    totalSpriteSurfaceArea: 15957808
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -67,16 +67,18 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 7c47e39c7da122e4ca4821e5b881c774, type: 3}
   - {fileID: 21300000, guid: 6b565cdcb6ba0d1448de0d5edc8302cb, type: 3}
   - {fileID: 21300000, guid: 9601150e5a0bd424cbb57473ec4e531b, type: 3}
+  - {fileID: 21300000, guid: dff0a03ece63ebe40b6603f89e480543, type: 3}
   - {fileID: 21300000, guid: 48778a4ee78fe7f41ba43c2db5e6badf, type: 3}
   - {fileID: 21300000, guid: a1289dcec4fca61418014a8299239f0f, type: 3}
+  - {fileID: 21300000, guid: 96ce34cf6238d1948bd30cce499de613, type: 3}
   - {fileID: 21300000, guid: 72f81aff0acf57146b0dc142305494f3, type: 3}
   m_PackedSpriteNamesToIndex:
   - JournalImage_Liu_VillageBoy_A_Text_02
   - map
   - JournalImage_Liu_VillageBoy_A_Text_04
-  - JournalImage_Liu_DangerousMission_Image_02
-  - JournalImage_Liu_DefenseCollasped_Image
   - JournalImage_Liu_DangerousMission_Image_01
+  - JournalImage_Liu_DefenseCollasped_Image
+  - JournalImage_Liu_DangerousMission_Image_02
   - JournalImage_Liu_VillageBoy_B_Image01
   - JournalImage_Liu_VillageBoy_A_Text_03
   - JournalImage_Liu_VillageBoy_A_Text_01
@@ -88,8 +90,10 @@ SpriteAtlas:
   - JournalImage_Liu_DefenseCollasped_Image_02
   - 3
   - JournalImage_Liu_DangerousMission_Image
+  - Mapscene2
   - 2
   - JournalImage_Liu_VillageBoy_B_Image02
+  - Mapscene3
   - JournalImage_Liu_DefenseCollasped_Image_01
   m_RenderDataMap: {}
   m_Tag: NoteImage
