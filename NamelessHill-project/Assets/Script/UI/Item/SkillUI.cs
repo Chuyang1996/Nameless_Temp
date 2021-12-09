@@ -14,6 +14,7 @@ namespace Nameless.DataUI
         {
             this.icon.sprite = sprite;
             this.descTxt.text = desc;
+            LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
         }
     }
 }

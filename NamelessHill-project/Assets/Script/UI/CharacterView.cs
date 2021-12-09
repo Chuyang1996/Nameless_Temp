@@ -108,6 +108,7 @@ namespace Nameless.UI {
                     this.skillObjs.Add(skillObject);
                 } 
             }
+            LayoutRebuilder.ForceRebuildLayoutImmediate(this.skillContent.GetComponent<RectTransform>());
 
 
         }
