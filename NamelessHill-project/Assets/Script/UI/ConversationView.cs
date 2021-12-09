@@ -20,8 +20,8 @@ namespace Nameless.UI
         public ConversationOptionUI templateOption;
         public GameObject optionContent;
         private List<GameObject> options = new List<GameObject>();
-        
-        
+
+        public GameObject descPanel;
 
         public void ResetConversation(Conversation conversation)
         {
@@ -53,6 +53,7 @@ namespace Nameless.UI
             this.pawnsImage[conversation.sideindex].transform.localScale = new Vector3(1, 1, 1);
             this.pawnsImage[conversation.sideindex].GetComponent<Image>().color = new Color(1, 1, 1, 1);
             this.descTxt.text = conversation.descrption;
+            LayoutRebuilder.ForceRebuildLayoutImmediate(this.descPanel.GetComponent<RectTransform>());
         }
     }
 }
