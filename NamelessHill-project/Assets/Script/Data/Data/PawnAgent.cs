@@ -291,6 +291,7 @@ namespace Nameless.Data
         public void ResetBattleInfo()
         {
             //this.BattleState = BattleState.Normal;
+            
             this.opponents = new List<PawnAvatar>();
             this.curOpponent = null;
             this.opponentIsInBattle = false;
