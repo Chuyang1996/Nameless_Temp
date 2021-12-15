@@ -1,4 +1,5 @@
 using Nameless.Agent;
+using Nameless.ConfigData;
 using Nameless.Controller;
 using Nameless.Data;
 using Nameless.DataMono;
@@ -75,12 +76,15 @@ namespace Nameless.Manager {
             AudioManager.Instance.PlayMusic(mainMenuBgmName);
         }
 
-        public void EnterBattleWithTrans()
+        public void EnterBattle()//进入战场  //并开始播放的动画
         {
+            GameManager.Instance.ClearBattle();
+            GameManager.Instance.ClearCamp();
+            RTSCamera.Instance.ResetCameraPos();
             MapManager.Instance.GenerateTransInfoShow(MapManager.Instance.currentMapData);
             MapManager.Instance.currentTransInfoShow.StartReader();
         }
-        public void InitBattle()
+        public void InitBattle()//初始化战斗场景里的所有对象 用于进入战场战斗 和 重新开始战斗
         {
             this.GameScene = GameScene.Battle;
             MapManager.Instance.GenerateMap(MapManager.Instance.currentMapData);
@@ -122,13 +126,13 @@ namespace Nameless.Manager {
             RTSCamera.Instance.ResetCameraPos();
             AudioManager.Instance.PlayMusic(MapManager.Instance.currentMapData.nameBgm);
         }
-        public void RestartBattle()
+        public void RestartBattle()//重新进入战场开始游戏
         {
             this.ClearBattle();
             this.InitBattle();
             RTSCamera.Instance.ResetCameraPos();
         }
-        public void EnterCamp()
+        public void EnterCamp()//进入营地
         {
 
             this.battleView.ExitBattle();//待修改 等UI管理器到位
@@ -137,11 +141,12 @@ namespace Nameless.Manager {
             this.eventView.gameObject.SetActive(false);//待修改 等UI管理器到位
             this.GameScene = GameScene.Camp;
             RTSCamera.Instance.ResetCameraPos();
-            CampManager.Instance.InitCamp(PawnManager.Instance.GetPawnAvatars(false), this.totalMilitaryRes);
+
+            CampData campData = DataManager.Instance.GetCampData(MapManager.Instance.currentMapData.nextCampId);
+            CampManager.Instance.InitCamp(campData,PawnManager.Instance.GetPawnAvatars(false), this.totalMilitaryRes);
 
         }
-
-        public void BackToMainMenu()
+        public void BackToMainMenu()//返回主界面
         {
             this.GameScene = GameScene.Menu;
             GameManager.Instance.ClearBattle();
@@ -152,7 +157,23 @@ namespace Nameless.Manager {
             this.campView.gameObject.SetActive(false);
             this.mainMenuView.gameObject.SetActive(true);
         }
+        public void ClearBattle()//清空战场的对象
+        {
+            this.enemyOccupyAreas.Clear();
+            this.playerOccupyAreas.Clear();
+            EventTriggerManager.Instance.ClearEvent();
+            DialogueTriggerManager.Instance.ClearEvent();
+            StopCoroutine(EventTriggerManager.Instance.StartListenEvent());
+            StopCoroutine(DialogueTriggerManager.Instance.StartListenEvent());
+            PawnManager.Instance.ClearAllPawn();
+            MapManager.Instance.ClearMap();
 
+        }
+        public void ClearCamp()//清空营地
+        {
+            CampManager.Instance.ClearCamp();
+
+        }
         private void Result(string title, bool isWin)
         {
             this.battleView.resultInfoView.SetResultTxt(title, isWin);
@@ -221,25 +242,6 @@ namespace Nameless.Manager {
             RTSCamera.Instance.StartTransition(pawns);
         }
 
-
-
-        public void ClearBattle()
-        {
-            this.enemyOccupyAreas.Clear();
-            this.playerOccupyAreas.Clear();
-            EventTriggerManager.Instance.ClearEvent();
-            DialogueTriggerManager.Instance.ClearEvent();
-            StopCoroutine(EventTriggerManager.Instance.StartListenEvent());
-            StopCoroutine(DialogueTriggerManager.Instance.StartListenEvent());
-            PawnManager.Instance.ClearAllPawn();
-            MapManager.Instance.ClearMap();
-
-        }
-        public void ClearCamp()
-        {
-            CampManager.Instance.ClearCamp();
-
-        }
         public void PauseOrPlay(bool isPlay)
         {
             this.isPlay = isPlay;

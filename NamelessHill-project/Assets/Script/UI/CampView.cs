@@ -17,6 +17,9 @@ namespace Nameless.UI
 
 
         public Text resourceText;
+
+
+        public Text campInfoTxt;
         public Text pawnNum;
 
 
@@ -27,6 +30,8 @@ namespace Nameless.UI
         public Button mainBtn;
         public Button exitBtn;
 
+        public Button yesBtn;
+        public Button noBtn;
 
         public Button backBtn;
         public Slider musicSlider;
@@ -35,6 +40,8 @@ namespace Nameless.UI
         public GameObject pausePanel;
         public GameObject resultPanel;
         public GameObject optionPanel;
+        public GameObject confirmPanel;
+        public GameObject enterCampInfoPanel;
 
         private void Start()
         {
@@ -43,6 +50,8 @@ namespace Nameless.UI
             this.optionBtn.onClick.AddListener(this.OptionPanel);
             this.mainBtn.onClick.AddListener(this.MainMenuPanel);
             this.exitBtn.onClick.AddListener(this.ExitGame);
+            this.yesBtn.onClick.AddListener(this.EnterBattle);
+            this.noBtn.onClick.AddListener(this.CloseConfirm);
 
 
             this.backBtn.onClick.AddListener(this.BackToResultPanel);
@@ -51,11 +60,12 @@ namespace Nameless.UI
             this.musicSlider.onValueChanged.AddListener((float value) => { AudioManager.Instance.MusicVolume = value; });
             this.soundSlider.onValueChanged.AddListener((float value) => { AudioManager.Instance.SoundVolume = value; });
         }
-        public void InitCamp(int militartRes, int pawnNum)
+        public void InitCamp(string infoCamp, int militartRes, int pawnNum)
         {
             this.gameObject.SetActive(true);
             this.InitMilitRes(militartRes);
             GameManager.Instance.TotalMilitartEvent += this.InitMilitRes;
+            this.campInfoTxt.text = infoCamp;
             this.InitPawnInfo(pawnNum);
             this.animation.clip = enterAnim;
             this.animation.Play();
@@ -118,6 +128,18 @@ namespace Nameless.UI
             AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             Application.Quit();
         }
+        private void EnterBattle()
+        {
+            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
+            this.gameObject.SetActive(false);
+            this.ResetPanel();
+            GameManager.Instance.EnterBattle();
+        }
+        private void CloseConfirm()
+        {
+            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
+            this.confirmPanel.gameObject.SetActive(false);
+        }
 
         private void BackToResultPanel()
         {
@@ -125,7 +147,17 @@ namespace Nameless.UI
             this.resultPanel.SetActive(true);
             this.optionPanel.SetActive(false);
         }
+        public void OpenConfirm()
+        {
+            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
+            this.confirmPanel.gameObject.SetActive(true);
+        }
 
 
+        private void ResetPanel()
+        {
+            this.confirmPanel.SetActive(false);
+            this.enterCampInfoPanel.SetActive(true);
+        }
     } 
 }

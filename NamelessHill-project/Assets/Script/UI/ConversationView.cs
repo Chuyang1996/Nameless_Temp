@@ -36,7 +36,7 @@ namespace Nameless.UI
             {
                 GameObject imageObj = Instantiate(this.templatePawnIm.gameObject, this.pawnContent.transform) as GameObject;
                 imageObj.gameObject.SetActive(true);
-                imageObj.GetComponent<Image>().sprite = CampManager.Instance.FindPawnInCamp(conversation.conversationPawns[i]).pawn.selectIcon;
+                imageObj.GetComponent<Image>().sprite = CampManager.Instance.campScene.FindPawnInCamp(conversation.conversationPawns[i]).pawn.selectIcon;
                 imageObj.transform.localScale = new Vector3(0.85f, 0.85f, 1);
                 imageObj.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
                 this.pawnsImage.Add(imageObj);
@@ -49,7 +49,7 @@ namespace Nameless.UI
                 optionObj.GetComponent<ConversationOptionUI>().InitOption(conversation.options[i]);
                 this.options.Add(optionObj);
             }
-            this.speakerName.text = CampManager.Instance.FindPawnInCamp(conversation.conversationPawns[conversation.sideindex]).pawn.name;
+            this.speakerName.text = CampManager.Instance.campScene.FindPawnInCamp(conversation.conversationPawns[conversation.sideindex]).pawn.name;
             this.pawnsImage[conversation.sideindex].transform.localScale = new Vector3(1, 1, 1);
             this.pawnsImage[conversation.sideindex].GetComponent<Image>().color = new Color(1, 1, 1, 1);
             this.descTxt.text = conversation.descrption;

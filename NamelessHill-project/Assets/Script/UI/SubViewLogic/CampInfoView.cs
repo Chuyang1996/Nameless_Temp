@@ -8,11 +8,6 @@ namespace Nameless.UI
 {
     public class CampInfoView : SelectViewLogic
     {
-        public Sprite book;
-        public Sprite bookMark;
-
-        public Sprite light;
-        public Sprite lightMark;
 
         // Start is called before the first frame update
         public GameObject selectPanel;
@@ -31,64 +26,62 @@ namespace Nameless.UI
             item.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x + (item.GetComponent<RectTransform>().sizeDelta.x / 2), pos.y - (item.GetComponent<RectTransform>().sizeDelta.y / 2));
 
         }
-        // Update is called once per frame
-        void Update()
-        {
-            if (Time.timeScale == 0.0f)
-                return;
 
+        private void MouseOnItem()
+        {
             Vector2 raySelectBtn = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hitBtn = Physics2D.Raycast(raySelectBtn, Vector2.zero);
             if (hitBtn.collider != null)
             {
+                CampManager.Instance.campScene.ResetAllBtnState();
                 for (int i = 0; i < CampManager.Instance.allCampPawns.Count; i++)
                 {
                     if (hitBtn.collider.gameObject == CampManager.Instance.allCampPawns[i].btnDialogue.gameObject)
                         CampManager.Instance.allCampPawns[i].btnDialogue.GetComponent<SpriteRenderer>().sprite = CampManager.Instance.allCampPawns[i].dialogueImMark;
-                    else
-                        CampManager.Instance.allCampPawns[i].btnDialogue.GetComponent<SpriteRenderer>().sprite = CampManager.Instance.allCampPawns[i].dialogueIm;
 
                 }
-                if (hitBtn.collider.gameObject == CampManager.Instance.lightBtn.gameObject)
+                if (hitBtn.collider.gameObject == CampManager.Instance.campScene.lightBtn.gameObject)
                 {
-                    CampManager.Instance.lightBtn.GetComponent<SpriteRenderer>().sprite = this.lightMark;
+                    CampManager.Instance.campScene.lightBtn.GetComponent<SpriteRenderer>().sprite = CampManager.Instance.campScene.lightMark;
                     this.InitInfo("Wait till the next battle");
                 }
-                else if (hitBtn.collider.gameObject == CampManager.Instance.noteBtn.gameObject)
+                else if (hitBtn.collider.gameObject == CampManager.Instance.campScene.noteBtn.gameObject)
                 {
-                    CampManager.Instance.noteBtn.GetComponent<SpriteRenderer>().sprite = this.bookMark;
+                    CampManager.Instance.campScene.noteBtn.GetComponent<SpriteRenderer>().sprite = CampManager.Instance.campScene.bookMark;
                     this.InitInfo("My Daily");
                 }
                 else
                 {
-                    CampManager.Instance.lightBtn.GetComponent<SpriteRenderer>().sprite = this.light;
-                    CampManager.Instance.noteBtn.GetComponent<SpriteRenderer>().sprite = this.book;
                     this.selectPanel.SetActive(false);
 
                 }
-            }
+            }//鼠标悬浮在物品上时的效果
             else
             {
-                CampManager.Instance.lightBtn.GetComponent<SpriteRenderer>().sprite = this.light;
-                CampManager.Instance.noteBtn.GetComponent<SpriteRenderer>().sprite = this.book;
-                for (int i = 0; i < CampManager.Instance.allCampPawns.Count; i++)
-                {
-                    CampManager.Instance.allCampPawns[i].btnDialogue.GetComponent<SpriteRenderer>().sprite = CampManager.Instance.allCampPawns[i].dialogueIm;
-                }
                 this.selectPanel.SetActive(false);
             }
-            if (Input.GetMouseButtonDown(0) && !GameManager.Instance.noteBookView.gameObject.activeInHierarchy && !GameManager.Instance.conversationView.gameObject.activeInHierarchy)//当这些面板处于关闭状态时才能点击
+        }
+        private void MouseClickOnItem()
+        {
+            Vector2 raySelectBtn = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hitBtn = Physics2D.Raycast(raySelectBtn, Vector2.zero);
+            if (Input.GetMouseButtonDown(0) 
+                && !GameManager.Instance.noteBookView.gameObject.activeInHierarchy 
+                && !GameManager.Instance.conversationView.gameObject.activeInHierarchy)//当这些面板处于关闭状态时才能点击
             {
                 //Debug.Log("sssss");
                 if (hitBtn.collider != null)
                 {
 
-                    if (hitBtn.collider.gameObject == CampManager.Instance.noteBtn.gameObject)
+                    if (hitBtn.collider.gameObject == CampManager.Instance.campScene.noteBtn.gameObject)
                     {
-                        AudioManager.Instance.PlayAudio(CampManager.Instance.noteBtn.transform, AudioConfig.uiRemind);
+                        AudioManager.Instance.PlayAudio(CampManager.Instance.campScene.noteBtn.transform, AudioConfig.uiRemind);
                         NoteManager.Instance.InitNoteBook();
                     }
-                    else
+                    else if (hitBtn.collider.gameObject == CampManager.Instance.campScene.lightBtn.gameObject)
+                    {
+                        GameManager.Instance.campView.OpenConfirm();
+                    }
                     {
                         for (int i = 0; i < CampManager.Instance.allCampPawns.Count; i++)
                         {
@@ -102,6 +95,14 @@ namespace Nameless.UI
                     }
                 }
             }
+        }
+        // Update is called once per frame
+        void Update()
+        {
+            if (Time.timeScale == 0.0f)
+                return;
+            this.MouseOnItem();
+            this.MouseClickOnItem();
 
         }
 

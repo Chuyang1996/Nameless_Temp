@@ -1,0 +1,1 @@
+{"0":{"name":"Camp1","descrption":"Nov.26 1950\n\nEvacuation Day 3","campName":"Camp1","campBgm":"AmbienceLoop_Shelter_01","nextBattleId":"0"}}

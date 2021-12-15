@@ -29,7 +29,7 @@ namespace Nameless.Manager {
                 return false;
             for(int i = 0; i < conversation.conversationPawns.Length; i++)
             {
-                if (CampManager.Instance.FindPawnInCamp(conversation.conversationPawns[i]) == null)
+                if (CampManager.Instance.campScene.FindPawnInCamp(conversation.conversationPawns[i]) == null)
                     return false;
             }
             return true;
