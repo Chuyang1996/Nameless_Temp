@@ -32,11 +32,12 @@ namespace Nameless.UI
         
         void Update()
         {
-            Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
-            if (hit.collider != null)
+            Ray targetray1 = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit TargetHit1;
+                //Debug.Log("sssss");
+            if (Physics.Raycast(targetray1, out TargetHit1))
             {
-                if (hit.collider.transform.gameObject.GetComponent<PawnAvatar>() != null && !hit.collider.transform.gameObject.GetComponent<PawnAvatar>().isAI)//���޸�.AI
+                if (TargetHit1.transform.gameObject.GetComponent<PawnAvatar>() != null && !TargetHit1.transform.gameObject.GetComponent<PawnAvatar>().isAI)//���޸�.AI
                 {
                     this.ownTip.SetActive(true);
                     this.FollowMouseMove(ownTip);
@@ -50,7 +51,7 @@ namespace Nameless.UI
                     //    this.RreshPanel();
                     //    this.isShowSupport = true;
                     //}
-                    this.currentPawn = hit.collider.transform.gameObject.GetComponent<PawnAvatar>();
+                    this.currentPawn = TargetHit1.transform.gameObject.GetComponent<PawnAvatar>();
                     this.RreshPanel();
                     float curMorale = (float)currentPawn.pawnAgent.pawn.curMorale;
                     float maxMorale = (float)currentPawn.pawnAgent.pawn.maxMorale;

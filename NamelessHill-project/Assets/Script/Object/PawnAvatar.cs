@@ -171,9 +171,14 @@ namespace Nameless.DataMono
             //Debug.Log("sssss");
             Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
-            if (hit.collider != null)
+
+
+            Ray targetray1 = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit TargetHit1;
+                //Debug.Log("sssss");
+            if (Physics.Raycast(targetray1, out TargetHit1))
             {
-                if (hit.collider.transform.gameObject == this.gameObject)
+                if (TargetHit1.transform.gameObject == this.gameObject)
                 {
                     PathManager.Instance.ShowPath(this);
                 }
@@ -202,9 +207,12 @@ namespace Nameless.DataMono
             if (Input.GetMouseButtonDown(1))//���޸� �򿪽�ɫ�����ʱ����
             {
 
-                if (hit.collider != null)
+                Ray targetray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit TargetHit3;
+                //Debug.Log("sssss");
+                if (Physics.Raycast(targetray, out TargetHit3))
                 {
-                    if (hit.collider.transform.gameObject == this.gameObject)
+                    if (TargetHit3.transform.gameObject == this.gameObject)
                     {
                         
                         GameManager.Instance.characterView.SetNewPawn(this);
@@ -236,10 +244,12 @@ namespace Nameless.DataMono
             }
             if (Input.GetMouseButton(0) /*&& this.State != PawnState.Battle*/)
             {
+                Ray targetray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit TargetHit3;
                 //Debug.Log("sssss");
-                if (hit.collider != null)
+                if (Physics.Raycast(targetray, out TargetHit3))
                 {
-                    if (hit.collider.transform.gameObject == this.gameObject)
+                    if (TargetHit3.transform.gameObject == this.gameObject)
                     {
 
                             this.targetArea = this.CurrentArea;
