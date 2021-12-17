@@ -18,6 +18,7 @@ namespace Nameless.Agent
         public static Pawn Get(CharacterData characterData)
         {
             float crAmmo = characterData.crAmmo > 1 ? 1.0f : characterData.crAmmo;
+            float crAtkSpeed = characterData.crAtkSpeed > 1 ? 1.0f : characterData.atkSpeed;
             float crAttack = characterData.crAttack > 1 ? 1.0f : characterData.crAttack;
             float crDefend = characterData.crDefend > 1 ? 1.0f : characterData.crDefend;
             float crDex = characterData.crDex > 1 ? 1.0f : characterData.crDex;
@@ -49,7 +50,9 @@ namespace Nameless.Agent
                 characterData.attack, 
                 crAttack, 
                 characterData.morale, 
-                crMorale, 
+                crMorale,
+                characterData.atkSpeed,
+                crAtkSpeed,
                 characterData.ammo, 
                 crAmmo, 
                 characterData.speed, 

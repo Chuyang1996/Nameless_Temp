@@ -2197,7 +2197,7 @@ MonoBehaviour:
   isPlay: 1
   GameScene: 0
   accessbility: 0
-  totalTime: 5
+  totalTime: 480
   levelgoalDes: 
   totalMilitaryRes: 400
   enemiesDieNum: 0
@@ -8959,6 +8959,11 @@ Transform:
   m_Father: {fileID: 100402525}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1113123222 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3270905058443010775, guid: 84cb1c462b6d680459911342d4380939, type: 3}
+  m_PrefabInstance: {fileID: 3270905058266364710}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1114028429
 GameObject:
   m_ObjectHideFlags: 0
@@ -18318,6 +18323,10 @@ PrefabInstance:
       propertyPath: campInfoTxt
       value: 
       objectReference: {fileID: 3270905058266364711}
+    - target: {fileID: 3270905059592202087, guid: 84cb1c462b6d680459911342d4380939, type: 3}
+      propertyPath: enterCampInfoPanel
+      value: 
+      objectReference: {fileID: 1113123222}
     - target: {fileID: 3270905059622980737, guid: 84cb1c462b6d680459911342d4380939, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -18448,6 +18457,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8321445481782916630, guid: 84cb1c462b6d680459911342d4380939, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838852217539214110, guid: 84cb1c462b6d680459911342d4380939, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

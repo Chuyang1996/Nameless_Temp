@@ -125,6 +125,8 @@ namespace Nameless.Manager
                             float.Parse(this.characterData[id]["crMorale"]),
                             int.Parse(this.characterData[id]["ammo"]),
                             float.Parse(this.characterData[id]["crAmmo"]),
+                            float.Parse(this.characterData[id]["atkSpeed"]),
+                            float.Parse(this.characterData[id]["crAtkSpeed"]),
                             float.Parse(this.characterData[id]["speed"]),
                             float.Parse(this.characterData[id]["crSpeed"]),
                             float.Parse(this.characterData[id]["hit"]),

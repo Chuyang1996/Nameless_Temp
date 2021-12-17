@@ -41,8 +41,8 @@ namespace Nameless.DataMono
         {
             this.attacker.pawnAgent.opponentIsInBattle = defenderisInBattle;
             //this.defender.pawnAgent.opponentIsInBattle = true;
-            bool attackerTurn = true;
-
+            float attackerTC = 0.0f;
+            float defenderTC = 0.0f;
             EventTriggerManager.Instance.CheckPawnStartBattle(this.attacker.pawnAgent.pawn.id);
             EventTriggerManager.Instance.CheckPawnStartBattle(this.defender.pawnAgent.pawn.id);
             while (true)
@@ -61,8 +61,13 @@ namespace Nameless.DataMono
                     this.attacker.CalcuateBattleInfo();//计算本次战斗实际的角色数据
                     this.defender.CalcuateBattleInfo();
 
-                    if (attackerTurn || this.attacker.pawnAgent.opponentIsInBattle)
+                    attackerTC += Time.deltaTime;
+                    if (!this.attacker.pawnAgent.opponentIsInBattle)
+                        defenderTC += Time.deltaTime;
+                    
+                    if (attackerTC >= this.attacker.pawnAgent.pawn.curAtkSpeed)
                     {
+                        attackerTC = 0.0f;
                         this.attacker.pawnAgent.AmmoChange(-1);
                         this.attacker.currentArea.CostAmmo(this.attacker);
                         float attackerAtk = this.attacker.pawnAgent.battleInfo.actualAttack;
@@ -74,8 +79,10 @@ namespace Nameless.DataMono
                         this.defender.pawnAgent.HealthChange(-damage);
                         this.defender.currentArea.CostMedicine(this.defender);
                     }
-                    else
+
+                    if (defenderTC >= this.defender.pawnAgent.pawn.curAtkSpeed)
                     {
+                        defenderTC = 0.0f;
                         this.defender.pawnAgent.AmmoChange(-1);
                         this.defender.currentArea.CostAmmo(this.defender);
                         float attackerAtk = this.defender.pawnAgent.battleInfo.actualAttack;
@@ -87,8 +94,7 @@ namespace Nameless.DataMono
                         this.attacker.pawnAgent.HealthChange(-damage);
                         this.attacker.currentArea.CostMedicine(this.attacker);
                     }
-                    attackerTurn = !attackerTurn;
-                    yield return new WaitForSecondsRealtime(1.0f);
+                    yield return null;
                 }
             }
             BattleManager.Instance.battleDic.Remove(this.battle);
