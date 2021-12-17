@@ -804,7 +804,7 @@ namespace Nameless.DataMono
                     }
                 }
             }
-            this.pawnAgent.battleInfo = new PawnAgent.BattleInfo(attack, defend);
+            this.pawnAgent.battleInfo = new PawnAgent.BattleInfo(attack, defend, this.pawnAgent.MoralteState());
         }
         public void UpdateCurrentOppo(PawnAvatar oppo)
         {
@@ -821,7 +821,7 @@ namespace Nameless.DataMono
         }//����Ƿ�����
         public void CheckResult(bool ifRetreat)
         {
-            this.pawnAgent.MoraleChange(-10.0f);//���޸�
+            this.pawnAgent.MoraleChange(0);//���޸�
             this.pawnAgent.battleSideDic = new Dictionary<PawnAvatar, BattleSide>();//���޸�
             //this.ClearPawn();
             this.ResetAllSupport();
@@ -849,7 +849,7 @@ namespace Nameless.DataMono
         }//���ս�ܺ�Ľ����������
         public void CheckIfBattleResult()
         {
-            this.pawnAgent.MoraleChange(10.0f);//���޸�
+            this.pawnAgent.MoraleChange(0);//���޸�
             this.PlayDialogue(this.pawnAgent.pawn.winTxt);
             //this.pawnAgent.ResetBattleInfo();
             //this.State = this.lastState;

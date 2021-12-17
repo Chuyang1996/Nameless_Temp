@@ -118,13 +118,12 @@ namespace Nameless.UI {
         }
         public void MoraleChange(PawnAgent value)
         {
-            float curMorale = (float)value.pawn.curMorale;
-            float maxMorale = (float)value.pawn.maxMorale;
-            if (curMorale >= maxMorale / 2)
+
+            if (this.currentPawn.pawnAgent.MoralteState() == 1.5f)
             {
                 this.moraleIm.sprite = stateSprite[0];
             }
-            else if (maxMorale / 4 <= curMorale && curMorale < maxMorale / 2)
+            else if (this.currentPawn.pawnAgent.MoralteState() == 1.0f)
             {
                 this.moraleIm.sprite = stateSprite[1];
             }

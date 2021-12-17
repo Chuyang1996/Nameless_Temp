@@ -89,10 +89,12 @@ namespace Nameless.Data
         {
             public float actualAttack;
             public float actualDefend;
-            public BattleInfo(float actualAttack, float actualDefend)
+            public float moraleRate;
+            public BattleInfo(float actualAttack, float actualDefend,float moraleRate)
             {
                 this.actualAttack = actualAttack;
                 this.actualDefend = actualDefend;
+                this.moraleRate = moraleRate;
             }
         }
 
@@ -226,7 +228,7 @@ namespace Nameless.Data
                     if(this.countBTimeMorale > this.runningTimeProperty.costBTimeMorale)
                     {
                         this.countBTimeMorale = 0.0f;
-                        this.MoraleChange(this.runningTimeProperty.costBMorale);
+                        this.MoraleChange(0);
                     }
                     else
                     {
@@ -335,7 +337,23 @@ namespace Nameless.Data
             this.pawn.curMorale += valueChange;
             if (this.MoraleBarEvent != null)
                 this.MoraleBarEvent(this);
-
+        }
+        public float MoralteState()
+        {
+            float curMorale = this.pawn.curMorale;
+            float maxMorale = this.pawn.maxMorale;
+            if (curMorale >= maxMorale / 2)
+            {
+                return 1.5f;
+            }
+            else if (maxMorale / 4 <= curMorale && curMorale < maxMorale / 2)
+            {
+                return 1.0f;
+            }
+            else
+            {
+                return 0.5f;
+            }
         }
         public void HealthChange(float valuechange)
         {
