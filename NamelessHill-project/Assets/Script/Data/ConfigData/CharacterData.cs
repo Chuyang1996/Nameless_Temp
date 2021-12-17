@@ -19,6 +19,8 @@ namespace Nameless.ConfigData
         public float crMorale;
         public int ammo;
         public float crAmmo;
+        public float atkSpeed;
+        public float crAtkSpeed;
         public float speed;
         public float crSpeed;
         public float hit;
@@ -55,6 +57,8 @@ namespace Nameless.ConfigData
             float crMorale, 
             int ammo, 
             float crAmmo, 
+            float atkSpeed, 
+            float crAtkSpeed, 
             float speed, 
             float crSpeed, 
             float hit, 
@@ -87,6 +91,8 @@ namespace Nameless.ConfigData
             this.crMorale = crMorale;
             this.ammo = ammo;
             this.crAmmo = crAmmo;
+            this.atkSpeed = atkSpeed;
+            this.crAtkSpeed = crAtkSpeed;
             this.speed = speed;
             this.crSpeed = crSpeed;
             this.hit = hit;

@@ -53,13 +53,11 @@ namespace Nameless.UI
                     //}
                     this.currentPawn = TargetHit1.transform.gameObject.GetComponent<PawnAvatar>();
                     this.RreshPanel();
-                    float curMorale = (float)currentPawn.pawnAgent.pawn.curMorale;
-                    float maxMorale = (float)currentPawn.pawnAgent.pawn.maxMorale;
-                    if (curMorale >= maxMorale / 2)
+                    if (currentPawn.pawnAgent.MoralteState() == 1.5f)
                     {
                         stateMorale.sprite = stateSprite[0];
                     }
-                    else if(maxMorale / 4 <= curMorale && curMorale < maxMorale / 2)
+                    else if(currentPawn.pawnAgent.MoralteState() ==  1.0f)
                     {
                         stateMorale.sprite = stateSprite[1];
                     }

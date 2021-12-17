@@ -40,10 +40,10 @@ namespace Nameless.Data
 
         public override void Execute()
         {
-            if (CampManager.Instance.FindPawnInCamp(pawnId)!=null)
+            if (CampManager.Instance.campScene.FindPawnInCamp(pawnId)!=null)
             {
-                float curMorale = CampManager.Instance.FindPawnInCamp(pawnId).pawn.curMorale;
-                float maxMorale = CampManager.Instance.FindPawnInCamp(pawnId).pawn.maxMorale;
+                float curMorale = CampManager.Instance.campScene.FindPawnInCamp(pawnId).pawn.curMorale;
+                float maxMorale = CampManager.Instance.campScene.FindPawnInCamp(pawnId).pawn.maxMorale;
                 int curLevel;
                 if (curMorale / maxMorale >= maxMorale / 2)
                     curLevel = 3;
@@ -55,11 +55,11 @@ namespace Nameless.Data
                 curLevel += this.moraleLevel;
 
                 if (curLevel >= 3)
-                    CampManager.Instance.FindPawnInCamp(pawnId).InitMorale((maxMorale + maxMorale / 2) / 2);
+                    CampManager.Instance.campScene.FindPawnInCamp(pawnId).InitMorale((maxMorale + maxMorale / 2) / 2);
                 else if (curLevel == 2)
-                    CampManager.Instance.FindPawnInCamp(pawnId).InitMorale((maxMorale / 4 + maxMorale / 2) / 2);
+                    CampManager.Instance.campScene.FindPawnInCamp(pawnId).InitMorale((maxMorale / 4 + maxMorale / 2) / 2);
                 else if (curLevel <= 1)
-                    CampManager.Instance.FindPawnInCamp(pawnId).InitMorale((maxMorale / 4) / 2);
+                    CampManager.Instance.campScene.FindPawnInCamp(pawnId).InitMorale((maxMorale / 4) / 2);
             }
         }
     }
