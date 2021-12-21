@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Nameless.Manager
 {
 
-    public class GenerateManager : SingletonMono<GenerateManager>
+    public class StaticObjGenManager : SingletonMono<StaticObjGenManager>
     {
         public Sprite militarySprite;
         public Sprite ammoSprite;

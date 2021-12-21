@@ -17,12 +17,12 @@ namespace Nameless.DataMono
             this.receiver = receiver;
             this.receiver.pawnAgent.supporters.Add(supporter);
 
-
-            for(int i = 0; i < supporter.pawnAgent.skills.Count; i++)
+            List<Skill> skills = supporter.pawnAgent.GetSkills();
+            for (int i = 0; i < skills.Count; i++)
             {
-                if(supporter.pawnAgent.skills[i] is SupportSkill)
+                if(skills[i] is SupportSkill)
                 {
-                    PropertySkillEffect skillEffect = supporter.pawnAgent.skills[i].Execute(receiver, receiver);
+                    PropertySkillEffect skillEffect = skills[i].Execute(receiver, receiver);
                     List<Buff> buffs = skillEffect.buffs;
                     for(int j = 0; j < buffs.Count; j++)
                     {

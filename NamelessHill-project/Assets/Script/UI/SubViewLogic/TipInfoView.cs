@@ -37,7 +37,8 @@ namespace Nameless.UI
                 //Debug.Log("sssss");
             if (Physics.Raycast(targetray1, out TargetHit1))
             {
-                if (TargetHit1.transform.gameObject.GetComponent<PawnAvatar>() != null && !TargetHit1.transform.gameObject.GetComponent<PawnAvatar>().isAI)//���޸�.AI
+                if (TargetHit1.transform.gameObject.GetComponent<PawnAvatar>() != null 
+                    && TargetHit1.transform.gameObject.GetComponent<PawnAvatar>().pawnAgent.frontPlayer.IsLocalPlayer())//���޸�.AI
                 {
                     this.ownTip.SetActive(true);
                     this.FollowMouseMove(ownTip);
@@ -134,7 +135,7 @@ namespace Nameless.UI
                 List<PawnAvatar> supporters = this.currentPawn.pawnAgent.supporters;
                 for(int i = 0; i < supporters.Count; i++)
                 {
-                    List<Skill> tempSkills = supporters[i].pawnAgent.skills;
+                    List<Skill> tempSkills = supporters[i].pawnAgent.GetSkills();
                     for(int j = 0; j < tempSkills.Count; j++)
                     {
                         if (tempSkills[j] is SupportSkill)

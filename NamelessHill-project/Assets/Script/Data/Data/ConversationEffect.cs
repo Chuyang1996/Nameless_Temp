@@ -77,7 +77,8 @@ namespace Nameless.Data
         }
         public override void Execute()
         {
-            GameManager.Instance.ChangeMilitaryRes(resourceChange);
+            CampManager.Instance.ChangeMilitaryRes(resourceChange);//因为对话现在只在营地进行 所以用CampManager里的接口
+
         }
     }
 

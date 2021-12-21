@@ -97,7 +97,7 @@ namespace Nameless.UI {
             for (int i = 0; i < this.skillObjs.Count; i++)
                 DestroyImmediate(this.skillObjs[i]);
             this.skillObjs.Clear();
-            List<Skill> skills = this.currentPawn.pawnAgent.skills;
+            List<Skill> skills = this.currentPawn.pawnAgent.GetSkills();
             for (int i = 0; i < skills.Count; i++)
             {
                 if (skills[i] is SupportSkill)

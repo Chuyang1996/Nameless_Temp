@@ -45,7 +45,7 @@ namespace Nameless.DataUI
             this.buildView.currentBuild = this;
             this.buildView.ResetDescription(description, costMilitartRes);
             this.selectIcon.SetActive(true);
-            if (GameManager.Instance.totalMilitaryRes < this.costMilitartRes)
+            if (FrontManager.Instance.localPlayer.GetMilitaryRes() < this.costMilitartRes)
             {
                 this.buildView.setBtn.interactable = false;
             }

@@ -51,13 +51,13 @@ namespace Nameless.UI
                 this.currentArea.Ammo += this.currentBuild.addAmmoBuild;
                 this.currentArea.Medicine += this.currentBuild.addMedicineBuild;
                 int costMilitaryRes = -this.currentBuild.costMilitartRes;
-                List<Skill> skills = this.currentPawn.pawnAgent.skills;
+                List<Skill> skills = this.currentPawn.pawnAgent.GetSkills();
                 for(int i = 0;i< skills.Count; i++)
                 {
                     PropertySkillEffect propertySkillEffect = skills[i].Execute(this.currentPawn,this.currentPawn);
                     costMilitaryRes -= (int)propertySkillEffect.changeAmmo;
                 }
-                GameManager.Instance.ChangeMilitaryRes(costMilitaryRes);
+                FrontManager.Instance.localPlayer.ChangeMilitaryRes(costMilitaryRes);
 
                 this.setBtn.interactable = this.IsSetBtnActiveAfterClick();
                 GameManager.Instance.PauseOrPlay(true);
@@ -122,7 +122,7 @@ namespace Nameless.UI
 
         private bool IsSetBtnActiveAfterClick()
         {
-            if (GameManager.Instance.totalMilitaryRes < this.currentBuild.costMilitartRes)
+            if (FrontManager.Instance.localPlayer.GetMilitaryRes() < this.currentBuild.costMilitartRes)
             {
                 return false;
             }

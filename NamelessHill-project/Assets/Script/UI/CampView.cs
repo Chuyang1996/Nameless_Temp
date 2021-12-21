@@ -64,7 +64,7 @@ namespace Nameless.UI
         {
             this.gameObject.SetActive(true);
             this.InitMilitRes(militartRes);
-            GameManager.Instance.TotalMilitartEvent += this.InitMilitRes;
+            CampManager.Instance.TotalMilitartEvent += this.InitMilitRes;
             this.campInfoTxt.text = infoCamp;
             this.InitPawnInfo(pawnNum);
             this.animation.clip = enterAnim;
@@ -73,7 +73,7 @@ namespace Nameless.UI
 
         public void ExitCamp()
         {
-            GameManager.Instance.TotalMilitartEvent -= this.InitMilitRes;
+            CampManager.Instance.TotalMilitartEvent -= this.InitMilitRes;
         }
 
         public void EnterCampEvent()

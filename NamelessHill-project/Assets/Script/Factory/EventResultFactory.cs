@@ -10,17 +10,17 @@ namespace Nameless.Agent
 {
     public class EventResultFactory
     {
-        public static EventResult GetEventResultById(long id)
+        public static EventResult GetEventResultById(long id, FrontPlayer frontPlayer)
         {
-            return Get(DataManager.Instance.GetEventResultData(id));
+            return Get(DataManager.Instance.GetEventResultData(id),frontPlayer);
         }
-        public static EventResult Get(EventResultData eventResultData)
+        public static EventResult Get(EventResultData eventResultData, FrontPlayer frontPlayer)
         {
             List<EventOption> options = new List<EventOption>(); 
             List<long> resultId = StringToLongArray(eventResultData.options);
             for(int i = 0; i < resultId.Count; i++)
             {
-                options.Add(EventOptionFactory.GetEventOptionById(resultId[i]));
+                options.Add(EventOptionFactory.GetEventOptionById(resultId[i], frontPlayer));
             }
             Sprite sprite = SpriteManager.Instance.FindSpriteByName(AtlasType.EventImage, eventResultData.Image);
             return new EventResult(eventResultData.id, eventResultData.name, eventResultData.descrption, eventResultData.conditionId, options, sprite);

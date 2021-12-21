@@ -46,6 +46,7 @@ namespace Nameless.Manager
 
         public Dictionary<long, Dictionary<string, string>> mapData;
         public Dictionary<long, Dictionary<string, string>> campData;
+        public Dictionary<long, Dictionary<string, string>> factionData;
 
         #endregion
         ///////////////////////////////数据//////////////////////////
@@ -80,6 +81,7 @@ namespace Nameless.Manager
             this.noteData = this.ReadFile("Note_Data.txt");
             this.mapData = this.ReadFile("Map_Data.txt");
             this.campData = this.ReadFile("Camp_Data.txt");
+            this.factionData = this.ReadFile("Faction_Data.txt");
             //string data;
 
 
@@ -614,6 +616,7 @@ namespace Nameless.Manager
                             this.mapData[id]["mapName"],
                             long.Parse(this.mapData[id]["nextCampId"]),
                             this.mapData[id]["transInfoShowName"],
+                            this.mapData[id]["defaultInitPos"],
                             this.mapData[id]["mapBgm"]
                             );
                     return skill;
@@ -630,7 +633,6 @@ namespace Nameless.Manager
                 return null;
             }
         }
-
         public CampData GetCampData(long id)
         {
             try
@@ -658,6 +660,49 @@ namespace Nameless.Manager
                 Debug.LogError("楚洋:表中的数据名称可能发生改动或者删除，请检查表中的数据title名称是否正确，如果正确请联系楚洋进行核对");
                 return null;
             }
+        }
+        public FactionData GetFactionData(long id)
+        {
+            try
+            {
+                if (this.factionData.ContainsKey(id))
+                {
+                    FactionData skill = new FactionData
+                            (id,
+                            this.factionData[id]["name"],
+                            this.factionData[id]["txt"],
+                            this.factionData[id]["friendly_to"],
+                            this.factionData[id]["hostile_to"],
+                            this.factionData[id]["healthColor"],
+                            this.factionData[id]["pathColor"],
+                            this.factionData[id]["walkColor"],
+                            this.factionData[id]["supportColor"],
+                            this.factionData[id]["areaColor"],
+                            this.factionData[id]["battleColor"]
+                            );
+                    return skill;
+                }
+                else
+                {
+                    Debug.LogError("楚洋：FactionData数据转换错误，数据中未能找到此id = " + id + " 的物品，请在逻辑层检查是否对数据进行了初始化,或者Id出了问题，或是否配表出了问题");
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("楚洋:表中的数据名称可能发生改动或者删除，请检查表中的数据title名称是否正确，如果正确请联系楚洋进行核对");
+                return null;
+            }
+        }
+
+        public List<FactionData> GetFactions()
+        {
+            List<FactionData> factionDatas = new List<FactionData>();
+            foreach(var child in this.factionData)
+            {
+                factionDatas.Add(this.GetFactionData(child.Key));
+            }
+            return factionDatas;
         }
         #endregion
         /////////////////////////////////////方法///////////////////////////////////////////

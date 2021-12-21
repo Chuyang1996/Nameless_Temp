@@ -2197,10 +2197,8 @@ MonoBehaviour:
   isPlay: 1
   GameScene: 0
   accessbility: 0
-  totalTime: 480
+  totalTime: 200
   levelgoalDes: 
-  totalMilitaryRes: 300
-  enemiesDieNum: 0
   characterView: {fileID: 2059111272}
   battleView: {fileID: 1844554423}
   campView: {fileID: 1358683201}
@@ -2254,7 +2252,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 245343617}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ee730d1795ddcb4da29a7fac8721cc7, type: 3}
+  m_Script: {fileID: 11500000, guid: b067cd8fa42b7a14c97c8f7affbf80b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   militarySprite: {fileID: 21300000, guid: c143a309e8b46f7468f1193fd21308c9, type: 3}
@@ -10312,7 +10310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   campScene: {fileID: 0}
-  allCampPawns: []
+  totalMilitaryRes: 0
 --- !u!1 &1347540049
 GameObject:
   m_ObjectHideFlags: 0
@@ -11183,7 +11181,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1451669717}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34df2cf1bb30b1c42b6f776d0ab69919, type: 3}
+  m_Script: {fileID: 11500000, guid: b59f59c6a0afe9c48ba28e27266e6e0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1459164927
@@ -18227,6 +18225,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: -0.95965254
       objectReference: {fileID: 0}
+    - target: {fileID: 3270905059379592034, guid: 84cb1c462b6d680459911342d4380939, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.47991943
+      objectReference: {fileID: 0}
     - target: {fileID: 3270905059592202010, guid: 84cb1c462b6d680459911342d4380939, type: 3}
       propertyPath: m_Name
       value: CampView
@@ -19485,6 +19487,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8105386141067906083, guid: bd07c1d8952b5174eba553fd480541ff, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8105386141099543988, guid: bd07c1d8952b5174eba553fd480541ff, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8105386141099543988, guid: bd07c1d8952b5174eba553fd480541ff, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8105386141099543988, guid: bd07c1d8952b5174eba553fd480541ff, type: 3}
+      propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8105386141099543990, guid: bd07c1d8952b5174eba553fd480541ff, type: 3}

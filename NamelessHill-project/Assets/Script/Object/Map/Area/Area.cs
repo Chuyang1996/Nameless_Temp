@@ -25,7 +25,7 @@ namespace Nameless.DataMono
             {
                 if(value > 0 && medicine == 0)
                 {
-                    GenerateManager.Instance.GenerateBuild(this, BuildType.MeidicalBuild);
+                    StaticObjGenManager.Instance.GenerateBuild(this, BuildType.MeidicalBuild);
                 }
                 medicine = value;
                 if (medicine > 1)
@@ -54,7 +54,7 @@ namespace Nameless.DataMono
             {
                 if (value > 0 && ammo == 0)
                 {
-                    GenerateManager.Instance.GenerateBuild(this, BuildType.AmmoBuild);
+                    StaticObjGenManager.Instance.GenerateBuild(this, BuildType.AmmoBuild);
                 }
                 ammo = value;
                 if (ammo > 1)
@@ -82,6 +82,7 @@ namespace Nameless.DataMono
         private GameObject ammoPoint;
         private GameObject meidicalPoint;
         //[HideInInspector]
+        public FrontPlayer playerBelong;
         public List<PawnAvatar> pawns = new List<PawnAvatar>();
         public Dictionary<MatType, Mat> mats = new Dictionary<MatType,Mat>();
         public Dictionary<BuildType, Build> builds = new Dictionary<BuildType, Build>();
@@ -93,7 +94,7 @@ namespace Nameless.DataMono
         //[HideInInspector]
         public List<Area> neighboors = new List<Area>();
 
-        public virtual void Init(int id, AreaAgent areaAgent)//待修改 等框架搭建完成
+        public virtual void Init(int id, AreaAgent areaAgent, FrontPlayer frontPlayer, long factionId)//待修改 等框架搭建完成
         {
             this.localId = id;
             this.centerNode = this.transform.Find("CenterNode").gameObject;
@@ -102,7 +103,8 @@ namespace Nameless.DataMono
             this.meidicalPoint = this.transform.Find("MedicialPos").gameObject;
             this.areaSprite = this.GetComponent<SpriteRenderer>();
             this.type = areaAgent.type;
-            GameManager.Instance.AddAreaForPlayer(this);
+            this.playerBelong = frontPlayer;
+            FrontManager.Instance.AddAreaForPlayer(this, frontPlayer);
 
         }
         public virtual bool AddPawn(PawnAvatar pawn)
@@ -123,14 +125,9 @@ namespace Nameless.DataMono
             this.pawns.Remove(pawn);
 
         }//本区域移除一个角色
-        public virtual void ChangeColor(bool isAi)
+        public virtual void ChangeColor(Color color)
         {
-            if(GameManager.Instance.accessbility)
-                this.areaSprite.color = isAi ? new Color(0.91f, 0.82f, 0.34f, 0.2f) : new Color(0.56f, 0.65f, 0.94f, 0.2f);
-            else 
-               this.areaSprite.color = isAi ? new Color(1, 0, 0, 0.2f) : new Color(0, 1, 0, 0.2f);
-
-            
+            this.areaSprite.color = color;
         }//本区域改变颜色
         public virtual bool IsMatExist(MatType type ,int num)
         {
@@ -230,7 +227,7 @@ namespace Nameless.DataMono
         {
             if (this.pawns.Count > 0)
             {
-                bool isArealyBelonged = GameManager.Instance.IsBelongToSameSide(this,this.pawns[0]);
+                bool isArealyBelonged = FactionManager.Instance.IsSameSide(this.playerBelong.faction,this.pawns[0].pawnAgent.frontPlayer.faction);// GameManager.Instance.IsBelongToSameSide(this,this.pawns[0]);
                 if (!isArealyBelonged)
                     StartCoroutine(OcuppyProcess(5.0f));
                     
@@ -264,10 +261,7 @@ namespace Nameless.DataMono
                 this.pawns[0].ocuppyBar.gameObject.SetActive(false);
             if (occupySuccess)
             {
-                if (this.pawns[0].isAI)
-                    GameManager.Instance.AddAreaForEnemy(this);
-                else
-                    GameManager.Instance.AddAreaForPlayer(this);
+                FrontManager.Instance.AddAreaForPlayer(this, this.pawns[0].pawnAgent.frontPlayer);
             }
 
         }

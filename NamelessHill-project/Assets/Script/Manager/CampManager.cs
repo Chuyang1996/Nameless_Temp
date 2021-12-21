@@ -1,6 +1,7 @@
 using Nameless.ConfigData;
 using Nameless.Data;
 using Nameless.DataMono;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,10 @@ namespace Nameless.Manager
         public const string  campBgmName = "AmbienceLoop_Shelter_01";
         public CampData currentCampData;
         public Camp campScene;
-        public List<PawnCamp> allCampPawns = new List<PawnCamp>();
+        private List<PawnCamp> allCampPawns = new List<PawnCamp>();
+
+        public Action<int> TotalMilitartEvent;
+        public int totalMilitaryRes;
 
         private string campPath = "Prefabs/Camp/";
         public void InitCamp(CampData campData, List<PawnAvatar> pawnAvatars,int militaryRes)
@@ -25,6 +29,9 @@ namespace Nameless.Manager
             this.campScene = camp.GetComponent<Camp>();
             this.campScene.InitCamp(pawnAvatars);
             this.ReceivePawnFromBattle(this.campScene.CampPawns());
+
+
+            //¿ªÆôUI
             GameManager.Instance.campView.InitCamp(campData.descrption, militaryRes, pawnAvatars.Count);
         }
         public void UpdateCampData(CampData campData)
@@ -44,8 +51,22 @@ namespace Nameless.Manager
             this.allCampPawns = pawnCamp;
         }
 
+        public void ChangeMilitaryRes(int cost)
+        {
+            this.totalMilitaryRes += cost;
+            if (this.TotalMilitartEvent != null)
+                this.TotalMilitartEvent(this.totalMilitaryRes);
+            //this.battleView.resourceInfoView.Init(this.totalMilitaryRes);
+        }
 
-
+        public List<PawnCamp> GetPawnCamps()
+        {
+            return this.allCampPawns;
+        }
+        public int GetMilitaryRes()
+        {
+            return this.totalMilitaryRes;
+        }
         public void ClearCamp()
         {
             for (int i = 0; i < this.allCampPawns.Count; i++)

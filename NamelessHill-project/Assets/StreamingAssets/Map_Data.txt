@@ -1,1 +1,1 @@
-{"0":{"name":"Map1","descrption":"Map1","mapName":"Map1","transInfoShowName":"MapLevelTrans","mapBgm":"AmbienceLoop_Combat_01","nextCampId":"0"}}
+{"0":{"name":"Map1","descrption":"Map1","mapName":"Map1","transInfoShowName":"MapLevelTrans","mapBgm":"AmbienceLoop_Combat_01","defaultInitPos":"[38,24,25,42]","nextCampId":"0"}}

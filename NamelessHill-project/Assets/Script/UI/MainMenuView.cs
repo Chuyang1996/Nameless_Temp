@@ -36,7 +36,7 @@ namespace Nameless.UI
         public void NewStart()
         {
             AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
-            GameManager.Instance.EnterBattle();
+            GameManager.Instance.StartNewGame();
             this.gameObject.SetActive(false);
         }
         public void MainMenu()

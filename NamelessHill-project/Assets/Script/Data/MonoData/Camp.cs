@@ -53,7 +53,7 @@ namespace Nameless.DataMono
         private PawnCamp GenerateCampPawn(PawnAvatar pawn)
         {
             GameObject pawnCamp = Instantiate(Resources.Load(this.pawnPath)) as GameObject;
-            pawnCamp.GetComponent<PawnCamp>().Init(pawn.pawnAgent.pawn, pawn.pawnAgent.conversations);
+            pawnCamp.GetComponent<PawnCamp>().Init(pawn.pawnAgent.pawn);
             if (pawn.pawnAgent.pawn.campPosIndex < this.pawnsPos.Length)
                 pawnCamp.transform.parent = pawnsPos[pawn.pawnAgent.pawn.campPosIndex].transform;
             else

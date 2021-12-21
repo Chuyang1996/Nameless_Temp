@@ -57,7 +57,7 @@ namespace Nameless.UI
             this.resultInfoView.gameObject.SetActive(false);
             this.tipInfoView.InitTipInfo();
             this.resourceInfoView.Init(militartRes);
-            GameManager.Instance.TotalMilitartEvent += this.resourceInfoView.Init;
+            FrontManager.Instance.localPlayer.TotalMilitartEvent += this.resourceInfoView.Init;
             this.totalTime = totalTime;
             this.golaDes.text = goalDes;
             string shour = this.totalTime / 60 > 10 ? (this.totalTime / 60).ToString() : "0" + (this.totalTime / 60).ToString();
@@ -136,7 +136,7 @@ namespace Nameless.UI
 
         public void ExitBattle()
         {
-            GameManager.Instance.TotalMilitartEvent -= this.resourceInfoView.Init;
+            FrontManager.Instance.localPlayer.TotalMilitartEvent -= this.resourceInfoView.Init;
             this.gameObject.SetActive(false);
         }
         //void ResetAreaInfo()

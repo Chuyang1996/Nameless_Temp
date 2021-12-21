@@ -30,6 +30,7 @@ namespace Nameless.Data
     }
     public class PawnAgent
     {
+        public FrontPlayer frontPlayer;
         public struct RunningTimeCostProperty
         {
             public float costRMorale;
@@ -158,18 +159,16 @@ namespace Nameless.Data
 
         #region//角色技能和buff
         public List<Buff> buffs;
-        public List<Skill> skills;
         #endregion
 
         #region//角色对话
         public DialogueGroup dialogueGroup;
         #endregion
 
-        #region//角色营地对话内容
-        public Stack<Conversation> conversations = new Stack<Conversation>();
-        #endregion
-        public PawnAgent(Slider healthBar,Area currentArea, Pawn pawn, int mapId)
+
+        public PawnAgent(FrontPlayer frontPlayer, Slider healthBar,Area currentArea, Pawn pawn, int mapId)
         {
+            this.frontPlayer = frontPlayer;
             this.healthBar = healthBar;
             this.pawn = pawn;
             this.healthBar.value = this.pawn.curHealth / this.pawn.maxHealth;
@@ -186,30 +185,16 @@ namespace Nameless.Data
             }
 
             this.buffs = new List<Buff>();
-            this.skills = new List<Skill>();
             this.supporters = new List<PawnAvatar>();
             if (this.pawn.dialogueDic.ContainsKey(mapId))
                 this.dialogueGroup = this.pawn.dialogueDic[mapId];
             else
                 this.dialogueGroup = null;
             
-            for (int i = 0; i < pawn.fightSkillIds.Count; i++)
-            {
-                this.skills.Add(SkillFactory.GetSkillById(SkillFactoryType.FightSkill, pawn.fightSkillIds[i]));
-            }
-            for (int i = 0; i < pawn.supportSkillIds.Count; i++)
-            {
-                this.skills.Add(SkillFactory.GetSkillById(SkillFactoryType.SupportSkill, pawn.supportSkillIds[i]));
-            }
-            for (int i = 0; i < pawn.buildSkillIds.Count; i++)
-            {
-                this.skills.Add(SkillFactory.GetSkillById(SkillFactoryType.BuildSkill, pawn.buildSkillIds[i]));
-            }
             //this.countCTimeMorale = 0.0f;
             this.countBTimeMorale = 0.0f;
             this.countConTimeMorale = 0.0f;
             this.battleSideDic = new Dictionary<PawnAvatar, BattleSide>();
-            this.conversations = new Stack<Conversation>();
             ResetBattleInfo();
         }
 
@@ -250,20 +235,20 @@ namespace Nameless.Data
             }
             else if(this.state == PropertyState.Supporting)
             {
-
-                if (this.countSTimeAmmo > this.runningTimeProperty.addTimeAmmo)
-                {
-                    this.countSTimeAmmo = 0.0f;
-                    if (GameManager.Instance.totalMilitaryRes > 0)//待修改
-                    {
-                        this.AmmoChange(this.runningTimeProperty.addAmmo);
-                        GameManager.Instance.ChangeMilitaryRes((int)this.runningTimeProperty.addAmmo);//待修改
-                    }
-                }
-                else
-                {
-                    this.countSTimeAmmo += Time.deltaTime;
-                }
+                //待确认
+                //if (this.countSTimeAmmo > this.runningTimeProperty.addTimeAmmo)
+                //{
+                //    this.countSTimeAmmo = 0.0f;
+                //    if (GameManager.Instance.totalMilitaryRes > 0)//待修改
+                //    {
+                //        this.AmmoChange(this.runningTimeProperty.addAmmo);
+                //        GameManager.Instance.ChangeMilitaryRes((int)this.runningTimeProperty.addAmmo);//待修改
+                //    }
+                //}
+                //else
+                //{
+                //    this.countSTimeAmmo += Time.deltaTime;
+                //}
             }
         }
 
@@ -313,22 +298,6 @@ namespace Nameless.Data
         {
             this.buffs.Remove(buff);
         }
-        //public void AddSurroundArea(PawnAvatar opponent)
-        //{
-        //    if (this.aroundOppoNum.ContainsKey(opponent.currentArea))
-        //        this.aroundOppoNum[opponent.currentArea]++;
-        //    else
-        //        this.aroundOppoNum.Add(opponent.currentArea, 1);
-        //}
-        //public void RemoveSurroundArea(PawnAvatar opponent)
-        //{
-        //    if (this.aroundOppoNum.ContainsKey(opponent.currentArea))
-        //    {
-        //        this.aroundOppoNum[opponent.currentArea]--;
-        //        if (this.aroundOppoNum[opponent.currentArea] == 0)
-        //            this.aroundOppoNum.Remove(opponent.currentArea);
-        //    }
-        //}
         #endregion
 
         #region//角色属性
@@ -424,8 +393,17 @@ namespace Nameless.Data
         #region
         public void PushConversation(Conversation conversation)
         {
-            this.conversations.Push(conversation);
+            this.pawn.conversationsInCamp.Push(conversation);
         }
         #endregion
+
+        public List<Skill> GetSkills()
+        {
+            return this.pawn.skills;
+        }
+        public Stack<Conversation> GetConversations()
+        {
+            return this.pawn.conversationsInCamp;
+        }
     }
 }

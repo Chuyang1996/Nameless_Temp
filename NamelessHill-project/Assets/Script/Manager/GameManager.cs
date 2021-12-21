@@ -16,13 +16,49 @@ namespace Nameless.Manager {
         Battle = 1,
         Camp = 2,
     }
+
+    public class Player
+    {
+        public List<Pawn> pawns;
+        public int totalMilitaryRes;//我方的补给数量
+
+        public Player()
+        {
+
+        }
+        public Player(List<Pawn> pawns, int totalMilitaryRes)
+        {
+            this.pawns = pawns;
+            this.totalMilitaryRes = totalMilitaryRes;
+        }
+        public Player(List<PawnAvatar> pawnAvatars, int totalMilitaryRes)
+        {
+            List<Pawn> pawns = new List<Pawn>();
+            for (int i = 0; i < pawnAvatars.Count; i++)
+            {
+                pawns.Add(pawnAvatars[i].pawnAgent.pawn);
+            }
+            this.pawns = pawns;
+            this.totalMilitaryRes = totalMilitaryRes;
+        }
+        public Player(List<PawnCamp> pawnCamps,int totalMilitaryRes)
+        {
+            List<Pawn> pawns = new List<Pawn>();
+            for(int i = 0; i < pawnCamps.Count; i++)
+            {
+                pawns.Add(pawnCamps[i].pawn);
+            }
+            this.pawns = pawns;
+            this.totalMilitaryRes = totalMilitaryRes;
+        }
+    }
     public class GameManager : SingletonMono<GameManager>
     {
+        public Player localPlayer;
         public bool isPlay = true;
         public GameScene GameScene = GameScene.Menu;
         public bool accessbility = false;
         public Action<string, bool> RESULTEVENT;
-        public Action<int> TotalMilitartEvent;
         /// <summary>
         /// 临时数据
         /// </summary>
@@ -30,10 +66,7 @@ namespace Nameless.Manager {
         public const string mainMenuBgmName = "Music_MainBGM_01";
         public int totalTime = 720;//本场战斗总时间//待修改
         public string levelgoalDes = "Hold for 12 hours";//本场战斗总时间//待修改
-        public int totalMilitaryRes;//我方的补给数量//待修改
 
-        [HideInInspector]
-        public int enemiesDieNum = 0;//敌人死亡数量//待修改
 
         /// <summary>
         /// 临时数据
@@ -51,11 +84,6 @@ namespace Nameless.Manager {
         public MainMenuView mainMenuView;
 
 
-
-
-        private List<Area> playerOccupyAreas = new List<Area>();//待修改 所有玩家占领的区域
-        private List<Area> enemyOccupyAreas = new List<Area>();//待修改 所有敌方占领的区域
-
         // Start is called before the first frame update
         void Start()
         {
@@ -65,17 +93,35 @@ namespace Nameless.Manager {
             PathManager.Instance.InitPath();
             DataManager.Instance.InitData();
             AudioManager.Instance.InitAudio();
-            GenerateManager.Instance.InitMat();
+            StaticObjGenManager.Instance.InitMat();
             SpriteManager.Instance.InitTexturePackage();
-            PawnManager.Instance.InitPawns();
             NoteManager.Instance.InitNote();
             MapManager.Instance.InitMap(DataManager.Instance.GetMapData(0));
+            FactionManager.Instance.InitFaction();
+            FrontManager.Instance.InitFront();
+
             AudioConfig.Init();
 
             RTSCamera.Instance.ResetCameraPos();
             AudioManager.Instance.PlayMusic(mainMenuBgmName);
-        }
 
+            this.localPlayer = new Player();
+        }
+        public void StartNewGame()
+        {
+            //默认出场的几个角色
+            List<Pawn> pawns = new List<Pawn>();
+            Pawn pawn1 = PawnFactory.GetPawnById(1001);
+            Pawn pawn2 = PawnFactory.GetPawnById(1002);
+            Pawn pawn4 = PawnFactory.GetPawnById(1004);
+            Pawn pawn9 = PawnFactory.GetPawnById(1009);
+            pawns.Add(pawn1);
+            pawns.Add(pawn2);
+            pawns.Add(pawn4);
+            pawns.Add(pawn9);
+            this.localPlayer = new Player(pawns,1000);
+            this.EnterBattle();
+        }
         public void EnterBattle()//进入战场  //并开始播放的动画
         {
             GameManager.Instance.ClearBattle();
@@ -84,34 +130,49 @@ namespace Nameless.Manager {
             MapManager.Instance.GenerateTransInfoShow(MapManager.Instance.currentMapData);
             MapManager.Instance.currentTransInfoShow.StartReader();
         }
-        public void InitBattle()//初始化战斗场景里的所有对象 用于进入战场战斗 和 重新开始战斗
+        public void InitBattle()//初始化战斗场景里的所有对象 用于进入战场战斗 和 重新开始战斗(仅用于本地单人模式)
         {
             this.GameScene = GameScene.Battle;
+            var Localplayer = FrontManager.Instance.GenFactionPlayer(FactionManager.Instance.GetFaction(1), true, false, false, this.localPlayer.totalMilitaryRes);
+            FrontManager.Instance.localPlayer = Localplayer;
+
             MapManager.Instance.GenerateMap(MapManager.Instance.currentMapData);
-            MapManager.Instance.currentMap.InitArea();
+
+
+            Dictionary<InitArea, FrontPlayer> frontPlayerInAreas = new Dictionary<InitArea, FrontPlayer>();//设置初始区域划分(单人模式下默认都是本机玩家)
+            for(int i = 0; i < MapManager.instance.currentMap.initAreas.Count; i++)
+            {
+                frontPlayerInAreas.Add(MapManager.instance.currentMap.initAreas[i], FrontManager.Instance.localPlayer);
+            }
+
+            MapManager.Instance.currentMap.InitArea(frontPlayerInAreas);
             List<EventResult> eventResults = new List<EventResult>();
             foreach (var child in DataManager.Instance.eventResultData)
             {
-                eventResults.Add(EventResultFactory.GetEventResultById(child.Key));
+                eventResults.Add(EventResultFactory.GetEventResultById(child.Key, Localplayer));
             }
             EventTriggerManager.Instance.InitEventTrigger(eventResults);
             //Debug.Log(DataManager.Instance.GetCharacter(1001).name);
             StartCoroutine(EventTriggerManager.Instance.StartListenEvent());
 
-            this.battleView.InitBattle(this.totalTime, this.levelgoalDes, this.totalMilitaryRes);
+            this.battleView.InitBattle(this.totalTime, this.levelgoalDes, FrontManager.Instance.localPlayer.GetMilitaryRes());
             Time.timeScale = 1.0f;
             this.RESULTEVENT += this.Result;
 
-            PawnManager.Instance.AddPawnOnArea(1001, MapManager.Instance.currentMap.FindAreaByLocalId(38), 0, false);
-            PawnManager.Instance.AddPawnOnArea(1002, MapManager.Instance.currentMap.FindAreaByLocalId(24), 0, false);
-          //  PawnManager.Instance.AddPawnOnArea(1003, MapManager.Instance.currentMap.FindAreaByLocalId(21), 0, false);
-            PawnManager.Instance.AddPawnOnArea(1004, MapManager.Instance.currentMap.FindAreaByLocalId(25), 0, false);
-            PawnManager.Instance.AddPawnOnArea(1009, MapManager.Instance.currentMap.FindAreaByLocalId(42), 0, false);
-            PawnManager.Instance.AddPawnOnArea(1005, MapManager.Instance.currentMap.FindAreaByLocalId(14), 0, true);
-            //PawnManager.Instance.AddPawnOnArea(1005, MapManager.Instance.currentMap.FindAreaByLocalId(22), 0, true);
-            //PawnManager.Instance.AddPawnOnArea(1005, MapManager.Instance.currentMap.FindAreaByLocalId(4), 0, true);
-            //PawnManager.Instance.AddPawnOnArea(1005, MapManager.Instance.currentMap.FindAreaByLocalId(21), 0, true);
-            //PawnManager.Instance.AddPawnOnArea(1005, MapManager.Instance.currentMap.FindAreaByLocalId(2), 0, true);
+            //将角色设置到地图默认的点上
+            List<int> defaultPos = MapManager.Instance.currentMap.GetDefaultPos();
+            for(int i = 0; i < defaultPos.Count; i++)
+            {
+                if (i < this.localPlayer.pawns.Count)
+                {
+                    FrontManager.Instance.AddPawnOnArea(this.localPlayer.pawns[i], MapManager.Instance.currentMap.FindAreaByLocalId(defaultPos[i]), 0, FrontManager.Instance.localPlayer);
+                }
+            }
+
+            //待修改 现在先默认设置一个敌人角色
+            Pawn pawn5 = PawnFactory.GetPawnById(1005);
+            var enemyComputer = FrontManager.Instance.GenFactionPlayer(FactionManager.Instance.GetFaction(3), true, false, false, 0);
+            FrontManager.Instance.AddPawnOnArea(pawn5, MapManager.Instance.currentMap.FindAreaByLocalId(14), 0, enemyComputer);
             #region//获取本次场景里的事件
 
 
@@ -121,15 +182,18 @@ namespace Nameless.Manager {
             StartCoroutine(DialogueTriggerManager.Instance.StartListenEvent());
             #endregion
 
+            //打开战场界面
             this.battleView.gameObject.SetActive(true);
 
             RTSCamera.Instance.ResetCameraPos();
             AudioManager.Instance.PlayMusic(MapManager.Instance.currentMapData.nameBgm);
+
+            this.UpdateBattleToPlayer();
         }
         public void RestartBattle()//重新进入战场开始游戏
         {
             this.ClearBattle();
-            this.InitBattle();
+            this.EnterBattle();
             RTSCamera.Instance.ResetCameraPos();
         }
         public void EnterCamp()//进入营地
@@ -143,7 +207,8 @@ namespace Nameless.Manager {
             RTSCamera.Instance.ResetCameraPos();
 
             CampData campData = DataManager.Instance.GetCampData(MapManager.Instance.currentMapData.nextCampId);
-            CampManager.Instance.InitCamp(campData,PawnManager.Instance.GetPawnAvatars(false), this.totalMilitaryRes);
+            CampManager.Instance.InitCamp(campData,FrontManager.Instance.GetPawnAvatars(FrontManager.Instance.localPlayer), this.localPlayer.totalMilitaryRes);
+            this.UpdateCampToPlayer();
 
         }
         public void BackToMainMenu()//返回主界面
@@ -159,13 +224,11 @@ namespace Nameless.Manager {
         }
         public void ClearBattle()//清空战场的对象
         {
-            this.enemyOccupyAreas.Clear();
-            this.playerOccupyAreas.Clear();
             EventTriggerManager.Instance.ClearEvent();
             DialogueTriggerManager.Instance.ClearEvent();
             StopCoroutine(EventTriggerManager.Instance.StartListenEvent());
             StopCoroutine(DialogueTriggerManager.Instance.StartListenEvent());
-            PawnManager.Instance.ClearAllPawn();
+            FrontManager.Instance.ClearFront();
             MapManager.Instance.ClearMap();
 
         }
@@ -174,60 +237,18 @@ namespace Nameless.Manager {
             CampManager.Instance.ClearCamp();
 
         }
+
+        private void UpdateBattleToPlayer()
+        {
+            this.localPlayer = new Player(FrontManager.Instance.localPlayer.GetPawnAvatars(), FrontManager.Instance.localPlayer.GetMilitaryRes());
+        }
+        private void UpdateCampToPlayer()
+        {
+            this.localPlayer = new Player(CampManager.Instance.GetPawnCamps(), CampManager.Instance.GetMilitaryRes());
+        }
         private void Result(string title, bool isWin)
         {
             this.battleView.resultInfoView.SetResultTxt(title, isWin);
-        }
-
-        public void ChangeMilitaryRes(int cost)
-        {
-            EventTriggerManager.Instance.CheckRelateMilitaryResEvent(cost);
-            this.totalMilitaryRes += cost;
-            if (this.TotalMilitartEvent != null)
-                this.TotalMilitartEvent(this.totalMilitaryRes);
-            //this.battleView.resourceInfoView.Init(this.totalMilitaryRes);
-        }
-
-        
-        public void AddAreaForPlayer(Area area)//待修改 等写框架的时候改
-        {
-            if(!this.playerOccupyAreas.Contains(area))
-                this.playerOccupyAreas.Add(area);
-            if (this.enemyOccupyAreas.Contains(area))
-                this.enemyOccupyAreas.Remove(area);
-            area.ChangeColor(false);
-
-            
-        }
-        public void AddAreaForEnemy(Area area)//待修改 等写框架的时候改
-        {
-            if (!this.enemyOccupyAreas.Contains(area))
-                this.enemyOccupyAreas.Add(area);
-            if (this.playerOccupyAreas.Contains(area))
-                this.playerOccupyAreas.Remove(area);
-            area.ChangeColor(true);
-        }
-        public bool IsBelongToSameSide(Area area,PawnAvatar pawn)//待修改 等写框架的时候改
-        {
-            if (pawn.isAI)
-            {
-                if (this.enemyOccupyAreas.Contains(area))
-                    return true;
-                else
-                    return false;
-            }
-            else
-            {
-                if (this.playerOccupyAreas.Contains(area))
-                    return true;
-                else
-                    return false;
-            }
-        }
-        public void EnemiesKillNum(int num)//待修改 等写框架的时候改
-        {
-            EventTriggerManager.Instance.CheckRelateEnemyKillEvent(num);
-            this.enemiesDieNum += num;
         }
         public void PlayCamera(Stack<DialoguePawn> pawns)
         {
@@ -241,7 +262,6 @@ namespace Nameless.Manager {
             //transitionTargets[pawns.Count] = new TransitionTarget(pos, 5.0f, 2.0f, 2.0f, 0.5f);
             RTSCamera.Instance.StartTransition(pawns);
         }
-
         public void PauseOrPlay(bool isPlay)
         {
             this.isPlay = isPlay;

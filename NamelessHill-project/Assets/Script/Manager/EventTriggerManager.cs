@@ -62,15 +62,15 @@ namespace Nameless.Manager {
             }
         }
 
-        public void CheckRelateMilitaryResEvent(int cost)
+        public void CheckRelateMilitaryResEvent(int cost,FrontPlayer frontPlayer)
         {
             foreach(var child in this.eventTriggerDic)
             {
                 if(child.Key.type == EventTriggerType.MilitaryResLess)
                 {
 
-                    int lastAmmo = GameManager.Instance.totalMilitaryRes;
-                    int afterAmmo = GameManager.Instance.totalMilitaryRes + cost;
+                    int lastAmmo = frontPlayer.GetMilitaryRes();
+                    int afterAmmo = frontPlayer.GetMilitaryRes() + cost;
                     if (((EventMilitaryResLess)child.Key).IsTrigger(lastAmmo,afterAmmo))
                     {
                        for(int i = 0; i < child.Value.Count; i++)
@@ -83,14 +83,14 @@ namespace Nameless.Manager {
         }
 
 
-        public void CheckRelateEnemyKillEvent(int num)
+        public void CheckRelateEnemyKillEvent(int num, FrontPlayer frontPlayer)
         {
             foreach (var child in this.eventTriggerDic)
             {
                 if (child.Key.type == EventTriggerType.EnemyKillNum)
                 {
-                    int lastEnemies = GameManager.Instance.enemiesDieNum;
-                    int afterEnemies = GameManager.Instance.enemiesDieNum + num;
+                    int lastEnemies = frontPlayer.GetEnemiesDieNum();
+                    int afterEnemies = frontPlayer.GetEnemiesDieNum() + num;
                     if (((EventEnemyKillLess)child.Key).IsTrigger(lastEnemies,afterEnemies))
                     {
                         for (int i = 0; i < child.Value.Count; i++)
@@ -152,11 +152,11 @@ namespace Nameless.Manager {
                 }
             }
         }
-        public void AddNewEvent(long eventId)
+        public void AddNewEvent(long eventId, FrontPlayer frontPlayer)
         {
             if (eventId != -1)
             {
-                EventResult eventResult = EventResultFactory.GetEventResultById(eventId);
+                EventResult eventResult = EventResultFactory.GetEventResultById(eventId, frontPlayer);
                 this.currentAllEvent.Push(eventResult);
             }
         }

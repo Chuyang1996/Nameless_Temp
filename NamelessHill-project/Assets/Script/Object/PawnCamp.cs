@@ -16,9 +16,8 @@ namespace Nameless.DataMono
         public GameObject rightSide;
         public SpriteRenderer pawnIcon;
 
-        Stack<Conversation> conversationsInCamp = new Stack<Conversation>();
         public Pawn pawn;
-        public void Init(Pawn pawn, Stack<Conversation> conversationsInCamp)
+        public void Init(Pawn pawn)
         {
             if (pawn.leftOrRight < 0)
             {
@@ -33,12 +32,13 @@ namespace Nameless.DataMono
             this.btnDialogue.SetActive(true);
             this.pawnIcon.sprite = pawn.campIcon;
             this.pawn = pawn;
-            this.conversationsInCamp = conversationsInCamp;
 
         }
         public void RefreshPawnCamp()
         {
-            if ((!this.pawn.conversationMapDic.ContainsKey(0) || !ConversationManager.Instance.CanGoConversation(this.pawn.conversationMapDic[0])) && (this.conversationsInCamp.Count == 0 || !ConversationManager.Instance.CanGoConversation(this.conversationsInCamp.Peek())))//待修改 根据地图ID和其他相关的条件去判断是否有对话//待修改 根据地图ID去索引
+            if ((!this.pawn.conversationMapDic.ContainsKey(0) || !ConversationManager.Instance.CanGoConversation(this.pawn.conversationMapDic[0])) 
+                && 
+                (this.pawn.conversationsInCamp.Count == 0 || !ConversationManager.Instance.CanGoConversation(this.pawn.conversationsInCamp.Peek())))//待修改 根据地图ID和其他相关的条件去判断是否有对话//待修改 根据地图ID去索引
                 this.btnDialogue.SetActive(false);
             else
                 this.btnDialogue.SetActive(true);
@@ -51,16 +51,16 @@ namespace Nameless.DataMono
 
         public void ClickToConversation()
         {
-            if(this.conversationsInCamp.Count > 0) 
+            if(this.pawn.conversationsInCamp.Count > 0) 
             { 
-                ConversationManager.Instance.GoToConversation(this.conversationsInCamp.Pop());
+                ConversationManager.Instance.GoToConversation(this.pawn.conversationsInCamp.Pop());
             }
             else if (this.pawn.conversationMapDic.ContainsKey(0))//待修改 根据地图ID去索引
             {
                 ConversationManager.Instance.GoToConversation(this.pawn.conversationMapDic[0]);
             }
 
-            if(this.conversationsInCamp.Count == 0 && !this.pawn.conversationMapDic.ContainsKey(0))
+            if(this.pawn.conversationsInCamp.Count == 0 && !this.pawn.conversationMapDic.ContainsKey(0))
                 this.btnDialogue.SetActive(false);
         }
 

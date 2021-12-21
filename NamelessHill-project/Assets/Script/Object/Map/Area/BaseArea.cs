@@ -1,4 +1,5 @@
 using Nameless.Data;
+using Nameless.Manager;
 using Nameless.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,9 +14,9 @@ namespace Nameless.DataMono
         public int supportAmmo;
         public float supportDeltaTime;
 
-        public override void Init(int id,AreaAgent areaAgent)
+        public override void Init(int id,AreaAgent areaAgent, FrontPlayer frontPlayer, long factionId)
         {
-            base.Init(id, areaAgent);
+            base.Init(id, areaAgent, frontPlayer, factionId);
             //Color colorb = new Color(0, 0, 1, 0.4f); 
             //Color colorg = new Color(0, 1, 0, 0.4f); 
             //this.areaSprite.color = Color.Lerp(colorb, colorg, 0.5F);
@@ -34,7 +35,7 @@ namespace Nameless.DataMono
             this.pawns.Remove(pawn);
         }
 
-        public override void ChangeColor(bool isAi)
+        public override void ChangeColor(Color color)
         {
             
         }

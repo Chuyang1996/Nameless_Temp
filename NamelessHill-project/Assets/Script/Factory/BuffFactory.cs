@@ -22,9 +22,9 @@ namespace Nameless.Agent
             {
                 tempDic = GetConditions(buffData.conditions);
             }
-            return new TimelyBuff(buffData.Id, buffData.name, buffData.description, tempDic, StringToLongArray(buffData.parameter));
+            return new TimelyBuff(buffData.Id, buffData.name, buffData.description, tempDic, StringToIntArray(buffData.parameter));
         }
-        private static int[] StringToLongArray(string stringlist)
+        private static int[] StringToIntArray(string stringlist)
         {
             int[] array;
             if (stringlist.Contains("]") && stringlist.Contains("["))

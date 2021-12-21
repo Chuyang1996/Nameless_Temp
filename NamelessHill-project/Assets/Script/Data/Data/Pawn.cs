@@ -1,3 +1,4 @@
+using Nameless.Agent;
 using Nameless.Manager;
 using System.Collections;
 using System.Collections.Generic;
@@ -234,11 +235,11 @@ namespace Nameless.Data
         private float currentDex;
         private float currentDefend;
 
-        public List<long> fightSkillIds;
-        public List<long> supportSkillIds;
-        public List<long> buildSkillIds;
+
+        public List<Skill> skills = new List<Skill>();
 
         public Dictionary<long, DialogueGroup> dialogueDic = new Dictionary<long, DialogueGroup>();
+
 
         public string animPrefab;
         public Sprite selectIcon;
@@ -246,6 +247,10 @@ namespace Nameless.Data
         public int campPosIndex;
         public int leftOrRight;
         public Dictionary<long, Conversation> conversationMapDic = new Dictionary<long, Conversation>();//后面会改成new Dictionary<long, List<Conversation>>()将符合条件的选出
+
+        #region//角色营地对话内容
+        public Stack<Conversation> conversationsInCamp = new Stack<Conversation>();
+        #endregion
         public Pawn(
             long id, 
             string name, 
@@ -295,9 +300,6 @@ namespace Nameless.Data
             this.surroundTxt = "They are too many!!";
             this.winTxt = "We won!! Charge!!";
 
-            this.fightSkillIds = fightSkillIds;
-            this.supportSkillIds = supportSkillIds;
-            this.buildSkillIds = buildSkillIds;
 
 
             this.dialogueDic = dialogueDic;
@@ -307,7 +309,22 @@ namespace Nameless.Data
             this.campPosIndex = campPosIndex;
             this.leftOrRight = btnLRpos;
             this.conversationMapDic = conversationMapDic;
+            this.conversationsInCamp = new Stack<Conversation>();
 
+            this.skills = new List<Skill>();
+
+            for (int i = 0; i < fightSkillIds.Count; i++)
+            {
+                this.skills.Add(SkillFactory.GetSkillById(SkillFactoryType.FightSkill, fightSkillIds[i]));
+            }
+            for (int i = 0; i < supportSkillIds.Count; i++)
+            {
+                this.skills.Add(SkillFactory.GetSkillById(SkillFactoryType.SupportSkill, supportSkillIds[i]));
+            }
+            for (int i = 0; i < buildSkillIds.Count; i++)
+            {
+                this.skills.Add(SkillFactory.GetSkillById(SkillFactoryType.BuildSkill, buildSkillIds[i]));
+            }
         }
 
 

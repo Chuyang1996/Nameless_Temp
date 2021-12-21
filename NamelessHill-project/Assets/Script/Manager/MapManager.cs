@@ -1,5 +1,7 @@
 using Nameless.ConfigData;
 using Nameless.DataMono;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Nameless.Manager
@@ -41,6 +43,11 @@ namespace Nameless.Manager
             map.transform.localPosition = new Vector3(0, 0, 0);
             map.GetComponent<Map>().id = mapData.id;
             this.currentMap = map.GetComponent<Map>();
+            List<int> defaultPos = new List<int>();
+            int[] tempPos = this.StringToIntArray(mapData.defaultInitPos);
+            for (int i = 0; i < tempPos.Length; i++)
+                defaultPos.Add(tempPos[i]);
+            this.currentMap.InitMap(defaultPos);
         }
         public void ClearMap()
         {
@@ -48,6 +55,22 @@ namespace Nameless.Manager
                 Destroy(this.currentTransInfoShow.gameObject);
             if(this.currentMap != null)
                 Destroy(this.currentMap.gameObject);
+        }
+        private int[] StringToIntArray(string stringlist)
+        {
+            int[] array;
+            if (stringlist.Contains("]") && stringlist.Contains("["))
+            {
+                stringlist = stringlist.Remove(0, 1);
+                stringlist = stringlist.Remove(stringlist.Length - 1, 1);
+                array = stringlist.Contains(",") ? Array.ConvertAll<string, int>(stringlist.Split(new char[] { ',' }), s => int.Parse(s)) : new int[1] { int.Parse(stringlist) };
+            }
+            else
+            {
+                array = new int[1];
+                array[0] = 0;
+            }
+            return array;
         }
     }
 }

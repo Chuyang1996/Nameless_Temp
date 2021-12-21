@@ -31,19 +31,21 @@ namespace Nameless.Data
     {
         public long pawnId;
         public int levelChange;
-        public MoraleEventEffect(long Id, int levelChange)
+        private FrontPlayer frontPlayer;
+        public MoraleEventEffect(long Id, int levelChange, FrontPlayer frontPlayer)
         {
             this.type = EventEffectType.MoraleChange;
             this.pawnId = Id;
             this.levelChange = levelChange;
+            this.frontPlayer = frontPlayer;
         }
 
         public override void Execute()
         {
-            List<PawnAvatar> pawnAvatars = PawnManager.Instance.GetPawnAvatars(false);
+            List<PawnAvatar> pawnAvatars = FrontManager.Instance.GetPawnAvatars(this.frontPlayer);
             for (int i = 0; i < pawnAvatars.Count; i++)
             {
-                if(pawnAvatars[i].Id == this.pawnId)
+                if(pawnAvatars[i].pawnAgent.pawn.id == this.pawnId)
                 {
                     float curMorale = pawnAvatars[i].pawnAgent.pawn.curMorale;
                     float maxMorale = pawnAvatars[i].pawnAgent.pawn.maxMorale;
@@ -73,16 +75,17 @@ namespace Nameless.Data
     public class AllMoraleEventEffect : EventEffect
     {
         public int levelChange;
-
-        public AllMoraleEventEffect(int levelChange)
+        private FrontPlayer frontPlayer;
+        public AllMoraleEventEffect(int levelChange, FrontPlayer frontPlayer)
         {
             this.type = EventEffectType.AllMoraleChange;
             this.levelChange = levelChange;
+            this.frontPlayer = frontPlayer;
         }
 
         public override void Execute()
         {
-            List<PawnAvatar> pawnAvatars = PawnManager.Instance.GetPawnAvatars(false);
+            List<PawnAvatar> pawnAvatars = FrontManager.Instance.GetPawnAvatars(this.frontPlayer);
             for (int i = 0; i < pawnAvatars.Count; i++)
             {
                 float curMorale = pawnAvatars[i].pawnAgent.pawn.curMorale;
@@ -112,30 +115,33 @@ namespace Nameless.Data
     public class MilitaryResEventEffect : EventEffect
     {
         public float ammoChange;
-
-        public MilitaryResEventEffect(float ammoChange)
+        private FrontPlayer frontPlayer;
+        public MilitaryResEventEffect(float ammoChange, FrontPlayer frontPlayer)
         {
             this.type = EventEffectType.MilitaryResourceChange;
             this.ammoChange = ammoChange;
+            this.frontPlayer = frontPlayer;
         }
 
         public override void Execute()
         {
-            GameManager.Instance.ChangeMilitaryRes((int)this.ammoChange);
+            this.frontPlayer.ChangeMilitaryRes((int)this.ammoChange);
         }
     }
 
     public class NextEventEffect : EventEffect
     {
         public long eventId;
-        public NextEventEffect(long eventId)
+        private FrontPlayer frontPlayer;
+        public NextEventEffect(long eventId, FrontPlayer frontPlayer)
         {
             this.type = EventEffectType.NextEvent;
             this.eventId = eventId;
+            this.frontPlayer = frontPlayer;
         }
         public override void Execute()
         {
-            EventTriggerManager.Instance.AddNewEvent(this.eventId);
+            EventTriggerManager.Instance.AddNewEvent(this.eventId, this.frontPlayer);
         }
     }
 
@@ -160,17 +166,19 @@ namespace Nameless.Data
     {
         public long pawnId;
         public Conversation conversation;
-        public UnlockConversationEffect(long pawnId, Conversation conversation)
+        private FrontPlayer frontPlayer;
+        public UnlockConversationEffect(long pawnId, Conversation conversation, FrontPlayer frontPlayer)
         {
             this.type = EventEffectType.UnlockConversation;
             this.pawnId = pawnId;
             this.conversation = conversation;
+            this.frontPlayer = frontPlayer;
         }
         public override void Execute()
         {
-            if (PawnManager.Instance.GetPawnAvatarById(this.pawnId, false)!=null)
+            if (FrontManager.Instance.GetPawnAvatarByPlayer(this.pawnId, frontPlayer) !=null)
             {
-                PawnManager.Instance.GetPawnAvatarById(this.pawnId, false).pawnAgent.PushConversation(this.conversation);
+                FrontManager.Instance.GetPawnAvatarByPlayer(this.pawnId, frontPlayer).pawnAgent.PushConversation(this.conversation);
             }
         }
     }

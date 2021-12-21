@@ -55,13 +55,18 @@ namespace Nameless.DataMono
         public List<Path> paths;
         public Dictionary<NodeToNode, Path> pathDic = new Dictionary<NodeToNode, Path>();
 
+        private List<int> defaultPoss;
+        public void InitMap(List<int> defaultPoss)
+        {
+            this.defaultPoss = defaultPoss;
+        }
         // Start is called before the first frame update
-        public void InitArea()
+        public void InitArea(Dictionary<InitArea, FrontPlayer> frontPlayerInAreas)
         {
             this.bg.sprite = GameManager.Instance.accessbility ? spriteAccessbility : sprite;
             for(int i = 0;i<this.initAreas.Count;i++)
             {
-                this.initAreas[i].InitAreaInfo();
+                this.initAreas[i].InitAreaInfo(frontPlayerInAreas[this.initAreas[i]]);
                 this.areas.Add(this.initAreas[i].GetArea());
             }
             for (int i = 0; i < paths.Count; i++)
@@ -114,10 +119,14 @@ namespace Nameless.DataMono
         }
 
         // Update is called once per frame
-
         public Area FindAreaByLocalId(int id)
         {
             return this.areas.Where(_area => _area.localId == id).FirstOrDefault();
+        }
+
+        public List<int> GetDefaultPos()
+        {
+            return this.defaultPoss;
         }
         public  List<int>[] Dijkstra(float[,] graphic, int start)//打印结果为以start为起始点到达其他位置的所有最短路径
         {

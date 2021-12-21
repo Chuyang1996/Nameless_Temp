@@ -11,12 +11,12 @@ namespace Nameless.Agent
     public static class EventOptionFactory 
     {
         // Start is called before the first frame update
-        public static EventOption GetEventOptionById(long id)
+        public static EventOption GetEventOptionById(long id, FrontPlayer frontPlayer)
         {
-            return Get(DataManager.Instance.GetEventOptionData(id));
+            return Get(DataManager.Instance.GetEventOptionData(id), frontPlayer);
         }
 
-        public static EventOption Get(EventOptionData eventOptionData)
+        public static EventOption Get(EventOptionData eventOptionData, FrontPlayer frontPlayer)
         {
             List<EventEffect> effects = new List<EventEffect>();
             string[] effectStr = StringToStringArray(eventOptionData.effects);
@@ -25,19 +25,19 @@ namespace Nameless.Agent
                 int[] intArray = StringToIntArray(effectStr[i]);
                 if(intArray[0] == (int)EventEffectType.MoraleChange)
                 {
-                    effects.Add(new MoraleEventEffect((long)intArray[1], intArray[2]));
+                    effects.Add(new MoraleEventEffect((long)intArray[1], intArray[2], frontPlayer));
                 }
                 else if(intArray[0] == (int)EventEffectType.AllMoraleChange)
                 {
-                    effects.Add(new AllMoraleEventEffect(intArray[1]));
+                    effects.Add(new AllMoraleEventEffect(intArray[1], frontPlayer));
                 }
                 else if(intArray[0] == (int)EventEffectType.MilitaryResourceChange)
                 {
-                    effects.Add(new MilitaryResEventEffect((float)intArray[1]));
+                    effects.Add(new MilitaryResEventEffect((float)intArray[1], frontPlayer));
                 }
                 else if(intArray[0] == (int)EventEffectType.NextEvent)
                 {
-                    effects.Add(new NextEventEffect((long)intArray[1]));
+                    effects.Add(new NextEventEffect((long)intArray[1], frontPlayer));
                 }
                 else if (intArray[0] == (int)EventEffectType.UnlockNote)
                 {
@@ -53,7 +53,7 @@ namespace Nameless.Agent
                 }
                 else if (intArray[0] == (int)EventEffectType.UnlockConversation)
                 {
-                    effects.Add(new UnlockConversationEffect((long)intArray[1], ConversationFactory.GetConversationById((long)(intArray[2]))));
+                    effects.Add(new UnlockConversationEffect((long)intArray[1], ConversationFactory.GetConversationById((long)(intArray[2])), frontPlayer));
                 }
             }
 
