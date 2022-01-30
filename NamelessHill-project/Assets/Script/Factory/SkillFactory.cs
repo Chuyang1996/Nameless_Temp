@@ -60,7 +60,39 @@ namespace Nameless.Agent
             {
                 tempDic = GetConditions(buildSkillData.condition);
             }
-            return new BuildSkill(buildSkillData.Id, buildSkillData.name, buildSkillData.description, tempDic, buildSkillData.costMedicineRate, buildSkillData.costAmmoRate, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, buildSkillData.iconName));
+            if((BuildType)buildSkillData.type == BuildType.Obstacle)
+            {
+                float healthObstacle =StringToFloatArray(buildSkillData.parameter)[0];
+                float healthBuildingObstacle = healthObstacle* StringToFloatArray(buildSkillData.parameter)[1];
+                Obstacle obstacle = new Obstacle(buildSkillData.Id, buildSkillData.name, buildSkillData.description, healthObstacle, healthBuildingObstacle,buildSkillData.resCost, buildSkillData.prefabName,buildSkillData.timeCost, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, buildSkillData.iconName));
+                return new BuildSkill(buildSkillData.Id, buildSkillData.name, buildSkillData.description, tempDic, BuildType.Obstacle, obstacle, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage,buildSkillData.iconName));
+            }
+            else if ((BuildType)buildSkillData.type == BuildType.Bunker)
+            {
+                float healthBunker = StringToFloatArray(buildSkillData.parameter)[0];
+                float healthBuildingBunker = healthBunker* StringToFloatArray(buildSkillData.parameter)[1];
+                Bunker bunker = new Bunker(buildSkillData.Id, buildSkillData.name, buildSkillData.description, healthBunker, healthBuildingBunker, buildSkillData.resCost, buildSkillData.prefabName, buildSkillData.timeCost, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, buildSkillData.iconName));
+                return new BuildSkill(buildSkillData.Id, buildSkillData.name, buildSkillData.description, tempDic, BuildType.Bunker, bunker, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, buildSkillData.iconName));
+            }
+            else if ((BuildType)buildSkillData.type == BuildType.Cannon)
+            {
+                float healthCannon = StringToFloatArray(buildSkillData.parameter)[0];
+                float healthBuildingCannon = healthCannon * StringToFloatArray(buildSkillData.parameter)[1];
+                int minRange = (int)(StringToFloatArray(buildSkillData.parameter)[2]);
+                int maxRange = (int)(StringToFloatArray(buildSkillData.parameter)[3]);
+                int exploreRange = (int)(StringToFloatArray(buildSkillData.parameter)[4]);
+                int exploreTime = (int)(StringToFloatArray(buildSkillData.parameter)[5]);
+                float exploreDamage = StringToFloatArray(buildSkillData.parameter)[6];
+                float cdTime = StringToFloatArray(buildSkillData.parameter)[7];
+                Cannon cannon = new Cannon(buildSkillData.Id, buildSkillData.name, buildSkillData.description, healthCannon, healthBuildingCannon, minRange, maxRange, exploreRange, exploreTime, exploreDamage, cdTime, buildSkillData.resCost, buildSkillData.prefabName, buildSkillData.timeCost, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, buildSkillData.iconName));
+                return new BuildSkill(buildSkillData.Id, buildSkillData.name, buildSkillData.description, tempDic, BuildType.Cannon, cannon, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, buildSkillData.iconName));
+            }
+            else
+            {
+                return null;
+            }
+
+
         }
 
 
@@ -74,6 +106,22 @@ namespace Nameless.Agent
             }
             return tempCondition;
 
+        }
+        private static float[] StringToFloatArray(string stringlist)
+        {
+            float[] array;
+            if (stringlist.Contains("]") && stringlist.Contains("["))
+            {
+                stringlist = stringlist.Remove(0, 1);
+                stringlist = stringlist.Remove(stringlist.Length - 1, 1);
+                array = stringlist.Contains(",") ? Array.ConvertAll<string, float>(stringlist.Split(new char[] { ',' }), s => float.Parse(s)) : new float[1] { float.Parse(stringlist) };
+            }
+            else
+            {
+                array = new float[1];
+                array[0] = 0;
+            }
+            return array;
         }
         private static long[] StringToLongArray(string stringlist)
         {

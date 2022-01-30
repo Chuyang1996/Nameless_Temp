@@ -232,8 +232,11 @@ namespace Nameless.Manager
                             this.buildSkillData[id]["name"],
                             this.buildSkillData[id]["descrption"],
                             this.buildSkillData[id]["condition"],
-                            float.Parse(this.buildSkillData[id]["costMedicineRate"]),
-                            float.Parse(this.buildSkillData[id]["costAmmoRate"]),
+                            int.Parse(this.buildSkillData[id]["resCost"]),
+                            float.Parse(this.buildSkillData[id]["timeCost"]),
+                            int.Parse(this.buildSkillData[id]["type"]),
+                            this.buildSkillData[id]["parameter"],
+                            this.buildSkillData[id]["prefabName"],
                             this.buildSkillData[id]["iconName"]
                             );
                     return skill;

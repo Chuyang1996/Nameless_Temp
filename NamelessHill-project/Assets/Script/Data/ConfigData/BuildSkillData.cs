@@ -10,16 +10,22 @@ namespace Nameless.ConfigData
         public string name;
         public string description;
         public string condition;
-        public float costMedicineRate;
-        public float costAmmoRate;
+        public int resCost;
+        public float timeCost;
+        public int type;
+        public string parameter;
+        public string prefabName;
         public string iconName;
         public BuildSkillData(
             long Id,
             string name,
             string description,
             string condition,
-            float costMedicineRate,
-            float costAmmoRate, 
+            int resCost,
+            float timeCost,
+            int type,
+            string parameter, 
+            string prefabName, 
             string iconName
             )
         {
@@ -27,8 +33,11 @@ namespace Nameless.ConfigData
             this.name = name;
             this.description = description;
             this.condition = condition;
-            this.costMedicineRate = costMedicineRate;
-            this.costAmmoRate = costAmmoRate;
+            this.resCost = resCost;
+            this.timeCost = timeCost;
+            this.type = type;
+            this.parameter = parameter;
+            this.prefabName = prefabName;
             this.iconName = iconName;
         }
     }

@@ -99,7 +99,7 @@ namespace Nameless.Manager {
             MapManager.Instance.InitMap(DataManager.Instance.GetMapData(0));
             FactionManager.Instance.InitFaction();
             FrontManager.Instance.InitFront();
-
+            PlayerController.Instance.InitBattlePlayer();
             AudioConfig.Init();
 
             RTSCamera.Instance.ResetCameraPos();
@@ -189,6 +189,7 @@ namespace Nameless.Manager {
             AudioManager.Instance.PlayMusic(MapManager.Instance.currentMapData.nameBgm);
 
             this.UpdateBattleToPlayer();
+            PlayerController.Instance.UpdateBattlePlayer(FrontManager.Instance.localPlayer);
         }
         public void RestartBattle()//重新进入战场开始游戏
         {
@@ -224,11 +225,13 @@ namespace Nameless.Manager {
         }
         public void ClearBattle()//清空战场的对象
         {
+            PlayerController.Instance.ResetBattlePlayer();
             EventTriggerManager.Instance.ClearEvent();
             DialogueTriggerManager.Instance.ClearEvent();
             StopCoroutine(EventTriggerManager.Instance.StartListenEvent());
             StopCoroutine(DialogueTriggerManager.Instance.StartListenEvent());
             FrontManager.Instance.ClearFront();
+            BattleManager.Instance.ClearBattle();
             MapManager.Instance.ClearMap();
 
         }

@@ -48,29 +48,15 @@ namespace Nameless.UI
             });
             this.setBtn.onClick.AddListener(() =>//待修改 改成判断当前建造的东西是啥
             {
-                this.currentArea.Ammo += this.currentBuild.addAmmoBuild;
-                this.currentArea.Medicine += this.currentBuild.addMedicineBuild;
-                int costMilitaryRes = -this.currentBuild.costMilitartRes;
-                List<Skill> skills = this.currentPawn.pawnAgent.GetSkills();
-                for(int i = 0;i< skills.Count; i++)
-                {
-                    PropertySkillEffect propertySkillEffect = skills[i].Execute(this.currentPawn,this.currentPawn);
-                    costMilitaryRes -= (int)propertySkillEffect.changeAmmo;
-                }
+                int costMilitaryRes = -this.currentBuild.build.resCost ;
                 FrontManager.Instance.localPlayer.ChangeMilitaryRes(costMilitaryRes);
 
                 this.setBtn.interactable = this.IsSetBtnActiveAfterClick();
-                GameManager.Instance.PauseOrPlay(true);
+                //GameManager.Instance.PauseOrPlay(true);
                 this.gameObject.SetActive(false);
-
-                if (this.currentBuild.addAmmoBuild > 0)
-                    EventTriggerManager.Instance.CheckEventBuildOnArea(BuildType.AmmoBuild);
-                else if(this.currentBuild.addMedicineBuild > 0)
-                    EventTriggerManager.Instance.CheckEventBuildOnArea(BuildType.MeidicalBuild);
-
-                this.currentArea.CostAmmo(this.currentPawn);
-                this.currentArea.CostMedicine(this.currentPawn);
+                
                 AudioManager.Instance.PlayAudio(this.transform, AudioConfig.buildEnd);
+                PlayerController.Instance.FindAllBuildingArea(this.currentArea, this.currentBuild.build, this.currentPawn);
             });
         }
 
@@ -82,17 +68,29 @@ namespace Nameless.UI
 
             this.currentArea = pawn.currentArea;
             this.currentPawn = pawn;
-            Transform Obj0 = Instantiate(this.buildTemplate.transform, this.contentBuildSelect.transform);
-            Transform Obj1 = Instantiate(this.buildTemplate.transform, this.contentBuildSelect.transform);
-            Obj0.gameObject.SetActive(true);
-            Obj1.gameObject.SetActive(true);
-            Obj0.GetComponent<BuildSelectUI>().Init(this.medicineSprite,50,0, 1, medicineString);
-            Obj1.GetComponent<BuildSelectUI>().Init(this.ammoSprite, 100,1, 0, ammoString);
-            this.buildList.Add(Obj0.gameObject);
-            this.buildList.Add(Obj1.gameObject);
+            List<Skill> skills = pawn.pawnAgent.GetSkills();
+            for(int i = 0; i < skills.Count; i++)
+            {
+                if(skills[i] is BuildSkill)
+                {
+                    BuildSkill buildSkill = (BuildSkill)skills[i];
+                    Transform Obj = Instantiate(this.buildTemplate.transform, this.contentBuildSelect.transform);
+                    Obj.gameObject.SetActive(true);
+                    Obj.GetComponent<BuildSelectUI>().Init(buildSkill.build);
+                    this.buildList.Add(Obj.gameObject);
+                }
+            }
 
-            this.currentBuild = Obj0.GetComponent<BuildSelectUI>();
-            this.currentBuild.SelectBuild();
+            if (this.buildList.Count > 0)
+            {
+                this.currentBuild = this.buildList[0].GetComponent<BuildSelectUI>();
+                this.currentBuild.SelectBuild();
+                this.setBtn.gameObject.SetActive(true);
+            }
+            else
+            {
+                this.setBtn.gameObject.SetActive(false);
+            }
 
         }
 
@@ -122,14 +120,8 @@ namespace Nameless.UI
 
         private bool IsSetBtnActiveAfterClick()
         {
-            if (FrontManager.Instance.localPlayer.GetMilitaryRes() < this.currentBuild.costMilitartRes)
-            {
+            if (FrontManager.Instance.localPlayer.GetMilitaryRes() < this.currentBuild.build.resCost)
                 return false;
-            }
-            else if ((this.currentArea.Ammo >= 1 && this.currentBuild.addAmmoBuild > 0) || (this.currentArea.Medicine >= 1 && this.currentBuild.addMedicineBuild > 0))
-            {
-                return false;
-            }
             else
                 return true;
  

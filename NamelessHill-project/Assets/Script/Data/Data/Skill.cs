@@ -49,7 +49,7 @@ namespace Nameless.Data
         public Sprite icon;
         public Dictionary<SkillConditionType, float> conditions = new Dictionary<SkillConditionType, float>();
 
-        protected bool IsActive(PawnAvatar pawnAvatar)
+        public bool IsActive(PawnAvatar pawnAvatar)
         {
             foreach(var child in this.conditions)
             {
@@ -202,11 +202,6 @@ namespace Nameless.Data
                     buffs = supportSkill.buffs;
                     return new PropertySkillEffect(supportSkill.ExtraAttack(condition, contribute), supportSkill.ExtraDefend(condition, contribute), 0, 0, buffs);
                 }
-                else if(this is BuildSkill)
-                {
-                    BuildSkill buildSkill = (BuildSkill)this;
-                    return new PropertySkillEffect(0, 0, buildSkill.ExtraAmmo(condition, 100.0f), buildSkill.ExtraMedicine(condition, 50.0f), buffs);//待修改 后面要改成全局的数据控制
-                }
                 else
                 {
                     return new PropertySkillEffect(0, 0, 0, 0, buffs);
@@ -285,37 +280,35 @@ namespace Nameless.Data
         }
     }
 
+
     public class BuildSkill : Skill
     {
-        public float costMedicineRate;
-        public float costAmmoRate;
-
-        public BuildSkill(long id, string name, string descrption, Dictionary<SkillConditionType, float> conditions, float costMedicineRate, float costAmmoRate, Sprite iconName)
+        public Build build;
+        public BuildType buildType;
+        public BuildSkill(long id, string name, string descrption, Dictionary<SkillConditionType, float> conditions, BuildType buildType, Build build, Sprite iconName)
         {
             this.id = id;
             this.name = name;
             this.descrption = descrption;
             this.conditions = conditions;
-            this.costMedicineRate = costMedicineRate;
-            this.costAmmoRate = costAmmoRate;
+            this.build = build;
+            this.buildType = buildType;
             this.icon = iconName;
         }
 
-        public float ExtraMedicine(PawnAvatar conditioner, float cost)
+        //用于AI建造时用
+        public bool ExecuteBuild(PawnAvatar pawnAvatar,Area area)
         {
-            if (this.IsActive(conditioner))
-                return this.costMedicineRate * cost;
+            if (this.IsActive(pawnAvatar))
+            {
+                this.build.ExecuteBuild(pawnAvatar,area);
+                return true;
+            }
             else
-                return 0.0f;
+                return false;
         }
 
-        public float ExtraAmmo(PawnAvatar conditioner, float cost)
-        {
-            if (this.IsActive(conditioner))
-                return this.costAmmoRate * cost;
-            else
-                return 0.0f;
-        }
+
 
     }
 }

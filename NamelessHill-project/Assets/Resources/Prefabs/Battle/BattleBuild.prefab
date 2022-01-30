@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5880440361949573250}
-  - component: {fileID: 4685638993197464382}
+  - component: {fileID: -1299457575921129148}
   - component: {fileID: 7561153303379454874}
   m_Layer: 0
-  m_Name: Battle
+  m_Name: BattleBuild
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4685638993197464382
+--- !u!114 &-1299457575921129148
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,7 +42,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2163414070352508976}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 043559ad53db617448128c29bae99c2f, type: 3}
+  m_Script: {fileID: 11500000, guid: a0bbffce7d47a384a8a9c98c7578f89e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 7561153303379454874}

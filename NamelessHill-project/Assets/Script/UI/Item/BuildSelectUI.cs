@@ -1,3 +1,4 @@
+using Nameless.Data;
 using Nameless.Manager;
 using Nameless.UI;
 using System.Collections;
@@ -13,13 +14,8 @@ namespace Nameless.DataUI
         public Button button;
         public BuildView buildView;
         public GameObject selectIcon;
+        public Build build;
 
-        public int addAmmoBuild;
-        public int addMedicineBuild;
-
-        public int costMilitartRes;
-
-        private string description;
         // Start is called before the first frame update
         void Start()
         {
@@ -30,30 +26,19 @@ namespace Nameless.DataUI
             });
         }
 
-        public void Init(Sprite sprite, int costMilitartRes, int addAmmoBuild, int addMedicineBuild,string desc)
+        public void Init(Build build)
         {
-            this.icon.sprite = sprite;
-            this.description = desc;
-            this.costMilitartRes = costMilitartRes;
-            this.addAmmoBuild = addAmmoBuild;
-            this.addMedicineBuild = addMedicineBuild;
+            this.icon.sprite = build.sprite;
+            this.build = build;
         }
 
         public void SelectBuild()
         {
             this.buildView.ResetBuildSelect();
             this.buildView.currentBuild = this;
-            this.buildView.ResetDescription(description, costMilitartRes);
+            this.buildView.ResetDescription(this.build.description, this.build.resCost);
             this.selectIcon.SetActive(true);
-            if (FrontManager.Instance.localPlayer.GetMilitaryRes() < this.costMilitartRes)
-            {
-                this.buildView.setBtn.interactable = false;
-            }
-            else if ((this.buildView.currentArea.Ammo >= 1 && this.addAmmoBuild > 0))
-            {
-                this.buildView.setBtn.interactable = false;
-            }
-            else if ((this.buildView.currentArea.Medicine >= 1 && this.addMedicineBuild > 0))
+            if (FrontManager.Instance.localPlayer.GetMilitaryRes() < this.build.resCost)
             {
                 this.buildView.setBtn.interactable = false;
             }

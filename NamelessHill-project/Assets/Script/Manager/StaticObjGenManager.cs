@@ -1,3 +1,4 @@
+using Nameless.Data;
 using Nameless.DataMono;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,16 +10,11 @@ namespace Nameless.Manager
     public class StaticObjGenManager : SingletonMono<StaticObjGenManager>
     {
         public Sprite militarySprite;
-        public Sprite ammoSprite;
-        public Sprite medicialSprite;
         public Dictionary<MatType, Sprite> MatSprite = new Dictionary<MatType, Sprite>();
-        public Dictionary<BuildType, Sprite> BuildSprite = new Dictionary<BuildType, Sprite>();
         public void InitMat()
         {
             this.MatSprite.Add(MatType.MilitryResource, this.militarySprite);
 
-            this.BuildSprite.Add(BuildType.AmmoBuild, this.ammoSprite);
-            this.BuildSprite.Add(BuildType.MeidicalBuild, this.medicialSprite);
         }
 
         public void GenerateMat(Area area, MatType type, int num)//待修改 看看要不要将AddMat拿出来 可能不止有区域会生成材料
@@ -31,14 +27,36 @@ namespace Nameless.Manager
             }
         }
 
-        public void GenerateBuild(Area area, BuildType type)//待修改 看看要不要将addBuild拿出来 可能不止有区域会生成建筑
+        public void GenerateBuild(PawnAvatar pawnAvatar, Area area, Build build)
         {
-            if (!area.IsBuildExist(type))
+
+            if(build is Obstacle)
             {
-                GameObject build = Instantiate(Resources.Load("Prefabs/Build")) as GameObject;
-                build.GetComponent<Build>().Init(type, this.BuildSprite[type]);
-                area.AddBuild(build.GetComponent<Build>());
+                GameObject buildObj = Instantiate(Resources.Load("Prefabs/Build/" + build.prefabName)) as GameObject;
+                area.AddBuild(buildObj.GetComponent<ObstacleAvatar>());
+                buildObj.GetComponent<ObstacleAvatar>().Init(pawnAvatar, area,build);
             }
+            else if(build is Bunker)
+            {
+                GameObject buildObj = Instantiate(Resources.Load("Prefabs/Build/" + build.prefabName)) as GameObject;
+                area.AddBuild(buildObj.GetComponent<BunkerAvatar>());
+                buildObj.GetComponent<BunkerAvatar>().Init(pawnAvatar, area, build);
+            }
+            else if(build is Cannon)
+            {
+                GameObject buildObj = Instantiate(Resources.Load("Prefabs/Build/" + build.prefabName)) as GameObject;
+                area.AddBuild(buildObj.GetComponent<CannonAvatar>());
+                buildObj.GetComponent<CannonAvatar>().Init(pawnAvatar, area, build);
+            }
+            EventTriggerManager.Instance.CheckEventBuildOnArea(build.type);
+        }
+
+        public GameObject GenerateBuildIcon(Area area)
+        {
+            GameObject buildObj = Instantiate(Resources.Load("Prefabs/Build/BuildIcon")) as GameObject;
+            buildObj.transform.parent = area.centerNode.transform;
+            buildObj.transform.localPosition = new Vector3(0, 0, 0);
+            return buildObj;
         }
 
     }

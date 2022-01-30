@@ -8,14 +8,13 @@ using UnityEngine;
 namespace Nameless.DataMono
 {
     
-    public class BattleRound : MonoBehaviour
+    public class BattlePawnRound : MonoBehaviour
     {
-        public Battle battle;
+        public BattlePawn battle;
         public SpriteRenderer sprite;
         public SpriteRenderer arrowSprite;
         private PawnAvatar attacker;
         private PawnAvatar defender;
-        private bool forceEnd = false;
         public void Init(PawnAvatar attacker, PawnAvatar defender)
         {
             
@@ -30,8 +29,8 @@ namespace Nameless.DataMono
             this.attacker.pawnAgent.opponents.Add(this.defender);
             this.defender.pawnAgent.opponents.Add(this.attacker);
 
-            this.battle = new Battle(this.attacker, this.defender);
-            this.forceEnd = false;
+            this.battle = new BattlePawn(this.attacker, this.defender);
+            BattleManager.Instance.battlePawnDic.Add(this.battle, this);
         }
 
         public IEnumerator ProcessBattle(bool defenderisInBattle)
@@ -66,37 +65,17 @@ namespace Nameless.DataMono
                     {
                         attackerTC = 0.0f;
                         this.CalculateBattle(this.attacker, this.defender);
-                        //this.attacker.pawnAgent.AmmoChange(-1);
-                        //this.attacker.currentArea.CostAmmo(this.attacker);
-                        //float attackerAtk = this.attacker.pawnAgent.battleInfo.actualAttack;
-                        //float defenderDef = this.defender.pawnAgent.battleInfo.actualDefend;
-
-                        //float damage = (attackerAtk - defenderDef)/* * this.attacker.pawnAgent.pawn.curMorale / this.attacker.pawnAgent.pawn.maxMorale*/;
-                        //if (damage < 0)
-                        //    damage = 0;
-                        //this.defender.pawnAgent.HealthChange(-damage);
-                        //this.defender.currentArea.CostMedicine(this.defender);
                     }
 
                     if (defenderTC >= this.defender.pawnAgent.pawn.curAtkSpeed)
                     {
                         defenderTC = 0.0f;
                         this.CalculateBattle(this.defender, this.attacker);
-                        //this.defender.pawnAgent.AmmoChange(-1);
-                        //this.defender.currentArea.CostAmmo(this.defender);
-                        //float attackerAtk = this.defender.pawnAgent.battleInfo.actualAttack;
-                        //float defenderDef = this.attacker.pawnAgent.battleInfo.actualDefend;
-
-                        //float damage = (attackerAtk - defenderDef) /** this.defender.pawnAgent.pawn.curMorale / this.defender.pawnAgent.pawn.maxMorale*/;
-                        //if (damage < 0)
-                        //    damage = 0;
-                        //this.attacker.pawnAgent.HealthChange(-damage);
-                        //this.attacker.currentArea.CostMedicine(this.attacker);
                     }
                     yield return null;
                 }
             }
-            BattleManager.Instance.battleDic.Remove(this.battle);
+            BattleManager.Instance.battlePawnDic.Remove(this.battle);
 
 
             if (this != null)
@@ -106,7 +85,7 @@ namespace Nameless.DataMono
         void CalculateBattle(PawnAvatar attcker, PawnAvatar attackRecever)
         {
             attcker.pawnAgent.AmmoChange(-1);
-            attcker.currentArea.CostAmmo(this.attacker);
+            //attcker.currentArea.CostAmmo(this.attacker);
             float attackerAtk = attcker.pawnAgent.battleInfo.actualAttack;
             float defenderDef = attackRecever.pawnAgent.battleInfo.actualDefend;
             float moraleRate = attcker.pawnAgent.battleInfo.moraleRate;
@@ -118,7 +97,7 @@ namespace Nameless.DataMono
             if (damage < 0 || finalHit > hitRate)
                 damage = 0;
             attackRecever.pawnAgent.HealthChange(-damage);
-            attackRecever.currentArea.CostMedicine(this.defender);
+            //attackRecever.currentArea.CostMedicine(this.defender);
         }
 
         bool IsTheBattleEnd()
@@ -133,7 +112,7 @@ namespace Nameless.DataMono
 
                 if (this.defender.pawnAgent.opponents.Count == 0)//判断是否可以进行战斗结算
                 {
-                    this.defender.CheckResult(true);
+                    this.defender.CheckResult();
                 }
                 this.attacker.CheckIfBattleResult();//检查周围是否还有其他的敌人正在攻击自己
 
@@ -149,7 +128,7 @@ namespace Nameless.DataMono
 
                 if (this.attacker.pawnAgent.opponents.Count == 0)//判断是否可以进行战斗结算
                 {
-                    this.attacker.CheckResult(false);
+                    this.attacker.CheckResult();
                 }
                 this.defender.CheckIfBattleResult();//检查周围是否还有其他的敌人正在攻击自己
                 isEnd = true;
@@ -164,7 +143,7 @@ namespace Nameless.DataMono
 
                 this.defender.pawnAgent.MoraleChange(0);
                 this.attacker.CheckIfBattleResult();//检查周围是否还有其他的敌人正在攻击自己
-                this.forceEnd = true;
+                isEnd = true;
             }
             else if (this.attacker.State == PawnState.Walk || this.attacker.State == PawnState.Draw || this.attacker.State == PawnState.Wait)
             {
@@ -176,10 +155,10 @@ namespace Nameless.DataMono
 
                 this.attacker.pawnAgent.MoraleChange(0);
                 this.defender.CheckIfBattleResult();//检查周围是否还有其他的敌人正在攻击自己
-                this.forceEnd = true;
+                isEnd = true;
                 //this.attacker.gameObject.SetActive(false); 
             }
-            return isEnd || this.forceEnd;
+            return isEnd ;
         }
 
 
