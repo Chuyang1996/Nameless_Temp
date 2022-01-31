@@ -19,69 +19,13 @@ namespace Nameless.DataMono
         public float costMorale = -1.0f;
         public float costTimeMorale = 1.0f;
 
-        //public int Medicine
-        //{
-        //    set
-        //    {
-        //        if(value > 0 && medicine == 0)
-        //        {
-        //            StaticObjGenManager.Instance.GenerateBuild(this, BuildType.MeidicalBuild);
-        //        }
-        //        medicine = value;
-        //        if (medicine > 1)
-        //            medicine = 1;
-        //        else if (medicine < 0)
-        //            medicine = 0;
-
-        //        if (medicine == 0)
-        //        {
-        //            if (this.builds.ContainsKey(BuildType.MeidicalBuild))
-        //            {
-        //                this.RemoveBuild(this.builds[BuildType.MeidicalBuild]);
-        //            }
-        //        }
-        //    }
-        //    get
-        //    {
-        //        return medicine;
-        //    }
-        //}
-        //private int medicine = 0;
-
-        //public int Ammo
-        //{
-        //    set
-        //    {
-        //        if (value > 0 && ammo == 0)
-        //        {
-        //            StaticObjGenManager.Instance.GenerateBuild(this, BuildType.AmmoBuild);
-        //        }
-        //        ammo = value;
-        //        if (ammo > 1)
-        //            ammo = 1;
-        //        else if (ammo < 0)
-        //            ammo = 0;
-
-        //        if (ammo == 0) 
-        //        {
-        //            if (this.builds.ContainsKey(BuildType.AmmoBuild))
-        //            {
-        //                this.RemoveBuild(this.builds[BuildType.AmmoBuild]);
-        //            }
-        //        }
-        //    }
-        //    get
-        //    {
-        //        return ammo;
-        //    }
-        //}
-        //private int ammo = 0;
-
         public GameObject centerNode;
         private GameObject matPoint;
         private GameObject bunkerPos;
         private GameObject obstaclePos;
         private GameObject cannonPos;
+        private GameObject ammoPos;
+        private GameObject medicinePos;
         //[HideInInspector]
         public FrontPlayer playerBelong;
         public List<PawnAvatar> pawns = new List<PawnAvatar>();
@@ -103,6 +47,8 @@ namespace Nameless.DataMono
             this.bunkerPos = this.transform.Find("BunkerPos").gameObject;
             this.obstaclePos = this.transform.Find("ObstaclePos").gameObject;
             this.cannonPos = this.transform.Find("CannonPos").gameObject;
+            this.ammoPos = this.transform.Find("AmmoPos").gameObject;
+            this.medicinePos = this.transform.Find("MedicinePos").gameObject;
             this.areaSprite = this.GetComponent<SpriteRenderer>();
             this.type = areaAgent.type;
             this.playerBelong = frontPlayer;
@@ -117,15 +63,21 @@ namespace Nameless.DataMono
                 this.pawns.Remove(pawn);
                 return false;
             }
-
             EventTriggerManager.Instance.CheckPawnArriveArea(pawn.pawnAgent.pawn.id, this.localId);
+            if (this.buildAvatar != null)
+            {
+                this.buildAvatar.UpdateCurrentPawn(this.pawns[0]);
+            }
             //this.ResetPawnPos();
             return true;
         }//本区域添加一个角色
         public virtual void RemovePawn(PawnAvatar pawn)
         {
             this.pawns.Remove(pawn);
-
+            if (this.buildAvatar != null)
+            {
+                this.buildAvatar.UpdateCurrentPawn(null);
+            }
         }//本区域移除一个角色
         public virtual void ChangeColor(Color color)
         {
@@ -182,8 +134,15 @@ namespace Nameless.DataMono
                 {
                     build.gameObject.transform.parent = this.cannonPos.transform;
                 }
+                else if (build.buildType == BuildType.Ammo)
+                {
+                    build.gameObject.transform.parent = this.ammoPos.transform;
+                }
+                else if (build.buildType == BuildType.Medicine)
+                {
+                    build.gameObject.transform.parent = this.medicinePos.transform;
+                }
                 build.gameObject.transform.localPosition = new Vector3(0, 0, 0);
-                build.gameObject.transform.localScale = new Vector3(1, 1, 1);
             }
         }//本区域添加建筑
         public virtual void RemoveBuild(BuildAvatar build)

@@ -173,10 +173,11 @@ namespace Nameless.DataMono
                 {
                     if(hit.collider!=null && this.buildArea.Contains(hit.collider.gameObject))
                     {
-                        StaticObjGenManager.Instance.GenerateBuild(this.currentPawnAvatar, hit.collider.gameObject.GetComponent<Area>(), this.currentbuild);
-                        GameManager.Instance.PauseOrPlay(true);
+                        StaticObjGenManager.Instance.GenerateBuild(this.currentPawnAvatar, hit.collider.gameObject.GetComponent<Area>(), this.currentbuild, true);
+
                     }
                     this.ResetAllBuildingBtn();
+
                     this.isBuild = false;
 
                 }

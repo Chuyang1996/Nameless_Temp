@@ -29,6 +29,12 @@ namespace Nameless.DataMono
         public IEnumerator ProcessBattle()
         {
             //this.defender.pawnAgent.opponentIsInBattle = true;
+            if (this.buildDefender.currentPawn != null 
+                && FactionManager.Instance.RelationFaction(this.buildDefender.currentPawn.GetFaction(), this.pawnAttacker.GetFaction()) == FactionRelation.Hostility)
+            {
+                BunkerAvatar bunkerAvatar = (BunkerAvatar)this.buildDefender;
+                bunkerAvatar.DefendBunker(this.pawnAttacker);
+            }
             float attackerTC = 0.0f;
             EventTriggerManager.Instance.CheckPawnStartBattle(this.pawnAttacker.pawnAgent.pawn.id);
             while (true)

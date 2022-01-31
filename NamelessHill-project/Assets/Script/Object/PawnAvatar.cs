@@ -82,6 +82,7 @@ namespace Nameless.DataMono
                 state = value;
             }
         }
+        public bool isBuild = false;
         public bool isPlay = false;
         public int currentIndex = 0;
 
@@ -156,6 +157,7 @@ namespace Nameless.DataMono
                 GameManager.Instance.buildView.gameObject.SetActive(true);
                 GameManager.Instance.buildView.ResetBuild(this);
                 GameManager.Instance.PauseOrPlay(false);
+                this.FixBtnActive = !this.FixBtnActive;
             });
             //this.InitLine();
         }
@@ -165,16 +167,11 @@ namespace Nameless.DataMono
             if (this.currentArea == null || this.pawnAgent == null || RTSCamera.Instance._isTranstionTo)
                 return;
 
-
-
-            //Debug.Log("sssss");
             Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
 
-
             Ray targetray1 = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit TargetHit1;
-                //Debug.Log("sssss");
             if (Physics.Raycast(targetray1, out TargetHit1))
             {
                 if (TargetHit1.transform.gameObject == this.gameObject)
@@ -188,43 +185,18 @@ namespace Nameless.DataMono
                 this.CheckSupport();
             else if (this.State == PawnState.Draw && this.pawnAgent.frontPlayer.CanControl())
                 this.MouseDrawPath();
-            //else if (this.State == PawnState.Walk)
-            //    this.WalkPath();
-            this.pawnAgent.RunningTimePropertyUpdate(this.State);
-            //this.CheckBattleState();
 
+            this.pawnAgent.RunningTimePropertyUpdate(this.State);
             if (this.pawnAgent.frontPlayer.IsBot()/* && this.State == PawnState.Wait*/)
             {
-                //this.targetArea = this.CurrentArea;
-                //this.startPoint = this.CurrentArea;
-                //this.InitLine();
                 this.AIBehavior();
                 return;
             }
             if (!GameManager.Instance.characterView.gameObject.activeInHierarchy && this.pawnAgent.frontPlayer.CanControl())
             {
-
-
-                //    if (Input.GetMouseButtonDown(1))//���޸� �򿪽�ɫ�����ʱ����
-                //    {
-
-                //        Ray targetray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                //        RaycastHit TargetHit3;
-                //        //Debug.Log("sssss");
-                //        if (Physics.Raycast(targetray, out TargetHit3))
-                //        {
-                //            if (TargetHit3.transform.gameObject == this.gameObject)
-                //            {
-
-                //                GameManager.Instance.characterView.SetNewPawn(this);
-                //            }
-                //        }
-                //    }
                 if (Input.GetMouseButtonDown(0))
                 {
-                    //Debug.Log("sssss");
-
-                    if (hit.collider != null)
+                    if (hit.collider != null && !this.isBuild)
                     {
                         if ((hit.collider.gameObject == this.currentArea.gameObject || hit.collider.gameObject == this.gameObject)
                             && FactionManager.Instance.IsSameSide(this.currentArea.playerBelong.faction, this.GetFaction())
@@ -235,51 +207,6 @@ namespace Nameless.DataMono
                         }
                     }
                 }
-                //    if (Input.GetMouseButton(0) /*&& this.State != PawnState.Battle*/)
-                //    {
-                //        Ray targetray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                //        RaycastHit TargetHit3;
-                //        //Debug.Log("sssss");
-                //        if (Physics.Raycast(targetray, out TargetHit3))
-                //        {
-                //            if (TargetHit3.transform.gameObject == this.gameObject)
-                //            {
-
-                //                this.targetArea = this.CurrentArea;
-                //                this.startPoint = this.CurrentArea;
-                //                this.State = PawnState.Draw;
-                //                MapManager.Instance.mouseFollower.gameObject.GetComponent<SpriteRenderer>().sprite = this.pawnAgent.pawn.selectIcon;
-                //                this.InitLine(true);
-                //                this.ShowPath(true);
-
-                //            }
-
-                //        }
-                //    }
-                //    else if (Input.GetMouseButtonUp(0))
-                //    {
-                //        if (this.State == PawnState.Draw)
-                //        {
-                //            MapManager.Instance.mouseFollower.gameObject.GetComponent<SpriteRenderer>().sprite = null;
-                //            MapManager.Instance.mouseFollower.ResetState();
-                //            if (this.endAreaList.Count > 0 && this.distanceDic.Count > 0)
-                //            {
-
-                //                this.ShowPath(false);
-                //                PathManager.Instance.AddPath(this);
-                //                this.State = PawnState.Walk;
-                //                List<Vector3> tempNode = this.nodePath;
-                //                StartCoroutine(WalkLineByNode(tempNode));
-                //                //this.InitWalkLine();
-                //                //StartCoroutine(ShowWalkPath(start, this.pathList[0].nodes.Length - 1, t));
-                //            }
-                //            else
-                //            {
-                //                this.State = PawnState.Wait;
-                //            }
-
-                //        }
-                //    }
             }
 
         }
@@ -635,8 +562,7 @@ namespace Nameless.DataMono
                         if (endPos == this.endAreaList[this.currentWalkNode].centerNode.gameObject.transform.position)
                         {
                             if (this.endAreaList[this.currentWalkNode].buildAvatar != null 
-                                && (FactionManager.Instance.RelationFaction(this.endAreaList[this.currentWalkNode].buildAvatar.faction, this.GetFaction()) == FactionRelation.Hostility
-                                || this.endAreaList[this.currentWalkNode].buildAvatar is ObstacleAvatar))
+                                && this.endAreaList[this.currentWalkNode].buildAvatar.CheckIfBattle(this))
                             {
                                 BuildAvatar buildAvatar = this.endAreaList[this.currentWalkNode].buildAvatar;
                                 this.ReDrawWalkLine(lastNode + 1);
@@ -664,14 +590,7 @@ namespace Nameless.DataMono
                                 if ( FactionManager.Instance.RelationFaction(this.endAreaList[this.currentWalkNode].pawns[0].GetFaction(), this.GetFaction())  == FactionRelation.Hostility 
                                     && !this.pawnAgent.battleSideDic.ContainsKey(this.endAreaList[this.currentWalkNode].pawns[0]))
                                 {
- 
-                                    this.State = PawnState.Battle;
-                                    bool defenderisInBattle = false;
-                                    if (this.endAreaList[this.currentWalkNode].pawns[0].State == PawnState.Battle)
-                                        defenderisInBattle = true;
-                                    else
-                                        this.endAreaList[this.currentWalkNode].pawns[0].State = PawnState.Battle;
-                                    BattleManager.Instance.GenerateBattlePawn(this, this.endAreaList[this.currentWalkNode].pawns[0],defenderisInBattle);
+                                    StartBattle(this.endAreaList[this.currentWalkNode].pawns[0]);
                                 }
 
                                 while (this.State != PawnState.Draw && this.endAreaList[this.currentWalkNode].pawns.Count > 0)
@@ -737,7 +656,6 @@ namespace Nameless.DataMono
                 }
             }
         }
-
         public void StartDrawWalkLine(List<Vector3> nodeWalk)
         {
             StartCoroutine(WalkLineByNode(nodeWalk));
@@ -745,6 +663,16 @@ namespace Nameless.DataMono
         #endregion
 
         #region//角色战斗
+        public void StartBattle(PawnAvatar defender)
+        {
+            this.State = PawnState.Battle;
+            bool defenderisInBattle = false;
+            if (defender.State == PawnState.Battle)
+                defenderisInBattle = true;
+            else
+                this.endAreaList[this.currentWalkNode].pawns[0].State = PawnState.Battle;
+            BattleManager.Instance.GenerateBattlePawn(this, defender, defenderisInBattle);
+        }
         public void CalcuateBattleInfo()
         {
             float attack = this.pawnAgent.pawn.curAttack;
@@ -961,7 +889,6 @@ namespace Nameless.DataMono
         }
         #endregion
 
-
         #region//角色属性
         public void SetStartPoint(Area area)
         {
@@ -1024,7 +951,7 @@ namespace Nameless.DataMono
             }
 
         }
-        public void BehaviorLoading(float value)//���޸� ռ������Ժ���ܸĳ���shader
+        public void BehaviorLoading(float value)
         {
             this.ocuppyBar.value = value;
         }
@@ -1046,7 +973,7 @@ namespace Nameless.DataMono
                 this.currentArea.RemoveMat(mats[0]);
             }
         }
-        public void ReceiveCurrentTime(int time)//���ڼ��ʱ�����ŶԸý�ɫ��Ӱ��
+        public void ReceiveCurrentTime(int time)
         {
             int passTime = GameManager.Instance.totalTime - time;
             DialogueTriggerManager.Instance.CheckTimeflowEvent(this, passTime);
@@ -1070,7 +997,7 @@ namespace Nameless.DataMono
             //this.CurrentArea.Init();
             DialogueTriggerManager.Instance.TimeTriggerEvent -= this.ReceiveCurrentTime;
             Destroy(this.gameObject);
-        }//���������
+        }
     }
 
 }

@@ -12,6 +12,7 @@ namespace Nameless.DataMono
         public long factionId;//仅用于生成角色的区域使用 其他地方默认是0
         public int localId;
         public long areaId;
+        public long buildId;
         private Area area;
         public void InitAreaInfo(FrontPlayer frontPlayer)
         {
@@ -20,11 +21,15 @@ namespace Nameless.DataMono
             {
                 this.gameObject.AddComponent<Area>().Init(this.localId, areaAgent, frontPlayer, this.factionId);
                 this.area = this.GetComponent<Area>();
+                if(this.buildId!=0)
+                    StaticObjGenManager.Instance.GenerateBuild(null, this.area, ((BuildSkill)SkillFactory.GetSkillById(SkillFactoryType.BuildSkill, this.buildId)).build, false);
             }
             else if (areaAgent.type == AreaType.Base)
             {
                 this.gameObject.AddComponent<BaseArea>().Init(this.localId, areaAgent, frontPlayer, this.factionId);
                 this.area = this.GetComponent<BaseArea>();
+                if (this.buildId != 0)
+                    StaticObjGenManager.Instance.GenerateBuild(null, this.area, ((BuildSkill)SkillFactory.GetSkillById(SkillFactoryType.BuildSkill, this.buildId)).build, false);
             }
             else if (areaAgent.type == AreaType.UnPass)
             {

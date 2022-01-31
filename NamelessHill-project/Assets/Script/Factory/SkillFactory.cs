@@ -87,6 +87,26 @@ namespace Nameless.Agent
                 Cannon cannon = new Cannon(buildSkillData.Id, buildSkillData.name, buildSkillData.description, healthCannon, healthBuildingCannon, minRange, maxRange, exploreRange, exploreTime, exploreDamage, cdTime, buildSkillData.resCost, buildSkillData.prefabName, buildSkillData.timeCost, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, buildSkillData.iconName));
                 return new BuildSkill(buildSkillData.Id, buildSkillData.name, buildSkillData.description, tempDic, BuildType.Cannon, cannon, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, buildSkillData.iconName));
             }
+            else if ((BuildType)buildSkillData.type == BuildType.Ammo)
+            {
+                float healthAmmo= StringToFloatArray(buildSkillData.parameter)[0];
+                float healthBuildingAmmo = healthAmmo * StringToFloatArray(buildSkillData.parameter)[1];
+                int timeUse = (int)(StringToFloatArray(buildSkillData.parameter)[2]);
+                float useConditionValue = (StringToFloatArray(buildSkillData.parameter)[3]);
+                float useEffectValue = (StringToFloatArray(buildSkillData.parameter)[4]);
+                Ammo cannon = new Ammo(buildSkillData.Id, buildSkillData.name, buildSkillData.description, healthAmmo, healthBuildingAmmo, timeUse, useConditionValue, useEffectValue, buildSkillData.resCost, buildSkillData.prefabName, buildSkillData.timeCost, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, buildSkillData.iconName));
+                return new BuildSkill(buildSkillData.Id, buildSkillData.name, buildSkillData.description, tempDic, BuildType.Cannon, cannon, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, buildSkillData.iconName));
+            }
+            else if ((BuildType)buildSkillData.type == BuildType.Medicine)
+            {
+                float healthMedicine = StringToFloatArray(buildSkillData.parameter)[0];
+                float healthBuildingMedicine = healthMedicine * StringToFloatArray(buildSkillData.parameter)[1];
+                int timeUse = (int)(StringToFloatArray(buildSkillData.parameter)[2]);
+                float useConditionValue = (StringToFloatArray(buildSkillData.parameter)[3]);
+                float useEffectValue = (StringToFloatArray(buildSkillData.parameter)[4]);
+                Medicine cannon = new Medicine(buildSkillData.Id, buildSkillData.name, buildSkillData.description, healthMedicine, healthBuildingMedicine, timeUse, useConditionValue, useEffectValue, buildSkillData.resCost, buildSkillData.prefabName, buildSkillData.timeCost, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, buildSkillData.iconName));
+                return new BuildSkill(buildSkillData.Id, buildSkillData.name, buildSkillData.description, tempDic, BuildType.Cannon, cannon, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, buildSkillData.iconName));
+            }
             else
             {
                 return null;
