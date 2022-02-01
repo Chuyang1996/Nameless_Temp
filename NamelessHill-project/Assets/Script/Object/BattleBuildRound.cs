@@ -23,18 +23,20 @@ namespace Nameless.DataMono
             this.arrowSprite.color = this.pawnAttacker.pawnAgent.frontPlayer.faction.battleColor;
             this.CalculatePosition();
 
+            this.buildDefender.pawnOpponents.Add(pawnAttacker);
+            
             this.battle = new BattleBuild(this.pawnAttacker, this.buildDefender);
         }
 
         public IEnumerator ProcessBattle()
         {
             //this.defender.pawnAgent.opponentIsInBattle = true;
-            if (this.buildDefender.currentPawn != null 
-                && FactionManager.Instance.RelationFaction(this.buildDefender.currentPawn.GetFaction(), this.pawnAttacker.GetFaction()) == FactionRelation.Hostility)
-            {
-                BunkerAvatar bunkerAvatar = (BunkerAvatar)this.buildDefender;
-                bunkerAvatar.DefendBunker(this.pawnAttacker);
-            }
+            //if (this.buildDefender.currentPawn != null 
+            //    && FactionManager.Instance.RelationFaction(this.buildDefender.currentPawn.GetFaction(), this.pawnAttacker.GetFaction()) == FactionRelation.Hostility)
+            //{
+            //    BunkerAvatar bunkerAvatar = (BunkerAvatar)this.buildDefender;
+            //    bunkerAvatar.DefendBunker(this.pawnAttacker);
+            //}
             float attackerTC = 0.0f;
             EventTriggerManager.Instance.CheckPawnStartBattle(this.pawnAttacker.pawnAgent.pawn.id);
             while (true)
@@ -88,6 +90,7 @@ namespace Nameless.DataMono
         private bool IsTheBattleEnd()
         {
             bool isEnd = false;
+
             if (this.buildDefender.IsFail())
             {
                 this.buildDefender.pawnOpponents.Remove(this.pawnAttacker);
@@ -104,16 +107,25 @@ namespace Nameless.DataMono
             else if (this.pawnAttacker.IsFail())
             {
                 this.buildDefender.pawnOpponents.Remove(this.pawnAttacker);
+                if (this.pawnAttacker.pawnAgent.opponents.Count == 0)//判断是否可以进行战斗结算
+                {
+                    this.pawnAttacker.CheckResult();
+                }
                 isEnd = true;
             }
             else if (this.pawnAttacker.State == PawnState.Walk || this.pawnAttacker.State == PawnState.Draw || this.pawnAttacker.State == PawnState.Wait)
             {
                 this.buildDefender.pawnOpponents.Remove(this.pawnAttacker);
-
-
                 this.pawnAttacker.pawnAgent.MoraleChange(0);
+                this.pawnAttacker.CheckIfBattleResult();//检查周围是否还有其他的敌人正在攻击自己
                 isEnd = true;
                 //this.attacker.gameObject.SetActive(false); 
+            }
+            else if (this.buildDefender.currentPawn != null)
+            {
+                this.buildDefender.pawnOpponents.Remove(this.pawnAttacker);
+                this.pawnAttacker.UpdatePawnState();
+                isEnd = true;
             }
             return isEnd;
         }

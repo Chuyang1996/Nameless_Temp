@@ -561,33 +561,12 @@ namespace Nameless.DataMono
                         }
                         if (endPos == this.endAreaList[this.currentWalkNode].centerNode.gameObject.transform.position)
                         {
-                            if (this.endAreaList[this.currentWalkNode].buildAvatar != null 
-                                && this.endAreaList[this.currentWalkNode].buildAvatar.CheckIfBattle(this))
+                            if (this.endAreaList[this.currentWalkNode].pawns.Count > 0)
                             {
-                                BuildAvatar buildAvatar = this.endAreaList[this.currentWalkNode].buildAvatar;
+
                                 this.ReDrawWalkLine(lastNode + 1);
                                 i = lastNode;
-                                this.State = PawnState.Battle;
-                                BattleManager.Instance.GenerateBattleBuild(this, buildAvatar);
-
-                                while (this.State != PawnState.Draw && this.endAreaList[this.currentWalkNode].buildAvatar != null)
-                                {
-                                    yield return null;
-                                }
-
-                                if (this.State == PawnState.Walk)
-                                    this.StateTriggerEvent(PawnState.Walk);
-                                if (this.State == PawnState.Draw)
-                                    yield break;
-
-
-                            }
-                            else if (this.endAreaList[this.currentWalkNode].pawns.Count > 0 )
-                            {
-
-                                this.ReDrawWalkLine(lastNode+1);
-                                i = lastNode;
-                                if ( FactionManager.Instance.RelationFaction(this.endAreaList[this.currentWalkNode].pawns[0].GetFaction(), this.GetFaction())  == FactionRelation.Hostility 
+                                if (FactionManager.Instance.RelationFaction(this.endAreaList[this.currentWalkNode].pawns[0].GetFaction(), this.GetFaction()) == FactionRelation.Hostility
                                     && !this.pawnAgent.battleSideDic.ContainsKey(this.endAreaList[this.currentWalkNode].pawns[0]))
                                 {
                                     StartBattle(this.endAreaList[this.currentWalkNode].pawns[0]);
@@ -602,7 +581,7 @@ namespace Nameless.DataMono
                                         this.StateTriggerEvent(PawnState.Wait);
                                         this.CheckSupport();
                                     }
-                                    if (FactionManager.Instance.RelationFaction( this.endAreaList[this.currentWalkNode].pawns[0].GetFaction(), this.GetFaction()) == FactionRelation.Hostility 
+                                    if (FactionManager.Instance.RelationFaction(this.endAreaList[this.currentWalkNode].pawns[0].GetFaction(), this.GetFaction()) == FactionRelation.Hostility
                                         && this.endAreaList[this.currentWalkNode].pawns[0].State != PawnState.Battle)
                                         break;
                                     yield return null;
@@ -613,8 +592,60 @@ namespace Nameless.DataMono
                                     this.StateTriggerEvent(PawnState.Walk);
                                 if (this.State == PawnState.Draw)
                                     yield break;
-                                
 
+                            }
+                            else if (this.endAreaList[this.currentWalkNode].buildAvatar != null && this.endAreaList[this.currentWalkNode].buildAvatar.CheckIfBattle(this))
+                            {
+                                BuildAvatar buildAvatar = this.endAreaList[this.currentWalkNode].buildAvatar;
+                                this.ReDrawWalkLine(lastNode + 1);
+                                i = lastNode;
+                                this.State = PawnState.Battle;
+                                BattleManager.Instance.GenerateBattleBuild(this, buildAvatar);
+
+                                while (this.State == PawnState.Battle && this.endAreaList[this.currentWalkNode].buildAvatar != null)
+                                {
+                                    yield return null;
+                                }
+
+                                if (this.State == PawnState.Walk)
+                                    this.StateTriggerEvent(PawnState.Walk);
+                                if (this.State == PawnState.Draw)
+                                    yield break;
+
+                                if (this.endAreaList[this.currentWalkNode].pawns.Count > 0)//检查建筑内是否有敌人
+                                {
+
+                                    this.ReDrawWalkLine(lastNode + 1);
+                                    i = lastNode;
+                                    if (FactionManager.Instance.RelationFaction(this.endAreaList[this.currentWalkNode].pawns[0].GetFaction(), this.GetFaction()) == FactionRelation.Hostility
+                                        && !this.pawnAgent.battleSideDic.ContainsKey(this.endAreaList[this.currentWalkNode].pawns[0]))
+                                    {
+                                        StartBattle(this.endAreaList[this.currentWalkNode].pawns[0]);
+                                    }
+
+                                    while (this.State != PawnState.Draw && this.endAreaList[this.currentWalkNode].pawns.Count > 0)
+                                    {
+                                        if (this.State != PawnState.Battle && this.pawnAgent.curOpponent != null)
+                                            this.State = PawnState.Battle;
+                                        if (this.State == PawnState.Walk)
+                                        {
+                                            this.StateTriggerEvent(PawnState.Wait);
+                                            this.CheckSupport();
+                                        }
+                                        if (FactionManager.Instance.RelationFaction(this.endAreaList[this.currentWalkNode].pawns[0].GetFaction(), this.GetFaction()) == FactionRelation.Hostility
+                                            && this.endAreaList[this.currentWalkNode].pawns[0].State != PawnState.Battle)
+                                            break;
+                                        yield return null;
+                                    }
+
+                                    this.ResetAllSupport();
+                                    if (this.State == PawnState.Walk)
+                                        this.StateTriggerEvent(PawnState.Walk);
+                                    if (this.State == PawnState.Draw)
+                                        yield break;
+
+
+                                }
                             }
                             else
                             {
@@ -623,8 +654,6 @@ namespace Nameless.DataMono
                                     this.gameObject.transform.position = this.endAreaList[this.currentWalkNode].centerNode.gameObject.transform.position;
                                     this.CurrentArea.RemovePawn(this);
                                     this.UpdateCurrentArea(this.endAreaList[this.currentWalkNode]);
-                                    //this.CurrentArea.CostAmmo(this);
-                                    //this.CurrentArea.CostMedicine(this);
                                     this.RemoveBehindLine(lastNode+2);
                                     if (this.pawnAgent.frontPlayer.IsLocalPlayer())
                                     {
@@ -729,8 +758,6 @@ namespace Nameless.DataMono
         {
             this.pawnAgent.MoraleChange(0);//���޸�
             this.PlayDialogue(this.pawnAgent.pawn.winTxt);
-            //this.pawnAgent.ResetBattleInfo();
-            //this.State = this.lastState;
             if (this.pawnAgent.opponents.Count > 0)
             {
                 this.pawnAgent.ChooseMyOpponents(this);
@@ -738,12 +765,8 @@ namespace Nameless.DataMono
             else
             {
                 this.pawnAgent.ResetBattleInfo();
-                this.State = this.lastState;
+                this.UpdatePawnState();
                 Debug.Log(this.name+":"+this.State);
-                //if (ifForward)
-                //    StartCoroutine(CheckFrontArea(opponent));//���ǰ�������Ƿ��е���
-                //else
-                //    this.State = this.lastState;
             }
         }//���սʤ��Ľ�����Ƿ�ս����
         private void CheckSupport()//���֧Ԯ
@@ -919,6 +942,10 @@ namespace Nameless.DataMono
             return this.nodePath;
         }
         #endregion
+        public void UpdatePawnState()
+        {
+            this.State = this.lastState;
+        }
         private void ChangeDirection(GameObject tag)
         {
             Vector2 dir = tag.transform.position - this.transform.position;

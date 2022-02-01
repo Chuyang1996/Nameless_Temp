@@ -84,22 +84,41 @@ namespace Nameless.DataMono
 
         void CalculateBattle(PawnAvatar attcker, PawnAvatar attackRecever)
         {
-            attcker.pawnAgent.AmmoChange(-1);
-            //attcker.currentArea.CostAmmo(this.attacker);
-            float attackerAtk = attcker.pawnAgent.battleInfo.actualAttack;
-            float defenderDef = attackRecever.pawnAgent.battleInfo.actualDefend;
-            float moraleRate = attcker.pawnAgent.battleInfo.moraleRate;
+            if (attackRecever.currentArea.buildAvatar == null)//被攻击方没有建筑的时候
+            {
+                attcker.pawnAgent.AmmoChange(-1);
+                //attcker.currentArea.CostAmmo(this.attacker);
+                float attackerAtk = attcker.pawnAgent.battleInfo.actualAttack;
+                float defenderDef = attackRecever.pawnAgent.battleInfo.actualDefend;
+                float moraleRate = attcker.pawnAgent.battleInfo.moraleRate;
 
-            float hitRate = 50.0f + attacker.pawnAgent.pawn.curHit - attackRecever.pawnAgent.pawn.curDex;
-            float finalHit = Random.Range(0, 100);
+                float hitRate = 50.0f + attacker.pawnAgent.pawn.curHit - attackRecever.pawnAgent.pawn.curDex;
+                float finalHit = Random.Range(0, 100);
 
-            float damage = (attackerAtk - defenderDef) * moraleRate; /* * this.attacker.pawnAgent.pawn.curMorale / this.attacker.pawnAgent.pawn.maxMorale*/;
-            if (damage < 0 || finalHit > hitRate)
-                damage = 0;
-            attackRecever.pawnAgent.HealthChange(-damage);
+                float damage = (attackerAtk - defenderDef) * moraleRate; /* * this.attacker.pawnAgent.pawn.curMorale / this.attacker.pawnAgent.pawn.maxMorale*/;
+                if (damage < 0 || finalHit > hitRate)
+                    damage = 0;
+                attackRecever.pawnAgent.HealthChange(-damage);
+            }
+            else//被攻击方有建筑的时候
+            {
+                attacker.pawnAgent.AmmoChange(-1);
+                float attackerAtk = attacker.pawnAgent.battleInfo.actualAttack;
+                float moraleRate = attacker.pawnAgent.battleInfo.moraleRate;
+                float damage = attackerAtk * moraleRate;
+                attackRecever.currentArea.buildAvatar.HealthChange(-damage);
+                this.CheckIfBuildDestory(attackRecever.currentArea.buildAvatar);
+            }
             //attackRecever.currentArea.CostMedicine(this.defender);
         }
-
+        void CheckIfBuildDestory(BuildAvatar buildAvatar)
+        {
+            if (buildAvatar.IsFail())
+            {
+                if (buildAvatar.pawnOpponents.Count == 0)
+                    buildAvatar.CheckResult();
+            } 
+        }
         bool IsTheBattleEnd()
         {
             bool isEnd = false;
