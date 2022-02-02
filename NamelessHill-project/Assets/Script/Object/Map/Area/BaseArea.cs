@@ -14,9 +14,9 @@ namespace Nameless.DataMono
         public int supportAmmo;
         public float supportDeltaTime;
 
-        public override void Init(int id,AreaAgent areaAgent, FrontPlayer frontPlayer, long factionId)
+        public override void Init(int id,AreaAgent areaAgent, FrontPlayer frontPlayer)
         {
-            base.Init(id, areaAgent, frontPlayer, factionId);
+            base.Init(id, areaAgent, frontPlayer);
             //Color colorb = new Color(0, 0, 1, 0.4f); 
             //Color colorg = new Color(0, 1, 0, 0.4f); 
             //this.areaSprite.color = Color.Lerp(colorb, colorg, 0.5F);

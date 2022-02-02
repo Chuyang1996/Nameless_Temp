@@ -602,7 +602,7 @@ namespace Nameless.DataMono
                                 this.State = PawnState.Battle;
                                 BattleManager.Instance.GenerateBattleBuild(this, buildAvatar);
 
-                                while (this.State == PawnState.Battle && this.endAreaList[this.currentWalkNode].buildAvatar != null)
+                                while (this.State == PawnState.Battle && this.endAreaList.Count > 0 && this.endAreaList[this.currentWalkNode].buildAvatar != null)
                                 {
                                     yield return null;
                                 }
@@ -612,7 +612,7 @@ namespace Nameless.DataMono
                                 if (this.State == PawnState.Draw)
                                     yield break;
 
-                                if (this.endAreaList[this.currentWalkNode].pawns.Count > 0)//检查建筑内是否有敌人
+                                if (this.endAreaList.Count > 0 && this.endAreaList[this.currentWalkNode].pawns.Count > 0)//检查建筑内是否有敌人
                                 {
 
                                     this.ReDrawWalkLine(lastNode + 1);

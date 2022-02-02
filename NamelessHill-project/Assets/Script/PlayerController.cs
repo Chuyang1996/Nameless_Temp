@@ -70,7 +70,7 @@ namespace Nameless.DataMono
 
             for(int i = 0; i < areas.Count; i++)
             {
-                this.buildIcon.Add(StaticObjGenManager.Instance.GenerateBuildIcon(areas[i]));
+                this.buildIcon.Add(StaticObjGenManager.Instance.GenerateBuildIcon(areas[i], BuildIconType.Building));
                 this.preColor.Add(areas[i].GetColor());
                 this.buildArea[i].GetComponent<Area>().SetColor(new Color(1, 1, 1, 0.3f));
 
@@ -101,7 +101,7 @@ namespace Nameless.DataMono
                 if (Physics.Raycast(targetray1, out TargetHit1))
                 {
                     if (TargetHit1.transform.gameObject.GetComponent<PawnAvatar>() != null
-                        && TargetHit1.transform.gameObject.GetComponent<PawnAvatar>().pawnAgent.frontPlayer.IsLocalPlayer())//���޸�.AI
+                        && TargetHit1.transform.gameObject.GetComponent<PawnAvatar>().pawnAgent.frontPlayer == FrontManager.Instance.localPlayer)//���޸�.AI
                     {
                         PawnAvatar pawnAvatar = TargetHit1.collider.gameObject.GetComponent<PawnAvatar>();
                         if (Input.GetMouseButtonDown(1))//

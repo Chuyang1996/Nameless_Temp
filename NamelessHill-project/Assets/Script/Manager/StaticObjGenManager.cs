@@ -6,7 +6,12 @@ using UnityEngine;
 
 namespace Nameless.Manager
 {
-
+    public enum BuildIconType
+    {
+        None = 0,
+        Building = 1,
+        BullEyes = 2,
+    }
     public class StaticObjGenManager : SingletonMono<StaticObjGenManager>
     {
         public Sprite militarySprite;
@@ -58,12 +63,24 @@ namespace Nameless.Manager
             EventTriggerManager.Instance.CheckEventBuildOnArea(build.type);
         }
 
-        public GameObject GenerateBuildIcon(Area area)
+        public GameObject GenerateBuildIcon(Area area, BuildIconType buildIconType)
         {
-            GameObject buildObj = Instantiate(Resources.Load("Prefabs/Build/BuildIcon")) as GameObject;
-            buildObj.transform.parent = area.centerNode.transform;
-            buildObj.transform.localPosition = new Vector3(0, 0, 0);
-            return buildObj;
+            if (buildIconType == BuildIconType.Building)
+            {
+                GameObject buildObj = Instantiate(Resources.Load("Prefabs/Build/BuildIcon")) as GameObject;
+                buildObj.transform.parent = area.centerNode.transform;
+                buildObj.transform.localPosition = new Vector3(0, 0, 0);
+                return buildObj;
+            }
+            else if (buildIconType == BuildIconType.BullEyes)
+            {
+                GameObject buildObj = Instantiate(Resources.Load("Prefabs/Build/Bullseyes")) as GameObject;
+                buildObj.transform.parent = area.centerNode.transform;
+                buildObj.transform.localPosition = new Vector3(0, 0, 0);
+                return buildObj;
+            }
+            else
+                return null;
         }
 
     }

@@ -39,7 +39,7 @@ namespace Nameless.DataMono
         //[HideInInspector]
         public List<Area> neighboors = new List<Area>();
 
-        public virtual void Init(int id, AreaAgent areaAgent, FrontPlayer frontPlayer, long factionId)//待修改 等框架搭建完成
+        public virtual void Init(int id, AreaAgent areaAgent, FrontPlayer frontPlayer)//待修改 等框架搭建完成
         {
             this.localId = id;
             this.centerNode = this.transform.Find("CenterNode").gameObject;

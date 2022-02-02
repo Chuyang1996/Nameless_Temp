@@ -123,6 +123,11 @@ namespace Nameless.Manager
 
         }
 
+        public FrontPlayer GetFrontPlayer(long factionId)
+        {
+            FrontPlayer frontPlayer = this.frontPlayersDic.Where(_pawn => _pawn.faction.id == factionId).FirstOrDefault();
+            return frontPlayer;
+        }
         public void RemovePawn(FrontPlayer frontPlayer,PawnAvatar pawnAvatar)
         {
             frontPlayer.RemovePawnAvatar(pawnAvatar);
@@ -185,17 +190,6 @@ namespace Nameless.Manager
             {
                 this.frontPlayersDic[i].ClearPlayer();
             }
-            ////for (int i = 0; i < this.playerPawns.Count; i++)
-            ////{
-            ////    Destroy(this.playerPawns[i].gameObject);
-            ////}
-            //this.playerPawns.Clear();
-
-            ////for (int i = 0; i < this.enemyPawns.Count; i++)
-            ////{
-            ////    Destroy(this.enemyPawns[i].gameObject);
-            ////}
-            //this.enemyPawns.Clear();
         }
     }
 }

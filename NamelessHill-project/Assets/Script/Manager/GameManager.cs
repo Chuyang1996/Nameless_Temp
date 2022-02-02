@@ -134,18 +134,19 @@ namespace Nameless.Manager {
         {
             this.GameScene = GameScene.Battle;
             var Localplayer = FrontManager.Instance.GenFactionPlayer(FactionManager.Instance.GetFaction(1), true, false, false, this.localPlayer.totalMilitaryRes);
+            var enemyComputer = FrontManager.Instance.GenFactionPlayer(FactionManager.Instance.GetFaction(3), false, true, false, 0);
             FrontManager.Instance.localPlayer = Localplayer;
 
             MapManager.Instance.GenerateMap(MapManager.Instance.currentMapData);
 
 
-            Dictionary<InitArea, FrontPlayer> frontPlayerInAreas = new Dictionary<InitArea, FrontPlayer>();//设置初始区域划分(单人模式下默认都是本机玩家)
-            for(int i = 0; i < MapManager.instance.currentMap.initAreas.Count; i++)
-            {
-                frontPlayerInAreas.Add(MapManager.instance.currentMap.initAreas[i], FrontManager.Instance.localPlayer);
-            }
+            //Dictionary<InitArea, FrontPlayer> frontPlayerInAreas = new Dictionary<InitArea, FrontPlayer>();//设置初始区域划分(单人模式下默认都是本机玩家)
+            //for(int i = 0; i < MapManager.instance.currentMap.initAreas.Count; i++)
+            //{
+            //    frontPlayerInAreas.Add(MapManager.instance.currentMap.initAreas[i], FrontManager.Instance.localPlayer);
+            //}
 
-            MapManager.Instance.currentMap.InitArea(frontPlayerInAreas);
+            MapManager.Instance.currentMap.InitArea();
             List<EventResult> eventResults = new List<EventResult>();
             foreach (var child in DataManager.Instance.eventResultData)
             {
@@ -171,7 +172,6 @@ namespace Nameless.Manager {
 
             //待修改 现在先默认设置一个敌人角色
             Pawn pawn5 = PawnFactory.GetPawnById(1005);
-            var enemyComputer = FrontManager.Instance.GenFactionPlayer(FactionManager.Instance.GetFaction(3), true, false, false, 0);
             FrontManager.Instance.AddPawnOnArea(pawn5, MapManager.Instance.currentMap.FindAreaByLocalId(14), 0, enemyComputer);
             #region//获取本次场景里的事件
 

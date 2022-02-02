@@ -61,13 +61,17 @@ namespace Nameless.DataMono
             this.defaultPoss = defaultPoss;
         }
         // Start is called before the first frame update
-        public void InitArea(Dictionary<InitArea, FrontPlayer> frontPlayerInAreas)
+        public void InitArea()
         {
             this.bg.sprite = GameManager.Instance.accessbility ? spriteAccessbility : sprite;
             for(int i = 0;i<this.initAreas.Count;i++)
             {
-                this.initAreas[i].InitAreaInfo(frontPlayerInAreas[this.initAreas[i]]);
+                this.initAreas[i].InitAreaInfo();
                 this.areas.Add(this.initAreas[i].GetArea());
+            }
+            for (int i = 0; i < this.initAreas.Count; i++)
+            {
+                this.initAreas[i].InitBuildInfo();
             }
             for (int i = 0; i < paths.Count; i++)
             {
