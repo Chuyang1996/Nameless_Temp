@@ -214,12 +214,17 @@ namespace Nameless.Data
         }
 
     }
-
+    public enum FightSkillType
+    {
+        None = 0,
+        IngoreBuild = 1,
+    }
     public class FightSkill : Skill
     {
         public float attackRate;
         public float defendRate;
-        public FightSkill(long id, string name, string descrption, Dictionary<SkillConditionType,float> conditions, float attackRate, float defendRate, Sprite iconName)
+        public FightSkillType fightSkillType;
+        public FightSkill(long id, string name, string descrption, Dictionary<SkillConditionType,float> conditions, float attackRate, float defendRate, FightSkillType fightSkillType, Sprite iconName)
         {
             this.id = id;
             this.name = name;
@@ -227,6 +232,7 @@ namespace Nameless.Data
             this.conditions = conditions;
             this.attackRate = attackRate;
             this.defendRate = defendRate;
+            this.fightSkillType = fightSkillType;
             this.icon = iconName;
         }
 

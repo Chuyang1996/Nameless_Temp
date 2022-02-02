@@ -706,6 +706,7 @@ namespace Nameless.DataMono
         {
             float attack = this.pawnAgent.pawn.curAttack;
             float defend = this.pawnAgent.pawn.curDefend;
+            FightSkillType skillType = FightSkillType.None;
             List<Skill> skills = this.pawnAgent.GetSkills();
             for (int i = 0; i < skills.Count; i++)
             {
@@ -714,6 +715,7 @@ namespace Nameless.DataMono
                     PropertySkillEffect propertySkillEffect = skills[i].Execute(this, this);
                     attack += propertySkillEffect.changeAttack;
                     defend += propertySkillEffect.changeDefend;
+                    skillType = FightSkillType.IngoreBuild;
                 }
             }
             for(int i = 0; i < this.pawnAgent.supporters.Count; i++)
@@ -729,7 +731,7 @@ namespace Nameless.DataMono
                     }
                 }
             }
-            this.pawnAgent.battleInfo = new PawnAgent.BattleInfo(attack, defend, this.pawnAgent.MoralteState());
+            this.pawnAgent.battleInfo = new PawnAgent.BattleInfo(attack, defend, this.pawnAgent.MoralteState(), skillType);
         }
         public void UpdateCurrentOppo(PawnAvatar oppo)
         {

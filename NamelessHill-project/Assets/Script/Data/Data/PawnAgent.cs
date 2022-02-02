@@ -91,11 +91,13 @@ namespace Nameless.Data
             public float actualAttack;
             public float actualDefend;
             public float moraleRate;
-            public BattleInfo(float actualAttack, float actualDefend,float moraleRate)
+            public FightSkillType skillType;
+            public BattleInfo(float actualAttack, float actualDefend,float moraleRate, FightSkillType skillType)
             {
                 this.actualAttack = actualAttack;
                 this.actualDefend = actualDefend;
                 this.moraleRate = moraleRate;
+                this.skillType = skillType;
             }
         }
 

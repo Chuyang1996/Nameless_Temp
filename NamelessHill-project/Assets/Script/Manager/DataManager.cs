@@ -175,6 +175,7 @@ namespace Nameless.Manager
                             this.fightSkillData[id]["condition"],
                             float.Parse(this.fightSkillData[id]["attackRate"]),
                             float.Parse(this.fightSkillData[id]["defendRate"]),
+                            this.fightSkillData[id]["parameter"],
                             this.fightSkillData[id]["iconName"]
                             );
                     return skill;

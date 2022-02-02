@@ -33,7 +33,8 @@ namespace Nameless.Agent
             {
                 tempDic = GetConditions(fightSkillData.condition);
             }
-            return new FightSkill(fightSkillData.Id, fightSkillData.name, fightSkillData.description, tempDic,fightSkillData.attackRate, fightSkillData.defendRate,SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, fightSkillData.iconName));
+            FightSkillType skillType = (FightSkillType)((int)StringToLongArray(fightSkillData.parameter)[0]);
+            return new FightSkill(fightSkillData.Id, fightSkillData.name, fightSkillData.description, tempDic, fightSkillData.attackRate, fightSkillData.defendRate, skillType, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, fightSkillData.iconName));
         }
         public static Skill Get(SupportSkillData supportSkillData)
         {

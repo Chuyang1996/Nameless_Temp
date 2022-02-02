@@ -84,7 +84,7 @@ namespace Nameless.DataMono
 
         void CalculateBattle(PawnAvatar attcker, PawnAvatar attackRecever)
         {
-            if (attackRecever.currentArea.buildAvatar == null)//被攻击方没有建筑的时候
+            if (attackRecever.currentArea.buildAvatar == null || attacker.pawnAgent.battleInfo.skillType == FightSkillType.IngoreBuild)//被攻击方没有建筑的时候
             {
                 attcker.pawnAgent.AmmoChange(-1);
                 //attcker.currentArea.CostAmmo(this.attacker);

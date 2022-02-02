@@ -12,6 +12,7 @@ namespace Nameless.ConfigData
         public string condition;
         public float attackRate;
         public float defendRate;
+        public string parameter;
         public string iconName;
         public FightSkillData(
             long Id,
@@ -20,6 +21,7 @@ namespace Nameless.ConfigData
             string condition,
             float attackRate,
             float defendRate,
+            string parameter,
             string iconName
             )
         {
@@ -29,6 +31,7 @@ namespace Nameless.ConfigData
             this.condition = condition;
             this.attackRate = attackRate;
             this.defendRate = defendRate;
+            this.parameter = parameter;
             this.iconName = iconName;
         }
     }
