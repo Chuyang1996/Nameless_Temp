@@ -67,14 +67,14 @@ namespace Nameless.Manager
         {
             if (buildIconType == BuildIconType.Building)
             {
-                GameObject buildObj = Instantiate(Resources.Load("Prefabs/Build/BuildIcon")) as GameObject;
+                GameObject buildObj = Instantiate(Resources.Load("Prefabs/BuildPrefabs/BuildIcon")) as GameObject;
                 buildObj.transform.parent = area.centerNode.transform;
                 buildObj.transform.localPosition = new Vector3(0, 0, 0);
                 return buildObj;
             }
             else if (buildIconType == BuildIconType.BullEyes)
             {
-                GameObject buildObj = Instantiate(Resources.Load("Prefabs/Build/Bullseyes")) as GameObject;
+                GameObject buildObj = Instantiate(Resources.Load("Prefabs/BuildPrefabs/Bullseyes")) as GameObject;
                 buildObj.transform.parent = area.centerNode.transform;
                 buildObj.transform.localPosition = new Vector3(0, 0, 0);
                 return buildObj;
