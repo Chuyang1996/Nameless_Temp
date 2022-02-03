@@ -37,27 +37,27 @@ namespace Nameless.Manager
             GameManager.Instance.PauseOrPlay(true);
             if (build is Obstacle)
             {
-                GameObject buildObj = Instantiate(Resources.Load("Prefabs/Build/" + build.prefabName)) as GameObject;
+                GameObject buildObj = Instantiate(Resources.Load("Prefabs/BuildPrefabs/" + build.prefabName)) as GameObject;
                 buildObj.GetComponent<ObstacleAvatar>().Init(pawnAvatar, area,build,isBuilding);
             }
             else if(build is Bunker)
             {
-                GameObject buildObj = Instantiate(Resources.Load("Prefabs/Build/" + build.prefabName)) as GameObject;
+                GameObject buildObj = Instantiate(Resources.Load("Prefabs/BuildPrefabs/" + build.prefabName)) as GameObject;
                 buildObj.GetComponent<BunkerAvatar>().Init(pawnAvatar, area, build, isBuilding);
             }
             else if(build is Cannon)
             {
-                GameObject buildObj = Instantiate(Resources.Load("Prefabs/Build/" + build.prefabName)) as GameObject;
+                GameObject buildObj = Instantiate(Resources.Load("Prefabs/BuildPrefabs/" + build.prefabName)) as GameObject;
                 buildObj.GetComponent<CannonAvatar>().Init(pawnAvatar, area, build, isBuilding);
             }
             else if (build is Ammo)
             {
-                GameObject buildObj = Instantiate(Resources.Load("Prefabs/Build/" + build.prefabName)) as GameObject;
+                GameObject buildObj = Instantiate(Resources.Load("Prefabs/BuildPrefabs/" + build.prefabName)) as GameObject;
                 buildObj.GetComponent<AmmoAvatar>().Init(pawnAvatar, area, build, isBuilding);
             }
             else if (build is Medicine)
             {
-                GameObject buildObj = Instantiate(Resources.Load("Prefabs/Build/" + build.prefabName)) as GameObject;
+                GameObject buildObj = Instantiate(Resources.Load("Prefabs/BuildPrefabs/" + build.prefabName)) as GameObject;
                 buildObj.GetComponent<MedicineAvatar>().Init(pawnAvatar, area, build, isBuilding);
             }
             EventTriggerManager.Instance.CheckEventBuildOnArea(build.type);
