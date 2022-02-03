@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2059298477626476715}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.048, y: 0.064, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0}
   m_Children:
   - {fileID: 2059298479587819841}
   m_Father: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cb785e458299d04498475f0a066feee7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bbaa54af2f4505242b2a11499de15be3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,6 +100,7 @@ MonoBehaviour:
   buildState: 0
   pawnOpponents: []
   currentPawn: {fileID: 0}
+  currentArea: {fileID: 0}
   healthBar: {fileID: 2059298479228283661}
   useTime: {fileID: 8629235768848608236}
 --- !u!1 &2059298478398672201
@@ -249,8 +250,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000000044703, y: 0.337}
-  m_SizeDelta: {x: 43.1319, y: 7.3866}
+  m_AnchoredPosition: {x: -0.00000016391, y: 0.598}
+  m_SizeDelta: {x: 55.1702, y: 7.3866}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2059298479228283661
 MonoBehaviour:
@@ -517,7 +518,7 @@ RectTransform:
   m_GameObject: {fileID: 2059298479587819846}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5561724, y: 1.5561724, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 0}
   m_Children:
   - {fileID: 2059298479228283650}
   - {fileID: 8629235767912620798}
@@ -625,7 +626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.423, y: 0.442}
+  m_AnchoredPosition: {x: 0.702, y: 0.445}
   m_SizeDelta: {x: 3.19, y: 3.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8629235767912620792
