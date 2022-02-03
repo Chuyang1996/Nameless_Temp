@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 6476645717187758396}
   - component: {fileID: 5346252776571736563}
   - component: {fileID: 5756645366681245535}
-  - component: {fileID: 9118449857651831720}
-  - component: {fileID: 3063669487418830847}
+  - component: {fileID: 3566623161029727137}
   m_Layer: 0
   m_Name: FixButton
   m_TagString: Untagged
@@ -77,7 +76,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &9118449857651831720
+--- !u!114 &3566623161029727137
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,7 +85,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 173567583345087979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e9f6da820b9d6a4d82c2aa9a89d0643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -121,32 +120,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!61 &3063669487418830847
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173567583345087979}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.21180344, y: -0.09204292}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 65.74331, y: 38.00156}
-  m_EdgeRadius: 0
+  isSelected: 0
 --- !u!1 &223004246048108461
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,7 +556,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &2782149106167600189
 MonoBehaviour:
@@ -713,6 +687,7 @@ MonoBehaviour:
   currentArea: {fileID: 0}
   totalDistance: 0
   lastState: 0
+  isBuild: 0
   isPlay: 0
   currentIndex: 0
   WireMaterial: {fileID: 2100000, guid: 2a20229398a117b4fb7e96f9745a6449, type: 2}
@@ -726,7 +701,7 @@ MonoBehaviour:
   dialogueTxt: {fileID: 3250596878508462602}
   buffContent: {fileID: 1263811622936014887}
   bufficon: {fileID: 5017097324459039692}
-  fixbtn: {fileID: 9118449857651831720}
+  fixbtn: {fileID: 3566623161029727137}
 --- !u!114 &9109056592837110068
 MonoBehaviour:
   m_ObjectHideFlags: 0

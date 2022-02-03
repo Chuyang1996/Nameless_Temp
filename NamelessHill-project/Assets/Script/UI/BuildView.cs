@@ -101,7 +101,7 @@ namespace Nameless.UI
             this.costList.Clear();
             this.descTxt.text =  txt;
 
-            if (costMilitary > 0) {
+            if (costMilitary >= 0) {
                 Transform Obj0 = Instantiate(this.infoTemplate.transform, this.contentInfoSelect.transform);
                 Obj0.gameObject.SetActive(true);
                 Obj0.GetComponent<BuildInfoUI>().Init(this.ammoCostSprite,costMilitary);

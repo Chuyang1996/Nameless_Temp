@@ -113,7 +113,7 @@ namespace Nameless.DataMono
         public Image bufficon;
         
 
-        public Button fixbtn;
+        public ButtonWorldSpaceUI fixbtn;
         private bool FixBtnActive
         {
             set
@@ -158,6 +158,7 @@ namespace Nameless.DataMono
                 GameManager.Instance.buildView.ResetBuild(this);
                 GameManager.Instance.PauseOrPlay(false);
                 this.FixBtnActive = !this.FixBtnActive;
+                this.fixbtn.isSelected = false;
             });
             //this.InitLine();
         }
@@ -200,7 +201,8 @@ namespace Nameless.DataMono
                     {
                         if ((hit.collider.gameObject == this.currentArea.gameObject || hit.collider.gameObject == this.gameObject)
                             && FactionManager.Instance.IsSameSide(this.currentArea.playerBelong.faction, this.GetFaction())
-                            && this.State == PawnState.Wait)//���޸�.AI
+                            && this.State == PawnState.Wait
+                            && !fixbtn.isSelected)//���޸�.AI
                         {
                             this.FixBtnActive = !this.FixBtnActive;
 

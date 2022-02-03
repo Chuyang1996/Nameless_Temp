@@ -171,6 +171,7 @@ namespace Nameless.DataMono
                 RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
                 if (Input.GetMouseButtonDown(0))
                 {
+                    GameManager.Instance.PauseOrPlay(true);
                     if(hit.collider!=null && this.buildArea.Contains(hit.collider.gameObject))
                     {
                         StaticObjGenManager.Instance.GenerateBuild(this.currentPawnAvatar, hit.collider.gameObject.GetComponent<Area>(), this.currentbuild, true);
