@@ -2251,10 +2251,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 1
+  factionId: 3
   localId: 0
   areaId: 1001
-  buildId: 0
+  buildId: 103
 --- !u!1 &837337385965706192
 GameObject:
   m_ObjectHideFlags: 0
@@ -9343,10 +9343,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 1
+  factionId: 3
   localId: 0
   areaId: 1001
-  buildId: 0
+  buildId: 103
 --- !u!1 &837337386502026436
 GameObject:
   m_ObjectHideFlags: 0
@@ -18176,10 +18176,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
-  buildId: 103
+  buildId: 0
 --- !u!1 &837337387205855303
 GameObject:
   m_ObjectHideFlags: 0
@@ -28680,7 +28680,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4605244634632316908}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.477, y: 0.247, z: 0}
+  m_LocalPosition: {x: -0.36, y: -0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 837337386495741719}
@@ -31350,7 +31350,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8599650130702815041}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.41, y: 0.468, z: 0}
+  m_LocalPosition: {x: -0.06, y: -0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 837337385963046709}
