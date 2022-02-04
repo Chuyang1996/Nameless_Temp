@@ -8,12 +8,19 @@ namespace Nameless.DataMono
     public class BunkerAvatar : BuildAvatar
     {
         public Bunker bunker;
-        public override void Init(PawnAvatar pawnAvatar,Area area, Build build, bool isBuilding)
+        public override void Init(PawnAvatar pawnAvatar, Area area, Build build, bool isBuilding)
         {
             this.bunker = (Bunker)build;
             base.Init(pawnAvatar, area, build, isBuilding);
-            if(isBuilding)
+            if (isBuilding)
+            {
+                this.spriteRenderer.sprite = this.building;
                 StartCoroutine(this.Building(pawnAvatar, this.bunker));
+            }
+            else
+            {
+                this.spriteRenderer.sprite = this.completed;
+            }
         }
 
         public void DefendBunker(PawnAvatar attacker)

@@ -17,6 +17,10 @@ namespace Nameless.DataMono
     }
     public class BuildAvatar : MonoBehaviour
     {
+        public Sprite building;
+        public Sprite completed;
+
+        public SpriteRenderer spriteRenderer;
         public BuildType buildType;
         public BuildState buildState;
         public Faction faction;
@@ -117,6 +121,8 @@ namespace Nameless.DataMono
             {
                 this.MaxHealth = build.health;
                 this.CurHealth = build.health;
+                if(this.spriteRenderer!=null)
+                    this.spriteRenderer.sprite = this.completed;
             }
             else
             {

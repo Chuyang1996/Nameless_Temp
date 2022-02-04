@@ -508,10 +508,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c264c1fcf7967947b626b694d3738bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  building: {fileID: 0}
+  completed: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   buildType: 0
   buildState: 0
   pawnOpponents: []
   currentPawn: {fileID: 0}
+  currentArea: {fileID: 0}
   healthBar: {fileID: 2070685057296136890}
 --- !u!1 &2070685058176097534
 GameObject:

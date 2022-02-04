@@ -11,12 +11,19 @@ namespace Nameless.DataMono
     {
         public Ammo ammo;
         public Text useTime;
-        public override void Init(PawnAvatar pawnAvatar, Area area, Build build,bool isBuilding)
+        public override void Init(PawnAvatar pawnAvatar, Area area, Build build, bool isBuilding)
         {
             this.ammo = (Ammo)build;
             base.Init(pawnAvatar, area, build, isBuilding);
             if (isBuilding)
+            {
+                this.spriteRenderer.sprite = this.building;
                 StartCoroutine(this.Building(pawnAvatar, this.ammo));
+            }
+            else
+            {
+                this.spriteRenderer.sprite = this.completed;
+            }
         }
 
         public void SupportPawn()

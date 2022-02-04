@@ -171,6 +171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11400f7d668fb6a4f9f522cd97281376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  building: {fileID: 21300000, guid: d8eaa489dcbb47745bea2c7f7312ee33, type: 3}
+  completed: {fileID: 21300000, guid: 3485b0477002acf45ad647d093645072, type: 3}
+  spriteRenderer: {fileID: 7734137654259805229}
   buildType: 0
   buildState: 0
   pawnOpponents: []

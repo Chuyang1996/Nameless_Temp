@@ -16,7 +16,14 @@ namespace Nameless.DataMono
             this.medicine = (Medicine)build;
             base.Init(pawnAvatar, area, build, isBuilding);
             if (isBuilding)
+            {
+                this.spriteRenderer.sprite = this.building;
                 StartCoroutine(this.Building(pawnAvatar, this.medicine));
+            }
+            else
+            {
+                this.spriteRenderer.sprite = this.completed;
+            }
         }
 
         public void SupportPawn()
