@@ -93,7 +93,7 @@ namespace Nameless.DataMono
         }
         public void DestoryBuilding()
         {
-            DestroyImmediate(this.gameObject);
+            Destroy(this.gameObject);
         }
         public IEnumerator Building(PawnAvatar pawnAvatar, Build build)
         {

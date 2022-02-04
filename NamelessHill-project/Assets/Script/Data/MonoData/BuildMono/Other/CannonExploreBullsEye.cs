@@ -8,6 +8,7 @@ namespace Nameless.DataMono
 {
     public class CannonExploreBullsEye : MonoBehaviour
     {
+        public GameObject canvas;
         public Text fallTimeCountText;
 
         private Area targetArea = null;
@@ -21,6 +22,11 @@ namespace Nameless.DataMono
         private float fallCountTime = 0.0f;
 
         private bool isDoneInit = false;
+
+
+        public List<GameObject> explores = new List<GameObject>();
+        public ExploreAnim exploreAnimTemplate;
+        private bool isExplore = false;
         public void Init(Area target, List<Area> targetExploreAreas, CannonAvatar cannonAvatar)
         {
             this.targetArea = target;
@@ -37,7 +43,17 @@ namespace Nameless.DataMono
             }
             this.cannonAvatar = cannonAvatar;
             this.fallCountTime = cannonAvatar.cannon.expolreTime;
-            isDoneInit = true;
+            this.isDoneInit = true;
+            this.isExplore = false;
+
+
+            for (int i = 0; i < this.targetExploreAreas.Count; i++)
+            {
+               GameObject exploreTemp = Instantiate(this.exploreAnimTemplate.gameObject, this.targetExploreAreas[i].centerNode.transform) as GameObject;
+               exploreTemp.transform.localPosition = new Vector3(0, 0, 0);
+               exploreTemp.transform.parent = this.gameObject.transform;
+               this.explores.Add(exploreTemp);
+            }
         }
 
         private void Update()
@@ -52,8 +68,10 @@ namespace Nameless.DataMono
         {
             if (this.fallCountTime < 0)
             {
-                this.CalucateDamage();
-                this.ResetState();
+                if(!this.isExplore)
+                    this.CalucateDamage();
+                if(this.explores.Count == 0)
+                    this.DestroyExplore();
             }
             else
             {
@@ -63,11 +81,17 @@ namespace Nameless.DataMono
         }
         private void CalucateDamage()
         {
+            for(int i = 0; i < this.explores.Count; i++)
+            {
+                this.explores[i].SetActive(true);
+            }
             this.SingAreaDamage(this.targetArea, this.cannonAvatar.cannon.exploreDamage);
             for (int i = 0; i < this.targetExploreAreas.Count; i++)
             {
                 this.SingAreaDamage(this.targetExploreAreas[i], this.cannonAvatar.cannon.exploreDamage * 0.5f);
             }
+            this.isExplore = true;
+            this.ResetState();
         }
         private void SingAreaDamage(Area area, float damge)
         {
@@ -94,6 +118,7 @@ namespace Nameless.DataMono
         }
         private void ResetState()
         {
+            this.canvas.SetActive(false);
             this.cannonAvatar.ResetState();
             this.targetArea.SetColor(this.targetColor);
             for (int i = 0; i < this.targetExploreAreas.Count; i++)
@@ -104,6 +129,10 @@ namespace Nameless.DataMono
             this.targetExploreAreas = new List<Area>();
             this.targetExploreColor = new List<Color>();
 
+        }
+
+        public void DestroyExplore()
+        {
             DestroyImmediate(this.gameObject);
         }
     }
