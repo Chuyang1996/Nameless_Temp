@@ -113,12 +113,16 @@ namespace Nameless.Manager {
             List<Pawn> pawns = new List<Pawn>();
             Pawn pawn1 = PawnFactory.GetPawnById(1001);
             Pawn pawn2 = PawnFactory.GetPawnById(1002);
+            Pawn pawn3 = PawnFactory.GetPawnById(1003);
             Pawn pawn4 = PawnFactory.GetPawnById(1004);
             Pawn pawn9 = PawnFactory.GetPawnById(1009);
+            Pawn pawn10 = PawnFactory.GetPawnById(1010);
             pawns.Add(pawn1);
             pawns.Add(pawn2);
+            pawns.Add(pawn3);
             pawns.Add(pawn4);
             pawns.Add(pawn9);
+            pawns.Add(pawn10);
             this.localPlayer = new Player(pawns,1000);
             this.EnterBattle();
         }
