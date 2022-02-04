@@ -9,6 +9,8 @@ namespace Nameless.DataMono
     public class CannonAvatar : BuildAvatar
     {
         public Cannon cannon;
+        public Animator animator;
+        public CannonAnim cannonAnimEvent;
 
         private Dictionary<Area, List<Area>> exploreAreas = new Dictionary<Area, List<Area>>();
 
@@ -19,7 +21,9 @@ namespace Nameless.DataMono
         private CannonExploreBullsEye exploreBullsEye = null;
 
         private Area targetArea;
+        private List<Area> targetExplore;
 
+        
 
         public override void Init(PawnAvatar pawnAvatar, Area area, Build build, bool isBuilding)
         {
@@ -51,6 +55,7 @@ namespace Nameless.DataMono
             this.isAreaConfirm = true;
             this.cdCountTime = 0.0f;
             this.targetArea = null;
+            this.targetExplore = new List<Area>();
         }
 
         private void Update()
@@ -82,21 +87,25 @@ namespace Nameless.DataMono
                     if (child.Key.pawns.Count > 0 && FactionManager.Instance.RelationFaction(child.Key.pawns[0].GetFaction(), this.faction) == FactionRelation.Hostility && child.Key.buildAvatar != null)
                     {
                         this.InitTarget(child.Key, child.Value);
+                        this.animator.SetTrigger("Fire");
                         break;
                     }
                     else if (child.Key.pawns.Count > 0 && FactionManager.Instance.RelationFaction(child.Key.pawns[0].GetFaction(), this.faction) == FactionRelation.Hostility)
                     {
                         this.InitTarget(child.Key, child.Value);
+                        this.animator.SetTrigger("Fire");
                         break;
                     }
                     else if (child.Key.buildAvatar != null && child.Key.buildAvatar is BunkerAvatar && FactionManager.Instance.RelationFaction(child.Key.buildAvatar.faction, this.faction) == FactionRelation.Hostility)
                     {
                         this.InitTarget(child.Key, child.Value);
+                        this.animator.SetTrigger("Fire");
                         break;
                     }
                     else if (child.Key.buildAvatar != null && child.Key.buildAvatar is ObstacleAvatar && FactionManager.Instance.RelationFaction(child.Key.buildAvatar.faction, this.faction) == FactionRelation.Hostility)
                     {
                         this.InitTarget(child.Key, child.Value);
+                        this.animator.SetTrigger("Fire");
                         break;
                     }
                 }
@@ -106,17 +115,27 @@ namespace Nameless.DataMono
         private void InitTarget(Area target, List<Area> targetExplore)
         {
             this.targetArea = target;
-            this.exploreBullsEye = StaticObjGenManager.Instance.GenerateBuildIcon(target, BuildIconType.BullEyes).GetComponent<CannonExploreBullsEye>();
-            this.exploreBullsEye.GetComponent<CannonExploreBullsEye>().Init(this.targetArea, targetExplore, this);
+            this.targetExplore = targetExplore;
         }
 
+        public void GenTarget()
+        {
+            this.exploreBullsEye = StaticObjGenManager.Instance.GenerateBuildIcon(this.targetArea, BuildIconType.BullEyes).GetComponent<CannonExploreBullsEye>();
+            this.exploreBullsEye.GetComponent<CannonExploreBullsEye>().Init(this.targetArea, this.targetExplore, this);
+        }
 
         public void ResetState()
         {
             this.cdCountTime = 0.0f;
             this.targetArea = null;
+            this.targetExplore = new List<Area>();
             this.exploreBullsEye = null;
 
+        }
+
+        public override void CheckResult()
+        {
+            animator.SetTrigger("Death");
         }
     }
 }

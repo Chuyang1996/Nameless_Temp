@@ -91,7 +91,7 @@ namespace Nameless.DataMono
             }
             return false;
         }
-        public virtual void DestoryBuilding()
+        public void DestoryBuilding()
         {
             DestroyImmediate(this.gameObject);
         }
@@ -140,7 +140,7 @@ namespace Nameless.DataMono
                 return true;
             return false;
         }
-        public void CheckResult()
+        public virtual void CheckResult()
         {
             this.DestoryBuilding();
         }
