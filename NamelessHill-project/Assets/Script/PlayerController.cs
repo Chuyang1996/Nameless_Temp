@@ -72,7 +72,7 @@ namespace Nameless.DataMono
             {
                 this.buildIcon.Add(StaticObjGenManager.Instance.GenerateBuildIcon(areas[i], BuildIconType.Building));
                 this.preColor.Add(areas[i].GetColor());
-                this.buildArea[i].GetComponent<Area>().SetColor(new Color(1, 1, 1, 0.3f));
+                this.buildArea[i].GetComponent<Area>().SetColor(new Color(1, 1, 1, 0.3f), true, false);
 
             }
         }
@@ -83,7 +83,7 @@ namespace Nameless.DataMono
                 DestroyImmediate(this.buildIcon[i]);
             this.buildIcon.Clear();
             for (int i = 0; i < this.buildArea.Count; i++)
-                this.buildArea[i].GetComponent<Area>().SetColor(this.preColor[i]);
+                this.buildArea[i].GetComponent<Area>().SetColor(this.preColor[i], true, false);
             this.buildArea.Clear();
             this.currentbuild = null;
 
@@ -186,9 +186,9 @@ namespace Nameless.DataMono
                 {
                     for(int i = 0; i < this.buildArea.Count; i++)
                     {
-                        this.buildArea[i].GetComponent<Area>().SetColor(new Color(1, 1, 1, 0.3f));
+                        this.buildArea[i].GetComponent<Area>().SetColor(new Color(1, 1, 1, 0.3f),true, false);
                     }
-                    hit.collider.gameObject.GetComponent<Area>().SetColor(new Color(1, 1, 1, 0.5f));
+                    hit.collider.gameObject.GetComponent<Area>().SetColor(new Color(1, 1, 1, 0.5f), true, false);
                 }
             }
         }

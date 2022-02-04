@@ -39,6 +39,9 @@ namespace Nameless.DataMono
         //[HideInInspector]
         public List<Area> neighboors = new List<Area>();
 
+
+
+        public Color recordColor;
         public virtual void Init(int id, AreaAgent areaAgent, FrontPlayer frontPlayer)//待修改 等框架搭建完成
         {
             this.localId = id;
@@ -79,10 +82,6 @@ namespace Nameless.DataMono
                 this.buildAvatar.UpdateCurrentPawn(null);
             }
         }//本区域移除一个角色
-        public virtual void ChangeColor(Color color)
-        {
-            this.areaSprite.color = color;
-        }//本区域改变颜色
         public virtual bool IsMatExist(MatType type ,int num)
         {
             if (this.mats.ContainsKey(type))
@@ -201,12 +200,14 @@ namespace Nameless.DataMono
         }
         public Color GetColor()
         {
-            return this.areaSprite.color;
+            return this.recordColor;
         }
-        public void SetColor(Color color)
+        public virtual void SetColor(Color color, bool isForce, bool isRecord)
         {
             this.areaSprite.color = color;
-        }
+            if (isRecord)
+                this.recordColor = color;
+        }//本区域改变颜色
         IEnumerator OcuppyProcess(float waitTime)
         {
             float countTime = 0.0f;

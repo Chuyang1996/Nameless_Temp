@@ -17,6 +17,7 @@ namespace Nameless.DataMono
         public override void Init(int id,AreaAgent areaAgent, FrontPlayer frontPlayer)
         {
             base.Init(id, areaAgent, frontPlayer);
+            this.recordColor = new Color(1, 1, 1, 0.19f);
             //Color colorb = new Color(0, 0, 1, 0.4f); 
             //Color colorg = new Color(0, 1, 0, 0.4f); 
             //this.areaSprite.color = Color.Lerp(colorb, colorg, 0.5F);
@@ -35,9 +36,13 @@ namespace Nameless.DataMono
             this.pawns.Remove(pawn);
         }
 
-        public override void ChangeColor(Color color)
+        public override void SetColor(Color color, bool isForce, bool isRecord)
         {
-            
+            if(isForce)
+                this.areaSprite.color = color;
+            else
+                this.areaSprite.color = new Color(1, 1, 1, 0.19f);
+
         }
     }
 }

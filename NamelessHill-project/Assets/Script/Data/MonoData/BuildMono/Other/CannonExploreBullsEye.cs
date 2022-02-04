@@ -36,10 +36,10 @@ namespace Nameless.DataMono
             {
                 this.targetExploreColor.Add(this.targetExploreAreas[i].GetColor());
             }
-            this.targetArea.SetColor(new Color(1, 1, 0, 0.5f));
+            this.targetArea.SetColor(new Color(1, 1, 0, 0.5f), true, false);
             for (int i = 0; i < this.targetExploreAreas.Count; i++)
             {
-                this.targetExploreAreas[i].SetColor(new Color(1, 1, 0, 0.5f));
+                this.targetExploreAreas[i].SetColor(new Color(1, 1, 0, 0.5f), true, false);
             }
             this.cannonAvatar = cannonAvatar;
             this.fallCountTime = cannonAvatar.cannon.expolreTime;
@@ -120,10 +120,10 @@ namespace Nameless.DataMono
         {
             this.canvas.SetActive(false);
             this.cannonAvatar.ResetState();
-            this.targetArea.SetColor(this.targetColor);
+            this.targetArea.SetColor(this.targetColor, true, false);
             for (int i = 0; i < this.targetExploreAreas.Count; i++)
             {
-                this.targetExploreAreas[i].SetColor(this.targetExploreColor[i]);
+                this.targetExploreAreas[i].SetColor(this.targetExploreColor[i], true, false);
             }
             this.targetArea = null;
             this.targetExploreAreas = new List<Area>();

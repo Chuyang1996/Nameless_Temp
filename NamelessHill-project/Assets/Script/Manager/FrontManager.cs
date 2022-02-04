@@ -182,7 +182,7 @@ namespace Nameless.Manager
             area.playerBelong.RemoveArea(area);
             area.playerBelong = frontPlayer;
             area.playerBelong.AddArea(area);
-            area.ChangeColor(frontPlayer.faction.areaColor);
+            area.SetColor(frontPlayer.faction.areaColor, false, true);
         }
         public void ClearFront()
         {
