@@ -32,18 +32,26 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 60db006fc9382a54da2ca8996cc49aab, type: 3}
-    totalSpriteSurfaceArea: 13662
+    totalSpriteSurfaceArea: 4593662
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 14a98d906978723438c637d7cc9c88a9, type: 3}
   - {fileID: 21300000, guid: dbbe98d3466b329439e36d008ef530e5, type: 3}
+  - {fileID: 21300000, guid: a9ebfb0632a4ba1468caf86e341d1da5, type: 3}
   - {fileID: 21300000, guid: b9dac6b614238dc48b6f56dc27b91cd0, type: 3}
+  - {fileID: 21300000, guid: a55be867bdf224a43bc1c67e9487b312, type: 3}
+  - {fileID: 21300000, guid: 3cba4ba7382f0a6428c1ee993304f9c8, type: 3}
   - {fileID: 21300000, guid: 6222f97e18b47404488697cdfb8e6d1d, type: 3}
   m_PackedSpriteNamesToIndex:
+  - roadblock
   - AtkUP
+  - bunker
   - Heal
+  - Medic
+  - Ammo
   - DefUP
   m_RenderDataMap: {}
   m_Tag: IconImage
