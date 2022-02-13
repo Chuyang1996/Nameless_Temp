@@ -690,7 +690,9 @@ MonoBehaviour:
   isBuild: 0
   isPlay: 0
   currentIndex: 0
+  arrowObj: {fileID: 3929199367200317073, guid: 39dc905481b97184d94d21e45296e6c9, type: 3}
   WireMaterial: {fileID: 2100000, guid: 2a20229398a117b4fb7e96f9745a6449, type: 2}
+  WalkMaterial: {fileID: 2100000, guid: 77119bdead589ed4c8c210770235efa2, type: 2}
   animationDuration: 0.5
   _root: {fileID: 1955213038444268282}
   dialogueAnim: {fileID: 3856974694694922166}

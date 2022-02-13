@@ -86,7 +86,11 @@ namespace Nameless.DataMono
         public bool isPlay = false;
         public int currentIndex = 0;
 
+
+        private GameObject arrowObjInstance;
+        public GameObject arrowObj;
         public Material WireMaterial;
+        public Material WalkMaterial;
         public float animationDuration;
 
         public PawnAgent pawnAgent;
@@ -218,10 +222,13 @@ namespace Nameless.DataMono
         {
             Destroy(wire);
             Destroy(walkWire);
+            if (this.arrowObjInstance != null)
+                Destroy(this.arrowObjInstance.gameObject);
             this.currentWalkNode = 0;
             this.nodePath = new List<Vector3>();
             this.wire = new GameObject();
             this.walkWire = new GameObject();
+            this.arrowObjInstance = Instantiate(this.arrowObj) as GameObject;
             this.areaDic = new Dictionary<GameObject, bool>();
             this.distanceDic = new Dictionary<GameObject, float>();
             this.endAreaList = new List<Area>();
@@ -231,7 +238,7 @@ namespace Nameless.DataMono
             this.renderWire = wire.AddComponent<LineRenderer>();
             this.walkRenderWire = walkWire.AddComponent<LineRenderer>();
             this.renderWire.material = WireMaterial;
-            this.walkRenderWire.material = WireMaterial;
+            this.walkRenderWire.material = WalkMaterial;
             //renderWire.material.SetTextureScale("_MainTex", new Vector2(2f, 2f));
             this.renderWire.SetWidth(0.4f, 0.4f);
             this.walkRenderWire.SetWidth(0.4f, 0.4f);
@@ -463,12 +470,15 @@ namespace Nameless.DataMono
                             {
                                 float t = (Time.time - startTime) / segmentDuration;
                                 pos = Vector3.Lerp(startPos, endPos, t);
-
+                                Vector2 dir = endPos - startPos;
+                                this.arrowObjInstance.transform.right = dir;
+                                this.arrowObjInstance.transform.position = pos;
                                 for (int j = i + 1; j < renderWire.positionCount; j++)
                                 {
                                     try
                                     {
                                         renderWire.SetPosition(j, pos);
+                                        
                                     }
                                     catch (Exception e)
                                     {
@@ -677,6 +687,8 @@ namespace Nameless.DataMono
                     }
 
                     this.InitLine(false);
+                    if (this.arrowObjInstance != null)
+                        Destroy(this.arrowObjInstance.gameObject);
                     if (this.currentWalkNode >= this.endAreaList.Count)
                     {
                         if (this.pawnAgent.frontPlayer.CanControl())
@@ -1011,6 +1023,8 @@ namespace Nameless.DataMono
         }
         public void ClearPawn()
         {
+            if (this.arrowObjInstance != null)
+                Destroy(this.arrowObjInstance.gameObject);
             if (this.pawnAgent.frontPlayer.IsBot() || !this.pawnAgent.frontPlayer.IsLocalPlayer())
             {
                 StaticObjGenManager.Instance.GenerateMat(this.CurrentArea, MatType.MilitryResource, this.pawnAgent.pawn.leftResNum);

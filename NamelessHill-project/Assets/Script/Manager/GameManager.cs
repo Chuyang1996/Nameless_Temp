@@ -197,9 +197,13 @@ namespace Nameless.Manager {
         }
         public void RestartBattle()//重新进入战场开始游戏
         {
+            RTSCamera.Instance.ResetCameraPos();
+            this.battleView.gameObject.SetActive(false);
+            this.GameScene = GameScene.Menu;
+            AudioManager.Instance.PlayMusic(mainMenuBgmName);
             this.ClearBattle();
             this.EnterBattle();
-            RTSCamera.Instance.ResetCameraPos();
+
         }
         public void EnterCamp()//进入营地
         {
