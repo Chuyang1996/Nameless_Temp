@@ -82,7 +82,7 @@ namespace Nameless.DataMono
             for (int i = 0; i < paths.Count; i++)
             {
                 NodeToNode temp = new NodeToNode(paths[i].nodes[0], paths[i].nodes[paths[i].nodes.Length - 1]);
-                Debug.LogError(paths[i].gameObject.name+"£¬ " + paths[i].nodes[0].name+ ":" + paths[i].nodes[paths[i].nodes.Length - 1].name  + "   :   "+ temp.start.gameObject.name +":" + temp.end.gameObject.name);
+                //Debug.LogError(paths[i].gameObject.name+"£¬ " + paths[i].nodes[0].name+ ":" + paths[i].nodes[paths[i].nodes.Length - 1].name  + "   :   "+ temp.start.gameObject.name +":" + temp.end.gameObject.name);
                 this.pathDic.Add(temp, paths[i]);
 
             }

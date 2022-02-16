@@ -44,7 +44,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 7b96377962a29df42a11e5f48feab71b, type: 3}
-    totalSpriteSurfaceArea: 3500000
+    totalSpriteSurfaceArea: 3750000
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -56,6 +56,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b9317febfddf5d848b7b5e1458b04082, type: 3}
   - {fileID: 21300000, guid: 05dfd66ce7296ae4da397ca7f705b7b1, type: 3}
   - {fileID: 21300000, guid: b2da24adcf227d2439c433d8a9307be8, type: 3}
+  - {fileID: 21300000, guid: 59463a9e2d36fa54e830210c08eda857, type: 3}
   m_PackedSpriteNamesToIndex:
   - sniper
   - engineer
@@ -63,6 +64,7 @@ SpriteAtlas:
   - enemy
   - commander
   - soldier
+  - signalman
   m_RenderDataMap: {}
   m_Tag: CampCharacterImage
   m_IsVariant: 0
