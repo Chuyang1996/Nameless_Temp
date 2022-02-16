@@ -64,7 +64,7 @@ namespace Nameless.Manager {
         /// </summary>
         /// 
         public const string mainMenuBgmName = "Music_MainBGM_01";
-        public int totalTime = 720;//本场战斗总时间//待修改
+        public int totalTime = 0;//本场战斗总时间//待修改
         public string levelgoalDes = "Hold for 12 hours";//本场战斗总时间//待修改
 
 
@@ -140,7 +140,7 @@ namespace Nameless.Manager {
             var Localplayer = FrontManager.Instance.GenFactionPlayer(FactionManager.Instance.GetFaction(1), true, false, false, this.localPlayer.totalMilitaryRes);
             var enemyComputer = FrontManager.Instance.GenFactionPlayer(FactionManager.Instance.GetFaction(3), false, true, false, 0);
             FrontManager.Instance.localPlayer = Localplayer;
-
+            
             MapManager.Instance.GenerateMap(MapManager.Instance.currentMapData);
 
 
@@ -159,7 +159,7 @@ namespace Nameless.Manager {
             EventTriggerManager.Instance.InitEventTrigger(eventResults);
             //Debug.Log(DataManager.Instance.GetCharacter(1001).name);
             StartCoroutine(EventTriggerManager.Instance.StartListenEvent());
-
+            this.totalTime = MapManager.Instance.currentMapData.passTime;
             this.battleView.InitBattle(this.totalTime, this.levelgoalDes, FrontManager.Instance.localPlayer.GetMilitaryRes());
             Time.timeScale = 1.0f;
             this.RESULTEVENT += this.Result;
@@ -218,6 +218,7 @@ namespace Nameless.Manager {
             CampData campData = DataManager.Instance.GetCampData(MapManager.Instance.currentMapData.nextCampId);
             CampManager.Instance.InitCamp(campData,FrontManager.Instance.GetPawnAvatars(FrontManager.Instance.localPlayer), this.localPlayer.totalMilitaryRes);
             this.UpdateCampToPlayer();
+            MapManager.Instance.UpdateNewMap(DataManager.Instance.GetMapData(CampManager.Instance.currentCampData.nextBattleId));//更新下一场战斗的地图
 
         }
         public void BackToMainMenu()//返回主界面

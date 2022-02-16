@@ -618,6 +618,7 @@ namespace Nameless.Manager
                             this.mapData[id]["name"],
                             this.mapData[id]["descrption"],
                             this.mapData[id]["mapName"],
+                            int.Parse(this.mapData[id]["passTime"]),
                             long.Parse(this.mapData[id]["nextCampId"]),
                             this.mapData[id]["transInfoShowName"],
                             this.mapData[id]["defaultInitPos"],
