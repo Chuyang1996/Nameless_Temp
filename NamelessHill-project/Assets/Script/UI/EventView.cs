@@ -24,7 +24,6 @@ namespace Nameless.UI
             {
                 this.gameObject.SetActive(true);
                 EventResult eventResult = EventTriggerManager.Instance.currentAllEvent.Pop();
-                FrontManager.Instance.UpdateEventForAllPlayers(eventResult.id);
                 this.ResetPanel(eventResult);
             }
             else

@@ -20,21 +20,21 @@ namespace Nameless.Manager {
     public class EventCollections
     {
         private List<long> pawnKilledIds = new List<long>();
-        private List<long> eventResultId = new List<long>();
+        private List<long> eventOptionId = new List<long>();
 
         public EventCollections()
         {
             this.pawnKilledIds = new List<long>();
-            this.eventResultId = new List<long>();
+            this.eventOptionId = new List<long>();
         }
         public void AddDeathPawnId(long id)
         {
             this.pawnKilledIds.Add(id);
         }
 
-        public void AddEventResultId(long id)
+        public void AddEventOptionId(long id)
         {
-            this.eventResultId.Add(id);
+            this.eventOptionId.Add(id);
         }
 
         public bool IsPawnKilled(long id)
@@ -44,9 +44,9 @@ namespace Nameless.Manager {
             return false;
         }
 
-        public bool IsEventHappened(long id)
+        public bool IsEventOptionChoosed(long id)
         {
-            if (this.eventResultId.Contains(id))
+            if (this.eventOptionId.Contains(id))
                 return true;
             return false;
         }

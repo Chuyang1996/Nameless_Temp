@@ -8,7 +8,7 @@ namespace Nameless.Data
     public enum ConditionType
     {
         Killed = 1,
-        Event = 2,
+        EventOption = 2,
     }
     public class ConditionCollection
     {
@@ -52,19 +52,19 @@ namespace Nameless.Data
         }
     }
 
-    public class PlayerEventHappenedCondition : Condition
+    public class PlayerEventOptionChooseCondition : Condition
     {
         private long eventId;
-        private bool isHappened;
-        public PlayerEventHappenedCondition(long pawnId, bool isKilled)
+        private bool isChoosed;
+        public PlayerEventOptionChooseCondition(long pawnId, bool isChoosed)
         {
-            this.conditionType = ConditionType.Event;
+            this.conditionType = ConditionType.EventOption;
             this.eventId = pawnId;
-            this.isHappened = isKilled;
+            this.isChoosed = isChoosed;
         }
         public override bool CanPass(FrontPlayer frontPlayer)
         {
-            return this.isHappened == frontPlayer.eventCollections.IsEventHappened(this.eventId);
+            return this.isChoosed == frontPlayer.eventCollections.IsEventOptionChoosed(this.eventId);
 
         }
     }

@@ -190,11 +190,11 @@ namespace Nameless.Manager
             area.SetColor(frontPlayer.faction.areaColor, false, true);
         }
 
-        public void UpdateEventForAllPlayers(long eventId)
+        public void UpdateEventOptionForAllPlayers(long eventOptionId)
         {
             for(int i = 0; i < this.frontPlayersDic.Count; i++)
             {
-                this.frontPlayersDic[i].eventCollections.AddEventResultId(eventId);
+                this.frontPlayersDic[i].eventCollections.AddEventOptionId(eventOptionId);
             }
         }
 

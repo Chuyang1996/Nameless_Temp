@@ -16,14 +16,14 @@ namespace Nameless.Agent
                 for (int i = 0; i < conditionStrArray.Length; i++)
                 {
                     string[] tempConodition = StringToCondition(conditionStrArray[i]);
-                    if (int.Parse(tempConodition[0]) == 1)
+                    if ((ConditionType)int.Parse(tempConodition[0]) == ConditionType.Killed)
                     {
                         PawnIfKilledCondition pawnIfKilledCondition = new PawnIfKilledCondition(long.Parse(tempConodition[1]), bool.Parse(tempConodition[2]));
                         conditions.Add(pawnIfKilledCondition);
                     }
-                    else if (int.Parse(tempConodition[0]) == 2)
+                    else if ((ConditionType)int.Parse(tempConodition[0]) == ConditionType.EventOption)
                     {
-                        PlayerEventHappenedCondition playerEventHappenedCondition = new PlayerEventHappenedCondition(long.Parse(tempConodition[1]), bool.Parse(tempConodition[2]));
+                        PlayerEventOptionChooseCondition playerEventHappenedCondition = new PlayerEventOptionChooseCondition(long.Parse(tempConodition[1]), bool.Parse(tempConodition[2]));
                         conditions.Add(playerEventHappenedCondition);
                     }
                 }
