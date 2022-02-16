@@ -12,29 +12,29 @@ namespace Nameless.Agent
     {
         public static Pawn GetPawnById(long id)
         {
-            return Get(DataManager.Instance.GetCharacter(id));
+            return Get(DataManager.Instance.GetPawn(id));
         }
 
-        public static Pawn Get(CharacterData characterData)
+        public static Pawn Get(PawnData pawnData)
         {
-            float crAmmo = characterData.crAmmo > 1 ? 1.0f : characterData.crAmmo;
-            float crAtkSpeed = characterData.crAtkSpeed > 1 ? 1.0f : characterData.atkSpeed;
-            float crAttack = characterData.crAttack > 1 ? 1.0f : characterData.crAttack;
-            float crDefend = characterData.crDefend > 1 ? 1.0f : characterData.crDefend;
-            float crDex = characterData.crDex > 1 ? 1.0f : characterData.crDex;
-            float crHealth = characterData.crHealth > 1 ? 1.0f : characterData.crHealth;
-            float crHit = characterData.crHit > 1 ? 1.0f : characterData.crHit;
-            float crMorale = characterData.crMorale > 1 ? 1.0f : characterData.crMorale;
-            float crSpeed = characterData.crSpeed > 1 ? 1.0f : characterData.crSpeed;
+            float crAmmo     = pawnData.crAmmo     > 1 ? 1.0f : pawnData.crAmmo;
+            float crAtkSpeed = pawnData.crAtkSpeed > 1 ? 1.0f : pawnData.atkSpeed;
+            float crAttack   = pawnData.crAttack   > 1 ? 1.0f : pawnData.crAttack;
+            float crDefend   = pawnData.crDefend   > 1 ? 1.0f : pawnData.crDefend;
+            float crDex      = pawnData.crDex      > 1 ? 1.0f : pawnData.crDex;
+            float crHealth   = pawnData.crHealth   > 1 ? 1.0f : pawnData.crHealth;
+            float crHit      = pawnData.crHit      > 1 ? 1.0f : pawnData.crHit;
+            float crMorale   = pawnData.crMorale   > 1 ? 1.0f : pawnData.crMorale;
+            float crSpeed    = pawnData.crSpeed    > 1 ? 1.0f : pawnData.crSpeed;
 
             Dictionary<long, DialogueGroup> dialogueGroupDic = new Dictionary<long, DialogueGroup>();
-            List<string> dialogueString = StringToStringArray(characterData.dialogue);
+            List<string> dialogueString = StringToStringArray(pawnData.dialogue);
             for(int i = 0; i < dialogueString.Count; i++)
             {
                 long[] temp = StringToLong2Array(dialogueString[i]);
                 dialogueGroupDic.Add(temp[0], DialogueGroupFactory.GetDialogueGroupById(temp[1]));
             }
-            List<string> conversationInfo = StringToStringArray(characterData.converIds);
+            List<string> conversationInfo = StringToStringArray(pawnData.converIds);
             Dictionary<long, Conversation> conversationMapDic = new Dictionary<long, Conversation>();
             for(int i = 0; i < conversationInfo.Count; i++)
             {
@@ -42,37 +42,37 @@ namespace Nameless.Agent
                 conversationMapDic.Add(temp[0], ConversationFactory.GetConversationById(temp[1]));
             }
             return new Pawn(
-                characterData.Id,
-                characterData.name,
-                characterData.descrption,
-                characterData.health, 
+                pawnData.Id,
+                pawnData.name,
+                pawnData.descrption,
+                pawnData.health, 
                 crHealth, 
-                characterData.attack, 
+                pawnData.attack, 
                 crAttack, 
-                characterData.morale, 
+                pawnData.morale, 
                 crMorale,
-                characterData.atkSpeed,
+                pawnData.atkSpeed,
                 crAtkSpeed,
-                characterData.ammo, 
+                pawnData.ammo, 
                 crAmmo, 
-                characterData.speed, 
+                pawnData.speed, 
                 crSpeed, 
-                characterData.hit, 
+                pawnData.hit, 
                 crHit, 
-                characterData.dex, 
+                pawnData.dex, 
                 crDex,
-                characterData.defend, 
+                pawnData.defend, 
                 crDefend,
-                characterData.leftResNum,
-                StringToLongArray(characterData.fightSkills),
-                StringToLongArray(characterData.supportSkills),
-                StringToLongArray(characterData.buildSkills),
+                pawnData.leftResNum,
+                StringToLongArray(pawnData.fightSkills),
+                StringToLongArray(pawnData.supportSkills),
+                StringToLongArray(pawnData.buildSkills),
                 dialogueGroupDic,
-                characterData.animPrefab,
-                characterData.selectIcon,
-                characterData.campIcon,
-                characterData.campPosIndex,
-                characterData.btnLRpos,
+                pawnData.animPrefab,
+                pawnData.selectIcon,
+                pawnData.campIcon,
+                pawnData.campPosIndex,
+                pawnData.btnLRpos,
                 conversationMapDic
                 );
         }

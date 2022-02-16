@@ -168,7 +168,7 @@ namespace Nameless.Data
         #endregion
 
 
-        public PawnAgent(FrontPlayer frontPlayer, Slider healthBar,Area currentArea, Pawn pawn, int mapId)
+        public PawnAgent(FrontPlayer frontPlayer, Slider healthBar,Area currentArea, Pawn pawn, long mapId)
         {
             this.frontPlayer = frontPlayer;
             this.healthBar = healthBar;

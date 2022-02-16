@@ -20,7 +20,7 @@ namespace Nameless.Manager
         /// </summary>
         #region
 
-        public Dictionary<long, Dictionary<string, string>> characterData;
+        public Dictionary<long, Dictionary<string, string>> pawnData;
         public Dictionary<long, Dictionary<string, string>> fightSkillData;
         public Dictionary<long, Dictionary<string, string>> supportSkillData;
 
@@ -62,7 +62,7 @@ namespace Nameless.Manager
         /// 初始化读表数据
         public void InitData()
         {
-            this.characterData = this.ReadFile("Character_Data.txt");
+            this.pawnData = this.ReadFile("Character_Data.txt");
             this.fightSkillData = this.ReadFile("FightSkill_Data.txt");
             this.supportSkillData = this.ReadFile("SupportSkill_Data.txt");
             this.buildSkillData = this.ReadFile("BuildSkill_Data.txt");
@@ -107,45 +107,45 @@ namespace Nameless.Manager
         #region
         //获取对应装备
 
-        public CharacterData GetCharacter(long id)
+        public PawnData GetPawn(long id)
         {
             try
             {
-                if (this.characterData.ContainsKey(id))
+                if (this.pawnData.ContainsKey(id))
                 {
-                    CharacterData skill = new CharacterData
+                    PawnData skill = new PawnData
                             (id,
-                            this.characterData[id]["name"],
-                            this.characterData[id]["descrption"],
-                            float.Parse(this.characterData[id]["health"]),
-                            float.Parse(this.characterData[id]["crHealth"]),
-                            float.Parse(this.characterData[id]["attack"]),
-                            float.Parse(this.characterData[id]["crAttack"]),
-                            float.Parse(this.characterData[id]["defend"]),
-                            float.Parse(this.characterData[id]["crDefend"]),
-                            float.Parse(this.characterData[id]["morale"]),
-                            float.Parse(this.characterData[id]["crMorale"]),
-                            int.Parse(this.characterData[id]["ammo"]),
-                            float.Parse(this.characterData[id]["crAmmo"]),
-                            float.Parse(this.characterData[id]["atkSpeed"]),
-                            float.Parse(this.characterData[id]["crAtkSpeed"]),
-                            float.Parse(this.characterData[id]["speed"]),
-                            float.Parse(this.characterData[id]["crSpeed"]),
-                            float.Parse(this.characterData[id]["hit"]),
-                            float.Parse(this.characterData[id]["crHit"]),
-                            float.Parse(this.characterData[id]["dex"]),
-                            float.Parse(this.characterData[id]["crDex"]),
-                            int.Parse(this.characterData[id]["leftResNum"]),
-                            this.characterData[id]["fightSkill"],
-                            this.characterData[id]["supportSkill"],
-                            this.characterData[id]["buildSkill"],
-                            this.characterData[id]["dialogue"],
-                            this.characterData[id]["animPrefab"],
-                            this.characterData[id]["selectIcon"],
-                            this.characterData[id]["campIcon"],
-                            int.Parse(this.characterData[id]["campPosIndex"]),
-                            int.Parse(this.characterData[id]["BtnLRpos"]),
-                            this.characterData[id]["converIds"]
+                            this.pawnData[id]["name"],
+                            this.pawnData[id]["descrption"],
+                            float.Parse(this.pawnData[id]["health"]),
+                            float.Parse(this.pawnData[id]["crHealth"]),
+                            float.Parse(this.pawnData[id]["attack"]),
+                            float.Parse(this.pawnData[id]["crAttack"]),
+                            float.Parse(this.pawnData[id]["defend"]),
+                            float.Parse(this.pawnData[id]["crDefend"]),
+                            float.Parse(this.pawnData[id]["morale"]),
+                            float.Parse(this.pawnData[id]["crMorale"]),
+                            int.Parse(this.pawnData[id]["ammo"]),
+                            float.Parse(this.pawnData[id]["crAmmo"]),
+                            float.Parse(this.pawnData[id]["atkSpeed"]),
+                            float.Parse(this.pawnData[id]["crAtkSpeed"]),
+                            float.Parse(this.pawnData[id]["speed"]),
+                            float.Parse(this.pawnData[id]["crSpeed"]),
+                            float.Parse(this.pawnData[id]["hit"]),
+                            float.Parse(this.pawnData[id]["crHit"]),
+                            float.Parse(this.pawnData[id]["dex"]),
+                            float.Parse(this.pawnData[id]["crDex"]),
+                            int.Parse(this.pawnData[id]["leftResNum"]),
+                            this.pawnData[id]["fightSkill"],
+                            this.pawnData[id]["supportSkill"],
+                            this.pawnData[id]["buildSkill"],
+                            this.pawnData[id]["dialogue"],
+                            this.pawnData[id]["animPrefab"],
+                            this.pawnData[id]["selectIcon"],
+                            this.pawnData[id]["campIcon"],
+                            int.Parse(this.pawnData[id]["campPosIndex"]),
+                            int.Parse(this.pawnData[id]["BtnLRpos"]),
+                            this.pawnData[id]["converIds"]
                             );
                     return skill;
                 }

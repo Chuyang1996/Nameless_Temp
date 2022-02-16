@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Nameless.ConfigData
 {
-    public class CharacterData
+    public class PawnData
     {
         public long Id;
         public string name;
@@ -42,7 +42,7 @@ namespace Nameless.ConfigData
         public int btnLRpos;
         public string converIds;
 
-        public CharacterData
+        public PawnData
             (
             long Id, 
             string name, 

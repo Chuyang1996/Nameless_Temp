@@ -21,12 +21,15 @@ namespace Nameless.Manager {
     {
         private List<long> pawnKilledIds = new List<long>();
         private List<long> eventOptionId = new List<long>();
-
+        private List<Pawn> leavePawn = new List<Pawn>();
         public EventCollections()
         {
-            this.pawnKilledIds = new List<long>();
-            this.eventOptionId = new List<long>();
+            this.pawnKilledIds  = new List<long>();
+            this.eventOptionId  = new List<long>();
+            this.leavePawn      = new List<Pawn>();
         }
+
+
         public void AddDeathPawnId(long id)
         {
             this.pawnKilledIds.Add(id);
@@ -35,6 +38,11 @@ namespace Nameless.Manager {
         public void AddEventOptionId(long id)
         {
             this.eventOptionId.Add(id);
+        }
+
+        public void AddLeavePawn(Pawn pawn)
+        {
+            this.leavePawn.Add(pawn);
         }
 
         public bool IsPawnKilled(long id)
@@ -49,6 +57,11 @@ namespace Nameless.Manager {
             if (this.eventOptionId.Contains(id))
                 return true;
             return false;
+        }
+
+        public Pawn GetLeavePawn(long id)
+        {
+            return this.leavePawn.Where(_pawn => _pawn.id == id).FirstOrDefault();
         }
         
     }
@@ -210,13 +223,13 @@ namespace Nameless.Manager {
             {
                 if (i < this.localPlayer.pawns.Count)
                 {
-                    FrontManager.Instance.AddPawnOnArea(this.localPlayer.pawns[i], MapManager.Instance.currentMap.FindAreaByLocalId(defaultPos[i]), 0, FrontManager.Instance.localPlayer);
+                    FrontManager.Instance.AddPawnOnArea(this.localPlayer.pawns[i], MapManager.Instance.currentMap.FindAreaByLocalId(defaultPos[i]), MapManager.Instance.currentMapData.id, FrontManager.Instance.localPlayer);
                 }
             }
 
             //待修改 现在先默认设置一个敌人角色
             Pawn pawn5 = PawnFactory.GetPawnById(1005);
-            FrontManager.Instance.AddPawnOnArea(pawn5, MapManager.Instance.currentMap.FindAreaByLocalId(14), 0, enemyComputer);
+            FrontManager.Instance.AddPawnOnArea(pawn5, MapManager.Instance.currentMap.FindAreaByLocalId(14), MapManager.Instance.currentMapData.id, enemyComputer);
             #region//获取本次场景里的事件
 
 

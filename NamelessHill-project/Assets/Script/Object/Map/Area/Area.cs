@@ -45,7 +45,7 @@ namespace Nameless.DataMono
         public virtual void Init(int id, AreaAgent areaAgent, FrontPlayer frontPlayer)//待修改 等框架搭建完成
         {
             this.localId = id;
-            this.centerNode = this.transform.Find("CenterNode").gameObject;
+            this.centerNode = this.transform.Find("CenterNode"+this.gameObject.name).gameObject;
             this.matPoint = this.transform.Find("MatPos").gameObject;
             this.bunkerPos = this.transform.Find("BunkerPos").gameObject;
             this.obstaclePos = this.transform.Find("ObstaclePos").gameObject;

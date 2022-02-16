@@ -23,7 +23,7 @@ namespace Nameless.DataMono
         public PawnAvatar GenPawn(long id)
         {
 
-            return FrontManager.Instance.AddPawnOnArea(PawnFactory.GetPawnById(id), this, 0, this.areaPlayer);//待修改 确定了地图的配表之后
+            return FrontManager.Instance.AddPawnOnArea(PawnFactory.GetPawnById(id), this, MapManager.Instance.currentMapData.id, this.areaPlayer);//待修改 确定了地图的配表之后
         }
 
     }

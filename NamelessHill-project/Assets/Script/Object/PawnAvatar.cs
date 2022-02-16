@@ -133,7 +133,7 @@ namespace Nameless.DataMono
         private bool fixBtnActive = false;
         #endregion
         // Start is called before the first frame update
-        public void Init(Pawn pawn, FrontPlayer frontPlayer, int mapId, Area initArea)
+        public void Init(Pawn pawn, FrontPlayer frontPlayer, long mapId, Area initArea)
         {
             
             this.healthBar.value = 1;

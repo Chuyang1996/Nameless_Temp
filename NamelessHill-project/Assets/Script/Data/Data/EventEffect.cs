@@ -17,13 +17,15 @@ namespace Nameless.Data
         NextEvent = 104,
         UnlockNote = 105,
         UnlockConversation = 106,
+        SavePawnInPool = 107,
+        LoadPawnFromPool = 108,
         
     }
 
     abstract public class EventEffect 
     {
         public EventEffectType type;
-
+        protected FrontPlayer frontPlayer;
        abstract public void Execute();
     }
 
@@ -31,7 +33,6 @@ namespace Nameless.Data
     {
         public long pawnId;
         public int levelChange;
-        private FrontPlayer frontPlayer;
         public MoraleEventEffect(long Id, int levelChange, FrontPlayer frontPlayer)
         {
             this.type = EventEffectType.MoraleChange;
@@ -75,7 +76,6 @@ namespace Nameless.Data
     public class AllMoraleEventEffect : EventEffect
     {
         public int levelChange;
-        private FrontPlayer frontPlayer;
         public AllMoraleEventEffect(int levelChange, FrontPlayer frontPlayer)
         {
             this.type = EventEffectType.AllMoraleChange;
@@ -115,7 +115,6 @@ namespace Nameless.Data
     public class MilitaryResEventEffect : EventEffect
     {
         public float ammoChange;
-        private FrontPlayer frontPlayer;
         public MilitaryResEventEffect(float ammoChange, FrontPlayer frontPlayer)
         {
             this.type = EventEffectType.MilitaryResourceChange;
@@ -132,7 +131,6 @@ namespace Nameless.Data
     public class NextEventEffect : EventEffect
     {
         public long eventId;
-        private FrontPlayer frontPlayer;
         public NextEventEffect(long eventId, FrontPlayer frontPlayer)
         {
             this.type = EventEffectType.NextEvent;
@@ -166,7 +164,6 @@ namespace Nameless.Data
     {
         public long pawnId;
         public Conversation conversation;
-        private FrontPlayer frontPlayer;
         public UnlockConversationEffect(long pawnId, Conversation conversation, FrontPlayer frontPlayer)
         {
             this.type = EventEffectType.UnlockConversation;
@@ -180,6 +177,46 @@ namespace Nameless.Data
             {
                 FrontManager.Instance.GetPawnAvatarByPlayer(this.pawnId, frontPlayer).pawnAgent.PushConversation(this.conversation);
             }
+        }
+    }
+
+    public class SavePawnInPoolEffect : EventEffect
+    {
+        public long pawnId;
+
+        public SavePawnInPoolEffect(long pawnId,FrontPlayer frontPlayer)
+        {
+            this.type = EventEffectType.SavePawnInPool;
+            this.pawnId = pawnId;
+            this.frontPlayer = frontPlayer;
+        }
+
+        public override void Execute()
+        {
+            PawnAvatar pawnAvatar = FrontManager.Instance.GetPawnAvatarByPlayer(this.pawnId, this.frontPlayer);
+            this.frontPlayer.eventCollections.AddLeavePawn(pawnAvatar.pawnAgent.pawn);
+            pawnAvatar.ClearPawn();
+        }
+    }
+
+
+    public class LoadPawnFromPoolEffect : EventEffect
+    {
+        public long pawnId;
+        public int areaId;
+        public LoadPawnFromPoolEffect(long pawnId, int areaId, FrontPlayer frontPlayer)
+        {
+            this.type = EventEffectType.LoadPawnFromPool;
+            this.pawnId = pawnId;
+            this.areaId = areaId;
+            this.frontPlayer = frontPlayer;
+        }
+
+        public override void Execute()
+        {
+            Pawn pawn = this.frontPlayer.eventCollections.GetLeavePawn(this.pawnId);
+            Area area = MapManager.Instance.currentMap.FindAreaByLocalId(this.areaId);
+            FrontManager.Instance.AddPawnOnArea(pawn, area, MapManager.Instance.currentMap.id, this.frontPlayer);
         }
     }
 }

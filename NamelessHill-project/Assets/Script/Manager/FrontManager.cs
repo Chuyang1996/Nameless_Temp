@@ -169,13 +169,13 @@ namespace Nameless.Manager
 
         }
         
-        public PawnAvatar AddPawnOnArea(Pawn pawn, Area area, int mapId, FrontPlayer frontPlayer)
+        public PawnAvatar AddPawnOnArea(Pawn pawn, Area area, long mapId, FrontPlayer frontPlayer)
         {
             if (area == null)
                 return null;
             
             GameObject pawnAvatar = Instantiate(Resources.Load(pawnPath)) as GameObject;
-            pawnAvatar.GetComponent<PawnAvatar>().Init(pawn, frontPlayer, mapId,area);
+            pawnAvatar.GetComponent<PawnAvatar>().Init(pawn, frontPlayer, mapId, area);
             DialogueTriggerManager.Instance.TimeTriggerEvent += pawnAvatar.GetComponent<PawnAvatar>().ReceiveCurrentTime;
             frontPlayer.AddPawnAvatar(pawnAvatar.GetComponent<PawnAvatar>());
             pawnAvatar.gameObject.transform.parent = MapManager.Instance.currentMap.PawnCollect.transform;

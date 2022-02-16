@@ -55,6 +55,14 @@ namespace Nameless.Agent
                 {
                     effects.Add(new UnlockConversationEffect((long)intArray[1], ConversationFactory.GetConversationById((long)(intArray[2])), frontPlayer));
                 }
+                else if(intArray[0] == (int)EventEffectType.SavePawnInPool)
+                {
+                    effects.Add(new SavePawnInPoolEffect((long)intArray[1], frontPlayer));
+                }
+                else if (intArray[0] == (int)EventEffectType.LoadPawnFromPool)
+                {
+                    effects.Add(new LoadPawnFromPoolEffect((long)intArray[1], intArray[2], frontPlayer));
+                }
             }
 
             return new EventOption(eventOptionData.id, eventOptionData.name, eventOptionData.descrption, effects);
