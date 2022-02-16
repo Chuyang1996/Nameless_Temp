@@ -53474,7 +53474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: 5748609563010264287}
-  - {fileID: 5748609564118383409}
+  - {fileID: 5748609563559823189}
 --- !u!1 &5748609563532718168
 GameObject:
   m_ObjectHideFlags: 0
@@ -61628,7 +61628,6 @@ MonoBehaviour:
   - {fileID: 5748609564072497080}
   - {fileID: 5748609563413172589}
   areas: []
-  paths: []
 --- !u!1 &5748609563719791806
 GameObject:
   m_ObjectHideFlags: 0
