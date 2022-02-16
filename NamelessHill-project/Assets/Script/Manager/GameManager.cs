@@ -7,6 +7,7 @@ using Nameless.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Nameless.Manager {
@@ -16,22 +17,58 @@ namespace Nameless.Manager {
         Battle = 1,
         Camp = 2,
     }
+    public class EventCollections
+    {
+        private List<long> pawnKilledIds = new List<long>();
+        private List<long> eventResultId = new List<long>();
 
+        public EventCollections()
+        {
+            this.pawnKilledIds = new List<long>();
+            this.eventResultId = new List<long>();
+        }
+        public void AddDeathPawnId(long id)
+        {
+            this.pawnKilledIds.Add(id);
+        }
+
+        public void AddEventResultId(long id)
+        {
+            this.eventResultId.Add(id);
+        }
+
+        public bool IsPawnKilled(long id)
+        {
+            if (this.pawnKilledIds.Contains(id))
+                return true;
+            return false;
+        }
+
+        public bool IsEventHappened(long id)
+        {
+            if (this.eventResultId.Contains(id))
+                return true;
+            return false;
+        }
+        
+    }
     public class Player
     {
         public List<Pawn> pawns;
+        public EventCollections eventCollections;
         public int totalMilitaryRes;//我方的补给数量
 
         public Player()
         {
-
+            
         }
-        public Player(List<Pawn> pawns, int totalMilitaryRes)
+        public Player(List<Pawn> pawns, int totalMilitaryRes, EventCollections eventCollections)
         {
             this.pawns = pawns;
             this.totalMilitaryRes = totalMilitaryRes;
+            this.eventCollections = eventCollections;
         }
-        public Player(List<PawnAvatar> pawnAvatars, int totalMilitaryRes)
+        public Player(List<PawnAvatar> pawnAvatars, int totalMilitaryRes, EventCollections eventCollections)
         {
             List<Pawn> pawns = new List<Pawn>();
             for (int i = 0; i < pawnAvatars.Count; i++)
@@ -39,9 +76,10 @@ namespace Nameless.Manager {
                 pawns.Add(pawnAvatars[i].pawnAgent.pawn);
             }
             this.pawns = pawns;
+            this.eventCollections = eventCollections;
             this.totalMilitaryRes = totalMilitaryRes;
         }
-        public Player(List<PawnCamp> pawnCamps,int totalMilitaryRes)
+        public Player(List<PawnCamp> pawnCamps,int totalMilitaryRes, EventCollections eventCollections)
         {
             List<Pawn> pawns = new List<Pawn>();
             for(int i = 0; i < pawnCamps.Count; i++)
@@ -49,6 +87,7 @@ namespace Nameless.Manager {
                 pawns.Add(pawnCamps[i].pawn);
             }
             this.pawns = pawns;
+            this.eventCollections = eventCollections;
             this.totalMilitaryRes = totalMilitaryRes;
         }
     }
@@ -123,7 +162,8 @@ namespace Nameless.Manager {
             pawns.Add(pawn4);
             pawns.Add(pawn9);
             pawns.Add(pawn10);
-            this.localPlayer = new Player(pawns,1000);
+            EventCollections eventCollections = new EventCollections();
+            this.localPlayer = new Player(pawns,1000, eventCollections);
             this.EnterBattle();
         }
         public void EnterBattle()//进入战场  //并开始播放的动画
@@ -137,8 +177,8 @@ namespace Nameless.Manager {
         public void InitBattle()//初始化战斗场景里的所有对象 用于进入战场战斗 和 重新开始战斗(仅用于本地单人模式)
         {
             this.GameScene = GameScene.Battle;
-            var Localplayer = FrontManager.Instance.GenFactionPlayer(FactionManager.Instance.GetFaction(1), true, false, false, this.localPlayer.totalMilitaryRes);
-            var enemyComputer = FrontManager.Instance.GenFactionPlayer(FactionManager.Instance.GetFaction(3), false, true, false, 0);
+            var Localplayer = FrontManager.Instance.GenFactionPlayer(FactionManager.Instance.GetFaction(1), true, false, false, this.localPlayer.totalMilitaryRes, this.localPlayer.eventCollections);
+            var enemyComputer = FrontManager.Instance.GenFactionPlayer(FactionManager.Instance.GetFaction(3), false, true, false, 0, new EventCollections());
             FrontManager.Instance.localPlayer = Localplayer;
             
             MapManager.Instance.GenerateMap(MapManager.Instance.currentMapData);
@@ -252,11 +292,11 @@ namespace Nameless.Manager {
 
         private void UpdateBattleToPlayer()
         {
-            this.localPlayer = new Player(FrontManager.Instance.localPlayer.GetPawnAvatars(), FrontManager.Instance.localPlayer.GetMilitaryRes());
+            this.localPlayer = new Player(FrontManager.Instance.localPlayer.GetPawnAvatars(), FrontManager.Instance.localPlayer.GetMilitaryRes(), FrontManager.Instance.localPlayer.eventCollections);
         }
         private void UpdateCampToPlayer()
         {
-            this.localPlayer = new Player(CampManager.Instance.GetPawnCamps(), CampManager.Instance.GetMilitaryRes());
+            this.localPlayer = new Player(CampManager.Instance.GetPawnCamps(), CampManager.Instance.GetMilitaryRes(), FrontManager.Instance.localPlayer.eventCollections);
         }
         private void Result(string title, bool isWin)
         {

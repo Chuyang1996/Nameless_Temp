@@ -12,6 +12,9 @@ namespace Nameless.Manager
     public class FrontPlayer
     {
         public Faction faction { get; private set; }
+
+        public EventCollections eventCollections;
+
         private bool isLocalPlayer;
         private bool isBot;
         private List<PawnAvatar> pawnAvatars = new List<PawnAvatar>();
@@ -21,12 +24,13 @@ namespace Nameless.Manager
         public Action<int> TotalMilitartEvent;
         private int totalMilitaryRes;
         private int enemiesDieNum = 0;
-        public FrontPlayer(Faction faction, bool isLocalPlayer, bool isBot, int totalMilitaryRes)
+        public FrontPlayer(Faction faction, bool isLocalPlayer, bool isBot, int totalMilitaryRes, EventCollections eventCollections)
         {
             this.faction = faction;
             this.isLocalPlayer = isLocalPlayer;
             this.isBot = isBot;
             this.pawnAvatars = new List<PawnAvatar>();
+            this.eventCollections = eventCollections;
             this.totalMilitaryRes = totalMilitaryRes;
             this.enemiesDieNum = 0;
         }
@@ -128,6 +132,7 @@ namespace Nameless.Manager
             FrontPlayer frontPlayer = this.frontPlayersDic.Where(_pawn => _pawn.faction.id == factionId).FirstOrDefault();
             return frontPlayer;
         }
+
         public void RemovePawn(FrontPlayer frontPlayer,PawnAvatar pawnAvatar)
         {
             frontPlayer.RemovePawnAvatar(pawnAvatar);
@@ -144,9 +149,9 @@ namespace Nameless.Manager
             return frontPlayer.GetPawnAvatars();
         }
         
-        public FrontPlayer GenFactionPlayer(Faction faction, bool isLocalPlayer, bool isBot, bool forceGenNewPlayer, int totalMilitaryRes)//forceGenNewPlayer用于判断是否在存在相同阵营的玩家基础上再用同一个阵营生成一个新的player
+        public FrontPlayer GenFactionPlayer(Faction faction, bool isLocalPlayer, bool isBot, bool forceGenNewPlayer, int totalMilitaryRes, EventCollections eventCollections)//forceGenNewPlayer用于判断是否在存在相同阵营的玩家基础上再用同一个阵营生成一个新的player
         {
-            FrontPlayer frontPlayer = new FrontPlayer(faction, isLocalPlayer, isBot, totalMilitaryRes);
+            FrontPlayer frontPlayer = new FrontPlayer(faction, isLocalPlayer, isBot, totalMilitaryRes,eventCollections);
             if (forceGenNewPlayer)
             {
                 this.frontPlayersDic.Add(frontPlayer);
@@ -184,6 +189,15 @@ namespace Nameless.Manager
             area.playerBelong.AddArea(area);
             area.SetColor(frontPlayer.faction.areaColor, false, true);
         }
+
+        public void UpdateEventForAllPlayers(long eventId)
+        {
+            for(int i = 0; i < this.frontPlayersDic.Count; i++)
+            {
+                this.frontPlayersDic[i].eventCollections.AddEventResultId(eventId);
+            }
+        }
+
         public void ClearFront()
         {
             for (int i = 0; i < this.frontPlayersDic.Count; i++)

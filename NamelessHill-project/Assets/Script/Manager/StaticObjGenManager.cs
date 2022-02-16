@@ -60,7 +60,7 @@ namespace Nameless.Manager
                 GameObject buildObj = Instantiate(Resources.Load("Prefabs/BuildPrefabs/" + build.prefabName)) as GameObject;
                 buildObj.GetComponent<MedicineAvatar>().Init(pawnAvatar, area, build, isBuilding);
             }
-            EventTriggerManager.Instance.CheckEventBuildOnArea(build.type);
+            EventTriggerManager.Instance.CheckEventBuildOnArea(build.type,FrontManager.Instance.localPlayer);
         }
 
         public GameObject GenerateBuildIcon(Area area, BuildIconType buildIconType)

@@ -66,7 +66,7 @@ namespace Nameless.DataMono
                 this.pawns.Remove(pawn);
                 return false;
             }
-            EventTriggerManager.Instance.CheckPawnArriveArea(pawn.pawnAgent.pawn.id, this.localId);
+            EventTriggerManager.Instance.CheckPawnArriveArea(pawn.pawnAgent.pawn.id, this.localId, FrontManager.Instance.localPlayer);
             if (this.buildAvatar != null)
             {
                 this.buildAvatar.UpdateCurrentPawn(this.pawns[0]);
