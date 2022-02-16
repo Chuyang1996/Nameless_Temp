@@ -16,7 +16,7 @@ namespace Nameless.DataMono
         public override void Init(int localId, AreaAgent areaAgent, FrontPlayer frontPlayer)
         {
             base.Init(localId,areaAgent, frontPlayer);
-            this.areaPlayer = FrontManager.Instance.GenFactionPlayer(frontPlayer.faction, false, true, false, 0);
+            this.areaPlayer = FrontManager.Instance.GenFactionPlayer(frontPlayer.faction, false, true, false, 0, frontPlayer.eventCollections);
             this.areaAgent = areaAgent;
             StartCoroutine(this.areaAgent.pawnRule.Execute(this));
         }

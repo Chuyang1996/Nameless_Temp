@@ -114,7 +114,7 @@ namespace Nameless.UI
 
                 this.seconds = 0.0f;
                 this.totalTime--;
-                EventTriggerManager.Instance.CheckRelateTimeEvent(this.totalTime);
+                EventTriggerManager.Instance.CheckRelateTimeEvent(this.totalTime, FrontManager.Instance.localPlayer);
                 DialogueTriggerManager.Instance.CheckTimeTriggerEvent(this.totalTime);
                 this.hour = this.totalTime / 60;
                 this.minute = this.totalTime % 60;

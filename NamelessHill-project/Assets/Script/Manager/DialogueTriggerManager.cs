@@ -26,7 +26,7 @@ namespace Nameless.Manager
                 List<Dialogue> dialogues = pawn.pawnAgent.dialogueGroup.dialogues;
                 for (int i = dialogues.Count-1; i >= 0; i--)
                 {
-                    if (dialogues[i].conditionDialogue.conditionType == ConditionType.GameStart)
+                    if (dialogues[i].conditionDialogue.conditionType == ConditionDialogueType.GameStart)
                     {
                         this.dialoguePawns.Push(new DialoguePawn( pawn, dialogues[i]));
                     }
@@ -49,7 +49,7 @@ namespace Nameless.Manager
                 List<Dialogue> dialogues = pawn.pawnAgent.dialogueGroup.dialogues;
                 for (int i = 0; i < dialogues.Count; i++)
                 {
-                    if (dialogues[i].conditionDialogue.conditionType == ConditionType.TimeFlowing && dialogues[i].conditionDialogue.time == time)
+                    if (dialogues[i].conditionDialogue.conditionType == ConditionDialogueType.TimeFlowing && dialogues[i].conditionDialogue.time == time)
                     {
                         this.dialoguePawns.Push(new DialoguePawn(pawn, dialogues[i]));
                     }

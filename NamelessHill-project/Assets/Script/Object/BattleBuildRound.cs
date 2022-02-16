@@ -38,7 +38,7 @@ namespace Nameless.DataMono
             //    bunkerAvatar.DefendBunker(this.pawnAttacker);
             //}
             float attackerTC = 0.0f;
-            EventTriggerManager.Instance.CheckPawnStartBattle(this.pawnAttacker.pawnAgent.pawn.id);
+            EventTriggerManager.Instance.CheckPawnStartBattle(this.pawnAttacker.pawnAgent.pawn.id, FrontManager.Instance.localPlayer);
             while (true)
             {
                 if (!GameManager.Instance.isPlay)

@@ -24,17 +24,17 @@ namespace Nameless.Agent
             {
                 long[] temp = StringToLongArray(buffData.parameter);
 
-                return new EventTimePass(buffData.Id, buffData.name, buffData.descrption, (int)temp[0]);
+                return new EventTimePass(buffData.Id, buffData.name, buffData.descrption, (int)temp[0], ConditionFactory.GetConditionById(buffData.condition));
             }
             else if ((EventTriggerType)buffData.type == EventTriggerType.MilitaryResLess)
             {
                 long[] temp = StringToLongArray(buffData.parameter);
-                return new EventMilitaryResLess(buffData.Id, buffData.name, buffData.descrption, (int)temp[0]);
+                return new EventMilitaryResLess(buffData.Id, buffData.name, buffData.descrption, (int)temp[0], ConditionFactory.GetConditionById(buffData.condition));
             }
             else if ((EventTriggerType)buffData.type == EventTriggerType.EnemyKillNum)
             {
                 long[] temp = StringToLongArray(buffData.parameter);
-                return new EventEnemyKillLess(buffData.Id, buffData.name, buffData.descrption, (int)temp[0]);
+                return new EventEnemyKillLess(buffData.Id, buffData.name, buffData.descrption, (int)temp[0], ConditionFactory.GetConditionById(buffData.condition));
             }
             else if ((EventTriggerType)buffData.type == EventTriggerType.PawnArriveOnArea)
             {
@@ -44,17 +44,17 @@ namespace Nameless.Agent
                 {
                     areaLocalIds.Add((int)temp[i]);
                 }
-                return new EventPawnArrive(buffData.Id, buffData.name, buffData.descrption, (long)temp[0], (int)temp[1], areaLocalIds);
+                return new EventPawnArrive(buffData.Id, buffData.name, buffData.descrption, (long)temp[0], (int)temp[1], areaLocalIds, ConditionFactory.GetConditionById(buffData.condition));
             }
             else if ((EventTriggerType)buffData.type == EventTriggerType.BuildOnArea)
             {
                 long[] temp = StringToLongArray(buffData.parameter);
-                return new EventBuildOnArea(buffData.Id, buffData.name, buffData.descrption, (BuildType)temp[0]);
+                return new EventBuildOnArea(buffData.Id, buffData.name, buffData.descrption, (BuildType)temp[0], ConditionFactory.GetConditionById(buffData.condition));
             }
             else if ((EventTriggerType)buffData.type == EventTriggerType.PawnEnterBattle)
             {
                 long[] temp = StringToLongArray(buffData.parameter);
-                return new EventPawnStartBattle(buffData.Id, buffData.name, buffData.descrption, temp[0]);
+                return new EventPawnStartBattle(buffData.Id, buffData.name, buffData.descrption, temp[0], ConditionFactory.GetConditionById(buffData.condition));
             }
             return null;
         }

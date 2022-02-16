@@ -39,8 +39,8 @@ namespace Nameless.DataMono
             //this.defender.pawnAgent.opponentIsInBattle = true;
             float attackerTC = 0.0f;
             float defenderTC = 0.0f;
-            EventTriggerManager.Instance.CheckPawnStartBattle(this.attacker.pawnAgent.pawn.id);
-            EventTriggerManager.Instance.CheckPawnStartBattle(this.defender.pawnAgent.pawn.id);
+            EventTriggerManager.Instance.CheckPawnStartBattle(this.attacker.pawnAgent.pawn.id, FrontManager.Instance.localPlayer);
+            EventTriggerManager.Instance.CheckPawnStartBattle(this.defender.pawnAgent.pawn.id, FrontManager.Instance.localPlayer);
             while (true)
             {
                 if (!GameManager.Instance.isPlay)

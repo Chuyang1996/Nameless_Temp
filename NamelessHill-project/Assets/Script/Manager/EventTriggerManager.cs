@@ -44,14 +44,14 @@ namespace Nameless.Manager {
             this.currentAllEvent.Clear();
             
         }
-        public void CheckRelateTimeEvent(int currentTime)
+        public void CheckRelateTimeEvent(int currentTime,FrontPlayer frontPlayer)
         {
             foreach (var child in this.eventTriggerDic)
             {
                 if (child.Key.type == EventTriggerType.TimePass)
                 {
                     int passTime = GameManager.Instance.totalTime - currentTime;
-                    if (((EventTimePass)child.Key).IsTrigger(passTime))
+                    if (((EventTimePass)child.Key).IsTrigger(passTime, frontPlayer))
                     {
                         for (int i = 0; i < child.Value.Count; i++)
                         {
@@ -71,7 +71,7 @@ namespace Nameless.Manager {
 
                     int lastAmmo = frontPlayer.GetMilitaryRes();
                     int afterAmmo = frontPlayer.GetMilitaryRes() + cost;
-                    if (((EventMilitaryResLess)child.Key).IsTrigger(lastAmmo,afterAmmo))
+                    if (((EventMilitaryResLess)child.Key).IsTrigger(lastAmmo,afterAmmo, frontPlayer))
                     {
                        for(int i = 0; i < child.Value.Count; i++)
                         {
@@ -91,7 +91,7 @@ namespace Nameless.Manager {
                 {
                     int lastEnemies = frontPlayer.GetEnemiesDieNum();
                     int afterEnemies = frontPlayer.GetEnemiesDieNum() + num;
-                    if (((EventEnemyKillLess)child.Key).IsTrigger(lastEnemies,afterEnemies))
+                    if (((EventEnemyKillLess)child.Key).IsTrigger(lastEnemies,afterEnemies, frontPlayer))
                     {
                         for (int i = 0; i < child.Value.Count; i++)
                         {
@@ -102,13 +102,13 @@ namespace Nameless.Manager {
             }
         }
 
-        public void CheckPawnArriveArea(long pawnId, int areaLocalId)
+        public void CheckPawnArriveArea(long pawnId, int areaLocalId, FrontPlayer frontPlayer)
         {
             foreach (var child in this.eventTriggerDic)
             {
                 if (child.Key.type == EventTriggerType.PawnArriveOnArea)
                 {
-                    if (((EventPawnArrive)child.Key).IsTrigger(pawnId, areaLocalId))
+                    if (((EventPawnArrive)child.Key).IsTrigger(pawnId, areaLocalId, frontPlayer))
                     {
                         for (int i = 0; i < child.Value.Count; i++)
                         {
@@ -119,13 +119,13 @@ namespace Nameless.Manager {
             }
         }
 
-        public void CheckEventBuildOnArea(BuildType buildType)
+        public void CheckEventBuildOnArea(BuildType buildType, FrontPlayer frontPlayer)
         {
             foreach (var child in this.eventTriggerDic)
             {
                 if (child.Key.type == EventTriggerType.BuildOnArea)
                 {
-                    if (((EventBuildOnArea)child.Key).IsTrigger(buildType))
+                    if (((EventBuildOnArea)child.Key).IsTrigger(buildType, frontPlayer))
                     {
                         for (int i = 0; i < child.Value.Count; i++)
                         {
@@ -136,13 +136,13 @@ namespace Nameless.Manager {
             }
         }
 
-        public void CheckPawnStartBattle(long pawnId)
+        public void CheckPawnStartBattle(long pawnId, FrontPlayer frontPlayer)
         {
             foreach (var child in this.eventTriggerDic)
             {
                 if (child.Key.type == EventTriggerType.PawnEnterBattle)
                 {
-                    if (((EventPawnStartBattle)child.Key).IsTrigger(pawnId))
+                    if (((EventPawnStartBattle)child.Key).IsTrigger(pawnId, frontPlayer))
                     {
                         for (int i = 0; i < child.Value.Count; i++)
                         {

@@ -1,3 +1,4 @@
+using Nameless.Manager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,7 @@ namespace Nameless.Data
 
         public void ExecuteEffect()
         {
+            FrontManager.Instance.UpdateEventOptionForAllPlayers(this.id);
             for(int i = 0; i < this.effects.Count; i++)
             {
                 this.effects[i].Execute();

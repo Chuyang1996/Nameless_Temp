@@ -1030,7 +1030,10 @@ namespace Nameless.DataMono
                 StaticObjGenManager.Instance.GenerateMat(this.CurrentArea, MatType.MilitryResource, this.pawnAgent.pawn.leftResNum);
                 FrontManager.Instance.localPlayer.EnemiesKillNum(1);//待修改
             }
+
+            this.pawnAgent.frontPlayer.eventCollections.AddDeathPawnId(this.pawnAgent.pawn.id);
             FrontManager.Instance.RemovePawn(this.pawnAgent.frontPlayer, this);
+            
             if (this.wire != null)
             {
                 Destroy(this.wire.gameObject);

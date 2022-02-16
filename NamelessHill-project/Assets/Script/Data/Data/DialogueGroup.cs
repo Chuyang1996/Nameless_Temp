@@ -20,7 +20,7 @@ namespace Nameless.Data
         }
     }
 
-    public enum ConditionType
+    public enum ConditionDialogueType
     {
         None = 0,
         GameStart = 1,
@@ -28,10 +28,10 @@ namespace Nameless.Data
     }
     public struct ConditionDialogue
     {
-        public ConditionType conditionType;
+        public ConditionDialogueType conditionType;
         public float time;
 
-        public ConditionDialogue(ConditionType type,float time)
+        public ConditionDialogue(ConditionDialogueType type,float time)
         {
             this.conditionType = type;
             this.time = time;

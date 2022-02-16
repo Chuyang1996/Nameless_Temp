@@ -292,6 +292,7 @@ namespace Nameless.Manager
                             (id,
                             this.eventTriggerData[id]["name"],
                             this.eventTriggerData[id]["descrption"],
+                            this.eventTriggerData[id]["condition"],
                             int.Parse(this.eventTriggerData[id]["type"]),
                             this.eventTriggerData[id]["parameter"]
                             );
