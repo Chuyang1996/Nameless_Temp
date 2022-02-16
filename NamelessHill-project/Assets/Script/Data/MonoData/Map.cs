@@ -49,13 +49,14 @@ namespace Nameless.DataMono
         public GameObject SupportLine;
         public GameObject BattleCollect;
         public GameObject PawnCollect;
+        public GameObject path;
         public float[,] areaMatrix;
         public List<InitArea> initAreas;
         public List<Area> areas;
-        public List<Path> paths;
         public Dictionary<NodeToNode, Path> pathDic = new Dictionary<NodeToNode, Path>();
 
         private List<int> defaultPoss;
+        private List<Path> paths = new List<Path>();
         public void InitMap(List<int> defaultPoss)
         {
             this.defaultPoss = defaultPoss;
@@ -63,6 +64,11 @@ namespace Nameless.DataMono
         // Start is called before the first frame update
         public void InitArea()
         {
+            foreach(Transform child in this.path.transform)
+            {
+                //Debug.LogError(child.name);
+                this.paths.Add(child.gameObject.GetComponent<Path>());
+            }
             this.bg.sprite = GameManager.Instance.accessbility ? spriteAccessbility : sprite;
             for(int i = 0;i<this.initAreas.Count;i++)
             {
@@ -76,6 +82,7 @@ namespace Nameless.DataMono
             for (int i = 0; i < paths.Count; i++)
             {
                 NodeToNode temp = new NodeToNode(paths[i].nodes[0], paths[i].nodes[paths[i].nodes.Length - 1]);
+                Debug.LogError(paths[i].gameObject.name+"£¬ " + paths[i].nodes[0].name+ ":" + paths[i].nodes[paths[i].nodes.Length - 1].name  + "   :   "+ temp.start.gameObject.name +":" + temp.end.gameObject.name);
                 this.pathDic.Add(temp, paths[i]);
 
             }
