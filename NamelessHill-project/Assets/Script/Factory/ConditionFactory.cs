@@ -38,7 +38,7 @@ namespace Nameless.Agent
             {
                 stringlist = stringlist.Remove(0, 1);
                 stringlist = stringlist.Remove(stringlist.Length - 1, 1);
-                array = stringlist.Contains(":") ? stringlist.Split(new char[] { ':' }) : new string[1] { stringlist };
+                array = stringlist.Contains(",") ? stringlist.Split(new char[] { ',' }) : new string[1] { stringlist };
             }
             else
             {
@@ -55,7 +55,7 @@ namespace Nameless.Agent
             {
                 stringlist = stringlist.Remove(0, 1);
                 stringlist = stringlist.Remove(stringlist.Length - 1, 1);
-                array = stringlist.Contains(",") ? stringlist.Split(new char[] { ',' }) : new string[1] { stringlist };
+                array = stringlist.Contains(":") ? stringlist.Split(new char[] { ':' }) : new string[1] { stringlist };
             }
             else
             {

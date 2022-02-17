@@ -194,6 +194,8 @@ namespace Nameless.Data
         public override void Execute()
         {
             PawnAvatar pawnAvatar = FrontManager.Instance.GetPawnAvatarByPlayer(this.pawnId, this.frontPlayer);
+            if (pawnAvatar == null)
+                return;
             this.frontPlayer.eventCollections.AddLeavePawn(pawnAvatar.pawnAgent.pawn);
             pawnAvatar.ClearPawn();
         }
@@ -215,8 +217,25 @@ namespace Nameless.Data
         public override void Execute()
         {
             Pawn pawn = this.frontPlayer.eventCollections.GetLeavePawn(this.pawnId);
+            if (pawn == null)
+                return;
             Area area = MapManager.Instance.currentMap.FindAreaByLocalId(this.areaId);
-            FrontManager.Instance.AddPawnOnArea(pawn, area, MapManager.Instance.currentMap.id, this.frontPlayer);
+            if (area.pawns.Count == 0)
+            {
+                FrontManager.Instance.AddPawnOnArea(pawn, area, MapManager.Instance.currentMap.id, this.frontPlayer);
+            }
+            else
+            {
+                List<Area> areas = MapManager.Instance.currentMap.areas;
+                for(int i = 0; i < areas.Count; i++)
+                {
+                    if (areas[i].pawns.Count == 0)
+                    {
+                        FrontManager.Instance.AddPawnOnArea(pawn, areas[i], MapManager.Instance.currentMap.id, this.frontPlayer);
+                        break;
+                    }
+                }
+            }
         }
     }
 }
