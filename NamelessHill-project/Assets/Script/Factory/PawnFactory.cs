@@ -64,6 +64,7 @@ namespace Nameless.Agent
                 pawnData.defend, 
                 crDefend,
                 pawnData.leftResNum,
+                pawnData.moveAvaliable,
                 StringToLongArray(pawnData.fightSkills),
                 StringToLongArray(pawnData.supportSkills),
                 StringToLongArray(pawnData.buildSkills),

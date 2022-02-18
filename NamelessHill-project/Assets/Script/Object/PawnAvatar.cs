@@ -297,6 +297,8 @@ namespace Nameless.DataMono
         }//����껭·��
         void AIBehavior(/*int goal*/)
         {
+            if (!this.pawnAgent.pawn.moveAvaliable)
+                return;
             if(this.State == PawnState.Wait)
             {
                 if (!FactionManager.Instance.IsSameSide(this.currentArea.playerBelong.faction, this.GetFaction()))//�����ǰ���򻹲���AI�� ������ȴ�
