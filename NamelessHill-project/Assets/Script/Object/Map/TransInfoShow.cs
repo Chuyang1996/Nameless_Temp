@@ -68,5 +68,6 @@ namespace Nameless.DataMono
         {
             GameManager.Instance.InitBattle();
         }
+
     }
 }

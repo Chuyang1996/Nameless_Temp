@@ -242,7 +242,7 @@ namespace Nameless.Manager {
             //打开战场界面
             this.battleView.gameObject.SetActive(true);
 
-            RTSCamera.Instance.ResetCameraPos();
+            //RTSCamera.Instance.ResetCameraPos();
             AudioManager.Instance.PlayMusic(MapManager.Instance.currentMapData.nameBgm);
 
             this.UpdateBattleToPlayer();

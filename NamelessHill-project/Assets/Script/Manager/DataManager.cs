@@ -623,6 +623,7 @@ namespace Nameless.Manager
                             long.Parse(this.mapData[id]["nextCampId"]),
                             this.mapData[id]["transInfoShowName"],
                             this.mapData[id]["defaultInitPos"],
+                            this.mapData[id]["cameraPos"],
                             this.mapData[id]["mapBgm"]
                             );
                     return skill;
