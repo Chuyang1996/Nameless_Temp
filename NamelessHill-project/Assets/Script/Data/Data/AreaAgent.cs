@@ -1,4 +1,5 @@
 using Nameless.DataMono;
+using Nameless.Manager;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -86,6 +87,10 @@ namespace Nameless.Data
                 {
                     yield return null;
                 }
+                while (!GameManager.Instance.isPlay)
+                {
+                    yield return null;
+                }
                 area.GenPawn(currentGroup.pawns[i].id);
                 while (area.pawns.Count > 0)
                 {
@@ -135,6 +140,10 @@ namespace Nameless.Data
                     for (int i = 0; i < currentGroup.pawns.Count; i++)
                     {
                         while (area.pawns.Count > 0)
+                        {
+                            yield return null;
+                        } 
+                        while (!GameManager.Instance.isPlay)
                         {
                             yield return null;
                         }

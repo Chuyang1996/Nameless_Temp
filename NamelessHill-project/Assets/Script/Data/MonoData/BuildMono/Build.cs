@@ -12,11 +12,11 @@ namespace Nameless.Data
         //AmmoBuild = 0,
         //MeidicalBuild = 1,
         None = 0,
-        Obstacle = 1,
-        Bunker = 2,
-        Cannon = 3,
-        Ammo = 4,
-        Medicine = 5,
+        Obstacle = 1,//ÕÏ°­
+        Bunker = 2,//ÑÚÌå
+        Cannon = 3,//ÆÈ»÷ÅÚ
+        Ammo = 4,//µ¯Ò©
+        Medicine = 5,//Ò©Æ·
     }
     abstract public class Build
     {

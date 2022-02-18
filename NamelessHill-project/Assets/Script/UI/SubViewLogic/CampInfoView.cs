@@ -36,8 +36,8 @@ namespace Nameless.UI
                 CampManager.Instance.campScene.ResetAllBtnState();
                 for (int i = 0; i < CampManager.Instance.GetPawnCamps().Count; i++)
                 {
-                    if (hitBtn.collider.gameObject == CampManager.Instance.GetPawnCamps()[i].btnDialogue.gameObject)
-                        CampManager.Instance.GetPawnCamps()[i].btnDialogue.GetComponent<SpriteRenderer>().sprite = CampManager.Instance.GetPawnCamps()[i].dialogueImMark;
+                    if (hitBtn.collider.gameObject == CampManager.Instance.GetPawnCamps()[i].gameObject)
+                        CampManager.Instance.GetPawnCamps()[i].pawnIcon.sprite = CampManager.Instance.GetPawnCamps()[i].pawnSpriteMark;
 
                 }
                 if (hitBtn.collider.gameObject == CampManager.Instance.campScene.lightBtn.gameObject)
@@ -86,9 +86,9 @@ namespace Nameless.UI
                     {
                         for (int i = 0; i < CampManager.Instance.GetPawnCamps().Count; i++)
                         {
-                            if (hitBtn.collider.gameObject == CampManager.Instance.GetPawnCamps()[i].btnDialogue.gameObject)
+                            if (hitBtn.collider.gameObject == CampManager.Instance.GetPawnCamps()[i].gameObject)
                             {
-                                AudioManager.Instance.PlayAudio(CampManager.Instance.GetPawnCamps()[i].btnDialogue.transform, AudioConfig.uiRemind);
+                                AudioManager.Instance.PlayAudio(CampManager.Instance.GetPawnCamps()[i].transform, AudioConfig.uiRemind);
                                 CampManager.Instance.GetPawnCamps()[i].ClickToConversation();
                                 break;
                             }

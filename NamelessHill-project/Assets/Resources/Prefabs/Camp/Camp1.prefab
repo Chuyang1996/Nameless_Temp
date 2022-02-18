@@ -705,6 +705,10 @@ MonoBehaviour:
   bookMark: {fileID: 21300000, guid: 6199a2b592d744a4f9de1ea103e4a4d6, type: 3}
   light: {fileID: 21300000, guid: b9bd0f9885e223a4ea190b6d10f2abbf, type: 3}
   lightMark: {fileID: 21300000, guid: a31d45060caf81a43a51a43cb22b5fef, type: 3}
+  dialogueIm: {fileID: -770413965161706305, guid: d63499dfb031c5941abb90e81797c3dd, type: 3}
+  moraleUp: {fileID: -4764484233546665588, guid: d63499dfb031c5941abb90e81797c3dd, type: 3}
+  moraleMiddle: {fileID: 4014287730522540239, guid: d63499dfb031c5941abb90e81797c3dd, type: 3}
+  moraleDown: {fileID: 8049885976776599914, guid: d63499dfb031c5941abb90e81797c3dd, type: 3}
   pawnsPos:
   - {fileID: 7633837238028500473}
   - {fileID: 7633837238897928845}
