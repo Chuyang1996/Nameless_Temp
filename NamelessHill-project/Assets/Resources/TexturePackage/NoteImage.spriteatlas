@@ -44,7 +44,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: ca1e4b05faeeaca41a2379076316bdc9, type: 3}
-    totalSpriteSurfaceArea: 18031408
+    totalSpriteSurfaceArea: 23492393
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -53,21 +53,32 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2d053450171e85b4288443009345475b, type: 3}
   - {fileID: 21300000, guid: 0b0eb460f8060434bbd536388703588e, type: 3}
   - {fileID: 21300000, guid: aade10b030b51ff478eb4244a834e7a2, type: 3}
+  - {fileID: 21300000, guid: bac45c41076c4fd448070719e9f1d136, type: 3}
   - {fileID: 21300000, guid: e8da6d61bae50ca428a561b93394528f, type: 3}
+  - {fileID: 21300000, guid: 5c6060c1739d9544daca7b51caf02291, type: 3}
   - {fileID: 21300000, guid: dd2aee22c54c71d48b2889be422088d6, type: 3}
+  - {fileID: 21300000, guid: 1ba58a8244aa0fd46bf175fc2bc22482, type: 3}
+  - {fileID: 21300000, guid: e5775f23d828b8543985e219f1169e19, type: 3}
+  - {fileID: 21300000, guid: 72873a242d9b1fb43b0d59f899bb49a3, type: 3}
   - {fileID: 21300000, guid: feaa8485b9efc6247b1e8b93dcd97277, type: 3}
+  - {fileID: 21300000, guid: 4585e2c51ee32ea44b06c14df0e9ff3e, type: 3}
+  - {fileID: 21300000, guid: 330c71865d159244e95b139600432cb6, type: 3}
   - {fileID: 21300000, guid: 9357e4f69aa61a94e8cb6fb203fa8154, type: 3}
   - {fileID: 21300000, guid: a28d195746241b84492d0c24fdc7fbe7, type: 3}
   - {fileID: 21300000, guid: 382c24388e763bb49872619a4b3d0c4d, type: 3}
   - {fileID: 21300000, guid: 4c7b864860bfa34438751ccc8a792f31, type: 3}
   - {fileID: 21300000, guid: aa52c5a994210e844b8fb43843e5045c, type: 3}
+  - {fileID: 21300000, guid: bffd080a20ec4f64faaa38097b511a6a, type: 3}
   - {fileID: 21300000, guid: 5d289b2a293237949a3106bc88e544d7, type: 3}
   - {fileID: 21300000, guid: 1aba784a70ca09a4d967a137eccc9768, type: 3}
+  - {fileID: 21300000, guid: 6ce1581bf5bb410439d3253523d75777, type: 3}
   - {fileID: 21300000, guid: 175b752be764eb649b727a1cac30f355, type: 3}
+  - {fileID: 21300000, guid: 6be1af3c0e8f08c40bf314edb0730ad5, type: 3}
   - {fileID: 21300000, guid: 7c47e39c7da122e4ca4821e5b881c774, type: 3}
   - {fileID: 21300000, guid: 6b565cdcb6ba0d1448de0d5edc8302cb, type: 3}
   - {fileID: 21300000, guid: f207052d4bc829f4695d68333c698755, type: 3}
   - {fileID: 21300000, guid: 9601150e5a0bd424cbb57473ec4e531b, type: 3}
+  - {fileID: 21300000, guid: 764db52e98ee2c4439743769777b7f4a, type: 3}
   - {fileID: 21300000, guid: dff0a03ece63ebe40b6603f89e480543, type: 3}
   - {fileID: 21300000, guid: 48778a4ee78fe7f41ba43c2db5e6badf, type: 3}
   - {fileID: 21300000, guid: a1289dcec4fca61418014a8299239f0f, type: 3}
@@ -77,21 +88,32 @@ SpriteAtlas:
   - JournalImage_Liu_VillageBoy_A_Text_02
   - map
   - JournalImage_Liu_VillageBoy_A_Text_04
-  - JournalImage_Liu_DangerousMission_Image_02
-  - JournalImage_Liu_DefenseCollasped_Image
+  - NoteTemplate_Default_Day1
   - JournalImage_Liu_DangerousMission_Image_01
+  - NoteTemplate_Villager_Skip
+  - JournalImage_Liu_DefenseCollasped_Image
+  - NoteTemplate_Driver_Skipped
+  - NoteTemplate_Villager_RequestMedicine
+  - NoteTemplate_Driver_3
+  - JournalImage_Liu_DangerousMission_Image_02
+  - NoteTemplate_Villager_NoRequest
+  - NoteTemplate_Halo_1
   - JournalImage_Liu_VillageBoy_B_Image01
   - JournalImage_Liu_VillageBoy_A_Text_03
   - JournalImage_Liu_VillageBoy_A_Text_01
   - 1
   - JournalImage_Liu_VillageBoy_B_Image
+  - NoteTemplate_Halo_Skipped
   - mapScene
   - JournalImage_Liu_VillageBoy_A_Text_05
+  - NoteTemplate_Driver_2
   - JournalImage_Liu_VillageBoy_A_Image
+  - NoteTemplate_Halo_2
   - JournalImage_Liu_DefenseCollasped_Image_02
   - 3
   - Day1_Cutscene
   - JournalImage_Liu_DangerousMission_Image
+  - NoteTemplate_Driver_1
   - Mapscene2
   - 2
   - JournalImage_Liu_VillageBoy_B_Image02
