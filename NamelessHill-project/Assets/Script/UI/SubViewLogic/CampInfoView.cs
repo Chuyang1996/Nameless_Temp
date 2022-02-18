@@ -59,6 +59,7 @@ namespace Nameless.UI
             else
             {
                 this.selectPanel.SetActive(false);
+                CampManager.Instance.campScene.ResetAllBtnState();
             }
         }
         private void MouseClickOnItem()
