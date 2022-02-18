@@ -57,18 +57,19 @@ namespace Nameless.Data
                 if (curLevel >= 3)
                 {
                     CampManager.Instance.campScene.FindPawnInCamp(pawnId).InitMorale((maxMorale + maxMorale / 2) / 2);
-                    CampManager.Instance.campScene.FindPawnInCamp(pawnId).btnDialogue.GetComponent<SpriteRenderer>().sprite = CampManager.Instance.campScene.moraleUp;
+                    CampManager.Instance.campScene.FindPawnInCamp(pawnId).tipIcon.sprite = CampManager.Instance.campScene.moraleUp;
                 }
                 else if (curLevel == 2)
                 {
                     CampManager.Instance.campScene.FindPawnInCamp(pawnId).InitMorale((maxMorale / 4 + maxMorale / 2) / 2);
-                    CampManager.Instance.campScene.FindPawnInCamp(pawnId).btnDialogue.GetComponent<SpriteRenderer>().sprite = CampManager.Instance.campScene.moraleMiddle;
+                    CampManager.Instance.campScene.FindPawnInCamp(pawnId).tipIcon.sprite = CampManager.Instance.campScene.moraleMiddle;
                 }
                 else if (curLevel <= 1)
                 {
                     CampManager.Instance.campScene.FindPawnInCamp(pawnId).InitMorale((maxMorale / 4) / 2);
-                    CampManager.Instance.campScene.FindPawnInCamp(pawnId).btnDialogue.GetComponent<SpriteRenderer>().sprite = CampManager.Instance.campScene.moraleDown;
+                    CampManager.Instance.campScene.FindPawnInCamp(pawnId).tipIcon.sprite = CampManager.Instance.campScene.moraleDown;
                 }
+                CampManager.Instance.campScene.FindPawnInCamp(pawnId).tipEffectResultAnim.Play();
             }
         }
     }

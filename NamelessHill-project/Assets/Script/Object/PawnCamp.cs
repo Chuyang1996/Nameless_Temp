@@ -15,6 +15,9 @@ namespace Nameless.DataMono
         public GameObject leftSide;
         public GameObject rightSide;
         public SpriteRenderer pawnIcon;
+        public SpriteRenderer tipIcon;
+        public Animation tipEffectResultAnim;
+
 
         public Pawn pawn;
         public void Init(Pawn pawn)
@@ -40,8 +43,7 @@ namespace Nameless.DataMono
         }
         public void RefreshPawnCamp()
         {
-            if ((!this.pawn.conversationMapDic.ContainsKey(CampManager.Instance.currentCampData.id) || !ConversationManager.Instance.CanGoConversation(this.pawn.conversationMapDic[CampManager.Instance.currentCampData.id])) 
-                && 
+            if (/*(!this.pawn.conversationMapDic.ContainsKey(CampManager.Instance.currentCampData.id) || !ConversationManager.Instance.CanGoConversation(this.pawn.conversationMapDic[CampManager.Instance.currentCampData.id])) &&*/ 
                 (this.pawn.conversationsInCamp.Count == 0 || !ConversationManager.Instance.CanGoConversation(this.pawn.conversationsInCamp.Peek())))//待修改 根据地图ID和其他相关的条件去判断是否有对话//待修改 根据地图ID去索引
                 this.btnDialogue.SetActive(false);
             else
@@ -64,7 +66,7 @@ namespace Nameless.DataMono
                 ConversationManager.Instance.GoToConversation(this.pawn.conversationMapDic[CampManager.Instance.currentCampData.id]);
             }
 
-            if(this.pawn.conversationsInCamp.Count == 0 && !this.pawn.conversationMapDic.ContainsKey(CampManager.Instance.currentCampData.id))
+            if(this.pawn.conversationsInCamp.Count == 0 /*&& !this.pawn.conversationMapDic.ContainsKey(CampManager.Instance.currentCampData.id)*/)
                 this.btnDialogue.SetActive(false);
         }
 

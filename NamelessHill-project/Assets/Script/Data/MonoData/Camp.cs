@@ -50,7 +50,7 @@ namespace Nameless.DataMono
         {
             for (int i = 0; i < this.allCampPawns.Count; i++)
             {
-                this.allCampPawns[i].pawnIcon.sprite = this.allCampPawns[i].pawnSpriteMark;
+                this.allCampPawns[i].pawnIcon.sprite = this.allCampPawns[i].pawnSprite;
             }
             this.noteBtn.GetComponent<SpriteRenderer>().sprite = this.book;
             this.lightBtn.GetComponent<SpriteRenderer>().sprite = this.light;

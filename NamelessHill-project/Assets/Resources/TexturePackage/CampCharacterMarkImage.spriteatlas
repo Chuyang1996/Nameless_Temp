@@ -44,21 +44,25 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: a3cbd010f2f33fe459d4cbd5ce544ab9, type: 3}
-    totalSpriteSurfaceArea: 1250000
+    totalSpriteSurfaceArea: 3750000
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 9b54585057e3a7649a38521829726f60, type: 3}
   - {fileID: 21300000, guid: e52b9bc36ede20840ab3602c7a60d44e, type: 3}
   - {fileID: 21300000, guid: 25fee537f9f12fe4e97f4b0ac8ee114c, type: 3}
   - {fileID: 21300000, guid: d5dd5b1affb8261439cedae8e592bdf1, type: 3}
+  - {fileID: 21300000, guid: d646f48b33b6b51428afa20856f845c8, type: 3}
   - {fileID: 21300000, guid: d415426db1e31614785f7853f863f76e, type: 3}
   - {fileID: 21300000, guid: ae4dd97e8d7aaf14cb0f627734c97f5d, type: 3}
   m_PackedSpriteNamesToIndex:
+  - commander
   - medical
   - signalman
   - sniper
+  - enemy
   - soldier
   - engineer
   m_RenderDataMap: {}
