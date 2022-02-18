@@ -31,6 +31,10 @@ namespace Nameless.DataMono
             this.btnDialogue.transform.localPosition = new Vector3(0, 0, 0);
             this.btnDialogue.SetActive(true);
             this.pawnIcon.sprite = pawn.campIcon;
+
+            this.pawnSprite = pawn.campIcon;
+            this.pawnSpriteMark = pawn.campMarkIcon;
+
             this.pawn = pawn;
 
         }

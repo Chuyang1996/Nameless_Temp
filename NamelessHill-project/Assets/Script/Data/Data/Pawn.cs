@@ -245,6 +245,7 @@ namespace Nameless.Data
         public string animPrefab;
         public Sprite selectIcon;
         public Sprite campIcon;
+        public Sprite campMarkIcon;
         public int campPosIndex;
         public int leftOrRight;
         public Dictionary<long, Conversation> conversationMapDic = new Dictionary<long, Conversation>();//后面会改成new Dictionary<long, List<Conversation>>()将符合条件的选出
@@ -309,6 +310,7 @@ namespace Nameless.Data
             this.animPrefab = animPrefab;
             this.selectIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterImage, selectIcon);
             this.campIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterCampImage, campIcon);
+            this.campMarkIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterCampMarkImage, campIcon);
             this.campPosIndex = campPosIndex;
             this.leftOrRight = btnLRpos;
             this.conversationMapDic = conversationMapDic;
