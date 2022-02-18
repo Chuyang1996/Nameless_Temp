@@ -80,9 +80,13 @@ namespace Nameless.Data
                 yield return null;
             }
             this.isProcess = true;
-            yield return new WaitForSecondsRealtime(this.currentGroup.waitGenerateTime);
+            yield return new WaitForSecondsRealtime(this.currentGroup.waitGenerateTime * 1.25f);
             for (int i = 0; i < currentGroup.pawns.Count; i++)
             {
+                while (area.pawns.Count > 0)
+                {
+                    yield return null;
+                }
                 while (area.pawns.Count > 0)
                 {
                     yield return null;
@@ -91,12 +95,13 @@ namespace Nameless.Data
                 {
                     yield return null;
                 }
-                area.GenPawn(currentGroup.pawns[i].id);
-                while (area.pawns.Count > 0)
+
+                yield return new WaitForSecondsRealtime(this.currentGroup.durationTime * 1.25f);
+                while (!GameManager.Instance.isPlay)
                 {
                     yield return null;
                 }
-                yield return new WaitForSecondsRealtime(this.currentGroup.durationTime);
+                area.GenPawn(currentGroup.pawns[i].id);
             }
         }
 
@@ -135,7 +140,7 @@ namespace Nameless.Data
                 {
                     this.isProcess = true;
                     this.currentGroup = this.pawnGroups[this.groupIndex];
-                    yield return new WaitForSecondsRealtime(this.currentGroup.waitGenerateTime);
+                    yield return new WaitForSecondsRealtime(this.currentGroup.waitGenerateTime * 1.25f);
 
                     for (int i = 0; i < currentGroup.pawns.Count; i++)
                     {
@@ -143,16 +148,22 @@ namespace Nameless.Data
                         {
                             yield return null;
                         } 
+
+                        
+                        while (area.pawns.Count > 0)
+                        {
+                            yield return null;
+                        }
+                        while (!GameManager.Instance.isPlay)
+                        {
+                            yield return null;
+                        }
+                        yield return new WaitForSecondsRealtime(this.currentGroup.durationTime * 1.25f);
                         while (!GameManager.Instance.isPlay)
                         {
                             yield return null;
                         }
                         this.pawnAvatars.Add(area.GenPawn(currentGroup.pawns[i].id));
-                        while (area.pawns.Count > 0)
-                        {
-                            yield return null;
-                        }
-                        yield return new WaitForSecondsRealtime(this.currentGroup.durationTime);
                     }
                     this.isProcess = false;
                     this.groupIndex++;
