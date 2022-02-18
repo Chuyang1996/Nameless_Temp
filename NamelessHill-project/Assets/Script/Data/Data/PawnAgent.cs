@@ -271,6 +271,23 @@ namespace Nameless.Data
         #endregion
 
         #region//角色战斗
+        public void CheckPawnOpponentsList()
+        {
+            for (int i = 0; i < this.opponents.Count; i++)
+            {
+                if (this.opponents[i] == null)
+                {
+                    this.opponents.RemoveAt(i);
+                }
+            }
+            for (int i = 0; i < this.opponents.Count; i++)
+            {
+                if (this.opponents[i] == null)
+                {
+                    this.opponents.RemoveAt(i);
+                }
+            }
+        }
         public void ChooseMyOpponents(PawnAvatar mine)//选择其他正在打我的敌人战斗
         {
             int index = UnityEngine.Random.Range(0, this.opponents.Count - 1);

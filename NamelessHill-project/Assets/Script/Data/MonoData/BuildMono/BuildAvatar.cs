@@ -74,7 +74,23 @@ namespace Nameless.DataMono
             }
 
         }
-
+        public void CheckPawnOpponentsList()
+        {
+            for (int i = 0; i < this.pawnOpponents.Count; i++)
+            {
+                if (this.pawnOpponents[i] == null)
+                {
+                    this.pawnOpponents.RemoveAt(i);
+                }
+            }
+            for (int i = 0; i < this.pawnOpponents.Count; i++)
+            {
+                if (this.pawnOpponents[i] == null)
+                {
+                    this.pawnOpponents.RemoveAt(i);
+                }
+            }
+        }
         public virtual void ExecuteBuildEffect()
         {
 
