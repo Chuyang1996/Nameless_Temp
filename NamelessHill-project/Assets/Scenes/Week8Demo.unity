@@ -4353,8 +4353,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efe55d5679217144b8dafc8747b2d079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeX: 30
-  rangeY: 30
+  rangeX: 50
+  rangeY: 50
   orthographicSizeMin: 1.5
   orthographicSizeMax: 25
   speed: 10
