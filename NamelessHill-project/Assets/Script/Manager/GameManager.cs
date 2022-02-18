@@ -228,8 +228,8 @@ namespace Nameless.Manager {
             }
 
             //待修改 现在先默认设置一个敌人角色
-            Pawn pawn5 = PawnFactory.GetPawnById(1005);
-            FrontManager.Instance.AddPawnOnArea(pawn5, MapManager.Instance.currentMap.FindAreaByLocalId(14), MapManager.Instance.currentMapData.id, enemyComputer);
+            //Pawn pawn5 = PawnFactory.GetPawnById(1005);
+            //FrontManager.Instance.AddPawnOnArea(pawn5, MapManager.Instance.currentMap.FindAreaByLocalId(14), MapManager.Instance.currentMapData.id, enemyComputer);
             #region//获取本次场景里的事件
 
 

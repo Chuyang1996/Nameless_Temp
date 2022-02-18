@@ -52,7 +52,7 @@ namespace Nameless.DataMono
                     //if (this.attacker == null || this.defender == null)
                     //    break;
 
-                    if (this.attacker == null || this.defender == null || this.IsTheBattleEnd())
+                    if (this.IsTheBattleEnd())
                         break;
                     this.attacker.CalcuateBattleInfo();//计算本次战斗实际的角色数据
                     this.defender.CalcuateBattleInfo();
@@ -122,7 +122,19 @@ namespace Nameless.DataMono
         bool IsTheBattleEnd()
         {
             bool isEnd = false;
-            if (this.defender.IsFail())
+            if(this.defender == null)
+            {
+                this.attacker.pawnAgent.CheckPawnOpponentsList();
+                this.attacker.CheckIfBattleResult();
+                isEnd = true;
+            }
+            else if(this.attacker == null)
+            {
+                this.defender.pawnAgent.CheckPawnOpponentsList();
+                this.defender.CheckIfBattleResult();
+                isEnd = true;
+            }
+            else if (this.defender.IsFail())
             {
                 this.defender.pawnAgent.opponents.Remove(this.attacker);
                 this.defender.pawnAgent.battleSideDic.Remove(this.attacker);
