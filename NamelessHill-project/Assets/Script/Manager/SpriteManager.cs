@@ -9,8 +9,9 @@ namespace Nameless.Manager
         EventImage = 0,
         CharacterImage = 1,
         CharacterCampImage = 2,
-        NoteImage = 3,
-        IconImage = 4,
+        CharacterCampMarkImage = 3,
+        NoteImage = 4,
+        IconImage = 5,
     }
     public class SpriteManager : Singleton<SpriteManager>
     {
@@ -20,6 +21,7 @@ namespace Nameless.Manager
             { "EventImage", AtlasType.EventImage},
             { "CharacterImage", AtlasType.CharacterImage},
             { "CampCharacterImage", AtlasType.CharacterCampImage},
+            { "CampCharacterMarkImage", AtlasType.CharacterCampMarkImage},
             { "NoteImage", AtlasType.NoteImage},
             { "IconImage", AtlasType.IconImage},
          };

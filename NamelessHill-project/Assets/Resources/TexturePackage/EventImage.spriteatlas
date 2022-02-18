@@ -44,7 +44,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 2109f14ec77415744aaee59c0b1e2559, type: 3}
-    totalSpriteSurfaceArea: 4625918
+    totalSpriteSurfaceArea: 5863418
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -57,10 +57,13 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 4c4fe6861a266544685bcd11595b7c3c, type: 3}
   - {fileID: 21300000, guid: 72f84a87426fe744295baed05910e243, type: 3}
   - {fileID: 21300000, guid: a1f92c87fed7cb146a016304ada961fc, type: 3}
+  - {fileID: 21300000, guid: 005ee0d7586777d41babc115110566c6, type: 3}
+  - {fileID: 21300000, guid: 23622229afbfb6e4e91343be3ac7ac21, type: 3}
   - {fileID: 21300000, guid: 075b22d90c123e748987b8c738812620, type: 3}
   - {fileID: 21300000, guid: 476e011a417fc04458e3a7c92502f25a, type: 3}
   - {fileID: 21300000, guid: 4511817af093466448304d41f4e50255, type: 3}
   - {fileID: 21300000, guid: cb5b2d0ca936a724596ff1751e254728, type: 3}
+  - {fileID: 21300000, guid: b7c8852d1af06614cb5f58e0444a707f, type: 3}
   - {fileID: 21300000, guid: e7b9cdcd93a1d72458b6c6f8dc355a8c, type: 3}
   - {fileID: 21300000, guid: 713f3c9f2e40f0e45911093f0c98875a, type: 3}
   - {fileID: 21300000, guid: ef95e2ef603de964f90819afa2fc8bd3, type: 3}
@@ -72,10 +75,13 @@ SpriteAtlas:
   - NewTutorial_06
   - NewTutorial_07
   - Defensive_Collasped_01
+  - Tutorial2.0_08
+  - Tutorial2.0_07
   - NewTutorial_01
   - Village_Teenager_01
   - Tutorial_02
   - NewTutorial_02
+  - Tutorial2.0_02
   - Tutorial_01
   - NewTutorial_03
   - NewTutorial_05
