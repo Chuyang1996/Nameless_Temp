@@ -240,6 +240,7 @@ namespace Nameless.Data
 
         public Dictionary<long, DialogueGroup> dialogueDic = new Dictionary<long, DialogueGroup>();
 
+        public bool moveAvaliable;
 
         public string animPrefab;
         public Sprite selectIcon;
@@ -264,7 +265,8 @@ namespace Nameless.Data
             float hit, float crHit, 
             float dex, float crDex, 
             float defend, float crDefend, 
-            int leftResNum, 
+            int leftResNum,
+            bool moveAvaliable,
             List<long> fightSkillIds, 
             List<long> supportSkillIds, 
             List<long> buildSkillIds, 
@@ -294,6 +296,7 @@ namespace Nameless.Data
             this.curDex = this.maxDex * crDex;
             this.curDefend = this.maxDex * crDefend;
             this.leftResNum = leftResNum;
+            this.moveAvaliable = moveAvaliable;
 
             this.fallBackTxt = "Fall back!! Fall back!!";
             this.pinchTxt = "We are attacked by two sides!!";

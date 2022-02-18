@@ -29,6 +29,7 @@ namespace Nameless.ConfigData
         public float crDex;
 
         public int leftResNum;
+        public bool moveAvaliable;
 
         public string fightSkills;
         public string supportSkills;
@@ -66,6 +67,7 @@ namespace Nameless.ConfigData
             float dex,
             float crDex,
             int leftResNum,
+            bool moveAvaliable,
             string fightSkills,
             string supportSkills,
             string buildSkills,
@@ -99,6 +101,7 @@ namespace Nameless.ConfigData
             this.crHit = crHit;
             this.dex = dex;
             this.leftResNum = leftResNum;
+            this.moveAvaliable = moveAvaliable;
             this.crDex = crDex;
             this.fightSkills = fightSkills;
             this.supportSkills = supportSkills;

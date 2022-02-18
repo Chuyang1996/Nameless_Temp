@@ -96,6 +96,10 @@ namespace Nameless.Controller
             this.transform.position = new Vector3(0,0,-10);
             Camera.main.orthographicSize = 17;
         }
+        public void SetCameraPos(Vector2 pos)
+        {
+            this.transform.position = new Vector3(pos.x, pos.y, -10);
+        }
         IEnumerator TransitionToCoroutine(Stack<DialoguePawn> transitionTargets)//´ýÐÞ¸Ä
         {
             if (transitionTargets.Count > 0)

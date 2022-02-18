@@ -15009,6 +15009,7 @@ MonoBehaviour:
   SupportLine: {fileID: 0}
   BattleCollect: {fileID: 0}
   PawnCollect: {fileID: 0}
+  path: {fileID: 0}
   initAreas: []
   areas:
   - {fileID: 184838758}
@@ -15039,52 +15040,6 @@ MonoBehaviour:
   - {fileID: 1334797657}
   - {fileID: 1647574336}
   - {fileID: 1175302454}
-  paths:
-  - {fileID: 1814082052}
-  - {fileID: 540426346}
-  - {fileID: 803963582}
-  - {fileID: 276030554}
-  - {fileID: 826561950}
-  - {fileID: 1732368679}
-  - {fileID: 612395275}
-  - {fileID: 1444266463}
-  - {fileID: 1512596391}
-  - {fileID: 1101077095}
-  - {fileID: 1804923205}
-  - {fileID: 1043162754}
-  - {fileID: 413282031}
-  - {fileID: 2069357447}
-  - {fileID: 100402526}
-  - {fileID: 712555443}
-  - {fileID: 2023332239}
-  - {fileID: 613265126}
-  - {fileID: 1680906236}
-  - {fileID: 623873418}
-  - {fileID: 1254581752}
-  - {fileID: 1996570563}
-  - {fileID: 957695643}
-  - {fileID: 134215719}
-  - {fileID: 588979378}
-  - {fileID: 1660435841}
-  - {fileID: 1687056319}
-  - {fileID: 191295000}
-  - {fileID: 780048165}
-  - {fileID: 1980717977}
-  - {fileID: 1945867497}
-  - {fileID: 565958093}
-  - {fileID: 367648984}
-  - {fileID: 884790448}
-  - {fileID: 1915992651}
-  - {fileID: 1399355647}
-  - {fileID: 230356171}
-  - {fileID: 204276651}
-  - {fileID: 2105567476}
-  - {fileID: 536991510}
-  - {fileID: 336585644}
-  - {fileID: 88855042}
-  - {fileID: 2035615633}
-  - {fileID: 1292325322}
-  - {fileID: 85536225}
 --- !u!1 &1894673883
 GameObject:
   m_ObjectHideFlags: 0
@@ -18763,7 +18718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5843025246346246622, guid: d7229d70c6376d247b3ed5e3fd29297a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.144287
+      value: -3.1442566
       objectReference: {fileID: 0}
     - target: {fileID: 5843025246346246622, guid: d7229d70c6376d247b3ed5e3fd29297a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

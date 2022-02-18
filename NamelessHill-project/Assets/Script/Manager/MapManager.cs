@@ -1,4 +1,5 @@
 using Nameless.ConfigData;
+using Nameless.Controller;
 using Nameless.DataMono;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,8 @@ namespace Nameless.Manager
             if (this.currentTransInfoShow != null)
                 DestroyImmediate(this.currentTransInfoShow.gameObject);
             this.currentTransInfoShow = Instantiate(Resources.Load(loadPathTransInfoShow + mapData.transInfoShowName) as GameObject, this.gameObject.transform).GetComponent<TransInfoShow>();
-            this.currentTransInfoShow.transform.localPosition = new Vector3(0, 0, 0);
+            RTSCamera.Instance.SetCameraPos(mapData.cameraPos);
+            this.currentTransInfoShow.transform.localPosition = new Vector3(mapData.cameraPos.x, mapData.cameraPos.y, 0);
         }
         public void GenerateMap(MapData mapData)
         {

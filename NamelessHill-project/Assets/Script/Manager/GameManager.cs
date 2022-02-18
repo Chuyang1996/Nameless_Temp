@@ -167,8 +167,8 @@ namespace Nameless.Manager {
             Pawn pawn2 = PawnFactory.GetPawnById(1002);
             Pawn pawn3 = PawnFactory.GetPawnById(1003);
             Pawn pawn4 = PawnFactory.GetPawnById(1004);
-            Pawn pawn9 = PawnFactory.GetPawnById(1009);
-            Pawn pawn10 = PawnFactory.GetPawnById(1010);
+            Pawn pawn9 = PawnFactory.GetPawnById(1005);
+            Pawn pawn10 = PawnFactory.GetPawnById(1006);
             pawns.Add(pawn1);
             pawns.Add(pawn2);
             pawns.Add(pawn3);
@@ -242,7 +242,7 @@ namespace Nameless.Manager {
             //打开战场界面
             this.battleView.gameObject.SetActive(true);
 
-            RTSCamera.Instance.ResetCameraPos();
+            //RTSCamera.Instance.ResetCameraPos();
             AudioManager.Instance.PlayMusic(MapManager.Instance.currentMapData.nameBgm);
 
             this.UpdateBattleToPlayer();

@@ -136,6 +136,7 @@ namespace Nameless.Manager
                             float.Parse(this.pawnData[id]["dex"]),
                             float.Parse(this.pawnData[id]["crDex"]),
                             int.Parse(this.pawnData[id]["leftResNum"]),
+                            bool.Parse(this.pawnData[id]["moveAvaliable"]),
                             this.pawnData[id]["fightSkill"],
                             this.pawnData[id]["supportSkill"],
                             this.pawnData[id]["buildSkill"],
@@ -623,6 +624,7 @@ namespace Nameless.Manager
                             long.Parse(this.mapData[id]["nextCampId"]),
                             this.mapData[id]["transInfoShowName"],
                             this.mapData[id]["defaultInitPos"],
+                            this.mapData[id]["cameraPos"],
                             this.mapData[id]["mapBgm"]
                             );
                     return skill;

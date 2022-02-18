@@ -90,8 +90,13 @@ namespace Nameless.DataMono
         private bool IsTheBattleEnd()
         {
             bool isEnd = false;
-
-            if (this.buildDefender.IsFail())
+            
+            if(this.pawnAttacker == null)
+            {
+                this.buildDefender.CheckPawnOpponentsList();
+                isEnd = true;
+            }
+            else if (this.buildDefender.IsFail())
             {
                 this.buildDefender.pawnOpponents.Remove(this.pawnAttacker);
 

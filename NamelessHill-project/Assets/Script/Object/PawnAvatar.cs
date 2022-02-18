@@ -229,6 +229,7 @@ namespace Nameless.DataMono
             this.wire = new GameObject();
             this.walkWire = new GameObject();
             this.arrowObjInstance = Instantiate(this.arrowObj) as GameObject;
+            
             this.areaDic = new Dictionary<GameObject, bool>();
             this.distanceDic = new Dictionary<GameObject, float>();
             this.endAreaList = new List<Area>();
@@ -258,6 +259,7 @@ namespace Nameless.DataMono
             this.areaDic.Add(this.targetArea.gameObject, true);
             this.wire.transform.parent = MapManager.Instance.currentMap.PathLine.transform;
             this.walkWire.transform.parent = MapManager.Instance.currentMap.PathLine.transform;
+            this.arrowObjInstance.transform.parent = MapManager.Instance.currentMap.PathLine.transform;
 
         }
         public void ShowPath(bool isShow)
@@ -297,6 +299,8 @@ namespace Nameless.DataMono
         }//����껭·��
         void AIBehavior(/*int goal*/)
         {
+            if (!this.pawnAgent.pawn.moveAvaliable)
+                return;
             if(this.State == PawnState.Wait)
             {
                 if (!FactionManager.Instance.IsSameSide(this.currentArea.playerBelong.faction, this.GetFaction()))//�����ǰ���򻹲���AI�� ������ȴ�

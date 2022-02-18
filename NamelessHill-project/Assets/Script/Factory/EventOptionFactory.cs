@@ -63,6 +63,10 @@ namespace Nameless.Agent
                 {
                     effects.Add(new LoadPawnFromPoolEffect((long)intArray[1], intArray[2], frontPlayer));
                 }
+                else if (intArray[0] == (int)EventEffectType.AddNewPawn)
+                {
+                    effects.Add(new AddNewPawnEffect((long)intArray[1], intArray[2], frontPlayer));
+                }
             }
 
             return new EventOption(eventOptionData.id, eventOptionData.name, eventOptionData.descrption, effects);
