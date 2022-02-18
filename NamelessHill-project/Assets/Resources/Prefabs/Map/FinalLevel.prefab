@@ -18564,7 +18564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 1
+  factionId: 3
   localId: 0
   areaId: 1001
   buildId: 0
@@ -22110,7 +22110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 1
+  factionId: 3
   localId: 0
   areaId: 1001
   buildId: 0
@@ -80905,9 +80905,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 1
+  factionId: 3
   localId: 0
-  areaId: 1001
+  areaId: 1101
   buildId: 0
 --- !u!1 &5748609564191395035
 GameObject:
