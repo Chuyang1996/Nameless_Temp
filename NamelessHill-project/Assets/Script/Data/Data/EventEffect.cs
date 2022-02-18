@@ -1,3 +1,4 @@
+using Nameless.Agent;
 using Nameless.ConfigData;
 using Nameless.DataMono;
 using Nameless.Manager;
@@ -19,6 +20,7 @@ namespace Nameless.Data
         UnlockConversation = 106,
         SavePawnInPool = 107,
         LoadPawnFromPool = 108,
+        AddNewPawn = 109,
         
     }
 
@@ -228,6 +230,45 @@ namespace Nameless.Data
             {
                 List<Area> areas = MapManager.Instance.currentMap.areas;
                 for(int i = 0; i < areas.Count; i++)
+                {
+                    if (areas[i].pawns.Count == 0)
+                    {
+                        FrontManager.Instance.AddPawnOnArea(pawn, areas[i], MapManager.Instance.currentMap.id, this.frontPlayer);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+
+    public class AddNewPawnEffect : EventEffect
+    {
+        public long pawnId;
+        public int areaId;
+        public AddNewPawnEffect(long pawnId,int areaId,FrontPlayer frontPlayer)
+        {
+            this.type = EventEffectType.AddNewPawn;
+            this.pawnId = pawnId;
+            this.areaId = areaId;
+            this.frontPlayer = frontPlayer;
+
+        }
+
+        public override void Execute()
+        {
+            Pawn pawn = PawnFactory.GetPawnById(this.pawnId);
+            if (pawn == null)
+                return;
+            Area area = MapManager.Instance.currentMap.FindAreaByLocalId(this.areaId);
+            if (area.pawns.Count == 0)
+            {
+                FrontManager.Instance.AddPawnOnArea(pawn, area, MapManager.Instance.currentMap.id, this.frontPlayer);
+            }
+            else
+            {
+                List<Area> areas = MapManager.Instance.currentMap.areas;
+                for (int i = 0; i < areas.Count; i++)
                 {
                     if (areas[i].pawns.Count == 0)
                     {

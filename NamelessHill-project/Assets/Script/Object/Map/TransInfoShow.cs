@@ -22,22 +22,38 @@ namespace Nameless.DataMono
         {
             string charS = "";
             int i = 0;
+            float countTime = 0.0f;
+            bool isSkip = false;
+            bool hasSkip = true;
             while(i < this.textReaderUIs[index].contentTxt.Length)
             {
-                //if (Input.GetMouseButtonDown(0))
-                //    break;
-                yield return new WaitForSeconds(0.03f);
+                while (countTime < 0.03f)
+                {
+                    countTime += Time.deltaTime;
+                    if (Input.GetMouseButtonDown(0) && !hasSkip)
+                    {
+                        isSkip = true;
+                        break;
+                    }
+                    hasSkip = false;
+                    yield return null;
+                }
+                countTime = 0.0f;
                 charS += this.textReaderUIs[index].contentTxt[i].ToString();
                 this.textReaderUIs[index].descTxt.text = charS;
                 i ++;
+                if (isSkip)
+                    break;
+                yield return null;
             }
             this.textReaderUIs[index].descTxt.text = this.textReaderUIs[index].contentTxt;
             this.textReaderUIs[index].icon.SetActive(true);
-
+            hasSkip = true;
             while (true)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0)&& !hasSkip)
                     break;
+                hasSkip = false;
                 yield return null;
             }
 
