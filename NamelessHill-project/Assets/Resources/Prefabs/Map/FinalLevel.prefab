@@ -36760,7 +36760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   factionId: 1
   localId: 0
-  areaId: 1001
+  areaId: 1002
   buildId: 0
 --- !u!1 &5748609563169265926
 GameObject:
