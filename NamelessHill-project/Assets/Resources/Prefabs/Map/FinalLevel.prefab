@@ -2849,7 +2849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   factionId: 3
   localId: 0
-  areaId: 1105
+  areaId: 1001
   buildId: 0
 --- !u!1 &5748609562371570808
 GameObject:
@@ -11287,7 +11287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   factionId: 3
   localId: 0
-  areaId: 1104
+  areaId: 1001
   buildId: 0
 --- !u!1 &5748609562597203829
 GameObject:
