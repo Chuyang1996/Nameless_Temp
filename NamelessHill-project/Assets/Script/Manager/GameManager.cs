@@ -117,7 +117,7 @@ namespace Nameless.Manager {
         /// 
         public const string mainMenuBgmName = "Music_MainBGM_01";
         public int totalTime = 0;//本场战斗总时间//待修改
-        public string levelgoalDes = "Hold for 12 hours";//本场战斗总时间//待修改
+
 
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace Nameless.Manager {
             pawns.Add(pawn9);
             pawns.Add(pawn10);
             EventCollections eventCollections = new EventCollections();
-            this.localPlayer = new Player(pawns,1000, eventCollections);
+            this.localPlayer = new Player(pawns,300, eventCollections);
             this.EnterBattle();
         }
         public void EnterBattle()//进入战场  //并开始播放的动画
@@ -213,7 +213,7 @@ namespace Nameless.Manager {
             //Debug.Log(DataManager.Instance.GetCharacter(1001).name);
             StartCoroutine(EventTriggerManager.Instance.StartListenEvent());
             this.totalTime = MapManager.Instance.currentMapData.passTime;
-            this.battleView.InitBattle(this.totalTime, this.levelgoalDes, FrontManager.Instance.localPlayer.GetMilitaryRes());
+            this.battleView.InitBattle(this.totalTime, FrontManager.Instance.localPlayer.GetMilitaryRes());
             Time.timeScale = 1.0f;
             this.RESULTEVENT += this.Result;
 
