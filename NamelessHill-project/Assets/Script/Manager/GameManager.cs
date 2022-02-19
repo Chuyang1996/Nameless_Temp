@@ -176,7 +176,7 @@ namespace Nameless.Manager {
             pawns.Add(pawn9);
             pawns.Add(pawn10);
             EventCollections eventCollections = new EventCollections();
-            this.localPlayer = new Player(pawns,1000, eventCollections);
+            this.localPlayer = new Player(pawns,300, eventCollections);
             this.EnterBattle();
         }
         public void EnterBattle()//进入战场  //并开始播放的动画
