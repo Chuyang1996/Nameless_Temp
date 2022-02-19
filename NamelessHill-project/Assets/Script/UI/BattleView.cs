@@ -51,7 +51,7 @@ namespace Nameless.UI
         {
             this.pauseBtn.onClick.AddListener(this.resultInfoView.PausePanelShow);
         }
-        public void InitBattle(int totalTime, string goalDes,int militartRes)
+        public void InitBattle(int totalTime, int militartRes)
         {
             this.gameObject.SetActive(true);
             this.resultInfoView.gameObject.SetActive(false);
@@ -59,10 +59,11 @@ namespace Nameless.UI
             this.resourceInfoView.Init(militartRes);
             FrontManager.Instance.localPlayer.TotalMilitartEvent += this.resourceInfoView.Init;
             this.totalTime = totalTime;
-            this.golaDes.text = goalDes;
+            
             string shour = this.totalTime / 60 > 10 ? (this.totalTime / 60).ToString() : "0" + (this.totalTime / 60).ToString();
             string sminute = this.totalTime % 60 > 10 ? (this.totalTime % 60).ToString() : "0" + (this.totalTime % 60).ToString();
             this.timeTxt.text = shour + ":"+ sminute;
+            this.golaDes.text = "for " + shour + " m " + sminute + " s "; 
             this.seconds = 0.0f;
             this.minute = 0;
             this.hour = 0;
