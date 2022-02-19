@@ -16,6 +16,7 @@ namespace Nameless.DataMono
 
         private PawnAvatar currentPawnAvatar;
         private Build currentbuild;
+        private int resCost = 0;
         private List<GameObject> buildIcon = new List<GameObject>();
         private List<GameObject> buildArea = new List<GameObject>();
         private List<Color> preColor = new List<Color>();
@@ -53,11 +54,13 @@ namespace Nameless.DataMono
             this.preColor = new List<Color>();
         }
 
-        public void FindAllBuildingArea(Area area, Build build, PawnAvatar builder)
+        public void FindAllBuildingArea(Area area, Build build, PawnAvatar builder, int costRes)
         {
             this.isBuild = true;
             this.currentbuild = build;
             this.currentPawnAvatar = builder;
+            this.resCost = costRes;
+
             List<Area> areas = new List<Area>();
             for(int i = 0; i < area.neighboors.Count; i++)
             {
@@ -174,9 +177,11 @@ namespace Nameless.DataMono
                     GameManager.Instance.PauseOrPlay(true);
                     if(hit.collider!=null && this.buildArea.Contains(hit.collider.gameObject))
                     {
+                        FrontManager.Instance.localPlayer.ChangeMilitaryRes(this.resCost);
                         StaticObjGenManager.Instance.GenerateBuild(this.currentPawnAvatar, hit.collider.gameObject.GetComponent<Area>(), this.currentbuild, true);
 
                     }
+                    this.resCost = 0;
                     this.ResetAllBuildingBtn();
 
                     this.isBuild = false;

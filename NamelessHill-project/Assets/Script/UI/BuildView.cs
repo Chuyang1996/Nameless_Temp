@@ -49,14 +49,13 @@ namespace Nameless.UI
             this.setBtn.onClick.AddListener(() =>//待修改 改成判断当前建造的东西是啥
             {
                 int costMilitaryRes = -this.currentBuild.build.resCost ;
-                FrontManager.Instance.localPlayer.ChangeMilitaryRes(costMilitaryRes);
 
                 this.setBtn.interactable = this.IsSetBtnActiveAfterClick();
                 //GameManager.Instance.PauseOrPlay(true);
                 this.gameObject.SetActive(false);
                 
                 AudioManager.Instance.PlayAudio(this.transform, AudioConfig.buildEnd);
-                PlayerController.Instance.FindAllBuildingArea(this.currentArea, this.currentBuild.build, this.currentPawn);
+                PlayerController.Instance.FindAllBuildingArea(this.currentArea, this.currentBuild.build, this.currentPawn, costMilitaryRes);
             });
         }
 
