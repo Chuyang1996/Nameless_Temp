@@ -10,24 +10,26 @@ namespace Nameless.Agent
 {
     public static class AreaFactory
     {
-        public static AreaAgent GetAreaById(long id)
+        public static AreaAgent GetAreaById(long id,FrontPlayer frontPlayer)
         {
-            return Get(DataManager.Instance.GetAreaData(id));
+            return Get(DataManager.Instance.GetAreaData(id), frontPlayer);
         }
 
-        public static AreaAgent Get(AreaData areaData)
+        public static AreaAgent Get(AreaData areaData, FrontPlayer frontPlayer)
         {
             long[] pawnsGroupId = StringToLongArray(areaData.parameter);
             List<PawnGroup> pawnGroups = new List<PawnGroup>();
-            if (pawnsGroupId[0] != -1)
+            long eventOptionId = -1;
+            if (pawnsGroupId.Length != 0)
             {
-                for (int i = 0; i < pawnsGroupId.Length; i++)
+                eventOptionId = pawnsGroupId[0];
+                for (int i = 1; i < pawnsGroupId.Length; i++)
                 {
                     pawnGroups.Add(PawnGroupFactory.GetPawnGroupById(pawnsGroupId[i]));
                 }
             }
 
-            return new AreaAgent(areaData.Id, areaData.name, areaData.description, (AreaType)areaData.type, (GenerateRuleType)areaData.rule, pawnGroups);
+            return new AreaAgent(areaData.Id, areaData.name, areaData.description, (AreaType)areaData.type, eventOptionId, (GenerateRuleType)areaData.rule, pawnGroups, frontPlayer);
         }
         private static long[] StringToLongArray(string stringlist)
         {

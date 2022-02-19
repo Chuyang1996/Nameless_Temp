@@ -14,7 +14,7 @@ namespace Nameless.Data
         EnemyKillNum = 2,
         PawnArriveOnArea = 3,
         BuildOnArea = 4,
-        PawnEnterBattle = 5
+        PawnEnterBattle = 5,
     }
     abstract public class EventTrigger
     {
@@ -188,4 +188,6 @@ namespace Nameless.Data
             this.recordTime = 0;
         }
     }
+
+
 }

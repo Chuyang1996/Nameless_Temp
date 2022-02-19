@@ -20,24 +20,27 @@ namespace Nameless.Data
         public string name;
         public string descrption;
         public AreaType type;
+        public long eventOptionId;
         public PawnGenRule pawnRule;
-
-        public AreaAgent(long id, string name, string descrption, AreaType type,GenerateRuleType genType, List<PawnGroup> pawnGroups)
+        public FrontPlayer frontPlayer;
+        public AreaAgent(long id, string name, string descrption, AreaType type, long eventOptionId, GenerateRuleType genType, List<PawnGroup> pawnGroups, FrontPlayer frontPlayer)
         {
             this.Id = id;
             this.name = name;
             this.descrption = descrption;
             this.type = type;
+            this.eventOptionId = eventOptionId;
+            this.frontPlayer = frontPlayer;
             if(type  == AreaType.Spawn)
             {
                 if(genType == GenerateRuleType.WaitToGen)
                 {
-                    WaitGen waitGen = new WaitGen(pawnGroups);
+                    WaitGen waitGen = new WaitGen(pawnGroups, this.eventOptionId, frontPlayer);
                     this.pawnRule = waitGen;
                 }
                 else if(genType == GenerateRuleType.CoupleGroupGen)
                 {
-                    CoupleGroupGen coupleGen = new CoupleGroupGen(pawnGroups);
+                    CoupleGroupGen coupleGen = new CoupleGroupGen(pawnGroups, this.eventOptionId, frontPlayer);
                     this.pawnRule = coupleGen;
                 }
             }
@@ -50,6 +53,8 @@ namespace Nameless.Data
         public GenerateRuleType generateRuleType;
         public List<PawnGroup> pawnGroups = new List<PawnGroup>();
         public PawnGroup currentGroup;
+        public FrontPlayer frontPlayer;
+        public long eventOptionId;
         abstract protected bool Active();
         abstract public IEnumerator Execute(SpawnArea area);
 
@@ -58,11 +63,12 @@ namespace Nameless.Data
     public class WaitGen : PawnGenRule
     {
         bool isProcess = false;
-        public WaitGen(List<PawnGroup> pawnGroup)
+        public WaitGen(List<PawnGroup> pawnGroup, long eventOptionId, FrontPlayer frontPlayer)
         {
             this.pawnGroups = pawnGroup;
             this.currentGroup = pawnGroup[0];
-
+            this.eventOptionId = eventOptionId;
+            this.frontPlayer = frontPlayer;
             this.isProcess = false;
         }
 
@@ -80,6 +86,10 @@ namespace Nameless.Data
                 yield return null;
             }
             this.isProcess = true;
+            while (this.eventOptionId != -1 && !this.frontPlayer.eventCollections.IsEventOptionChoosed(this.eventOptionId))
+            {
+                yield return null;
+            }
             yield return new WaitForSecondsRealtime(this.currentGroup.waitGenerateTime * 1.25f);
             for (int i = 0; i < currentGroup.pawns.Count; i++)
             {
@@ -112,11 +122,13 @@ namespace Nameless.Data
         private bool isProcess = false;
         private List<PawnAvatar> pawnAvatars = new List<PawnAvatar>();
         private int groupIndex = 0;
-        public CoupleGroupGen(List<PawnGroup> pawnGroups)
+        public CoupleGroupGen(List<PawnGroup> pawnGroups, long eventOptionId, FrontPlayer frontPlayer)
         {
             this.pawnGroups = pawnGroups;
             this.currentGroup = pawnGroups[0];
 
+            this.frontPlayer = frontPlayer;
+            this.eventOptionId = eventOptionId;
             this.groupIndex = 0;
             this.pawnAvatars = new List<PawnAvatar>();
             this.isProcess = false;
@@ -131,6 +143,10 @@ namespace Nameless.Data
         public override IEnumerator Execute(SpawnArea area)
         {
             while(area.neighboors.Count <= 0)
+            {
+                yield return null;
+            } 
+            while (this.eventOptionId != -1 && !this.frontPlayer.eventCollections.IsEventOptionChoosed(this.eventOptionId))
             {
                 yield return null;
             }
@@ -158,12 +174,12 @@ namespace Nameless.Data
                         {
                             yield return null;
                         }
+                        this.pawnAvatars.Add(area.GenPawn(currentGroup.pawns[i].id));
                         yield return new WaitForSecondsRealtime(this.currentGroup.durationTime * 1.25f);
                         while (!GameManager.Instance.isPlay)
                         {
                             yield return null;
                         }
-                        this.pawnAvatars.Add(area.GenPawn(currentGroup.pawns[i].id));
                     }
                     this.isProcess = false;
                     this.groupIndex++;

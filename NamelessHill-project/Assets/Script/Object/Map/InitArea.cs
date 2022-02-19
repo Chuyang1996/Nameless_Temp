@@ -16,8 +16,9 @@ namespace Nameless.DataMono
         private Area area;
         public void InitAreaInfo()
         {
-            AreaAgent areaAgent = AreaFactory.GetAreaById(this.areaId);
+            
             FrontPlayer frontPlayer = FrontManager.Instance.GetFrontPlayer(this.factionId);
+            AreaAgent areaAgent = AreaFactory.GetAreaById(this.areaId, frontPlayer);
             if (areaAgent.type == AreaType.Normal)
             {
                 this.gameObject.AddComponent<Area>().Init(this.localId, areaAgent, frontPlayer);
