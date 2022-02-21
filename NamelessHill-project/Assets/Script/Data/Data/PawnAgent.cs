@@ -163,9 +163,9 @@ namespace Nameless.Data
         public List<Buff> buffs;
         #endregion
 
-        #region//角色对话
-        public DialogueGroup dialogueGroup;
-        #endregion
+        //#region//角色对话
+        //public DialogueGroup dialogueGroup;
+        //#endregion
 
 
         public PawnAgent(FrontPlayer frontPlayer, Slider healthBar,Area currentArea, Pawn pawn, long mapId)
@@ -188,10 +188,10 @@ namespace Nameless.Data
 
             this.buffs = new List<Buff>();
             this.supporters = new List<PawnAvatar>();
-            if (this.pawn.dialogueDic.ContainsKey(mapId))
-                this.dialogueGroup = this.pawn.dialogueDic[mapId];
-            else
-                this.dialogueGroup = null;
+            //if (this.pawn.dialogueDic.ContainsKey(mapId))
+            //    this.dialogueGroup = this.pawn.dialogueDic[mapId];
+            //else
+            //    this.dialogueGroup = null;
             
             //this.countCTimeMorale = 0.0f;
             this.countBTimeMorale = 0.0f;

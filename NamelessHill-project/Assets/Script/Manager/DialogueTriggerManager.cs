@@ -21,17 +21,17 @@ namespace Nameless.Manager
         }
         public void CheckGameStartEvent(PawnAvatar pawn)
         {
-            if (pawn.pawnAgent.dialogueGroup != null)
-            {
-                List<Dialogue> dialogues = pawn.pawnAgent.dialogueGroup.dialogues;
-                for (int i = dialogues.Count-1; i >= 0; i--)
-                {
-                    if (dialogues[i].conditionDialogue.conditionType == ConditionDialogueType.GameStart)
-                    {
-                        this.dialoguePawns.Push(new DialoguePawn( pawn, dialogues[i]));
-                    }
-                }
-            }
+            //if (pawn.pawnAgent.dialogueGroup != null)
+            //{
+            //    List<Dialogue> dialogues = pawn.pawnAgent.dialogueGroup.dialogues;
+            //    for (int i = dialogues.Count-1; i >= 0; i--)
+            //    {
+            //        if (dialogues[i].conditionDialogue.conditionType == ConditionDialogueType.GameStart)
+            //        {
+            //            this.dialoguePawns.Push(new DialoguePawn( pawn, dialogues[i]));
+            //        }
+            //    }
+            //}
         }
 
         public void CheckTimeTriggerEvent(int cost)
@@ -44,17 +44,17 @@ namespace Nameless.Manager
 
         public void CheckTimeflowEvent(PawnAvatar pawn, int time)
         {
-            if (pawn.pawnAgent.dialogueGroup != null)
-            {
-                List<Dialogue> dialogues = pawn.pawnAgent.dialogueGroup.dialogues;
-                for (int i = 0; i < dialogues.Count; i++)
-                {
-                    if (dialogues[i].conditionDialogue.conditionType == ConditionDialogueType.TimeFlowing && dialogues[i].conditionDialogue.time == time)
-                    {
-                        this.dialoguePawns.Push(new DialoguePawn(pawn, dialogues[i]));
-                    }
-                }
-            }
+            //if (pawn.pawnAgent.dialogueGroup != null)
+            //{
+            //    List<Dialogue> dialogues = pawn.pawnAgent.dialogueGroup.dialogues;
+            //    for (int i = 0; i < dialogues.Count; i++)
+            //    {
+            //        if (dialogues[i].conditionDialogue.conditionType == ConditionDialogueType.TimeFlowing && dialogues[i].conditionDialogue.time == time)
+            //        {
+            //            this.dialoguePawns.Push(new DialoguePawn(pawn, dialogues[i]));
+            //        }
+            //    }
+            //}
         }
 
         public void PushNewDialoguePawn(DialoguePawn dialoguePawn)

@@ -150,8 +150,8 @@ namespace Nameless.DataMono
             animObj.transform.localScale = new Vector3(1, 1, 1);
             animObj.GetComponent<CharacterAnim>().Init(this);
 
-            DialogueTriggerManager.Instance.TimeTriggerEvent += this.ReceiveCurrentTime;
-            DialogueTriggerManager.Instance.CheckGameStartEvent(this);
+            //DialogueTriggerManager.Instance.TimeTriggerEvent += this.ReceiveCurrentTime;
+            //DialogueTriggerManager.Instance.CheckGameStartEvent(this);
 
             this.fixbtn.onClick.AddListener(() =>
             {
@@ -1020,11 +1020,11 @@ namespace Nameless.DataMono
                 this.currentArea.RemoveMat(mats[0]);
             }
         }
-        public void ReceiveCurrentTime(int time)
-        {
-            int passTime = GameManager.Instance.totalTime - time;
-            DialogueTriggerManager.Instance.CheckTimeflowEvent(this, passTime);
-        }
+        //public void ReceiveCurrentTime(int time)
+        //{
+        //    int passTime = GameManager.Instance.totalTime - time;
+        //    DialogueTriggerManager.Instance.CheckTimeflowEvent(this, passTime);
+        //}
         public void ClearPawn()
         {
             if (this.arrowObjInstance != null)
@@ -1047,7 +1047,7 @@ namespace Nameless.DataMono
             
             this.CurrentArea.RemovePawn(this);
             //this.CurrentArea.Init();
-            DialogueTriggerManager.Instance.TimeTriggerEvent -= this.ReceiveCurrentTime;
+            //DialogueTriggerManager.Instance.TimeTriggerEvent -= this.ReceiveCurrentTime;
             Destroy(this.gameObject);
         }
     }

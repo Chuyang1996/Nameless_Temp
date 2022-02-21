@@ -1,3 +1,4 @@
+using Nameless.Data;
 using Nameless.Manager;
 using System.Collections;
 using System.Collections.Generic;
@@ -108,8 +109,8 @@ namespace Nameless.UI {
         private void EnterCamp()
         {
             AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind); 
-            Time.timeScale = 1.0f; 
-            GameManager.Instance.EnterCamp();
+            Time.timeScale = 1.0f;
+            GameManager.Instance.EnterCamp(MapManager.Instance.currentMapData.nextCampId,FrontManager.Instance.GetPawns(FrontManager.Instance.localPlayer));
         }
         private void OptionPanel()
         {

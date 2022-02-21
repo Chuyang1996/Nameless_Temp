@@ -149,6 +149,15 @@ namespace Nameless.Manager
             return frontPlayer.GetPawnAvatars();
         }
         
+        public List<Pawn> GetPawns(FrontPlayer frontPlayer)
+        {
+            List<Pawn> pawns = new List<Pawn>();
+            for(int i = 0; i < frontPlayer.GetPawnAvatars().Count; i++)
+            {
+                pawns.Add(frontPlayer.GetPawnAvatars()[i].pawnAgent.pawn);
+            }
+            return pawns;
+        }
         public FrontPlayer GenFactionPlayer(Faction faction, bool isLocalPlayer, bool isBot, bool forceGenNewPlayer, int totalMilitaryRes, EventCollections eventCollections)//forceGenNewPlayer用于判断是否在存在相同阵营的玩家基础上再用同一个阵营生成一个新的player
         {
             FrontPlayer frontPlayer = new FrontPlayer(faction, isLocalPlayer, isBot, totalMilitaryRes,eventCollections);
@@ -176,7 +185,7 @@ namespace Nameless.Manager
             
             GameObject pawnAvatar = Instantiate(Resources.Load(pawnPath)) as GameObject;
             pawnAvatar.GetComponent<PawnAvatar>().Init(pawn, frontPlayer, mapId, area);
-            DialogueTriggerManager.Instance.TimeTriggerEvent += pawnAvatar.GetComponent<PawnAvatar>().ReceiveCurrentTime;
+            //DialogueTriggerManager.Instance.TimeTriggerEvent += pawnAvatar.GetComponent<PawnAvatar>().ReceiveCurrentTime;
             frontPlayer.AddPawnAvatar(pawnAvatar.GetComponent<PawnAvatar>());
             pawnAvatar.gameObject.transform.parent = MapManager.Instance.currentMap.PawnCollect.transform;
             return pawnAvatar.GetComponent<PawnAvatar>();

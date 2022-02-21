@@ -238,7 +238,7 @@ namespace Nameless.Data
 
         public List<Skill> skills = new List<Skill>();
 
-        public Dictionary<long, DialogueGroup> dialogueDic = new Dictionary<long, DialogueGroup>();
+        //public Dictionary<long, DialogueGroup> dialogueDic = new Dictionary<long, DialogueGroup>();
 
         public bool moveAvaliable;
 
@@ -271,7 +271,7 @@ namespace Nameless.Data
             List<long> fightSkillIds, 
             List<long> supportSkillIds, 
             List<long> buildSkillIds, 
-            Dictionary<long, DialogueGroup> dialogueDic,
+            //Dictionary<long, DialogueGroup> dialogueDic,
             string animPrefab,string selectIcon, string campIcon, int campPosIndex, int btnLRpos, Dictionary<long, Conversation> conversationMapDic)
         {
             this.id = id;
@@ -306,7 +306,7 @@ namespace Nameless.Data
 
 
 
-            this.dialogueDic = dialogueDic;
+            //this.dialogueDic = dialogueDic;
             this.animPrefab = animPrefab;
             this.selectIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterImage, selectIcon);
             this.campIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterCampImage, campIcon);
@@ -330,6 +330,74 @@ namespace Nameless.Data
             {
                 this.skills.Add(SkillFactory.GetSkillById(SkillFactoryType.BuildSkill, buildSkillIds[i]));
             }
+        }
+
+
+
+        public Pawn(PawnSaveData pawnSaveData)
+        {
+            this.id = pawnSaveData.id;
+            this.name = pawnSaveData.name;
+            this.descrption = pawnSaveData.descrption;
+
+            this.maxHealth = pawnSaveData.maxHealth;
+            this.maxAttack = pawnSaveData.maxAttack;
+            this.maxMorale = pawnSaveData.maxMorale;
+            this.maxAmmo = pawnSaveData.maxAmmo;
+            this.maxAtkSpeed = pawnSaveData.maxAtkSpeed;
+            this.maxSpeed = pawnSaveData.maxSpeed;
+            this.maxHit = pawnSaveData.maxHit;
+            this.maxDex = pawnSaveData.maxDex;
+            this.maxDefend = pawnSaveData.maxDefend;
+
+            this.curHealth = pawnSaveData.curHealth;
+            this.curAttack = pawnSaveData.curAttack;
+            this.curMorale = pawnSaveData.curMorale;
+            this.curAmmo = pawnSaveData.curAmmo;
+            this.curAtkSpeed = pawnSaveData.curAtkSpeed;
+            this.curSpeed = pawnSaveData.curSpeed;
+            this.curHit = pawnSaveData.curHit;
+            this.curDex = pawnSaveData.curDex;
+            this.curDefend = pawnSaveData.curDefend;
+
+            this.fallBackTxt = pawnSaveData.fallBackTxt;
+            this.pinchTxt = pawnSaveData.pinchTxt;
+            this.surroundTxt = pawnSaveData.surroundTxt;
+            this.winTxt = pawnSaveData.winTxt;
+
+            this.skills = new List<Skill>();
+
+            for (int i = 0; i < pawnSaveData.fightSkillIds.Count; i++)
+            {
+                skills.Add(SkillFactory.GetSkillById(SkillFactoryType.FightSkill, pawnSaveData.fightSkillIds[i]));
+            }
+            for (int i = 0; i < pawnSaveData.supportSkillIds.Count; i++)
+            {
+                skills.Add(SkillFactory.GetSkillById(SkillFactoryType.SupportSkill, pawnSaveData.supportSkillIds[i]));
+            }
+            for (int i = 0; i < pawnSaveData.buildSkillIds.Count; i++)
+            {
+                skills.Add(SkillFactory.GetSkillById(SkillFactoryType.BuildSkill, pawnSaveData.buildSkillIds[i]));
+            }
+
+            this.animPrefab = pawnSaveData.animPrefab;
+            this.selectIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterImage, pawnSaveData.selectIcon);
+            this.campIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterCampImage, pawnSaveData.campIcon);
+            this.campMarkIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterCampMarkImage, pawnSaveData.campMarkIcon);
+
+            for(int i = 0;i< pawnSaveData.conversDefaultMapId.Count; i++)
+            {
+                this.conversationMapDic.Add(pawnSaveData.conversDefaultMapId[i],ConversationFactory.GetConversationById(pawnSaveData.conversDefaultIds[i]));
+            }
+            this.conversationsInCamp = new Stack<Conversation>();
+            for(int i = 0; i < pawnSaveData.conversationInCamp.Count; i++)
+            {
+                this.conversationsInCamp.Push(ConversationFactory.GetConversationById(pawnSaveData.conversationInCamp[i]));
+            }
+            this.leftResNum = pawnSaveData.leftResNum;
+            this.leftOrRight = pawnSaveData.leftOrRight;
+            this.moveAvaliable = pawnSaveData.moveAvaliable;
+            this.campPosIndex = pawnSaveData.campPosIndex;
         }
 
 

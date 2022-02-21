@@ -21,7 +21,7 @@ namespace Nameless.Manager
         public int totalMilitaryRes;
 
         private string campPath = "Prefabs/Camp/";
-        public void InitCamp(CampData campData, List<PawnAvatar> pawnAvatars,int militaryRes)
+        public void InitCamp(CampData campData, List<Pawn> pawnAvatars,int militaryRes)
         {
             this.UpdateCampData(campData);
             GameObject camp = Instantiate(Resources.Load(this.campPath + campData.campName) as GameObject, this.transform);

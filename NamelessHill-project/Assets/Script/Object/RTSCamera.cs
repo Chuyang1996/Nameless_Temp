@@ -171,14 +171,14 @@ namespace Nameless.Controller
                 if (dialoguePawn.dialogue != null && dialoguePawn.dialogue.FindTargetDialoguePawn() != null)
                 {
                     DialoguePawn newPawn = new DialoguePawn(dialoguePawn.dialogue.FindTargetDialoguePawn(), new Dialogue(-1, "-1", new ConditionDialogue(ConditionDialogueType.None, 0), true, 4.0f, 20.0f, 5.0f, 1.0f, -1, -1));
-                    DialogueTriggerManager.Instance.PushNewDialoguePawn(newPawn);
+                    //DialogueTriggerManager.Instance.PushNewDialoguePawn(newPawn);
                 }
 
                 StartCoroutine(TransitionToCoroutine(transitionTargets));
             }
             else
             {
-                DialogueTriggerManager.Instance.isShowDialogue = false;
+                //DialogueTriggerManager.Instance.isShowDialogue = false;
                 this._isTranstionTo = false;
             }
         }

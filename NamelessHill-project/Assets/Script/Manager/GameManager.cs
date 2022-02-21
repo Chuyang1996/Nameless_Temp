@@ -28,8 +28,28 @@ namespace Nameless.Manager {
             this.eventOptionId  = new List<long>();
             this.leavePawn      = new List<Pawn>();
         }
-
-
+        public EventCollections(EventCollectionSaveData eventCollectionSaveData)
+        {
+            this.pawnKilledIds = eventCollectionSaveData.pawnKilledIds;
+            this.eventOptionId = eventCollectionSaveData.eventOptionId;
+            this.leavePawn = new List<Pawn>();
+            for (int i = 0; i > eventCollectionSaveData.leavePawn.Count; i++)
+            {
+                this.leavePawn.Add(new Pawn(eventCollectionSaveData.leavePawn[i]));
+            }
+        }
+        public List<long> AllPawnSkilledIds()
+        {
+            return this.pawnKilledIds;
+        }
+        public List<long> AllEventOptionIds()
+        {
+            return this.eventOptionId;
+        }
+        public List<Pawn> AllLeavePawns()
+        {
+            return this.leavePawn;
+        }
         public void AddDeathPawnId(long id)
         {
             this.pawnKilledIds.Add(id);
@@ -67,13 +87,14 @@ namespace Nameless.Manager {
     }
     public class Player
     {
-        public List<Pawn> pawns;
-        public EventCollections eventCollections;
+        public List<Pawn> pawns = new List<Pawn>();
+        public EventCollections eventCollections = new EventCollections();
         public int totalMilitaryRes;//我方的补给数量
 
         public Player()
         {
-            
+            this.pawns = new List<Pawn>();
+            this.eventCollections = new EventCollections();
         }
         public Player(List<Pawn> pawns, int totalMilitaryRes, EventCollections eventCollections)
         {
@@ -102,6 +123,16 @@ namespace Nameless.Manager {
             this.pawns = pawns;
             this.eventCollections = eventCollections;
             this.totalMilitaryRes = totalMilitaryRes;
+        }
+
+        public Player(PlayerSaveData playerSaveData)
+        {
+            for(int i = 0; i < playerSaveData.pawnSaveDatas.Count; i++)
+            {
+                this.pawns.Add(new Pawn(playerSaveData.pawnSaveDatas[i]));
+            }
+            this.eventCollections = new EventCollections(playerSaveData.eventCollectionSaveData);
+            this.totalMilitaryRes = playerSaveData.totalMilitaryRes;
         }
     }
     public class GameManager : SingletonMono<GameManager>
@@ -153,6 +184,7 @@ namespace Nameless.Manager {
             FrontManager.Instance.InitFront();
             PlayerController.Instance.InitBattlePlayer();
             AudioConfig.Init();
+            SaveManager.Instance.Init();
 
             RTSCamera.Instance.ResetCameraPos();
             AudioManager.Instance.PlayMusic(mainMenuBgmName);
@@ -177,10 +209,37 @@ namespace Nameless.Manager {
             pawns.Add(pawn10);
             EventCollections eventCollections = new EventCollections();
             this.localPlayer = new Player(pawns,300, eventCollections);
+
+            
             this.EnterBattle();
+        }
+        public bool LoadOldGame()
+        {
+            GameData gameData = SaveManager.Instance.LoadData();
+            if(gameData.mapId!=-1 && gameData.campId == -1)
+            {
+                MapManager.Instance.InitMap(DataManager.Instance.GetMapData(gameData.mapId));
+                NoteManager.Instance.notePageDic = gameData.notePageSaveData.NotePageDictionary();
+                this.localPlayer = gameData.playerSaveData.GetPlayer();
+                this.EnterBattle();
+                return true;
+
+            }
+            else if (gameData.mapId == -1 && gameData.campId != -1)
+            {
+                NoteManager.Instance.notePageDic = gameData.notePageSaveData.NotePageDictionary();
+                this.localPlayer = gameData.playerSaveData.GetPlayer();
+                this.EnterCamp(gameData.campId, this.localPlayer.pawns);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         public void EnterBattle()//进入战场  //并开始播放的动画
         {
+            SaveManager.Instance.SaveData(this.localPlayer, NoteManager.Instance.notePageDic, MapManager.Instance.currentMapData.id, -1);
             GameManager.Instance.ClearBattle();
             GameManager.Instance.ClearCamp();
             RTSCamera.Instance.ResetCameraPos();
@@ -236,7 +295,7 @@ namespace Nameless.Manager {
 
             //开始监听事件
 
-            StartCoroutine(DialogueTriggerManager.Instance.StartListenEvent());
+            //StartCoroutine(DialogueTriggerManager.Instance.StartListenEvent());
             #endregion
 
             //打开战场界面
@@ -255,10 +314,10 @@ namespace Nameless.Manager {
             this.GameScene = GameScene.Menu;
             AudioManager.Instance.PlayMusic(mainMenuBgmName);
             this.ClearBattle();
-            this.EnterBattle();
+            this.LoadOldGame();
 
         }
-        public void EnterCamp()//进入营地
+        public void EnterCamp(long campId,List<Pawn> pawns)//进入营地
         {
 
             this.battleView.ExitBattle();//待修改 等UI管理器到位
@@ -268,8 +327,10 @@ namespace Nameless.Manager {
             this.GameScene = GameScene.Camp;
             RTSCamera.Instance.ResetCameraPos();
 
-            CampData campData = DataManager.Instance.GetCampData(MapManager.Instance.currentMapData.nextCampId);
-            CampManager.Instance.InitCamp(campData,FrontManager.Instance.GetPawnAvatars(FrontManager.Instance.localPlayer), this.localPlayer.totalMilitaryRes);
+            SaveManager.Instance.SaveData(this.localPlayer, NoteManager.Instance.notePageDic, -1, campId);
+            
+            CampData campData = DataManager.Instance.GetCampData(campId/*MapManager.Instance.currentMapData.nextCampId*/);
+            CampManager.Instance.InitCamp(campData,pawns, this.localPlayer.totalMilitaryRes);
             this.UpdateCampToPlayer();
             MapManager.Instance.UpdateNewMap(DataManager.Instance.GetMapData(CampManager.Instance.currentCampData.nextBattleId));//更新下一场战斗的地图
 
@@ -284,14 +345,15 @@ namespace Nameless.Manager {
             this.battleView.gameObject.SetActive(false);
             this.campView.gameObject.SetActive(false);
             this.mainMenuView.gameObject.SetActive(true);
+            this.mainMenuView.MainMenuFromOtherScene();
         }
         public void ClearBattle()//清空战场的对象
         {
             PlayerController.Instance.ResetBattlePlayer();
             EventTriggerManager.Instance.ClearEvent();
-            DialogueTriggerManager.Instance.ClearEvent();
+            //DialogueTriggerManager.Instance.ClearEvent();
             StopCoroutine(EventTriggerManager.Instance.StartListenEvent());
-            StopCoroutine(DialogueTriggerManager.Instance.StartListenEvent());
+           // StopCoroutine(DialogueTriggerManager.Instance.StartListenEvent());
             FrontManager.Instance.ClearFront();
             BattleManager.Instance.ClearBattle();
             MapManager.Instance.ClearMap();

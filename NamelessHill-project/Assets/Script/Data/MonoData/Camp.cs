@@ -1,3 +1,4 @@
+using Nameless.Data;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace Nameless.DataMono
 
         private List<PawnCamp> allCampPawns = new List<PawnCamp>();
         private string pawnPath = "Prefabs/PawnCamp";
-        public void InitCamp(List<PawnAvatar> pawnAvatars)
+        public void InitCamp(List<Pawn> pawnAvatars)
         {
             for (int i = 0; i < pawnAvatars.Count; i++)
             {
@@ -55,12 +56,12 @@ namespace Nameless.DataMono
             this.noteBtn.GetComponent<SpriteRenderer>().sprite = this.book;
             this.lightBtn.GetComponent<SpriteRenderer>().sprite = this.light;
     }
-        private PawnCamp GenerateCampPawn(PawnAvatar pawn)
+        private PawnCamp GenerateCampPawn(Pawn pawn)
         {
             GameObject pawnCamp = Instantiate(Resources.Load(this.pawnPath)) as GameObject;
-            pawnCamp.GetComponent<PawnCamp>().Init(pawn.pawnAgent.pawn);
-            if (pawn.pawnAgent.pawn.campPosIndex < this.pawnsPos.Length)
-                pawnCamp.transform.parent = pawnsPos[pawn.pawnAgent.pawn.campPosIndex].transform;
+            pawnCamp.GetComponent<PawnCamp>().Init(pawn);
+            if (pawn.campPosIndex < this.pawnsPos.Length)
+                pawnCamp.transform.parent = pawnsPos[pawn.campPosIndex].transform;
             else
                 pawnCamp.transform.parent = pawnsPos[0].transform;
             pawnCamp.transform.localPosition = new Vector3(0, 0, 0);

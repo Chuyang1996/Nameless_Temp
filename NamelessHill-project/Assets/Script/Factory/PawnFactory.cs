@@ -27,13 +27,13 @@ namespace Nameless.Agent
             float crMorale   = pawnData.crMorale   > 1 ? 1.0f : pawnData.crMorale;
             float crSpeed    = pawnData.crSpeed    > 1 ? 1.0f : pawnData.crSpeed;
 
-            Dictionary<long, DialogueGroup> dialogueGroupDic = new Dictionary<long, DialogueGroup>();
-            List<string> dialogueString = StringToStringArray(pawnData.dialogue);
-            for(int i = 0; i < dialogueString.Count; i++)
-            {
-                long[] temp = StringToLong2Array(dialogueString[i]);
-                dialogueGroupDic.Add(temp[0], DialogueGroupFactory.GetDialogueGroupById(temp[1]));
-            }
+            //Dictionary<long, DialogueGroup> dialogueGroupDic = new Dictionary<long, DialogueGroup>();
+            //List<string> dialogueString = StringToStringArray(pawnData.dialogue);
+            //for(int i = 0; i < dialogueString.Count; i++)
+            //{
+            //    long[] temp = StringToLong2Array(dialogueString[i]);
+            //    dialogueGroupDic.Add(temp[0], DialogueGroupFactory.GetDialogueGroupById(temp[1]));
+            //}
             List<string> conversationInfo = StringToStringArray(pawnData.converIds);
             Dictionary<long, Conversation> conversationMapDic = new Dictionary<long, Conversation>();
             for(int i = 0; i < conversationInfo.Count; i++)
@@ -68,7 +68,7 @@ namespace Nameless.Agent
                 StringToLongArray(pawnData.fightSkills),
                 StringToLongArray(pawnData.supportSkills),
                 StringToLongArray(pawnData.buildSkills),
-                dialogueGroupDic,
+                //dialogueGroupDic,
                 pawnData.animPrefab,
                 pawnData.selectIcon,
                 pawnData.campIcon,
