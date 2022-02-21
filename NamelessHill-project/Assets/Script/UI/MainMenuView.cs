@@ -10,9 +10,12 @@ namespace Nameless.UI
     {
         public GameObject mainMenuPanel;
         public GameObject optionPanel;
+        public GameObject contiunePanel;
 
         public Button contiuneBtn;
         public Button startBtn;
+        public Button newGameComfirmBtn;
+        public Button newGameCancelBtn;
         public Button optionBtn;
         public Button exitBtn;
         public Button backBtn;
@@ -24,7 +27,14 @@ namespace Nameless.UI
         private void Start()
         {
             this.contiuneBtn.onClick.AddListener(this.LoadGame);
-            this.startBtn.onClick.AddListener(this.NewStart);
+            this.startBtn.onClick.AddListener(()=> {
+                if (SaveManager.Instance.IfSaveExist())
+                    this.NewStartGamePanel(true);
+                else
+                    this.NewStart();
+            });
+            this.newGameCancelBtn.onClick.AddListener(()=> { this.NewStartGamePanel(false); });
+            this.newGameComfirmBtn.onClick.AddListener(this.NewStart);
             this.optionBtn.onClick.AddListener(this.Option);
             this.backBtn.onClick.AddListener(this.MainMenuForSubMenu);
             this.exitBtn.onClick.AddListener(this.Exit);
@@ -41,6 +51,10 @@ namespace Nameless.UI
             AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             GameManager.Instance.LoadOldGame();
             this.gameObject.SetActive(false);
+        }
+        public void NewStartGamePanel(bool isOpen)
+        {
+            this.contiunePanel.SetActive(isOpen);
         }
         public void NewStart()
         {
