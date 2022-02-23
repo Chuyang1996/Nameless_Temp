@@ -910,7 +910,8 @@ namespace Nameless.DataMono
         }
         public void PlayDialogue(string txt)//���ŶԻ�
         {
-            this.dialogueTxt.text = txt;
+            if(this.dialogueTxt!=null)
+                this.dialogueTxt.text = txt;
             if(this.dialogueAnim!=null)
                 this.dialogueAnim.Play();
         }
