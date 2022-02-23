@@ -54,6 +54,7 @@ namespace Nameless.UI
         }
         public void NewStartGamePanel(bool isOpen)
         {
+            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             this.contiunePanel.SetActive(isOpen);
         }
         public void NewStart()
