@@ -60,6 +60,7 @@ namespace Nameless.UI
         {
             AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             GameManager.Instance.StartNewGame();
+            this.NewStartGamePanel(false);
             this.gameObject.SetActive(false);
         }
         public void MainMenuForSubMenu()

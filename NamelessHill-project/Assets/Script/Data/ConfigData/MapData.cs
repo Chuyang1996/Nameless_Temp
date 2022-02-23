@@ -15,9 +15,10 @@ namespace Nameless.ConfigData
         public long nextCampId;
         public string transInfoShowName;
         public string defaultInitPos;
+        public long[] eventIds;
         public Vector2 cameraPos;
         public string nameBgm;
-        public MapData(long id, string name, string descrption,string mapName, int passTime,long nextCampId, string transInfoShowName, string defaultInitPos, string cameraPos, string nameBgm)
+        public MapData(long id, string name, string descrption,string mapName, int passTime,long nextCampId, string transInfoShowName, string defaultInitPos, string eventIds, string cameraPos, string nameBgm)
         {
             this.id = id;
             this.name = name;
@@ -27,6 +28,7 @@ namespace Nameless.ConfigData
             this.passTime = passTime;
             this.transInfoShowName = transInfoShowName;
             this.defaultInitPos = defaultInitPos;
+            this.eventIds = StringToLongCameraPos(eventIds);
             float[] pos = StringToFloatCameraPos(cameraPos);
             this.cameraPos = new Vector2(pos[0],pos[1]);
             this.nameBgm = nameBgm;
@@ -45,6 +47,22 @@ namespace Nameless.ConfigData
                 array = new float[2];
                 array[0] = 0;
                 array[1] = 0;
+            }
+            return array;
+        }
+        private long[] StringToLongCameraPos(string stringlist)
+        {
+            long[] array;
+            if (stringlist.Contains("]") && stringlist.Contains("["))
+            {
+                stringlist = stringlist.Remove(0, 1);
+                stringlist = stringlist.Remove(stringlist.Length - 1, 1);
+                array = stringlist.Contains(",") ? Array.ConvertAll<string, long>(stringlist.Split(new char[] { ',' }), s => long.Parse(s)) : new long[1] { long.Parse(stringlist) };
+            }
+            else
+            {
+                array = new long[1];
+                array[0] = 0;
             }
             return array;
         }

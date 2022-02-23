@@ -264,9 +264,9 @@ namespace Nameless.Manager {
 
             MapManager.Instance.currentMap.InitArea();
             List<EventResult> eventResults = new List<EventResult>();
-            foreach (var child in DataManager.Instance.eventResultData)
+            foreach (var child in MapManager.Instance.currentMapData.eventIds)
             {
-                eventResults.Add(EventResultFactory.GetEventResultById(child.Key, Localplayer));
+                eventResults.Add(EventResultFactory.GetEventResultById(child, Localplayer));
             }
             EventTriggerManager.Instance.InitEventTrigger(eventResults);
             //Debug.Log(DataManager.Instance.GetCharacter(1001).name);
