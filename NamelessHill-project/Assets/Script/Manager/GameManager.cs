@@ -229,7 +229,7 @@ namespace Nameless.Manager {
             {
                 NoteManager.Instance.notePageDic = gameData.notePageSaveData.NotePageDictionary();
                 this.localPlayer = gameData.playerSaveData.GetPlayer();
-                this.EnterCamp(gameData.campId, this.localPlayer.pawns);
+                this.EnterCamp(gameData.campId, this.localPlayer);
                 return true;
             }
             else
@@ -304,7 +304,7 @@ namespace Nameless.Manager {
             //RTSCamera.Instance.ResetCameraPos();
             AudioManager.Instance.PlayMusic(MapManager.Instance.currentMapData.nameBgm);
 
-            this.UpdateBattleToPlayer();
+            //this.UpdateBattleToPlayer();
             PlayerController.Instance.UpdateBattlePlayer(FrontManager.Instance.localPlayer);
         }
         public void RestartBattle()//重新进入战场开始游戏
@@ -317,7 +317,7 @@ namespace Nameless.Manager {
             this.LoadOldGame();
 
         }
-        public void EnterCamp(long campId,List<Pawn> pawns)//进入营地
+        public void EnterCamp(long campId,Player player)//进入营地
         {
 
             this.battleView.ExitBattle();//待修改 等UI管理器到位
@@ -327,11 +327,13 @@ namespace Nameless.Manager {
             this.GameScene = GameScene.Camp;
             RTSCamera.Instance.ResetCameraPos();
 
-            SaveManager.Instance.SaveData(this.localPlayer, NoteManager.Instance.notePageDic, -1, campId);
+
             
             CampData campData = DataManager.Instance.GetCampData(campId/*MapManager.Instance.currentMapData.nextCampId*/);
-            CampManager.Instance.InitCamp(campData,pawns, this.localPlayer.totalMilitaryRes);
-            this.UpdateCampToPlayer();
+            CampManager.Instance.InitCamp(campData, player.pawns, player.eventCollections, this.localPlayer.totalMilitaryRes);
+            //this.UpdateCampToPlayer();
+            SaveManager.Instance.SaveData(player, NoteManager.Instance.notePageDic, -1, campId);
+            
             MapManager.Instance.UpdateNewMap(DataManager.Instance.GetMapData(CampManager.Instance.currentCampData.nextBattleId));//更新下一场战斗的地图
 
         }
@@ -365,13 +367,13 @@ namespace Nameless.Manager {
 
         }
 
-        private void UpdateBattleToPlayer()
+        public void UpdateBattleToPlayer()
         {
             this.localPlayer = new Player(FrontManager.Instance.localPlayer.GetPawnAvatars(), FrontManager.Instance.localPlayer.GetMilitaryRes(), FrontManager.Instance.localPlayer.eventCollections);
         }
-        private void UpdateCampToPlayer()
+        public void UpdateCampToPlayer()
         {
-            this.localPlayer = new Player(CampManager.Instance.GetPawnCamps(), CampManager.Instance.GetMilitaryRes(), FrontManager.Instance.localPlayer.eventCollections);
+            this.localPlayer = new Player(CampManager.Instance.GetPawnCamps(), CampManager.Instance.GetMilitaryRes(), CampManager.Instance.eventCollections);
         }
         private void Result(string title, bool isWin)
         {

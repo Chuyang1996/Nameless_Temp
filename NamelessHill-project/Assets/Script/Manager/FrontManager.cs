@@ -34,6 +34,10 @@ namespace Nameless.Manager
             this.totalMilitaryRes = totalMilitaryRes;
             this.enemiesDieNum = 0;
         }
+        public Player GetPlayer()
+        {
+            return new Player(this.GetPawns(), this.totalMilitaryRes, this.eventCollections);
+        }
         public bool IsLocalPlayer()
         {
             return this.isLocalPlayer;
@@ -66,7 +70,15 @@ namespace Nameless.Manager
             if (!this.pawnAvatars.Contains(pawnAvatar) && pawnAvatar != null)
                 this.pawnAvatars.Add(pawnAvatar);
         }
-
+        public List<Pawn> GetPawns()
+        {
+            List<Pawn> pawns = new List<Pawn>();
+            for (int i = 0; i < this.GetPawnAvatars().Count; i++)
+            {
+                pawns.Add(this.GetPawnAvatars()[i].pawnAgent.pawn);
+            }
+            return pawns;
+        }
         public void RemovePawnAvatar(PawnAvatar pawnAvatar)
         {
             if (this.pawnAvatars.Contains(pawnAvatar) && pawnAvatar != null)

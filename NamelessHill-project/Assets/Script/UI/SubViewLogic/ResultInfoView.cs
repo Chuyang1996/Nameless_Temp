@@ -110,7 +110,8 @@ namespace Nameless.UI {
         {
             AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind); 
             Time.timeScale = 1.0f;
-            GameManager.Instance.EnterCamp(MapManager.Instance.currentMapData.nextCampId,FrontManager.Instance.GetPawns(FrontManager.Instance.localPlayer));
+            GameManager.Instance.UpdateBattleToPlayer();
+            GameManager.Instance.EnterCamp(MapManager.Instance.currentMapData.nextCampId, FrontManager.Instance.localPlayer.GetPlayer());
         }
         private void OptionPanel()
         {

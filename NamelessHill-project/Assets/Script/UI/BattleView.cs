@@ -137,7 +137,8 @@ namespace Nameless.UI
 
         public void ExitBattle()
         {
-            FrontManager.Instance.localPlayer.TotalMilitartEvent -= this.resourceInfoView.Init;
+            if(FrontManager.Instance.localPlayer!=null)
+                FrontManager.Instance.localPlayer.TotalMilitartEvent -= this.resourceInfoView.Init;
             this.gameObject.SetActive(false);
         }
         //void ResetAreaInfo()

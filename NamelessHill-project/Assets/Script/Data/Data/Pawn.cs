@@ -400,6 +400,9 @@ namespace Nameless.Data
             this.campPosIndex = pawnSaveData.campPosIndex;
         }
 
-
+        public void ResetConversation()
+        {
+            this.conversationsInCamp = new Stack<Conversation>();
+        }
     }
 }

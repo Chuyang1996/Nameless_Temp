@@ -133,6 +133,9 @@ namespace Nameless.UI
             AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             this.gameObject.SetActive(false);
             this.ResetPanel();
+
+            CampManager.Instance.ResetPawnCampConversation();//清空当前营地的对话（除了默认对话
+            GameManager.Instance.UpdateCampToPlayer();
             GameManager.Instance.EnterBattle();
         }
         private void CloseConfirm()

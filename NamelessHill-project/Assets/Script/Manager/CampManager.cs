@@ -19,9 +19,10 @@ namespace Nameless.Manager
 
         public Action<int> TotalMilitartEvent;
         public int totalMilitaryRes;
+        public EventCollections eventCollections;
 
         private string campPath = "Prefabs/Camp/";
-        public void InitCamp(CampData campData, List<Pawn> pawnAvatars,int militaryRes)
+        public void InitCamp(CampData campData, List<Pawn> pawnAvatars, EventCollections eventCollections,int militaryRes)
         {
             this.UpdateCampData(campData);
             GameObject camp = Instantiate(Resources.Load(this.campPath + campData.campName) as GameObject, this.transform);
@@ -29,7 +30,8 @@ namespace Nameless.Manager
             this.campScene = camp.GetComponent<Camp>();
             this.campScene.InitCamp(pawnAvatars);
             this.ReceivePawnFromBattle(this.campScene.CampPawns());
-
+            this.totalMilitaryRes = militaryRes;
+            this.eventCollections = eventCollections;
 
             //¿ªÆôUI
             GameManager.Instance.campView.InitCamp(campData.descrption, militaryRes, pawnAvatars.Count);
@@ -66,6 +68,13 @@ namespace Nameless.Manager
         public int GetMilitaryRes()
         {
             return this.totalMilitaryRes;
+        }
+        public void ResetPawnCampConversation()
+        {
+            for (int i = 0; i < this.allCampPawns.Count; i++)
+            {
+                this.allCampPawns[i].pawn.ResetConversation();
+            }
         }
         public void ClearCamp()
         {
