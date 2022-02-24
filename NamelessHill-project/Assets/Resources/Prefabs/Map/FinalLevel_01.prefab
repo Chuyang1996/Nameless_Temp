@@ -2507,7 +2507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -2951,7 +2951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -3587,7 +3587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -4097,7 +4097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -5273,7 +5273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -5792,7 +5792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -6036,7 +6036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -6421,7 +6421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -10027,7 +10027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -10471,7 +10471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -11824,7 +11824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -13312,7 +13312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -15168,7 +15168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -16344,7 +16344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -16869,7 +16869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -17422,7 +17422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -18050,7 +18050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -18566,7 +18566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -19465,7 +19465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -20418,7 +20418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -22489,7 +22489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -24355,7 +24355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -24768,7 +24768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -26262,7 +26262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -26515,7 +26515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -27537,7 +27537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -30942,7 +30942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -32641,7 +32641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -35339,7 +35339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -36518,7 +36518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -36781,7 +36781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -38502,7 +38502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -38778,7 +38778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -40330,7 +40330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -41134,7 +41134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -41553,7 +41553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -41737,7 +41737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -42777,7 +42777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -42992,7 +42992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -43360,7 +43360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -45882,7 +45882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -46647,7 +46647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -46813,7 +46813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -48358,7 +48358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -49885,7 +49885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -51627,7 +51627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -52592,7 +52592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -53500,7 +53500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -54273,7 +54273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -55444,7 +55444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -56040,7 +56040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -57447,7 +57447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -58566,7 +58566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -59170,7 +59170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -60273,7 +60273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -61254,7 +61254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -63010,7 +63010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -63255,7 +63255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -63658,7 +63658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -64485,7 +64485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -65012,7 +65012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -67368,7 +67368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -69812,7 +69812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -73235,7 +73235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -75182,7 +75182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -75501,7 +75501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -75680,7 +75680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -76314,7 +76314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -77405,7 +77405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -78238,7 +78238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -81394,7 +81394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -83366,7 +83366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -84071,7 +84071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -84426,7 +84426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
@@ -86005,7 +86005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c92c49d148d27488982f7fb8284519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionId: 3
+  factionId: 1
   localId: 0
   areaId: 1001
   buildId: 0
