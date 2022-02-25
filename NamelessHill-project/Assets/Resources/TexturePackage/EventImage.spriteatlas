@@ -44,7 +44,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 2109f14ec77415744aaee59c0b1e2559, type: 3}
-    totalSpriteSurfaceArea: 17413418
+    totalSpriteSurfaceArea: 18104618
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -52,6 +52,7 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: 51290800a839e1d4bb54cdff6715a9e4, type: 3}
   - {fileID: 21300000, guid: ff1bb5c0dd17387418e4eefa18e2dba1, type: 3}
+  - {fileID: 21300000, guid: 9563d67115a4e3c49bde239254a3e886, type: 3}
   - {fileID: 21300000, guid: 8b8c0691ddb0dec43b927c3e1e9e4356, type: 3}
   - {fileID: 21300000, guid: 476ef4c1f7761714daf19d92dd108a92, type: 3}
   - {fileID: 21300000, guid: c265ad23ba066b249a7db9d1737ff9fc, type: 3}
@@ -69,6 +70,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 55dc0a27718aeb0488b3c502c5b8ffdf, type: 3}
   - {fileID: 21300000, guid: 72f84a87426fe744295baed05910e243, type: 3}
   - {fileID: 21300000, guid: a1f92c87fed7cb146a016304ada961fc, type: 3}
+  - {fileID: 21300000, guid: 8ce434c7f54d43a429d04a39f60497da, type: 3}
   - {fileID: 21300000, guid: 005ee0d7586777d41babc115110566c6, type: 3}
   - {fileID: 21300000, guid: cd9a4038455a53744bc5a694cc4906c0, type: 3}
   - {fileID: 21300000, guid: be7264c80d437234090642f11d2638a2, type: 3}
@@ -80,6 +82,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 4fe2fff980769a54584700ec8b287b17, type: 3}
   - {fileID: 21300000, guid: 476e011a417fc04458e3a7c92502f25a, type: 3}
   - {fileID: 21300000, guid: 1859502a2123981488f53512f8b02ecf, type: 3}
+  - {fileID: 21300000, guid: de2c583a75e809a4186343d2a0dbd7c4, type: 3}
   - {fileID: 21300000, guid: 4511817af093466448304d41f4e50255, type: 3}
   - {fileID: 21300000, guid: 6efb05bb78f44954bacf15e535f1f001, type: 3}
   - {fileID: 21300000, guid: cb5b2d0ca936a724596ff1751e254728, type: 3}
@@ -98,6 +101,7 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - Tutorial_04
   - day1-event1-01-2
+  - final-2
   - day4-event1-01-2
   - day4-event2-01-1
   - day1-event1-02-2
@@ -115,6 +119,7 @@ SpriteAtlas:
   - day3-event1-2
   - NewTutorial_07
   - Defensive_Collasped_01
+  - final-3
   - Tutorial2.0_08
   - day2-event1-1
   - day2-event2-02-2
@@ -126,6 +131,7 @@ SpriteAtlas:
   - day1-event2-01-1
   - Village_Teenager_01
   - day4-event2-02-1
+  - final-1
   - Tutorial_02
   - day2-event1-2
   - NewTutorial_02
