@@ -17,6 +17,7 @@ namespace Nameless.UI
         public Button newGameComfirmBtn;
         public Button newGameCancelBtn;
         public Button optionBtn;
+        public Button sceneBtn;//ÁÙÊ±
         public Button exitBtn;
         public Button backBtn;
 
@@ -26,6 +27,7 @@ namespace Nameless.UI
 
         private void Start()
         {
+            this.sceneBtn.onClick.AddListener(() => { Application.LoadLevel(1); });
             this.contiuneBtn.onClick.AddListener(this.LoadGame);
             this.startBtn.onClick.AddListener(()=> {
                 if (SaveManager.Instance.IfSaveExist())
