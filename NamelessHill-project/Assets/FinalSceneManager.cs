@@ -15,41 +15,52 @@ public class FinalSceneManager : MonoBehaviour
     public float floatSpeed;
     public float floatSpeedUI;
     public int sceneCount;
-    public int itemCount=0;
+    public int itemCount = 0;
 
-    public float readTimer =0;
+    public float readTimer = 0;
     public List<SpriteRenderer> contents;
     public GameObject regularBook;
 
     public GameObject finalBook;
 
+    public Animator final;
+
+    public bool isFinalShown = false;
+
     // Start is called before the first frame update
     void Start()
     {
         tempAlpha = blackScene.color.a;
-        foreach(SpriteRenderer sprite in contents)
+        foreach (SpriteRenderer sprite in contents)
         {
-            sprite.color = new Color(255,255,255,0);
+            sprite.color = new Color(255, 255, 255, 0);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        FadeIn();
-        if(isStartSceneDone&&!allContentShown)
+        if (!isStartSceneDone)
+        {
+            FadeIn();
+        }
+        if (isStartSceneDone && !allContentShown)
         {
             ShowContent();
         }
-        if(allContentShown)
+        if (allContentShown)
         {
-            readTimer+=Time.deltaTime;
-            if(readTimer>=5)
+
+            if (readTimer >= 3)
             {
                 HideContent();
             }
+            else
+            {
+                readTimer += Time.deltaTime;
+            }
         }
-        if(isShownDone)
+        if (isShownDone)
         {
             ShowFinal();
             //播放动画
@@ -60,54 +71,91 @@ public class FinalSceneManager : MonoBehaviour
 
     public void FadeIn()
     {
-        if(tempAlpha>0)
+        if (tempAlpha > 0)
         {
-            tempAlpha-=Time.deltaTime*floatSpeed;
+            tempAlpha -= Time.deltaTime * floatSpeed;
             //Debug.Log(tempAlpha);
-            blackScene.color = new Color(0,0,0,tempAlpha);
+            blackScene.color = new Color(0, 0, 0, tempAlpha);
         }
         else
         {
             isStartSceneDone = true;
         }
-        
+
     }
 
     public void ShowContent()
     {
-        tempContentAlpha+=Time.deltaTime*floatSpeedUI;
-        Debug.Log(tempContentAlpha);
-        contents[itemCount].color = new Color(1,1,1,tempContentAlpha);
-        Debug.Log("AAAAAAAA"+contents[itemCount].color.a);
-        if(tempContentAlpha>=1)
+        if (!allContentShown)
         {
-            tempContentAlpha=0;
-            itemCount+=1;
-            if(itemCount>=contents.Count)
+            tempContentAlpha += Time.deltaTime * floatSpeedUI;
+            //Debug.Log(tempContentAlpha);
+            contents[itemCount].color = new Color(1, 1, 1, tempContentAlpha);
+            //Debug.Log("AAAAAAAA"+contents[itemCount].color.a);
+            if (tempContentAlpha >= 1)
             {
-                allContentShown=true;
-                tempContentAlpha = 1;
+                tempContentAlpha = 0;
+                itemCount += 1;
+                if (itemCount >= contents.Count)
+                {
+                    allContentShown = true;
+                    tempContentAlpha = 1;
+                }
             }
         }
     }
 
     public void HideContent()
     {
-        tempContentAlpha-=Time.deltaTime*floatSpeedUI;
-        foreach(SpriteRenderer sprite in contents)
+        if (!isShownDone)
         {
-            sprite.color = new Color(1,1,1,tempContentAlpha);
+            if (tempAlpha <= 1)
+            {
+                tempAlpha += Time.deltaTime * floatSpeed;
+                //Debug.Log(tempAlpha);
+                blackScene.color = new Color(0, 0, 0, tempAlpha);
+            }
+            else
+            {
+                isShownDone = true;
+                regularBook.SetActive(false);
+                finalBook.SetActive(true);
+            }
         }
-        if(tempContentAlpha<0)
-        {
-            isShownDone=true;
-        }
+
+        // if(!isShownDone)
+        // {
+        //     if (tempContentAlpha >= 0)
+        //     {
+        //         tempContentAlpha -= Time.deltaTime * floatSpeedUI;
+        //     }
+        //     foreach (SpriteRenderer sprite in contents)
+        //     {
+        //         sprite.color = new Color(1, 1, 1, tempContentAlpha);
+        //     }
+        //     if (tempContentAlpha < 0)
+        //     {
+        //         isShownDone = true;
+        //     }
+        // }
     }
 
     public void ShowFinal()
     {
-        finalBook.SetActive(true);
-        regularBook.SetActive(false);
+        if (!isFinalShown)
+        {
+            if (tempAlpha > 0)
+            {
+                tempAlpha -= Time.deltaTime * floatSpeed;
+                //Debug.Log(tempAlpha);
+                blackScene.color = new Color(0, 0, 0, tempAlpha);
+            }
+            else
+            {
+                isFinalShown = true;
+                Debug.Log("Shown!");
+            }
+        }
     }
 
 
