@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Week8Demo.unity
     guid: 30a9d3d7385393f46b9bd80a6a687767
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: fb8bff2606a8dec43810bb2ae74efbf7
   m_configObjects: {}
