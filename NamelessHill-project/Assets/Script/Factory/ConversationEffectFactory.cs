@@ -37,13 +37,18 @@ namespace Nameless.Agent
                 }
                 return new ConversationUnlockNote(conversationEffectData.id, conversationEffectData.name, conversationEffectData.descrption, tempLong[0],noteInfos);
             }
-            else 
+            else if (conversationEffectData.type == 103)
             {
                 long[] tempLong = StringToLongArray(conversationEffectData.parameter);
                 if(tempLong[0] != -1)
                     return new ConversationNext(conversationEffectData.id, conversationEffectData.name, conversationEffectData.descrption, ConversationFactory.GetConversationById(tempLong[0]));
                 else
                     return new ConversationNext(conversationEffectData.id, conversationEffectData.name, conversationEffectData.descrption, null);
+            }
+            else
+            {
+                long[] tempLong = StringToLongArray(conversationEffectData.parameter);
+                return new ConversationGoToEnd(conversationEffectData.id, conversationEffectData.name, conversationEffectData.descrption, (int)tempLong[0]);
             }
             // Start is called before the first frame update
         }

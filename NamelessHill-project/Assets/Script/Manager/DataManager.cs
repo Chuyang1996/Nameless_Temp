@@ -621,12 +621,13 @@ namespace Nameless.Manager
                             this.mapData[id]["descrption"],
                             this.mapData[id]["mapName"],
                             int.Parse(this.mapData[id]["passTime"]),
-                            long.Parse(this.mapData[id]["nextCampId"]),
+                            this.mapData[id]["nextCampId"],
                             this.mapData[id]["transInfoShowName"],
                             this.mapData[id]["defaultInitPos"],
                             this.mapData[id]["eventIds"],
                             this.mapData[id]["cameraPos"],
-                            this.mapData[id]["mapBgm"]
+                            this.mapData[id]["mapBgm"],
+                            this.mapData[id]["endId"]
                             );
                     return skill;
                 }

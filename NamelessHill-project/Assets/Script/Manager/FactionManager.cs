@@ -47,7 +47,8 @@ namespace Nameless.Manager
         public void InitFaction()
         {
             List<FactionData> factionDatas = DataManager.Instance.GetFactions();
-            for(int i = 0;i < factionDatas.Count; i++)
+            this.factions = new List<Faction>();
+            for (int i = 0;i < factionDatas.Count; i++)
             {
                 List<float> healthRGBA = this.StringToFloatArray(factionDatas[i].healthColor);
                 List<float> pathRGBA = this.StringToFloatArray(factionDatas[i].pathColor);

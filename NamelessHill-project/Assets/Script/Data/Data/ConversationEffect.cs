@@ -12,6 +12,7 @@ namespace Nameless.Data
         ResourceChange = 101,
         UnlockNore = 102,
         NextConversation = 103,
+        GoToEnd = 104,
     }
     abstract public class ConversationEffect
     {
@@ -131,5 +132,24 @@ namespace Nameless.Data
             ConversationManager.Instance.GoToConversation(conversation);
         }
 
+    }
+
+    public class ConversationGoToEnd : ConversationEffect
+    {
+        public int sceneId;
+
+        public ConversationGoToEnd(long id, string name, string descrption, int sceneId)
+        {
+            this.id = id;
+            this.name = name;
+            this.descrption = descrption;
+            this.type = ConverEffectType.GoToEnd;
+            this.sceneId = sceneId;
+        }
+
+        public override void Execute()
+        {
+            Application.LoadLevel(this.sceneId);
+        }
     }
 }

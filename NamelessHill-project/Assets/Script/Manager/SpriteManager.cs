@@ -30,10 +30,13 @@ namespace Nameless.Manager
 
         public void InitTexturePackage()
         {
+            this.atlasCollection = new Dictionary<AtlasType, SpriteAtlas>();
             foreach (var child in this.atlasIndex)
             {
+
                 SpriteAtlas temp = Resources.Load(loadPath + child.Key) as SpriteAtlas;
                 this.atlasCollection.Add(child.Value, temp);
+
             }
         }
 
@@ -47,10 +50,10 @@ namespace Nameless.Manager
 
                     return this.atlasCollection[_atlasType].GetSprite(_spriteName);
                 }
-                Debug.LogError("尚未找到该图片资源名称 请检查配表是否正确，是否对字典进行过初始化");
+                Debug.LogError("尚未找到该图片" + _spriteName + "资源名称 请检查配表是否正确，是否对字典进行过初始化");
                 return null;
             }
-            Debug.LogError("尚未找到该图片资源的图集枚举 请检查前面字典是否配置了该枚举对应的图集");
+            Debug.LogError("尚未找到该图片"+ _spriteName + "资源的图集枚举 请检查前面字典是否配置了该枚举对应的图集");
             return null;
         }
 

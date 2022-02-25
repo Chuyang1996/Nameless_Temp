@@ -108,10 +108,14 @@ namespace Nameless.UI {
         }
         private void EnterCamp()
         {
-            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind); 
+            AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             Time.timeScale = 1.0f;
             GameManager.Instance.UpdateBattleToPlayer();
-            GameManager.Instance.EnterCamp(MapManager.Instance.currentMapData.nextCampId, FrontManager.Instance.localPlayer.GetPlayer());
+            if (MapManager.Instance.currentMapData.nextCampId != -1)
+                GameManager.Instance.EnterCamp(MapManager.Instance.currentMapData.nextCampId, FrontManager.Instance.localPlayer.GetPlayer());
+            else
+                Application.LoadLevel(MapManager.Instance.currentMapData.endId);
+            
         }
         private void OptionPanel()
         {

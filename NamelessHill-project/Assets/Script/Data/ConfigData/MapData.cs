@@ -18,20 +18,23 @@ namespace Nameless.ConfigData
         public long[] eventIds;
         public Vector2 cameraPos;
         public string nameBgm;
-        public MapData(long id, string name, string descrption,string mapName, int passTime,long nextCampId, string transInfoShowName, string defaultInitPos, string eventIds, string cameraPos, string nameBgm)
+        public int endId;
+        public MapData(long id, string name, string descrption,string mapName, int passTime,string nextCampId, string transInfoShowName, string defaultInitPos, string eventIds, string cameraPos, string nameBgm,string endId)
         {
             this.id = id;
             this.name = name;
             this.descrption = descrption;
             this.mapName = mapName;
-            this.nextCampId = nextCampId;
             this.passTime = passTime;
+            this.nextCampId = nextCampId == "null" ?  -1 : long.Parse(nextCampId);
             this.transInfoShowName = transInfoShowName;
             this.defaultInitPos = defaultInitPos;
             this.eventIds = StringToLongCameraPos(eventIds);
             float[] pos = StringToFloatCameraPos(cameraPos);
             this.cameraPos = new Vector2(pos[0],pos[1]);
             this.nameBgm = nameBgm;
+            this.endId = endId == "null"?-1: int.Parse(endId);
+
         }
         private float[] StringToFloatCameraPos(string stringlist)
         {
