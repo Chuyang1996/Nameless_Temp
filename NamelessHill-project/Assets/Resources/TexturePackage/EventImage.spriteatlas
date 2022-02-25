@@ -44,7 +44,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 2109f14ec77415744aaee59c0b1e2559, type: 3}
-    totalSpriteSurfaceArea: 27521984
+    totalSpriteSurfaceArea: 29595584
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -61,6 +61,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 706491b289165584a8c7cae9785ed09a, type: 3}
   - {fileID: 21300000, guid: 78de8a030647cab44a44fc35399d6e8e, type: 3}
   - {fileID: 21300000, guid: c265ad23ba066b249a7db9d1737ff9fc, type: 3}
+  - {fileID: 21300000, guid: c7952f735368abd4f8b0f5845ba66c92, type: 3}
   - {fileID: 21300000, guid: cd49720449abdba4e9aa431b5e079ca7, type: 3}
   - {fileID: 21300000, guid: 0a5039146eb493148a15b1f9be8381fa, type: 3}
   - {fileID: 21300000, guid: 9e172ba4efe05cc48b725c6775a1eabd, type: 3}
@@ -129,6 +130,7 @@ SpriteAtlas:
   - v2
   - r6
   - day1-event1-02-2
+  - titleScreen
   - NewTutorial_04
   - Tutorial_03
   - day1-event3-01-2
