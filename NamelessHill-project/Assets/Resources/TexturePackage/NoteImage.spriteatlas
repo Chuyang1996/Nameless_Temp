@@ -95,7 +95,7 @@ SpriteAtlas:
   - map
   - JournalImage_Liu_VillageBoy_A_Text_04
   - NoteTemplate_Default_Day1
-  - JournalImage_Liu_DangerousMission_Image_01
+  - JournalImage_Liu_DangerousMission_Image_02
   - NoteTemplate_Villager_Skip
   - JournalImage_Liu_DefenseCollasped_Image
   - NoteTemplate_Driver_Skipped
@@ -103,7 +103,7 @@ SpriteAtlas:
   - NoteTemplate_Villager_RequestMedicine
   - Day3_Default
   - NoteTemplate_Driver_3
-  - JournalImage_Liu_DangerousMission_Image_02
+  - JournalImage_Liu_DangerousMission_Image_01
   - NoteTemplate_Villager_NoRequest
   - Day2_Event1
   - NoteTemplate_Halo_1
