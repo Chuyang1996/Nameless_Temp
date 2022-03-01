@@ -8,6 +8,10 @@ namespace Nameless.DataMono
 {
     public class PlayerController : SingletonMono<PlayerController>
     {
+        public Texture2D defaultIcon;
+        private CursorMode cursorMode = CursorMode.Auto; 
+        private Vector2 hotSpot = Vector2.zero;
+
         private bool isInBattleScene = false;
         private FrontPlayer localplayer;
 
@@ -36,6 +40,7 @@ namespace Nameless.DataMono
             this.buildArea = new List<GameObject>();
             this.preColor = new List<Color>();
             this.currentArea = null;
+            Cursor.SetCursor(defaultIcon, hotSpot, cursorMode);
         }
         public void UpdateBattlePlayer(FrontPlayer frontPlayer)
         {
@@ -103,8 +108,13 @@ namespace Nameless.DataMono
             {
                 Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
-                if (hit.collider != null && hit.collider.gameObject.GetComponent<Area>() != null && FrontManager.Instance.localPlayer.ContainArea(hit.collider.gameObject.GetComponent<Area>()))
+                if (hit.collider != null 
+                 && hit.collider.gameObject.GetComponent<Area>() != null
+                 && FrontManager.Instance.localPlayer.ContainArea(hit.collider.gameObject.GetComponent<Area>())
+                 && hit.collider.gameObject.GetComponent<Area>().pawns.Count != 0)
                 {
+                    GameManager.Instance.battleView.mouseFollow.buildIcon.SetActive(true);
+                    Cursor.visible = false;
                     if (this.currentArea == null)
                     {
                         this.currentArea = hit.collider.gameObject.GetComponent<Area>();
@@ -122,9 +132,12 @@ namespace Nameless.DataMono
                 }
                 else
                 {
+                    GameManager.Instance.battleView.mouseFollow.buildIcon.SetActive(false);
+                    Cursor.visible = true;
                     if (this.currentArea != null)
                     {
                         this.currentArea.SetColor(this.currentArea.recordColor, false, false);
+                        this.currentArea = null;
                     }
                 }
                 Ray targetray1 = Camera.main.ScreenPointToRay(Input.mousePosition);

@@ -15,6 +15,7 @@ namespace Nameless.UI
         #region
         public ResourceInfoView resourceInfoView;
         public TipInfoView tipInfoView;
+        public MouseFollowView mouseFollow;
         #endregion
 
         #region//¹Ø¿¨½á¹û
