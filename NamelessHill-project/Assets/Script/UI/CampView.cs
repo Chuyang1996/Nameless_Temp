@@ -16,12 +16,12 @@ namespace Nameless.UI
 
 
 
-        public Text resourceText;
 
 
         public Text campInfoTxt;
         public Text pawnNum;
 
+        public CampResourceShow campResourceShow;
 
         public Button pauseBtn;
 
@@ -63,7 +63,8 @@ namespace Nameless.UI
         public void InitCamp(string infoCamp, int militartRes, int pawnNum)
         {
             this.gameObject.SetActive(true);
-            this.InitMilitRes(militartRes);
+            //this.InitMilitRes(militartRes);
+            this.campResourceShow.InitRes(militartRes);
             CampManager.Instance.TotalMilitartEvent += this.InitMilitRes;
             this.campInfoTxt.text = infoCamp;
             this.InitPawnInfo(pawnNum);
@@ -89,9 +90,9 @@ namespace Nameless.UI
         {
             this.pawnNum.text = value.ToString() + " " + "Members Left";
         }
-        public void InitMilitRes(int value)
+        public void InitMilitRes(int newTotalResource, int changes)
         {
-            this.resourceText.text = value.ToString();
+            this.campResourceShow.ShowResChange(newTotalResource, changes);
         }
 
 

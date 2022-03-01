@@ -17,7 +17,7 @@ namespace Nameless.Manager
         public Camp campScene;
         private List<PawnCamp> allCampPawns = new List<PawnCamp>();
 
-        public Action<int> TotalMilitartEvent;
+        public Action<int,int> TotalMilitartEvent;
         public int totalMilitaryRes;
         public EventCollections eventCollections;
 
@@ -57,7 +57,7 @@ namespace Nameless.Manager
         {
             this.totalMilitaryRes += cost;
             if (this.TotalMilitartEvent != null)
-                this.TotalMilitartEvent(this.totalMilitaryRes);
+                this.TotalMilitartEvent(this.totalMilitaryRes, cost);
             //this.battleView.resourceInfoView.Init(this.totalMilitaryRes);
         }
 
