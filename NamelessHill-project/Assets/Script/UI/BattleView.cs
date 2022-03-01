@@ -35,7 +35,6 @@ namespace Nameless.UI
 
         #region//¼ÆÊ±¼ä
         public int totalTime;
-        public Text timeTxt;
         //public Button gamePauseBtn;
 
         //public Sprite pauseIcon;
@@ -63,8 +62,7 @@ namespace Nameless.UI
             
             string shour = this.totalTime / 60 > 10 ? (this.totalTime / 60).ToString() : "0" + (this.totalTime / 60).ToString();
             string sminute = this.totalTime % 60 > 10 ? (this.totalTime % 60).ToString() : "0" + (this.totalTime % 60).ToString();
-            this.timeTxt.text = shour + ":"+ sminute;
-            this.golaDes.text = "for " + shour + " m " + sminute + " s "; 
+            this.golaDes.text = "for " + shour + " h " + sminute + " m "; 
             this.seconds = 0.0f;
             this.minute = 0;
             this.hour = 0;
@@ -122,7 +120,7 @@ namespace Nameless.UI
                 this.minute = this.totalTime % 60;
                 string minTxt = minute > 9 ? minute.ToString() : "0" + minute.ToString();
                 string hourTxt = hour > 9 ? hour.ToString() : "0" + hour.ToString();
-                this.timeTxt.text = hourTxt + ":" + minTxt;
+                this.golaDes.text = "for " + hourTxt + " h " + minTxt + " m ";
                 if(this.totalTime  <= 0)
                 {
                     Time.timeScale = 0.0f;
