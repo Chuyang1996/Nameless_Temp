@@ -84,7 +84,10 @@ namespace Nameless.Manager
             if (this.pawnAvatars.Contains(pawnAvatar) && pawnAvatar != null)
                 this.pawnAvatars.Remove(pawnAvatar);
         }
-
+        public bool ContainArea(Area area)
+        {
+            return this.occupyAreas.Contains(area);
+        }
         public void AddArea(Area area)
         {
             if (!this.occupyAreas.Contains(area))

@@ -21,6 +21,9 @@ namespace Nameless.DataMono
         private List<GameObject> buildArea = new List<GameObject>();
         private List<Color> preColor = new List<Color>();
         private bool isBuild = false;
+
+
+        private Area currentArea;
         public void InitBattlePlayer()
         {
             this.isInBattleScene = false;
@@ -32,6 +35,7 @@ namespace Nameless.DataMono
             this.buildIcon = new List<GameObject>();
             this.buildArea = new List<GameObject>();
             this.preColor = new List<Color>();
+            this.currentArea = null;
         }
         public void UpdateBattlePlayer(FrontPlayer frontPlayer)
         {
@@ -39,6 +43,7 @@ namespace Nameless.DataMono
             this.pawnAvatars = this.localplayer.GetPawnAvatars();
             this.isInBattleScene = true;
             this.isBuild = false;
+            this.currentArea = null;
 
         }
         public void ResetBattlePlayer()
@@ -98,11 +103,36 @@ namespace Nameless.DataMono
             {
                 Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
+                if (hit.collider != null && hit.collider.gameObject.GetComponent<Area>() != null && FrontManager.Instance.localPlayer.ContainArea(hit.collider.gameObject.GetComponent<Area>()))
+                {
+                    if (this.currentArea == null)
+                    {
+                        this.currentArea = hit.collider.gameObject.GetComponent<Area>();
+                        this.currentArea.SetColor(new Color(1, 1, 1, 0.3f), false, false);
+                    }
+                    else
+                    {
+                        if (hit.collider.gameObject.GetComponent<Area>() != this.currentArea)
+                        {
+                            this.currentArea.SetColor(this.currentArea.recordColor, false, false);
+                            this.currentArea = hit.collider.gameObject.GetComponent<Area>();
+                            this.currentArea.SetColor(new Color(1, 1, 1, 0.3f), false, false);
+                        }
+                    }
+                }
+                else
+                {
+                    if (this.currentArea != null)
+                    {
+                        this.currentArea.SetColor(this.currentArea.recordColor, false, false);
+                    }
+                }
                 Ray targetray1 = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit TargetHit1;
                 //Debug.Log("sssss");
                 if (Physics.Raycast(targetray1, out TargetHit1))
                 {
+
                     if (TargetHit1.transform.gameObject.GetComponent<PawnAvatar>() != null
                         && TargetHit1.transform.gameObject.GetComponent<PawnAvatar>().pawnAgent.frontPlayer == FrontManager.Instance.localPlayer)//���޸�.AI
                     {
