@@ -9,8 +9,10 @@ namespace Nameless.DataMono
     public class PlayerController : SingletonMono<PlayerController>
     {
         public Texture2D defaultIcon;
+        public Texture2D HightlightIcon;
         private CursorMode cursorMode = CursorMode.Auto; 
         private Vector2 hotSpot = Vector2.zero;
+        private bool isSelectPawn = false;
 
         private bool isInBattleScene = false;
         private FrontPlayer localplayer;
@@ -39,7 +41,8 @@ namespace Nameless.DataMono
             this.buildIcon = new List<GameObject>();
             this.buildArea = new List<GameObject>();
             this.preColor = new List<Color>();
-            this.currentArea = null;
+            this.currentArea = null; 
+            this.isSelectPawn = false;
             Cursor.SetCursor(defaultIcon, hotSpot, cursorMode);
         }
         public void UpdateBattlePlayer(FrontPlayer frontPlayer)
@@ -48,7 +51,8 @@ namespace Nameless.DataMono
             this.pawnAvatars = this.localplayer.GetPawnAvatars();
             this.isInBattleScene = true;
             this.isBuild = false;
-            this.currentArea = null;
+            this.currentArea = null; 
+            this.isSelectPawn = false;
 
         }
         public void ResetBattlePlayer()
@@ -62,6 +66,7 @@ namespace Nameless.DataMono
             this.buildIcon = new List<GameObject>();
             this.buildArea = new List<GameObject>();
             this.preColor = new List<Color>();
+            this.isSelectPawn = false;
         }
 
         public void FindAllBuildingArea(Area area, Build build, PawnAvatar builder, int costRes)
@@ -101,48 +106,64 @@ namespace Nameless.DataMono
             this.currentbuild = null;
 
         }
+        public void SelectedPawn(bool isSelected)
+        {
+            this.isSelectPawn = isSelected;
+            if (isSelectPawn)
+            {
+                Cursor.SetCursor(this.HightlightIcon, Vector2.zero, CursorMode.Auto);
+            }
+            else
+                Cursor.SetCursor(this.defaultIcon, Vector2.zero, CursorMode.Auto);
+        }
+        public void SelectAreaHightLight()
+        {
+            Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
+            if (hit.collider != null
+             && hit.collider.gameObject.GetComponent<Area>() != null
+             && FrontManager.Instance.localPlayer.ContainArea(hit.collider.gameObject.GetComponent<Area>())
+             && hit.collider.gameObject.GetComponent<Area>().pawns.Count != 0
+             && !isSelectPawn)
+            {
+                GameManager.Instance.battleView.mouseFollow.buildIcon.SetActive(true);
+                Cursor.visible = false;
+                if (this.currentArea == null)
+                {
+                    this.currentArea = hit.collider.gameObject.GetComponent<Area>();
+                    this.currentArea.SetColor(new Color(1, 1, 1, 0.3f), false, false);
+                }
+                else
+                {
+                    if (hit.collider.gameObject.GetComponent<Area>() != this.currentArea)
+                    {
+                        this.currentArea.SetColor(this.currentArea.recordColor, false, false);
+                        this.currentArea = hit.collider.gameObject.GetComponent<Area>();
+                        this.currentArea.SetColor(new Color(1, 1, 1, 0.3f), false, false);
+                    }
+                }
+            }
+            else
+            {
+                GameManager.Instance.battleView.mouseFollow.buildIcon.SetActive(false);
+                Cursor.visible = true;
+                if (this.currentArea != null)
+                {
+                    this.currentArea.SetColor(this.currentArea.recordColor, false, false);
+                    this.currentArea = null;
+                }
+            }
+        }
         // Update is called once per frame
         void Update()
         {
             if (this.isInBattleScene && !this.isBuild)
             {
-                Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
-                if (hit.collider != null 
-                 && hit.collider.gameObject.GetComponent<Area>() != null
-                 && FrontManager.Instance.localPlayer.ContainArea(hit.collider.gameObject.GetComponent<Area>())
-                 && hit.collider.gameObject.GetComponent<Area>().pawns.Count != 0)
-                {
-                    GameManager.Instance.battleView.mouseFollow.buildIcon.SetActive(true);
-                    Cursor.visible = false;
-                    if (this.currentArea == null)
-                    {
-                        this.currentArea = hit.collider.gameObject.GetComponent<Area>();
-                        this.currentArea.SetColor(new Color(1, 1, 1, 0.3f), false, false);
-                    }
-                    else
-                    {
-                        if (hit.collider.gameObject.GetComponent<Area>() != this.currentArea)
-                        {
-                            this.currentArea.SetColor(this.currentArea.recordColor, false, false);
-                            this.currentArea = hit.collider.gameObject.GetComponent<Area>();
-                            this.currentArea.SetColor(new Color(1, 1, 1, 0.3f), false, false);
-                        }
-                    }
-                }
-                else
-                {
-                    GameManager.Instance.battleView.mouseFollow.buildIcon.SetActive(false);
-                    Cursor.visible = true;
-                    if (this.currentArea != null)
-                    {
-                        this.currentArea.SetColor(this.currentArea.recordColor, false, false);
-                        this.currentArea = null;
-                    }
-                }
+
                 Ray targetray1 = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit TargetHit1;
                 //Debug.Log("sssss");
+                this.SelectAreaHightLight();
                 if (Physics.Raycast(targetray1, out TargetHit1))
                 {
 
@@ -161,6 +182,7 @@ namespace Nameless.DataMono
                             this.currentPawnAvatar = pawnAvatar;
                         }
                     }
+
 
 
                 }

@@ -42,6 +42,7 @@ namespace Nameless.UI
                 {
                     this.ownTip.SetActive(true);
                     this.FollowMouseMove(ownTip);
+                    PlayerController.Instance.SelectedPawn(true);
                     //if (this.currentPawn != TargetHit.transform.gameObject.GetComponent<PawnAvatar>() || TargetHit.transform.gameObject.GetComponent<PawnAvatar>().pawnAgent.supporters.Count == 0)
                     //{
                     //    this.ClearPanel();
@@ -72,12 +73,13 @@ namespace Nameless.UI
                 else
                 {
                     this.ownTip.SetActive(false);
-
+                    PlayerController.Instance.SelectedPawn(false);
                 }
             }
             else
             {
                 this.ownTip.SetActive(false);
+                PlayerController.Instance.SelectedPawn(false);
             }
         }
 
