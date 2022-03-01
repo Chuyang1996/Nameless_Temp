@@ -27,9 +27,7 @@ namespace Nameless.DataMono {
             if (tipState == TipState.Battle)
             {
                 this.stateIcon.sprite = this.battleIcon;
-                string minute = (int)(content / 60.0f) < 10 ? "0" + ((int)(content / 60.0f)).ToString() : ((int)(content / 60.0f)).ToString();
-                string seconds = (int)(content % 60.0f) < 10 ? "0" + ((int)(content % 60.0f)).ToString() : ((int)(content % 60.0f)).ToString();
-                this.labelTxt.text = minute.ToString() + ":" +  seconds.ToString();
+                this.labelTxt.text = "";
             }
             else if(tipState == TipState.Walk)
             {

@@ -688,7 +688,8 @@ namespace Nameless.Manager
                             this.factionData[id]["walkColor"],
                             this.factionData[id]["supportColor"],
                             this.factionData[id]["areaColor"],
-                            this.factionData[id]["battleColor"]
+                            this.factionData[id]["battleColor"],
+                            this.factionData[id]["battleIcon"]
                             );
                     return skill;
                 }

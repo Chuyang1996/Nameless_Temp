@@ -17,8 +17,9 @@ namespace Nameless.ConfigData
         public string supportColor;
         public string areaColor;
         public string battleColor;
+        public string battleIcon;
 
-        public FactionData(long id, string name,string txt, string friendly_to,string hostile_to,string healthColor, string pathColor, string walkColor, string supportColor, string areaColor, string battleColor)
+        public FactionData(long id, string name,string txt, string friendly_to,string hostile_to,string healthColor, string pathColor, string walkColor, string supportColor, string areaColor, string battleColor, string battleIcon)
         {
             this.id = id;
             this.name = name;
@@ -31,6 +32,7 @@ namespace Nameless.ConfigData
             this.supportColor = supportColor;
             this.areaColor = areaColor;
             this.battleColor = battleColor;
+            this.battleIcon = battleIcon;
         }
     }
 }

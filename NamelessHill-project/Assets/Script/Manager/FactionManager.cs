@@ -19,8 +19,9 @@ namespace Nameless.Manager
         public Color areaColor;
         public Color battleColor;
         public string label;
+        public Sprite battleSprite;
 
-        public Faction(long id, Color healthColor, Color pathColor, Color walkColor, Color supportColor, Color areaColor, Color battleColor, string label)
+        public Faction(long id, Color healthColor, Color pathColor, Color walkColor, Color supportColor, Color areaColor, Color battleColor, string label, Sprite battleSprite)
         {
             this.id = id;
             this.healthColor = healthColor;
@@ -30,6 +31,7 @@ namespace Nameless.Manager
             this.areaColor = areaColor;
             this.battleColor = battleColor;
             this.label = label;
+            this.battleSprite = battleSprite;
         }
     }
     public enum FactionRelation
@@ -62,7 +64,7 @@ namespace Nameless.Manager
                 Color supportColor = new Color(supportRGBA[0], supportRGBA[1], supportRGBA[2], supportRGBA[3]);
                 Color areaColor = new Color(areaRGBA[0], areaRGBA[1], areaRGBA[2], areaRGBA[3]);
                 Color battleColor = new Color(battleRGBA[0], battleRGBA[1], battleRGBA[2], battleRGBA[3]);
-                this.factions.Add(new Faction(factionDatas[i].id, healthColor, pathColor, walkColor, supportColor, areaColor, battleColor, factionDatas[i].name));
+                this.factions.Add(new Faction(factionDatas[i].id, healthColor, pathColor, walkColor, supportColor, areaColor, battleColor, factionDatas[i].name, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, factionDatas[i].battleIcon)));
             }
             this.relations = new FactionRelation[this.factions.Count][];
             for (int i = 0; i < this.relations.GetLength(0); i++)

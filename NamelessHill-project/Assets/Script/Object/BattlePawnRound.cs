@@ -21,7 +21,7 @@ namespace Nameless.DataMono
             this.attacker = attacker;
             this.defender = defender;
             this.name = this.attacker.gameObject.name + " vs " + this.defender.gameObject.name;
-            this.arrowSprite.color = attacker.pawnAgent.frontPlayer.faction.battleColor;
+            this.arrowSprite.sprite = attacker.pawnAgent.frontPlayer.faction.battleSprite;
             this.CalculatePosition();
             this.attacker.pawnAgent.battleSideDic.Add(this.defender,BattleSide.Attacker);
             this.defender.pawnAgent.battleSideDic.Add(this.attacker, BattleSide.Defender);
