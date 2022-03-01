@@ -8,7 +8,8 @@ namespace Nameless.UI
     public class CampResourceShow : MonoBehaviour
     {
         public Animation animation;
-        public Text changeTxt;
+        public Text minusTxt;
+        public Text plusTxt;
         public Text resTxt;
 
         private int resChange;
@@ -19,15 +20,17 @@ namespace Nameless.UI
         }
         public void ShowResChange(int totalValue,int changeValue)
         {
+            this.minusTxt.gameObject.SetActive(false);
+            this.plusTxt.gameObject.SetActive(false);
             if (changeValue >= 0)
             {
-                this.changeTxt.color = Color.green;
-                this.changeTxt.text = "+" + changeValue.ToString();
+                this.plusTxt.gameObject.SetActive(true);
+                this.plusTxt.text = "+" + changeValue.ToString();
             }
             else
             {
-                this.changeTxt.color = Color.red;
-                this.changeTxt.text = changeValue.ToString();
+                this.minusTxt.gameObject.SetActive(true);
+                this.minusTxt.text = changeValue.ToString();
             }
             this.resChange = changeValue;
             this.resTotal = totalValue;
