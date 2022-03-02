@@ -162,11 +162,11 @@ namespace Nameless.UI
                     this.GenerateSupportTip(buffs[i].descrption, buffs[i].icon);
                 }
             }
-            //foreach (GameObject child in this.RreshPanels)
-            //{
-            //    LayoutRebuilder.ForceRebuildLayoutImmediate(child.GetComponent<RectTransform>());
-            //}
-            //LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
+            foreach (GameObject child in this.RreshPanels)
+            {
+                LayoutRebuilder.ForceRebuildLayoutImmediate(child.GetComponent<RectTransform>());
+            }
+            LayoutRebuilder.ForceRebuildLayoutImmediate(this.GetComponent<RectTransform>());
         }
 
 
