@@ -203,6 +203,7 @@ namespace Nameless.Manager
                             (id,
                             this.supportSkillData[id]["name"],
                             this.supportSkillData[id]["descrption"],
+                            this.supportSkillData[id]["tipDes"],
                             this.supportSkillData[id]["condition"],
                             this.supportSkillData[id]["buff"],
                             float.Parse(this.supportSkillData[id]["attackRate"]),
@@ -267,7 +268,8 @@ namespace Nameless.Manager
                             this.buffSkillData[id]["descrption"],
                             this.buffSkillData[id]["condition"],
                             int.Parse(this.buffSkillData[id]["type"]),
-                            this.buffSkillData[id]["parameter"]
+                            this.buffSkillData[id]["parameter"],
+                            this.buffSkillData[id]["icon"]
                             );
                     return skill;
                 }

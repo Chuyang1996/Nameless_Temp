@@ -20,8 +20,11 @@ namespace Nameless.UI
                     this.isSelected = true;
                     break;
                 case SelectionState.Highlighted:
-                    this.isSelected = true;
-                    break;
+                    {
+                       // Debug.LogError("light£¡£¡£¡");
+                        this.isSelected = true;
+                        break;
+                    }
                 case SelectionState.Disabled:
                     this.isSelected = false;
                     break;

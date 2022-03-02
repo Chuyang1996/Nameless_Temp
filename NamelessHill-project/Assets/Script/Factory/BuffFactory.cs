@@ -22,7 +22,7 @@ namespace Nameless.Agent
             {
                 tempDic = GetConditions(buffData.conditions);
             }
-            return new TimelyBuff(buffData.Id, buffData.name, buffData.description, tempDic, StringToIntArray(buffData.parameter));
+            return new TimelyBuff(buffData.Id, buffData.name, buffData.description, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, buffData.icon), tempDic, StringToIntArray(buffData.parameter));
         }
         private static int[] StringToIntArray(string stringlist)
         {

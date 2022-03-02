@@ -1,5 +1,6 @@
 ﻿using Nameless.Data;
 using Nameless.Manager;
+using Nameless.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ namespace Nameless.DataMono
 {
     public class PlayerController : SingletonMono<PlayerController>
     {
+        public Texture2D unVisionIcon;
         public Texture2D defaultIcon;
         public Texture2D HightlightIcon;
         private CursorMode cursorMode = CursorMode.Auto; 
@@ -113,8 +115,8 @@ namespace Nameless.DataMono
             {
                 Cursor.SetCursor(this.HightlightIcon, Vector2.zero, CursorMode.Auto);
             }
-            else
-                Cursor.SetCursor(this.defaultIcon, Vector2.zero, CursorMode.Auto);
+            //else
+            //    Cursor.SetCursor(this.defaultIcon, Vector2.zero, CursorMode.Auto);
         }
         public void SelectAreaHightLight()
         {
@@ -127,7 +129,7 @@ namespace Nameless.DataMono
              && !isSelectPawn)
             {
                 GameManager.Instance.battleView.mouseFollow.buildIcon.SetActive(true);
-                Cursor.visible = false;
+                Cursor.SetCursor(this.unVisionIcon, Vector2.zero, CursorMode.Auto);
                 if (this.currentArea == null)
                 {
                     this.currentArea = hit.collider.gameObject.GetComponent<Area>();
@@ -146,7 +148,7 @@ namespace Nameless.DataMono
             else
             {
                 GameManager.Instance.battleView.mouseFollow.buildIcon.SetActive(false);
-                Cursor.visible = true;
+                Cursor.SetCursor(this.defaultIcon, Vector2.zero, CursorMode.Auto);
                 if (this.currentArea != null)
                 {
                     this.currentArea.SetColor(this.currentArea.recordColor, false, false);

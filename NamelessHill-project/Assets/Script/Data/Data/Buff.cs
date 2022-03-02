@@ -34,6 +34,7 @@ namespace Nameless.Data
         public long id;
         public string name;
         public string descrption;
+        public Sprite icon;
         public Dictionary<BuffConditionType, float> conditions = new Dictionary<BuffConditionType, float>();
         protected bool IsActive(PawnAvatar pawnAvatar)
         {
@@ -179,11 +180,12 @@ namespace Nameless.Data
         public float second;
         public float valueChange;
         
-        public TimelyBuff(long id, string name, string descrption, Dictionary<BuffConditionType, float> conditions,  int[] speedEffect)
+        public TimelyBuff(long id, string name, string descrption, Sprite icon, Dictionary<BuffConditionType, float> conditions,  int[] speedEffect)
         {
             this.id = id;
             this.name = name;
             this.descrption = descrption;
+            this.icon = icon;
             this.conditions = conditions;
             this.property = (BuffAffectProperty)speedEffect[0];
             this.second = speedEffect[1];

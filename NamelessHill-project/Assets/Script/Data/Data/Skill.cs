@@ -255,14 +255,16 @@ namespace Nameless.Data
 
     public class SupportSkill : Skill
     {
+        public string tipDes;
         public List<Buff> buffs;
         public float attackRate;
         public float defendRate;
-        public SupportSkill(long id, string name, string descrption, Dictionary<SkillConditionType, float> conditions, List<Buff> buffs, float attackRate, float defendRate, Sprite iconName)
+        public SupportSkill(long id, string name, string descrption,string tipDes, Dictionary<SkillConditionType, float> conditions, List<Buff> buffs, float attackRate, float defendRate, Sprite iconName)
         {
             this.id = id;
             this.name = name;
             this.descrption = descrption;
+            this.tipDes = tipDes;
             this.conditions = conditions;
             this.buffs = buffs;
             this.attackRate = attackRate;

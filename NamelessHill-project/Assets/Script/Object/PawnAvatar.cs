@@ -72,12 +72,7 @@ namespace Nameless.DataMono
                 this.ResetAllSupport();
                 this.FixBtnActive = false;
                 this.StateTriggerEvent(value);
-                //if (value == PawnState.Wait)
-                //    this.PlayCharacterAnim(value);
-                //else if (value == PawnState.Walk)
-                //    this.PlayCharacterAnim(1);
-                //else if (value == PawnState.Battle)
-                //    this.PlayCharacterAnim(2);
+
                 lastState = state;
                 state = value;
             }
@@ -108,6 +103,7 @@ namespace Nameless.DataMono
 
         #region//UI
         public Slider healthBar;
+        public Slider ammoBar;
         public Slider ocuppyBar;
         public Image healthBarColor;
         public GameObject dialogueIm;
@@ -140,7 +136,7 @@ namespace Nameless.DataMono
             this.healthBar.gameObject.transform.Find("Fill Area/Fill").gameObject.GetComponent<Image>().color = frontPlayer.faction.healthColor;
             this.ocuppyBar.gameObject.transform.Find("Fill Area/Fill").gameObject.GetComponent<Image>().color = new Color(0, 1, 1, 1);
             this.currentArea = initArea;
-            this.pawnAgent = new PawnAgent(frontPlayer,this.healthBar, this.CurrentArea, pawn, mapId);
+            this.pawnAgent = new PawnAgent(frontPlayer,this.healthBar, this.ammoBar, this.CurrentArea, pawn, mapId);
             initArea.AddPawn(this);
             this.transform.position = initArea.centerNode.transform.position; 
             this.State = PawnState.Wait;

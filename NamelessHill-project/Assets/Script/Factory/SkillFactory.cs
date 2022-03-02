@@ -52,7 +52,7 @@ namespace Nameless.Agent
                     buffs.Add(BuffFactory.GetBuffById(ids[i]));
                 }
             }
-            return new SupportSkill(supportSkillData.Id, supportSkillData.name, supportSkillData.description, tempDic, buffs, supportSkillData.attackRate, supportSkillData.defendRate, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, supportSkillData.iconName));
+            return new SupportSkill(supportSkillData.Id, supportSkillData.name, supportSkillData.description, supportSkillData.tipDes, tempDic, buffs, supportSkillData.attackRate, supportSkillData.defendRate, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, supportSkillData.iconName));
         }
         public static Skill Get(BuildSkillData buildSkillData)
         {

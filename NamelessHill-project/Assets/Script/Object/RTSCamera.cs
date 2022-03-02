@@ -276,14 +276,14 @@ namespace Nameless.Controller
         {
             if (GameManager.Instance.GameScene != GameScene.Battle)
                 return;
-            if (Input.GetMouseButton(2))
-            {
-                Cursor.visible = false;
-            }
-            else if (Input.GetMouseButtonUp(2))
-            {
-                Cursor.visible = true;
-            }
+            //if (Input.GetMouseButton(2))
+            //{
+            //    Cursor.visible = false;
+            //}
+            //else if (Input.GetMouseButtonUp(2))
+            //{
+            //    Cursor.visible = true;
+            //}
             if (Locked || !GameManager.Instance.isPlay)
                 return;
             if (this._isTranstionTo)

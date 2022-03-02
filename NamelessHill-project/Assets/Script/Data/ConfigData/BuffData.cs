@@ -13,6 +13,7 @@ namespace Nameless.ConfigData
         public string conditions;
         public int type;
         public string parameter;
+        public string icon;
 
         public BuffData(
             long Id,
@@ -20,7 +21,8 @@ namespace Nameless.ConfigData
             string description,
             string conditions,
             int type,
-            string parameter
+            string parameter,
+            string icon
             )
         {
             this.Id = Id;
@@ -29,6 +31,7 @@ namespace Nameless.ConfigData
             this.conditions = conditions;
             this.type = type;
             this.parameter = parameter;
+            this.icon = icon;
         }
     }
 }

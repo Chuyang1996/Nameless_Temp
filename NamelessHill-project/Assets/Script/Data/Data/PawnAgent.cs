@@ -103,6 +103,7 @@ namespace Nameless.Data
 
         public PropertyState state;
         public Slider healthBar;
+        public Slider ammoBar;
         public Pawn pawn;
         public string rank = "Soldier";
 
@@ -168,12 +169,14 @@ namespace Nameless.Data
         //#endregion
 
 
-        public PawnAgent(FrontPlayer frontPlayer, Slider healthBar,Area currentArea, Pawn pawn, long mapId)
+        public PawnAgent(FrontPlayer frontPlayer, Slider healthBar, Slider ammoBar, Area currentArea, Pawn pawn, long mapId)
         {
             this.frontPlayer = frontPlayer;
             this.healthBar = healthBar;
+            this.ammoBar = ammoBar;
             this.pawn = pawn;
             this.healthBar.value = this.pawn.curHealth / this.pawn.maxHealth;
+            this.ammoBar.value = this.pawn.curAmmo / this.pawn.maxAmmo;
             if (currentArea.type == AreaType.Base)
             {
                 this.state = PropertyState.Supporting;//暂时根据当前地面的类型去判断是否消耗或者补充
@@ -371,6 +374,7 @@ namespace Nameless.Data
                     this.InitAttack(this.pawn.curAttack * 0.2f);
                 }
             }
+            this.ammoBar.value = this.pawn.curAmmo / this.pawn.maxAmmo;
             if (this.AmmoBarEvent != null)
                 this.AmmoBarEvent(this);
 
@@ -392,7 +396,8 @@ namespace Nameless.Data
         public void InitAmmo(float value)
         {
             this.pawn.curAmmo = value;
-            if(this.pawn.curAmmo <= 0)
+            this.ammoBar.value = this.pawn.curAmmo / this.pawn.maxAmmo;
+            if (this.pawn.curAmmo <= 0)
             {
                 this.InitAttack(this.pawn.curAttack * 0.2f);
             }

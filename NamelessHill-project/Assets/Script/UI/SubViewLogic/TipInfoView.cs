@@ -16,7 +16,7 @@ namespace Nameless.UI
         public Text nameTxt;
         public Sprite[] stateSprite;
         public Image stateMorale;
-        public Slider ownAmmoSlider;
+        //public Slider ownAmmoSlider;
         
 
 
@@ -68,7 +68,6 @@ namespace Nameless.UI
                         stateMorale.sprite = stateSprite[2];
                     }
                     this.nameTxt.text = currentPawn.pawnAgent.pawn.name;
-                    this.ownAmmoSlider.value = (float)currentPawn.pawnAgent.pawn.curAmmo / (float)currentPawn.pawnAgent.pawn.maxAmmo;
                 }
                 else
                 {
@@ -85,7 +84,7 @@ namespace Nameless.UI
 
         public void InitTipInfo()
         {
-            this.ownAmmoSlider.gameObject.transform.Find("Background").gameObject.GetComponent<Image>().color = GameManager.Instance.accessbility ? new Color(0.33f, 0.33f, 0.33f, 1) : new Color(0, 1, 1, 1);
+            //this.ownAmmoSlider.gameObject.transform.Find("Background").gameObject.GetComponent<Image>().color = GameManager.Instance.accessbility ? new Color(0.33f, 0.33f, 0.33f, 1) : new Color(0, 1, 1, 1);
         }
         public override void FollowMouseMove(GameObject item)
         {
@@ -151,7 +150,7 @@ namespace Nameless.UI
                 for(int i = 0; i < supportSkills.Count; i++)
                 {
                     if(supportSkills[i].attackRate != 0.0f || supportSkills[i].defendRate != 0.0f)//���޸�
-                        this.GenerateSupportTip(supportSkills[i].descrption);
+                        this.GenerateSupportTip(supportSkills[i].tipDes, supportSkills[i].icon);
                     for(int j = 0; j < supportSkills[i].buffs.Count; j++)
                     {
                         buffs.Add(supportSkills[i].buffs[j]);
@@ -160,7 +159,7 @@ namespace Nameless.UI
 
                 for(int i = 0; i < buffs.Count; i++)
                 {
-                    this.GenerateSupportTip(buffs[i].descrption);
+                    this.GenerateSupportTip(buffs[i].descrption, buffs[i].icon);
                 }
             }
             //foreach (GameObject child in this.RreshPanels)
@@ -171,10 +170,10 @@ namespace Nameless.UI
         }
 
 
-        private void GenerateSupportTip(string text)
+        private void GenerateSupportTip(string text,Sprite sprite)
         {
             GameObject gameObjectUI = Instantiate(this.supportTemplate.gameObject, this.content.transform) as GameObject;
-            gameObjectUI.GetComponent<SupportItemUI>().Init(text);
+            gameObjectUI.GetComponent<SupportItemUI>().Init(text, sprite);
             gameObjectUI.SetActive(true);
             this.supportsItem.Add(gameObjectUI);
         }
