@@ -263,11 +263,15 @@ namespace Nameless.DataMono
             if(this.renderWire!=null && this.walkRenderWire != null)
             {
                 float alpha = isShow ? 1.0f : 0.3f;
-                Color pathColor = new Color(this.pawnAgent.frontPlayer.faction.pathColor.r, this.pawnAgent.frontPlayer.faction.pathColor.g, this.pawnAgent.frontPlayer.faction.pathColor.b, alpha);
-                Color walkColor = new Color(this.pawnAgent.frontPlayer.faction.walkColor.r, this.pawnAgent.frontPlayer.faction.walkColor.g, this.pawnAgent.frontPlayer.faction.walkColor.b, alpha);
+                //Color pathColor = new Color(this.pawnAgent.frontPlayer.faction.pathColor.r, this.pawnAgent.frontPlayer.faction.pathColor.g, this.pawnAgent.frontPlayer.faction.pathColor.b, alpha);
+                //Color walkColor = new Color(this.pawnAgent.frontPlayer.faction.walkColor.r, this.pawnAgent.frontPlayer.faction.walkColor.g, this.pawnAgent.frontPlayer.faction.walkColor.b, alpha);
 
-                this.renderWire.SetColors(pathColor, pathColor);
-                this.walkRenderWire.SetColors(walkColor, walkColor);
+                //this.renderWire.SetColors(pathColor, pathColor);
+                //this.walkRenderWire.SetColors(walkColor, walkColor);
+                if(this.arrowObjInstance!=null)
+                    this.arrowObjInstance.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, alpha);
+                this.renderWire.material.SetColor("_Color", new Color(1, 1, 1, alpha));
+                this.walkRenderWire.material.SetColor("_Color", new Color(1, 1, 1, alpha));
 
             }
         }
