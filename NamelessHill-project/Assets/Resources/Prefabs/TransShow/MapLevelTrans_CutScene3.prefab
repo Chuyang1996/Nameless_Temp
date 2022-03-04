@@ -388,7 +388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5333463910529184700, guid: 4724d7168b2cf844f885436bcedac96d, type: 3}
       propertyPath: m_Text
-      value: '#Day 3'
+      value: Day #3
       objectReference: {fileID: 0}
     - target: {fileID: 5333463910529184700, guid: 4724d7168b2cf844f885436bcedac96d, type: 3}
       propertyPath: m_Color.a
