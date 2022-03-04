@@ -11,9 +11,13 @@ namespace Nameless.DataMono
     {
         public Ammo ammo;
         public Text useTime;
+        public GameObject Bg;
+        public Button buttonUse;
         public override void Init(PawnAvatar pawnAvatar, Area area, Build build, bool isBuilding)
         {
-            this.ammo = (Ammo)build;
+            Ammo ammo = (Ammo)build;
+            this.ammo = new Ammo(ammo);
+            this.useTime.text = this.ammo.timeUse.ToString();
             base.Init(pawnAvatar, area, build, isBuilding);
             if (isBuilding)
             {
@@ -24,25 +28,37 @@ namespace Nameless.DataMono
             {
                 this.spriteRenderer.sprite = this.completed;
             }
+            this.buttonUse.onClick.AddListener(() =>
+            {
+                SupportPawn();
+            });
         }
 
         public void SupportPawn()
         {
             if (this.currentPawn != null && this.ammo.timeUse > 0 && this.buildState == BuildState.Completed)
             {
-              if((this.currentPawn.pawnAgent.pawn.curAmmo / this.currentPawn.pawnAgent.pawn.maxAmmo) < this.ammo.useConditionValue)
-                {
-                    this.currentPawn.pawnAgent.AmmoChange((int)(this.ammo.effectValue * this.currentPawn.pawnAgent.pawn.maxAmmo));
-                    this.ammo.timeUse--;
-                    this.useTime.text = this.ammo.timeUse.ToString();
-                                    }
+
+                this.currentPawn.pawnAgent.AmmoChange((int)(this.ammo.effectValue * this.currentPawn.pawnAgent.pawn.maxAmmo));
+                this.ammo.timeUse--;
+                this.useTime.text = this.ammo.timeUse.ToString();
+                if (this.ammo.timeUse == 0)
+                    this.DestoryBuilding();
+
             }
         }
         private void Update()
         {
             if (this.currentPawn != null && FactionManager.Instance.RelationFaction(this.currentPawn.GetFaction(), this.faction) == FactionRelation.SameSide)
             {
-                this.SupportPawn();
+                this.buttonUse.gameObject.SetActive(true);
+                this.Bg.gameObject.SetActive(false);
+            }
+            else
+            {
+                this.buttonUse.gameObject.SetActive(false);
+                this.Bg.gameObject.SetActive(true);
+
             }
         }
     }

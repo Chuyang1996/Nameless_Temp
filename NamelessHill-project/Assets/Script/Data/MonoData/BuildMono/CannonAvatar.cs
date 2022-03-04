@@ -27,7 +27,8 @@ namespace Nameless.DataMono
 
         public override void Init(PawnAvatar pawnAvatar, Area area, Build build, bool isBuilding)
         {
-            this.cannon = (Cannon)build;
+            Cannon cannon = (Cannon)build;
+            this.cannon = new Cannon(cannon);
             base.Init(pawnAvatar, area, build, isBuilding);
             if (isBuilding)
                 StartCoroutine(this.Building(pawnAvatar, this.cannon));

@@ -10,7 +10,8 @@ namespace Nameless.DataMono
         public Bunker bunker;
         public override void Init(PawnAvatar pawnAvatar, Area area, Build build, bool isBuilding)
         {
-            this.bunker = (Bunker)build;
+            Bunker bunker = (Bunker)build;
+            this.bunker = new Bunker(bunker);
             base.Init(pawnAvatar, area, build, isBuilding);
             if (isBuilding)
             {

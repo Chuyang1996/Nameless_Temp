@@ -10,7 +10,8 @@ namespace Nameless.DataMono
 
         public override void Init(PawnAvatar pawnAvatar, Area area, Build build, bool isBuilding)
         {
-            this.obstacle = (Obstacle)build;
+            Obstacle obstacle = (Obstacle)build;
+            this.obstacle = new Obstacle(obstacle);
             base.Init(pawnAvatar, area, build, isBuilding);
             if (isBuilding)
             {

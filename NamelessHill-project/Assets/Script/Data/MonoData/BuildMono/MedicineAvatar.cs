@@ -11,9 +11,12 @@ namespace Nameless.DataMono
     {
         public Medicine medicine;
         public Text useTime;
+        public GameObject Bg;
+        public Button buttonUse;
         public override void Init(PawnAvatar pawnAvatar, Area area, Build build, bool isBuilding)
         {
-            this.medicine = (Medicine)build;
+            Medicine medicine = (Medicine)build;
+            this.medicine = new Medicine(medicine);
             base.Init(pawnAvatar, area, build, isBuilding);
             if (isBuilding)
             {
@@ -24,26 +27,38 @@ namespace Nameless.DataMono
             {
                 this.spriteRenderer.sprite = this.completed;
             }
+            this.buttonUse.onClick.AddListener(() =>
+            {
+                SupportPawn();
+            });
         }
 
         public void SupportPawn()
         {
             if (this.currentPawn != null  && this.medicine.timeUse > 0 && this.buildState == BuildState.Completed)
             {
-                if ((this.currentPawn.pawnAgent.pawn.curHealth / this.currentPawn.pawnAgent.pawn.maxHealth) < this.medicine.useConditionValue)
-                {
-                    float healthAdd = this.medicine.effectValue * this.currentPawn.pawnAgent.pawn.maxHealth;
-                    this.currentPawn.pawnAgent.HealthChange(healthAdd);
-                    this.medicine.timeUse--;
-                    useTime.text = this.medicine.timeUse.ToString();
-                }
+
+                float healthAdd = this.medicine.effectValue * this.currentPawn.pawnAgent.pawn.maxHealth;
+                this.currentPawn.pawnAgent.HealthChange(healthAdd);
+                this.medicine.timeUse--;
+                useTime.text = this.medicine.timeUse.ToString();
+                if (this.medicine.timeUse == 0)
+                    this.DestoryBuilding();
+
             }
         }
         private void Update()
         {
             if(this.currentPawn!=null && FactionManager.Instance.RelationFaction(this.currentPawn.GetFaction(),this.faction) == FactionRelation.SameSide)
             {
-                this.SupportPawn();
+                this.buttonUse.gameObject.SetActive(true);
+                this.Bg.gameObject.SetActive(false);
+            }
+            else
+            {
+                this.buttonUse.gameObject.SetActive(false);
+                this.Bg.gameObject.SetActive(true);
+
             }
         }
     }
