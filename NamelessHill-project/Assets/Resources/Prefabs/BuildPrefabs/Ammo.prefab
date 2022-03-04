@@ -106,7 +106,6 @@ MonoBehaviour:
   currentArea: {fileID: 0}
   healthBar: {fileID: 2059298479228283661}
   useTime: {fileID: 8629235768848608236}
-  Bg: {fileID: 8629235767912620799}
   buttonUse: {fileID: 1739639370942550583}
 --- !u!1 &2059298478398672201
 GameObject:
@@ -752,8 +751,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.1, y: 1.2089}
-  m_SizeDelta: {x: 15.4372, y: 15.4372}
+  m_AnchoredPosition: {x: -0.823, y: 0.285}
+  m_SizeDelta: {x: 6.8724, y: 6.8724}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8629235767912620792
 CanvasRenderer:
@@ -820,7 +819,7 @@ RectTransform:
   m_GameObject: {fileID: 8629235768848608018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 0}
   m_Children: []
   m_Father: {fileID: 8629235767912620798}
   m_RootOrder: 0

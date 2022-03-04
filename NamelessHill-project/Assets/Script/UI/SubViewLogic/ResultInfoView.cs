@@ -45,6 +45,7 @@ namespace Nameless.UI {
         public void SetResultTxt(string result, bool isWin)
         {
             StopAllCoroutines();
+            GameManager.Instance.PauseOrPlay(false);
             this.gameObject.SetActive(true);
             this.resultTxt.text = result;
             this.resultTxt.color = isWin ? Color.green : Color.red;
@@ -57,6 +58,7 @@ namespace Nameless.UI {
         }
         public void PausePanelShow()
         {
+            GameManager.Instance.PauseOrPlay(false);
             AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             Time.timeScale = 0.0f; 
             this.gameObject.SetActive(true);
@@ -96,18 +98,21 @@ namespace Nameless.UI {
 
         private void BackToGame()
         {
+            GameManager.Instance.PauseOrPlay(true);
             AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             Time.timeScale = 1.0f;
             this.gameObject.SetActive(false);
         }
         private void RestartBattle()
         {
+            GameManager.Instance.PauseOrPlay(true);
             AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind); 
             Time.timeScale = 1.0f; 
             GameManager.Instance.RestartBattle();
         }
         private void EnterCamp()
         {
+            GameManager.Instance.PauseOrPlay(true);
             AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             Time.timeScale = 1.0f;
             GameManager.Instance.UpdateBattleToPlayer();
@@ -125,6 +130,7 @@ namespace Nameless.UI {
         }
         private void MainMenuPanel()
         {
+            GameManager.Instance.PauseOrPlay(true);
             AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             Time.timeScale = 1.0f;
             this.gameObject.SetActive(false);
@@ -133,6 +139,7 @@ namespace Nameless.UI {
 
         private void ExitGame()
         {
+            GameManager.Instance.PauseOrPlay(true);
             AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             Application.Quit();
         }
