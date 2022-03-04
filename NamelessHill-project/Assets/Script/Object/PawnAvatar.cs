@@ -107,6 +107,7 @@ namespace Nameless.DataMono
         public Slider ocuppyBar;
         public Image healthBarColor;
         public GameObject dialogueIm;
+        public Text nameTxt;
         public Text dialogueTxt;
         public GameObject buffContent;
         private List<GameObject> buffs = new List<GameObject>();
@@ -131,7 +132,7 @@ namespace Nameless.DataMono
         // Start is called before the first frame update
         public void Init(Pawn pawn, FrontPlayer frontPlayer, long mapId, Area initArea)
         {
-            
+            this.nameTxt.text = pawn.name;
             this.healthBar.value = 1;
             this.healthBar.gameObject.transform.Find("Fill Area/Fill").gameObject.GetComponent<Image>().color = frontPlayer.faction.healthColor;
             this.ocuppyBar.gameObject.transform.Find("Fill Area/Fill").gameObject.GetComponent<Image>().color = new Color(0, 1, 1, 1);
