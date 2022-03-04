@@ -13,7 +13,6 @@ namespace Nameless.UI
     {
         public GameObject ownTip;
 
-        public Text nameTxt;
         public Sprite[] stateSprite;
         public Image stateMorale;
         //public Slider ownAmmoSlider;
@@ -67,7 +66,6 @@ namespace Nameless.UI
                     {
                         stateMorale.sprite = stateSprite[2];
                     }
-                    this.nameTxt.text = currentPawn.pawnAgent.pawn.name;
                 }
                 else
                 {
