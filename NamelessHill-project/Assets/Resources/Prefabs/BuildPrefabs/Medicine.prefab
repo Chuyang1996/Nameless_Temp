@@ -114,8 +114,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.93459, y: 0.6636}
-  m_SizeDelta: {x: 7.7628, y: 7.7628}
+  m_AnchoredPosition: {x: -0.98, y: 0.23}
+  m_SizeDelta: {x: 4.9546, y: 4.9546}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2329177052996455577
 CanvasRenderer:
@@ -190,8 +190,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.9355, y: 0.6023}
-  m_SizeDelta: {x: 0.81, y: 0.7675}
+  m_AnchoredPosition: {x: 1.1313, y: 0.7878}
+  m_SizeDelta: {x: 1.2016, y: 1.1385}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5038162842512702249
 CanvasRenderer:
@@ -870,5 +870,4 @@ MonoBehaviour:
   currentArea: {fileID: 0}
   healthBar: {fileID: 5406513113434015084}
   useTime: {fileID: 2329177052043691405}
-  Bg: {fileID: 2329177052996455582}
   buttonUse: {fileID: 4112062826311470242}

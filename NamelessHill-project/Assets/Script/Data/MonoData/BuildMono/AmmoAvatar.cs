@@ -11,7 +11,6 @@ namespace Nameless.DataMono
     {
         public Ammo ammo;
         public Text useTime;
-        public GameObject Bg;
         public Button buttonUse;
         public override void Init(PawnAvatar pawnAvatar, Area area, Build build, bool isBuilding)
         {
@@ -30,6 +29,7 @@ namespace Nameless.DataMono
             }
             this.buttonUse.onClick.AddListener(() =>
             {
+                AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
                 SupportPawn();
             });
         }
@@ -52,12 +52,10 @@ namespace Nameless.DataMono
             if (this.currentPawn != null && FactionManager.Instance.RelationFaction(this.currentPawn.GetFaction(), this.faction) == FactionRelation.SameSide)
             {
                 this.buttonUse.gameObject.SetActive(true);
-                this.Bg.gameObject.SetActive(false);
             }
             else
             {
                 this.buttonUse.gameObject.SetActive(false);
-                this.Bg.gameObject.SetActive(true);
 
             }
         }

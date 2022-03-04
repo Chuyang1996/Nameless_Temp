@@ -161,7 +161,7 @@ namespace Nameless.DataMono
         // Update is called once per frame
         void Update()
         {
-            if (this.isInBattleScene && !this.isBuild)
+            if (this.isInBattleScene && !this.isBuild && GameManager.Instance.isPlay)
             {
 
                 Ray targetray1 = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -237,7 +237,7 @@ namespace Nameless.DataMono
                     }
                 }
             }
-            else if (this.isBuild)
+            else if (this.isBuild )
             {
                 Vector2 raySelect = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
@@ -264,6 +264,10 @@ namespace Nameless.DataMono
                     }
                     hit.collider.gameObject.GetComponent<Area>().SetColor(new Color(1, 1, 1, 0.5f), true, false);
                 }
+            }
+            else
+            {
+                Cursor.SetCursor(this.defaultIcon, Vector2.zero, CursorMode.Auto);
             }
         }
     }
