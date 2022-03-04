@@ -21,7 +21,7 @@ namespace Nameless.UI
         public Text campInfoTxt;
         public Text pawnNum;
 
-        public CampResourceShow campResourceShow;
+        public ResourceShow campResourceShow;
 
         public Button pauseBtn;
 

@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using Nameless.Manager;
 
 namespace Nameless.UI
 {
-    public class CampResourceShow : MonoBehaviour
+    public class ResourceShow : MonoBehaviour
     {
         public Animation animation;
         public Text minusTxt;
@@ -20,6 +21,7 @@ namespace Nameless.UI
         }
         public void ShowResChange(int totalValue,int changeValue)
         {
+            AudioManager.Instance.PlayAudio(this.transform,"SFX_SupplyAdd_01");
             this.minusTxt.gameObject.SetActive(false);
             this.plusTxt.gameObject.SetActive(false);
             if (changeValue >= 0)

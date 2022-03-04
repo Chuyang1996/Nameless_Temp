@@ -14,6 +14,7 @@ namespace Nameless.UI
         public Button pauseBtn;
         #region
         public ResourceInfoView resourceInfoView;
+        public ResourceShow resourceShow;
         public TipInfoView tipInfoView;
         public MouseFollowView mouseFollow;
         #endregion
@@ -57,7 +58,7 @@ namespace Nameless.UI
             this.resultInfoView.gameObject.SetActive(false);
             this.tipInfoView.InitTipInfo();
             this.resourceInfoView.Init(militartRes);
-            FrontManager.Instance.localPlayer.TotalMilitartEvent += this.resourceInfoView.Init;
+            FrontManager.Instance.localPlayer.TotalMilitartEvent += this.resourceShow.ShowResChange;
             this.totalTime = totalTime;
             
             string shour = this.totalTime / 60 > 10 ? (this.totalTime / 60).ToString() : "0" + (this.totalTime / 60).ToString();
@@ -137,7 +138,7 @@ namespace Nameless.UI
         public void ExitBattle()
         {
             if(FrontManager.Instance.localPlayer!=null)
-                FrontManager.Instance.localPlayer.TotalMilitartEvent -= this.resourceInfoView.Init;
+                FrontManager.Instance.localPlayer.TotalMilitartEvent -= this.resourceShow.ShowResChange;
             this.gameObject.SetActive(false);
         }
         //void ResetAreaInfo()

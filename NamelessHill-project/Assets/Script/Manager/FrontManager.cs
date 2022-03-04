@@ -21,7 +21,7 @@ namespace Nameless.Manager
         private List<Area> occupyAreas = new List<Area>();
 
 
-        public Action<int> TotalMilitartEvent;
+        public Action<int,int> TotalMilitartEvent;
         private int totalMilitaryRes;
         private int enemiesDieNum = 0;
         public FrontPlayer(Faction faction, bool isLocalPlayer, bool isBot, int totalMilitaryRes, EventCollections eventCollections)
@@ -109,7 +109,7 @@ namespace Nameless.Manager
             EventTriggerManager.Instance.CheckRelateMilitaryResEvent(cost,this);
             this.totalMilitaryRes += cost;
             if (this.TotalMilitartEvent != null)
-                this.TotalMilitartEvent(this.totalMilitaryRes);
+                this.TotalMilitartEvent(this.totalMilitaryRes, cost);
             //this.battleView.resourceInfoView.Init(this.totalMilitaryRes);
         }
 
