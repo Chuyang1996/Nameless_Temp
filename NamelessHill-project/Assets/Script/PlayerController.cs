@@ -124,10 +124,12 @@ namespace Nameless.DataMono
             RaycastHit2D hit = Physics2D.Raycast(raySelect, Vector2.zero);
             if (hit.collider != null
              && hit.collider.gameObject.GetComponent<Area>() != null
+             //&& hit.collider.gameObject.GetComponent<ButtonWorldSpaceUI>() != null
              && FrontManager.Instance.localPlayer.ContainArea(hit.collider.gameObject.GetComponent<Area>())
              && hit.collider.gameObject.GetComponent<Area>().pawns.Count != 0
              && !isSelectPawn)
             {
+                //Cursor.SetCursor(this., hotSpot, cursorMode);
                 GameManager.Instance.battleView.mouseFollow.buildIcon.SetActive(true);
                 Cursor.SetCursor(this.unVisionIcon, Vector2.zero, CursorMode.Auto);
                 if (this.currentArea == null)

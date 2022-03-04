@@ -149,7 +149,7 @@ namespace Nameless.DataMono
 
             //DialogueTriggerManager.Instance.TimeTriggerEvent += this.ReceiveCurrentTime;
             //DialogueTriggerManager.Instance.CheckGameStartEvent(this);
-
+            this.buffContent.SetActive(false);
             this.fixbtn.onClick.AddListener(() =>
             {
                 if (this.State != PawnState.Wait)
@@ -838,12 +838,13 @@ namespace Nameless.DataMono
         }
         public void RefreshSupportIcon()
         {
+            
             if (this != null)
             {
                 for (int i = 0; i < this.buffs.Count; i++)
                     DestroyImmediate(this.buffs[i]);
                 this.buffs.Clear();
-
+                this.buffContent.SetActive(false);
                 for (int i = 0; i < this.pawnAgent.supporters.Count; i++)
                 {
                     List<Skill> skills = this.pawnAgent.supporters[i].pawnAgent.GetSkills();
@@ -857,6 +858,10 @@ namespace Nameless.DataMono
                             this.buffs.Add(icon);
                         }
                     }
+                }
+                if(this.pawnAgent.supporters.Count > 0)
+                {
+                    this.buffContent.SetActive(true);
                 }
             }
             
