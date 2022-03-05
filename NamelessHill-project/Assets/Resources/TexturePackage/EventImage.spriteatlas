@@ -44,7 +44,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 2109f14ec77415744aaee59c0b1e2559, type: 3}
-    totalSpriteSurfaceArea: 33319184
+    totalSpriteSurfaceArea: 48240912
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -53,6 +53,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 091ba0009da8a0d4796f244dab21d541, type: 3}
   - {fileID: 21300000, guid: 51290800a839e1d4bb54cdff6715a9e4, type: 3}
   - {fileID: 21300000, guid: ff1bb5c0dd17387418e4eefa18e2dba1, type: 3}
+  - {fileID: 21300000, guid: 4f896ac0f9309d24a987931135e99e08, type: 3}
   - {fileID: 21300000, guid: 423780d0920a9a046b47613938e38f68, type: 3}
   - {fileID: 21300000, guid: 9563d67115a4e3c49bde239254a3e886, type: 3}
   - {fileID: 21300000, guid: 8b8c0691ddb0dec43b927c3e1e9e4356, type: 3}
@@ -105,6 +106,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 4511817af093466448304d41f4e50255, type: 3}
   - {fileID: 21300000, guid: 9e2160abb11b7554da4f60cbdee9c0a3, type: 3}
   - {fileID: 21300000, guid: 6efb05bb78f44954bacf15e535f1f001, type: 3}
+  - {fileID: 21300000, guid: 7db84bbb43f2c2c46a5def4ca727d965, type: 3}
   - {fileID: 21300000, guid: cb5b2d0ca936a724596ff1751e254728, type: 3}
   - {fileID: 21300000, guid: fdaded3c5e0ba19418dc05553a0da15c, type: 3}
   - {fileID: 21300000, guid: b86e904c86aaea14494bb36c325ca500, type: 3}
@@ -115,8 +117,10 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d249a15d5d174a544b99da8b0727dff9, type: 3}
   - {fileID: 21300000, guid: ff0fbe8dd8e65a043a449ecaa7decd9c, type: 3}
   - {fileID: 21300000, guid: e7b9cdcd93a1d72458b6c6f8dc355a8c, type: 3}
+  - {fileID: 21300000, guid: c85328ddd3b65844c8447a46c7ce564b, type: 3}
   - {fileID: 21300000, guid: ed41b84e452b9194da94a948b5bd23d6, type: 3}
   - {fileID: 21300000, guid: 3526ab9ede89b3949818b7633d255baf, type: 3}
+  - {fileID: 21300000, guid: e6539ddee66916b4d81bf01138e9cd0c, type: 3}
   - {fileID: 21300000, guid: ae53c77ff3f3031498978e2b37a4fce7, type: 3}
   - {fileID: 21300000, guid: 713f3c9f2e40f0e45911093f0c98875a, type: 3}
   - {fileID: 21300000, guid: b0b262af3893d51498b33f889a9b9dee, type: 3}
@@ -127,6 +131,7 @@ SpriteAtlas:
   - r1
   - Tutorial_04
   - day1-event1-01-2
+  - wallblock-v2
   - r2
   - final-2
   - day4-event1-01-2
@@ -179,6 +184,7 @@ SpriteAtlas:
   - Tutorial_02
   - s3
   - day2-event1-2
+  - layer-1
   - NewTutorial_02
   - r7
   - s1
@@ -189,8 +195,10 @@ SpriteAtlas:
   - day2-event2-02-1
   - day1-event2-01-2
   - Tutorial_01
+  - layer-1v2
   - V5
   - day1-event2-02-1
+  - background_blackedge
   - day1-event1-01-1
   - NewTutorial_03
   - day1-event3-01-1
