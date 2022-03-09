@@ -130,7 +130,7 @@ namespace Nameless.DataMono
              && !isSelectPawn)
             {
                 //Cursor.SetCursor(this., hotSpot, cursorMode);
-                GameManager.Instance.battleView.mouseFollow.buildIcon.SetActive(true);
+
                 Cursor.SetCursor(this.unVisionIcon, Vector2.zero, CursorMode.Auto);
                 if (this.currentArea == null)
                 {
@@ -149,7 +149,7 @@ namespace Nameless.DataMono
             }
             else
             {
-                GameManager.Instance.battleView.mouseFollow.buildIcon.SetActive(false);
+
                 Cursor.SetCursor(this.defaultIcon, Vector2.zero, CursorMode.Auto);
                 if (this.currentArea != null)
                 {
