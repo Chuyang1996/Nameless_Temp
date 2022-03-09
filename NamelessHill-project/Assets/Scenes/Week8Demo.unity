@@ -2278,7 +2278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f98d27cede4d3844cb8c7168fdb24d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unVisionIcon: {fileID: 2800000, guid: a3a69b8709610c94da01830c60b7735c, type: 3}
+  unVisionIcon: {fileID: 2800000, guid: ebec46368c3d2754bb6fb8bd6f1ed49d, type: 3}
   defaultIcon: {fileID: 2800000, guid: d34d23e9cf2c4f246bfa5bb4a19f2411, type: 3}
   HightlightIcon: {fileID: 2800000, guid: ab04e022047294b4eb1428889ef78224, type: 3}
 --- !u!1 &248727438
@@ -18359,7 +18359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6644504619648734893, guid: 2352ed6e04e359d4185254e454023853, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2.5444489
+      value: -2.5444336
       objectReference: {fileID: 0}
     - target: {fileID: 6644504619648734893, guid: 2352ed6e04e359d4185254e454023853, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -19019,7 +19019,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8105386140087955749, guid: bd07c1d8952b5174eba553fd480541ff, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.4327087
+      value: -1.4326782
       objectReference: {fileID: 0}
     - target: {fileID: 8105386140164496007, guid: bd07c1d8952b5174eba553fd480541ff, type: 3}
       propertyPath: m_AnchoredPosition.y
