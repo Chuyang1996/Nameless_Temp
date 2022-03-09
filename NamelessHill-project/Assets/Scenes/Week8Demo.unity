@@ -4355,10 +4355,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efe55d5679217144b8dafc8747b2d079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeX: 50
-  rangeY: 50
-  orthographicSizeMin: 1.5
-  orthographicSizeMax: 25
+  rangeX: 60
+  rangeY: 60
+  orthographicSizeMin: 10
+  orthographicSizeMax: 15
   speed: 10
   Locked: 0
   _isTranstionTo: 0
@@ -14023,7 +14023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6681928673364739622, guid: b6d0c527ad5520841984c3a2e3d6d2ef, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1.4999695
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6909632968064177826, guid: b6d0c527ad5520841984c3a2e3d6d2ef, type: 3}
       propertyPath: m_AnchorMax.y
