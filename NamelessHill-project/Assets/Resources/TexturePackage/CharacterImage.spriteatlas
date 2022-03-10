@@ -44,25 +44,33 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: d9474c532717d0448b975f0608ed13e1, type: 3}
-    totalSpriteSurfaceArea: 393216
+    totalSpriteSurfaceArea: 22500000
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: 20c7cb60a2248434ba3bbcc86bf302f2, type: 3}
-  - {fileID: 21300000, guid: becdd2e307be21044b1bf6e25915dfdb, type: 3}
-  - {fileID: 21300000, guid: b2f051c4e064c9e4b943c6acc277c785, type: 3}
-  - {fileID: 21300000, guid: b7aa031a5d96ed344a27350743d30f27, type: 3}
-  - {fileID: 21300000, guid: f19dbbca15928254398001150c0b12be, type: 3}
-  - {fileID: 21300000, guid: 0aa279cfbb6fd974d983a2f87152e4ef, type: 3}
+  - {fileID: 21300000, guid: 0b739b4295117d240a931a1bd0991d93, type: 3}
+  - {fileID: 21300000, guid: c6d48082c324f0f4a9e3abbf9da155e3, type: 3}
+  - {fileID: 21300000, guid: d217d4f26dc9b7d44b77f9630ec99ff4, type: 3}
+  - {fileID: 21300000, guid: a91a62b3600eed04fbfb396f84c1c92e, type: 3}
+  - {fileID: 21300000, guid: 1459a7247970931458e5cfeb02413dc7, type: 3}
+  - {fileID: 21300000, guid: a5fd2ca57bbdc6f4a8bbd5e0f95af04d, type: 3}
+  - {fileID: 21300000, guid: 3eb55967cd2f9b84293b3ddae3272106, type: 3}
+  - {fileID: 21300000, guid: e03e142879e3f964da878cf2c57ed0c1, type: 3}
+  - {fileID: 21300000, guid: 3292224c03037b7439d62451fa8e6307, type: 3}
+  - {fileID: 21300000, guid: 7bc8c91f792590b4fbd626de642bc800, type: 3}
   m_PackedSpriteNamesToIndex:
-  - engineer
-  - medical
-  - sniper
-  - soldier
+  - enemy03
+  - Halo
   - enemy
-  - commander
+  - Boss
+  - enemy01
+  - Whetherall
+  - Echo
+  - Epic
+  - Spartan
+  - enemy02
   m_RenderDataMap: {}
   m_Tag: CharacterImage
   m_IsVariant: 0

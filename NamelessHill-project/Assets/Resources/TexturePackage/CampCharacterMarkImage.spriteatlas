@@ -58,13 +58,13 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d415426db1e31614785f7853f863f76e, type: 3}
   - {fileID: 21300000, guid: ae4dd97e8d7aaf14cb0f627734c97f5d, type: 3}
   m_PackedSpriteNamesToIndex:
-  - commander
-  - medical
-  - signalman
-  - sniper
+  - Boss
+  - Epic
+  - Echo
+  - Whetherall
   - enemy
-  - soldier
-  - engineer
+  - Spartan
+  - Halo
   m_RenderDataMap: {}
   m_Tag: CampCharacterMarkImage
   m_IsVariant: 0
