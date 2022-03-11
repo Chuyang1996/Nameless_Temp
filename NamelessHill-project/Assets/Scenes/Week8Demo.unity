@@ -2269,6 +2269,9 @@ MonoBehaviour:
   lineMaterials:
   - {fileID: 2100000, guid: 2a20229398a117b4fb7e96f9745a6449, type: 2}
   - {fileID: 2100000, guid: c279ca537d87b6845a2bd436b72b676b, type: 2}
+  supportMaterials:
+  - {fileID: 2100000, guid: 9f8f1cbf42bdd2441af9246fdd4f2f9c, type: 2}
+  - {fileID: 2100000, guid: d19948d22403e2d44805ba5b1d3fb932, type: 2}
   arrowObjs:
   - {fileID: 3929199367200317073, guid: 39dc905481b97184d94d21e45296e6c9, type: 3}
   - {fileID: 3929199367200317073, guid: 3e56a8984d2db1449889d74eae000a57, type: 3}
