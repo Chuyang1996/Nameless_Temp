@@ -196,7 +196,10 @@ namespace Nameless.Manager
         public PawnAvatar AddPawnOnArea(Pawn pawn, Area area, long mapId, FrontPlayer frontPlayer)
         {
             if (area == null)
+            {
+                Debug.LogError("ЧјгђЮЊПе");
                 return null;
+            }
             
             GameObject pawnAvatar = Instantiate(Resources.Load(pawnPath)) as GameObject;
             pawnAvatar.GetComponent<PawnAvatar>().Init(pawn, frontPlayer, mapId, area);
