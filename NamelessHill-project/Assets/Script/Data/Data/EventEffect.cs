@@ -195,6 +195,7 @@ namespace Nameless.Data
 
         public override void Execute()
         {
+            Debug.LogError("角色暂时离开");
             PawnAvatar pawnAvatar = FrontManager.Instance.GetPawnAvatarByPlayer(this.pawnId, this.frontPlayer);
             if (pawnAvatar == null)
                 return;
@@ -218,6 +219,7 @@ namespace Nameless.Data
 
         public override void Execute()
         {
+            Debug.LogError("角色回来了");
             Pawn pawn = this.frontPlayer.eventCollections.GetLeavePawn(this.pawnId);
             if (pawn == null)
                 return;
