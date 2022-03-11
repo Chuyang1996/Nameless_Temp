@@ -15,6 +15,9 @@ namespace Nameless.Manager
     public class StaticObjGenManager : SingletonMono<StaticObjGenManager>
     {
         public Sprite militarySprite;
+        public Material[] lineMaterials;
+        public Material[] supportMaterials;
+        public GameObject[] arrowObjs;
         public Dictionary<MatType, Sprite> MatSprite = new Dictionary<MatType, Sprite>();
         public void InitMat()
         {

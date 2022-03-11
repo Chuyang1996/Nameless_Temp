@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LineImage
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 5325282a3f255e742b359b669531ed67, type: 3}
+    totalSpriteSurfaceArea: 71600
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 62bf91317c24bc74eacbedf8156a61c7, type: 3}
+  - {fileID: 21300000, guid: 95bd4a238a5091d44beb99861a63f99f, type: 3}
+  - {fileID: 21300000, guid: a71edc34938177b40ab703a33df281fd, type: 3}
+  - {fileID: 21300000, guid: c0eee02b040906f4baee6e7aab642798, type: 3}
+  - {fileID: 21300000, guid: b5e2ee5b098859c4b9088cf728ba2f16, type: 3}
+  - {fileID: 21300000, guid: d6a15d0f131411d4a8f763ce3a6c1597, type: 3}
+  - {fileID: 21300000, guid: a52feb9fb1c1d2c4197843269df58b1c, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Sprite-0002
+  - Sprite-0001
+  - Sprite-0004
+  - arrow2
+  - arrow1
+  - Sprite-0005
+  - Sprite-0003
+  m_RenderDataMap: {}
+  m_Tag: LineImage
+  m_IsVariant: 0

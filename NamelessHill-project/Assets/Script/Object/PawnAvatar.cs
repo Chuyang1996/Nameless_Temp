@@ -83,8 +83,10 @@ namespace Nameless.DataMono
 
 
         private GameObject arrowObjInstance;
-        public GameObject arrowObj;
-        public Material WireMaterial;
+        private GameObject arrowObj;
+        private Material WireMaterial;
+        private Material SupportMaterial;
+
         public Material WalkMaterial;
         public float animationDuration;
 
@@ -147,6 +149,9 @@ namespace Nameless.DataMono
             animObj.transform.localScale = new Vector3(1, 1, 1);
             animObj.GetComponent<CharacterAnim>().Init(this);
 
+            this.WireMaterial = StaticObjGenManager.Instance.lineMaterials[frontPlayer.faction.pathMaterialIndex];
+            this.SupportMaterial = StaticObjGenManager.Instance.supportMaterials[frontPlayer.faction.pathMaterialIndex];
+            this.arrowObj = StaticObjGenManager.Instance.arrowObjs[frontPlayer.faction.pathMaterialIndex];
             //DialogueTriggerManager.Instance.TimeTriggerEvent += this.ReceiveCurrentTime;
             //DialogueTriggerManager.Instance.CheckGameStartEvent(this);
             this.buffContent.SetActive(false);
@@ -807,11 +812,8 @@ namespace Nameless.DataMono
                             newLine.GetComponent<Support>().InitSupport(this, this.CurrentArea.neighboors[i].pawns[0]);
                             newLine.transform.parent = MapManager.Instance.currentMap.SupportLine.transform;
                             LineRenderer supportLine = newLine.AddComponent<LineRenderer>();
-                            supportLine.material = this.WireMaterial;
+                            supportLine.material = this.SupportMaterial;
                             supportLine.SetWidth(0.2f, 0.2f);
-                            Color color1 = new Color(0,0.5f, 0, 255);
-                            Color color2 = new Color(0.5f, 0, 0, 255);
-                            supportLine.SetColors(this.pawnAgent.frontPlayer.faction.supportColor, this.pawnAgent.frontPlayer.faction.supportColor);
                             supportLine.sortingOrder = 1;
                             supportLine.positionCount = 2;
                             supportLine.SetPosition(0, this.transform.position);

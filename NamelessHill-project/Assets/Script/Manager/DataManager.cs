@@ -686,11 +686,9 @@ namespace Nameless.Manager
                             this.factionData[id]["friendly_to"],
                             this.factionData[id]["hostile_to"],
                             this.factionData[id]["healthColor"],
-                            this.factionData[id]["pathColor"],
-                            this.factionData[id]["walkColor"],
-                            this.factionData[id]["supportColor"],
                             this.factionData[id]["areaColor"],
                             this.factionData[id]["battleColor"],
+                            int.Parse( this.factionData[id]["pathMaterialIndex"]),
                             this.factionData[id]["battleIcon"]
                             );
                     return skill;

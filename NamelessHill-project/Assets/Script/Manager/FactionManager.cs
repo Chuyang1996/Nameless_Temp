@@ -13,24 +13,23 @@ namespace Nameless.Manager
     {
         public long id;
         public Color healthColor;
-        public Color pathColor;
-        public Color walkColor;
-        public Color supportColor;
+
         public Color areaColor;
         public Color battleColor;
         public string label;
+        public int pathMaterialIndex;
         public Sprite battleSprite;
 
-        public Faction(long id, Color healthColor, Color pathColor, Color walkColor, Color supportColor, Color areaColor, Color battleColor, string label, Sprite battleSprite)
+
+        public Faction(long id, Color healthColor, Color areaColor, Color battleColor, string label, int pathMaterialIndex, Sprite battleSprite)
         {
             this.id = id;
             this.healthColor = healthColor;
-            this.pathColor = pathColor;
-            this.walkColor = walkColor;
-            this.supportColor = supportColor;
+
             this.areaColor = areaColor;
             this.battleColor = battleColor;
             this.label = label;
+            this.pathMaterialIndex = pathMaterialIndex;
             this.battleSprite = battleSprite;
         }
     }
@@ -53,18 +52,12 @@ namespace Nameless.Manager
             for (int i = 0;i < factionDatas.Count; i++)
             {
                 List<float> healthRGBA = this.StringToFloatArray(factionDatas[i].healthColor);
-                List<float> pathRGBA = this.StringToFloatArray(factionDatas[i].pathColor);
-                List<float> walkRGBA = this.StringToFloatArray(factionDatas[i].walkColor);
-                List<float> supportRGBA = this.StringToFloatArray(factionDatas[i].supportColor);
                 List<float> areaRGBA = this.StringToFloatArray(factionDatas[i].areaColor);
                 List<float> battleRGBA = this.StringToFloatArray(factionDatas[i].battleColor);
                 Color healthColor = new Color(healthRGBA[0], healthRGBA[1], healthRGBA[2], healthRGBA[3]);
-                Color pathColor = new Color(pathRGBA[0], pathRGBA[1], pathRGBA[2], pathRGBA[3]);
-                Color walkColor = new Color(walkRGBA[0], walkRGBA[1], walkRGBA[2], walkRGBA[3]);
-                Color supportColor = new Color(supportRGBA[0], supportRGBA[1], supportRGBA[2], supportRGBA[3]);
                 Color areaColor = new Color(areaRGBA[0], areaRGBA[1], areaRGBA[2], areaRGBA[3]);
                 Color battleColor = new Color(battleRGBA[0], battleRGBA[1], battleRGBA[2], battleRGBA[3]);
-                this.factions.Add(new Faction(factionDatas[i].id, healthColor, pathColor, walkColor, supportColor, areaColor, battleColor, factionDatas[i].name, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, factionDatas[i].battleIcon)));
+                this.factions.Add(new Faction(factionDatas[i].id, healthColor, areaColor, battleColor, factionDatas[i].name, factionDatas[i].pathMaterialIndex, SpriteManager.Instance.FindSpriteByName(AtlasType.IconImage, factionDatas[i].battleIcon)));
             }
             this.relations = new FactionRelation[this.factions.Count][];
             for (int i = 0; i < this.relations.GetLength(0); i++)
