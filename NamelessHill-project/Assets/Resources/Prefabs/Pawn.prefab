@@ -539,7 +539,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 42.5, y: 50.089}
+  m_AnchoredPosition: {x: 35.644993, y: 79.169}
   m_SizeDelta: {x: 144.76, y: 20.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8710573620826269437
@@ -1034,8 +1034,6 @@ MonoBehaviour:
   isBuild: 0
   isPlay: 0
   currentIndex: 0
-  arrowObj: {fileID: 3929199367200317073, guid: 39dc905481b97184d94d21e45296e6c9, type: 3}
-  WireMaterial: {fileID: 2100000, guid: 2a20229398a117b4fb7e96f9745a6449, type: 2}
   WalkMaterial: {fileID: 2100000, guid: 77119bdead589ed4c8c210770235efa2, type: 2}
   animationDuration: 0.5
   _root: {fileID: 1955213038444268282}
