@@ -60016,7 +60016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  sprite: {fileID: 21300000, guid: ea09fdc1351a8264fa66de96629a9d33, type: 3}
+  sprite: {fileID: 21300000, guid: e6539ddee66916b4d81bf01138e9cd0c, type: 3}
   spriteAccessbility: {fileID: 21300000, guid: ea09fdc1351a8264fa66de96629a9d33, type: 3}
   bg: {fileID: 4022126973910362961}
   PathLine: {fileID: 5748609564135845123}
