@@ -197,7 +197,6 @@ namespace Nameless.Manager
         {
             if (area == null)
             {
-                Debug.LogError("ЧјгђЮЊПе");
                 return null;
             }
             
