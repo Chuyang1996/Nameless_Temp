@@ -218,7 +218,6 @@ namespace Nameless.Data
 
         public override void Execute()
         {
-            Debug.LogError("角色回来了  id是："+ this.pawnId);
             Pawn pawn = this.frontPlayer.eventCollections.GetLeavePawn(this.pawnId);
             if (pawn == null)
             {

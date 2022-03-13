@@ -30,11 +30,12 @@ namespace Nameless.Manager
 
         public void InitTexturePackage()
         {
+            AssetBundle atlasData = GameManager.Instance.atlasAsset;
             this.atlasCollection = new Dictionary<AtlasType, SpriteAtlas>();
             foreach (var child in this.atlasIndex)
             {
 
-                SpriteAtlas temp = Resources.Load(loadPath + child.Key) as SpriteAtlas;
+                SpriteAtlas temp = atlasData.LoadAsset(child.Key) as SpriteAtlas;
                 this.atlasCollection.Add(child.Value, temp);
 
             }

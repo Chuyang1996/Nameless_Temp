@@ -19,7 +19,7 @@ namespace Nameless.Editor
             string currentPath = Assembly.GetExecutingAssembly().Location;
             Debug.Log(currentPath);
             string excelPath = currentPath + "/../../../..";
-            string savePath = currentPath + "/../../../.." + "/NamelessHill-project/Assets/StreamingAssets";
+            string savePath = currentPath + "/../../../.." + "/NamelessHill-project/Assets/GameDataFile";
 
             int excelLength = (excelPath + "/GameDesign/ExcelData").Length;
             int serialLength = savePath.Length;
@@ -99,14 +99,14 @@ namespace Nameless.Editor
 
             currentPath = Assembly.GetExecutingAssembly().Location;
 
-            savePath = currentPath + "/../../../.." + "/NamelessHill-project/Assets/StreamingAssets";
+            savePath = currentPath + "/../../../.." + "/NamelessHill-project/Assets/GameDataFile";
 
             string newfilepath = savePath + "/" + "AudiosResources" + ".txt";
             FileStream newfile = new FileStream(newfilepath, FileMode.Create, FileAccess.ReadWrite);
             StreamWriter sw = new StreamWriter(newfile);
 
-            int pathLength = (Application.dataPath + "/Resources/Audio").Length;
-            string[] audioList = System.IO.Directory.GetFiles(Application.dataPath + "/Resources/Audio", "*.wav");
+            int pathLength = (Application.dataPath + "/Audio").Length;
+            string[] audioList = System.IO.Directory.GetFiles(Application.dataPath + "/Audio", "*.wav");
             for (int i = 0; i < audioList.Length; i++)
             {
                 audioList[i] = audioList[i].ToString().Remove(0, pathLength).Remove(0, 1).Replace(".wav", "");

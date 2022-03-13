@@ -1,0 +1,43 @@
+ManifestFileVersion: 0
+CRC: 4273763486
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 511080f95cc6e5519c53bb9793a3a24b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: eabd06505439021e8b9434271862d663
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 60
+  Script: {instanceID: 0}
+- Class: 70
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6bea5401c1c22234ea6a1ea89bcf21f8, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Prefabs/Camp/Camp_Level_2.prefab
+- Assets/Prefabs/Camp/Camp_Level_4.prefab
+- Assets/Prefabs/Camp/Camp_Level_1.prefab
+- Assets/Prefabs/Camp/Camp_Level_3.prefab
+- Assets/Prefabs/Camp/Camp1.prefab
+Dependencies: []

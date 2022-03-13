@@ -144,7 +144,7 @@ namespace Nameless.DataMono
             this.transform.position = initArea.centerNode.transform.position; 
             this.State = PawnState.Wait;
             this.fixbtn.gameObject.SetActive(false);
-            GameObject animObj = Instantiate(Resources.Load(pathFindAnim + this.pawnAgent.pawn.animPrefab), this._root.transform) as GameObject;
+            GameObject animObj = Instantiate(GameManager.Instance.characterAsset.LoadAsset(this.pawnAgent.pawn.animPrefabName) as GameObject, this._root.transform) as GameObject;
             animObj.transform.localPosition = new Vector3(0, -9 ,0);
             animObj.transform.localScale = new Vector3(1, 1, 1);
             animObj.GetComponent<CharacterAnim>().Init(this);

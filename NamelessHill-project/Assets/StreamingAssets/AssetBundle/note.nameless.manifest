@@ -1,0 +1,56 @@
+ManifestFileVersion: 0
+CRC: 977271095
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f9dc8a86bdbdbfc423eb85ec2e1a1e2d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2bae8ebc7b3923f9d61ee655579710b7
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc1caa49bf9b15a4ebcc829bbb3ad9d4, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Prefabs/UI/Item/NoteTemplate16.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate3.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate7.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate1.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate8.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate24.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate21.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate22.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate9.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate17.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate4.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate18.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate5.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate6.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate2.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate12.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate15.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate19.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate20.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate11.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate25.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate14.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate23.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate26.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate13.prefab
+- Assets/Prefabs/UI/Item/NoteTemplate10.prefab
+Dependencies: []

@@ -242,7 +242,7 @@ namespace Nameless.Data
 
         public bool moveAvaliable;
 
-        public string animPrefab;
+        public string animPrefabName;
         public Sprite selectIcon;
         public Sprite campIcon;
         public Sprite campMarkIcon;
@@ -307,7 +307,7 @@ namespace Nameless.Data
 
 
             //this.dialogueDic = dialogueDic;
-            this.animPrefab = animPrefab;
+            this.animPrefabName = animPrefab;
             this.selectIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterImage, selectIcon);
             this.campIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterCampImage, campIcon);
             this.campMarkIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterCampMarkImage, campIcon);
@@ -380,7 +380,7 @@ namespace Nameless.Data
                 skills.Add(SkillFactory.GetSkillById(SkillFactoryType.BuildSkill, pawnSaveData.buildSkillIds[i]));
             }
 
-            this.animPrefab = pawnSaveData.animPrefab;
+            this.animPrefabName = pawnSaveData.animPrefab;
             this.selectIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterImage, pawnSaveData.selectIcon);
             this.campIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterCampImage, pawnSaveData.campIcon);
             this.campMarkIcon = SpriteManager.Instance.FindSpriteByName(AtlasType.CharacterCampMarkImage, pawnSaveData.campMarkIcon);

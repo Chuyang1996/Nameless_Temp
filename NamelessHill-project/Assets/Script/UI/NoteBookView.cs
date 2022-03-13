@@ -90,7 +90,7 @@ namespace Nameless.UI
 
             if ( this.IndexPage < this.notePages.Count)
             {
-                GameObject leftObj = Instantiate(Resources.Load(NoteManager.Instance.loadPath + this.notePages[this.IndexPage].noteUIname) as GameObject, this.leftPage.transform);
+                GameObject leftObj = Instantiate(GameManager.Instance.notesAsset.LoadAsset(this.notePages[this.IndexPage].noteUIname) as GameObject, this.leftPage.transform);
                 leftObj.transform.localPosition = new Vector3(0, 0, 0);
                 leftObj.GetComponent<NoteUI>().RefreshNotePage(this.notePages[this.IndexPage].noteInfos);
                 this.noteUIs.Add(leftObj);
@@ -98,7 +98,7 @@ namespace Nameless.UI
 
             if((this.IndexPage + 1)< this.notePages.Count)
             {
-                GameObject rightObj = Instantiate(Resources.Load(NoteManager.Instance.loadPath + this.notePages[this.IndexPage + 1].noteUIname) as GameObject, this.rightPage.transform);
+                GameObject rightObj = Instantiate(GameManager.Instance.notesAsset.LoadAsset(this.notePages[this.IndexPage + 1].noteUIname) as GameObject, this.rightPage.transform);
                 rightObj.transform.localPosition = new Vector3(0, 0, 0);
                 rightObj.GetComponent<NoteUI>().RefreshNotePage(this.notePages[this.IndexPage + 1].noteInfos);
                 this.noteUIs.Add(rightObj);

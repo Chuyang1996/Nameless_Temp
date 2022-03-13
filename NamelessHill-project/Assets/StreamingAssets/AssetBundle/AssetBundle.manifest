@@ -1,0 +1,28 @@
+ManifestFileVersion: 0
+CRC: 3812204764
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: atlas.nameless
+      Dependencies: {}
+    Info_1:
+      Name: map.nameless
+      Dependencies: {}
+    Info_2:
+      Name: transinfoshow.nameless
+      Dependencies: {}
+    Info_3:
+      Name: camp.nameless
+      Dependencies: {}
+    Info_4:
+      Name: build.nameless
+      Dependencies: {}
+    Info_5:
+      Name: character.nameless
+      Dependencies: {}
+    Info_6:
+      Name: note.nameless
+      Dependencies: {}
+    Info_7:
+      Name: audio.nameless
+      Dependencies: {}

@@ -1,0 +1,52 @@
+ManifestFileVersion: 0
+CRC: 1339827104
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: bce0708e41fea51bbdb61b142fa6ccb3
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ca3ca9d52fa24a467980026f71159247
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 57c008f954fe54a8bb972de1018a2cb8, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 097b551f2844b054290f18a39bf892e9, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30ae93fb156fc6d4c828c64571fc3edd, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 38c1c39ee14a4294dbd98cfe042231a4, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Prefabs/CharacterAnim/engineer.prefab
+- Assets/Prefabs/CharacterAnim/enemy.prefab
+- Assets/Prefabs/CharacterAnim/soldier.prefab
+- Assets/Prefabs/CharacterAnim/flamethrower.prefab
+- Assets/Prefabs/CharacterAnim/medical.prefab
+- Assets/Prefabs/CharacterAnim/commander.prefab
+- Assets/Prefabs/CharacterAnim/sniper.prefab
+- Assets/Prefabs/CharacterAnim/echo.prefab
+Dependencies: []

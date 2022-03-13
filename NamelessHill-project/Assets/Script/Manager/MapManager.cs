@@ -35,13 +35,13 @@ namespace Nameless.Manager
         {
             if (this.currentTransInfoShow != null)
                 DestroyImmediate(this.currentTransInfoShow.gameObject);
-            this.currentTransInfoShow = Instantiate(Resources.Load(loadPathTransInfoShow + mapData.transInfoShowName) as GameObject, this.gameObject.transform).GetComponent<TransInfoShow>();
+            this.currentTransInfoShow = Instantiate(GameManager.Instance.transInfoShowAsset.LoadAsset(mapData.transInfoShowName) as GameObject, this.gameObject.transform).GetComponent<TransInfoShow>();
             RTSCamera.Instance.SetCameraPos(mapData.cameraPos);
             this.currentTransInfoShow.transform.localPosition = new Vector3(mapData.cameraPos.x, mapData.cameraPos.y, 0);
         }
         public void GenerateMap(MapData mapData)
         {
-            GameObject map = Instantiate(Resources.Load(loadPathMap + mapData.mapName) as GameObject, this.gameObject.transform);
+            GameObject map = Instantiate(GameManager.Instance.mapAsset.LoadAsset(mapData.mapName) as GameObject, this.gameObject.transform);
             map.transform.localPosition = new Vector3(0, 0, 0);
             map.GetComponent<Map>().id = mapData.id;
             this.currentMap = map.GetComponent<Map>();

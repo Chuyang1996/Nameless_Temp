@@ -1,0 +1,33 @@
+ManifestFileVersion: 0
+CRC: 758285810
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2ca3df29abfc81f3a5054576b667c820
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9a2ca7bdbd1871f7131daf57de908e0c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Audio/AmbienceLoop_Combat_01.wav
+- Assets/Audio/SFX_Journal_01.wav
+- Assets/Audio/Win.wav
+- Assets/Audio/Pinch.wav
+- Assets/Audio/SFX_CombatStart_01.wav
+- Assets/Audio/AmbienceLoop_Shelter_01.wav
+- Assets/Audio/Walk.wav
+- Assets/Audio/Lose.wav
+- Assets/Audio/Attack.wav
+- Assets/Audio/Surround.wav
+- Assets/Audio/SFX_UI_Click_01.wav
+- Assets/Audio/Music_MainBGM_01.wav
+- Assets/Audio/SFX_MovingEnd_01.wav
+- Assets/Audio/SFX_SupplyAdd_01.wav
+- Assets/Audio/SFX_ConstructionEnd_01.wav
+- Assets/Audio/SFX_MovingStart_01.wav
+- Assets/Audio/SFX_UnitDown_01.wav
+Dependencies: []

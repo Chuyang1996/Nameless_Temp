@@ -1,0 +1,37 @@
+ManifestFileVersion: 0
+CRC: 1814801768
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4eb38d5b23f0920aed797f090a0270f3
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/GameData/ConversationOption_Data.txt
+- Assets/GameData/EventTrigger_Data.txt
+- Assets/GameData/PawnGroup_Data.txt
+- Assets/GameData/ConversationEffect_Data.txt
+- Assets/GameData/Camp_Data.txt
+- Assets/GameData/Map_Data.txt
+- Assets/GameData/BuildSkill_Data.txt
+- Assets/GameData/Character_Data.txt
+- Assets/GameData/Dialogue_Data.txt
+- Assets/GameData/Note_Data.txt
+- Assets/GameData/Conversation_Data.txt
+- Assets/GameData/NotePage_Data.txt
+- Assets/GameData/SupportSkill_Data.txt
+- Assets/GameData/Buff_Data.txt
+- Assets/GameData/DialogueGroup_Data.txt
+- Assets/GameData/Faction_Data.txt
+- Assets/GameData/EventOption_Data.txt
+- Assets/GameData/Area_Data.txt
+- Assets/GameData/EventResult_Data.txt
+- Assets/GameData/AudiosResources.txt
+- Assets/GameData/FightSkill_Data.txt
+Dependencies: []

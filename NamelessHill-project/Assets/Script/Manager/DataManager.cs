@@ -62,38 +62,39 @@ namespace Nameless.Manager
         /// 初始化读表数据
         public void InitData()
         {
-            this.pawnData = this.ReadFile("Character_Data.txt");
-            this.fightSkillData = this.ReadFile("FightSkill_Data.txt");
-            this.supportSkillData = this.ReadFile("SupportSkill_Data.txt");
-            this.buildSkillData = this.ReadFile("BuildSkill_Data.txt");
-            this.buffSkillData = this.ReadFile("Buff_Data.txt");
-            this.eventTriggerData = this.ReadFile("EventTrigger_Data.txt");
-            this.eventResultData = this.ReadFile("EventResult_Data.txt");
-            this.eventOptionData = this.ReadFile("EventOption_Data.txt");
-            this.dialogueData = this.ReadFile("Dialogue_Data.txt");
-            this.dialogueGroupData = this.ReadFile("DialogueGroup_Data.txt");
-            this.areaData = this.ReadFile("Area_Data.txt");
-            this.pawnGroupData = this.ReadFile("PawnGroup_Data.txt");
-            this.conversationData = this.ReadFile("Conversation_Data.txt");
-            this.conversationOptionData = this.ReadFile("ConversationOption_Data.txt");
-            this.conversationEffectData = this.ReadFile("ConversationEffect_Data.txt");
-            this.notePageData = this.ReadFile("NotePage_Data.txt");
-            this.noteData = this.ReadFile("Note_Data.txt");
-            this.mapData = this.ReadFile("Map_Data.txt");
-            this.campData = this.ReadFile("Camp_Data.txt");
-            this.factionData = this.ReadFile("Faction_Data.txt");
+            AssetBundle gameData = GameManager.Instance.gameDataAsset;
+            this.pawnData = this.ReadFile("Character_Data.txt", gameData);
+            this.fightSkillData = this.ReadFile("FightSkill_Data.txt", gameData);
+            this.supportSkillData = this.ReadFile("SupportSkill_Data.txt", gameData);
+            this.buildSkillData = this.ReadFile("BuildSkill_Data.txt", gameData);
+            this.buffSkillData = this.ReadFile("Buff_Data.txt", gameData);
+            this.eventTriggerData = this.ReadFile("EventTrigger_Data.txt", gameData);
+            this.eventResultData = this.ReadFile("EventResult_Data.txt", gameData);
+            this.eventOptionData = this.ReadFile("EventOption_Data.txt", gameData);
+            this.dialogueData = this.ReadFile("Dialogue_Data.txt", gameData);
+            this.dialogueGroupData = this.ReadFile("DialogueGroup_Data.txt", gameData);
+            this.areaData = this.ReadFile("Area_Data.txt", gameData);
+            this.pawnGroupData = this.ReadFile("PawnGroup_Data.txt", gameData);
+            this.conversationData = this.ReadFile("Conversation_Data.txt", gameData);
+            this.conversationOptionData = this.ReadFile("ConversationOption_Data.txt", gameData);
+            this.conversationEffectData = this.ReadFile("ConversationEffect_Data.txt", gameData);
+            this.notePageData = this.ReadFile("NotePage_Data.txt", gameData);
+            this.noteData = this.ReadFile("Note_Data.txt", gameData);
+            this.mapData = this.ReadFile("Map_Data.txt", gameData);
+            this.campData = this.ReadFile("Camp_Data.txt", gameData);
+            this.factionData = this.ReadFile("Faction_Data.txt", gameData);
             //string data;
 
 
 
         }
 
-        private Dictionary<long, Dictionary<string, string>> ReadFile(string fileName)
+        private Dictionary<long, Dictionary<string, string>> ReadFile(string fileName,AssetBundle assetBundle)
         {
-            string data;
-            FileStream file = File.Open(Application.streamingAssetsPath + "/" + fileName, FileMode.Open, FileAccess.Read);
-            StreamReader reader = new StreamReader(file);
-            data = reader.ReadLine();
+            string data = (assetBundle.LoadAsset(fileName) as TextAsset).text;
+            //FileStream file = File.Open(Application.streamingAssetsPath + "/" + fileName, FileMode.Open, FileAccess.Read);
+            //StreamReader reader = new StreamReader(file);
+            //data = reader.ReadLine();
             return JsonConvert.DeserializeObject<Dictionary<long, Dictionary<string, string>>>(data);
         }
         #endregion
