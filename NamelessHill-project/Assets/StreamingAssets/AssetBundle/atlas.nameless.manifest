@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 185069847
+CRC: 1840340874
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: abefd459ebab08a3a989ec1fe934fa54
+    Hash: 21897598806552e392f598f84567d765
   TypeTreeHash:
     serializedVersion: 2
     Hash: 3dbb92f992534c06c4e322444b68580f
@@ -17,11 +17,11 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Resources/TexturePackage/CampCharacterImage.spriteatlas
-- Assets/Resources/TexturePackage/LineImage.spriteatlas
-- Assets/Resources/TexturePackage/NoteImage.spriteatlas
-- Assets/Resources/TexturePackage/EventImage.spriteatlas
-- Assets/Resources/TexturePackage/IconImage.spriteatlas
-- Assets/Resources/TexturePackage/CharacterImage.spriteatlas
-- Assets/Resources/TexturePackage/CampCharacterMarkImage.spriteatlas
+- Assets/AtlasPackage/CampCharacterImage.spriteatlas
+- Assets/AtlasPackage/LineImage.spriteatlas
+- Assets/AtlasPackage/NoteImage.spriteatlas
+- Assets/AtlasPackage/EventImage.spriteatlas
+- Assets/AtlasPackage/IconImage.spriteatlas
+- Assets/AtlasPackage/CharacterImage.spriteatlas
+- Assets/AtlasPackage/CampCharacterMarkImage.spriteatlas
 Dependencies: []

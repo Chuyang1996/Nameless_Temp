@@ -25,7 +25,7 @@ namespace Nameless.Manager
         public void InitCamp(CampData campData, List<Pawn> pawnAvatars, EventCollections eventCollections,int militaryRes)
         {
             this.UpdateCampData(campData);
-            GameObject camp = Instantiate(GameManager.Instance.campAsset.LoadAsset(campData.campName) as GameObject, this.transform);
+            GameObject camp = Instantiate(AssetLoad.campAsset.LoadAsset(campData.campName) as GameObject, this.transform);
             camp.transform.localPosition = new Vector3(0, 0, 0);
             this.campScene = camp.GetComponent<Camp>();
             this.campScene.InitCamp(pawnAvatars);

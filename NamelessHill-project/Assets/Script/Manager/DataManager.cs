@@ -62,7 +62,7 @@ namespace Nameless.Manager
         /// 初始化读表数据
         public void InitData()
         {
-            AssetBundle gameData = GameManager.Instance.gameDataAsset;
+            AssetBundle gameData = AssetLoad.gameDataAsset;
             this.pawnData = this.ReadFile("Character_Data.txt", gameData);
             this.fightSkillData = this.ReadFile("FightSkill_Data.txt", gameData);
             this.supportSkillData = this.ReadFile("SupportSkill_Data.txt", gameData);

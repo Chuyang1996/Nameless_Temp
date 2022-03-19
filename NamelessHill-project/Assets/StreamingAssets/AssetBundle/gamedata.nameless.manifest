@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1814801768
+CRC: 31348370
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4eb38d5b23f0920aed797f090a0270f3
+    Hash: 9f7e2dbcc1211ee9f81195595fa3ccf2
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -13,25 +13,25 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/GameData/ConversationOption_Data.txt
-- Assets/GameData/EventTrigger_Data.txt
-- Assets/GameData/PawnGroup_Data.txt
-- Assets/GameData/ConversationEffect_Data.txt
-- Assets/GameData/Camp_Data.txt
-- Assets/GameData/Map_Data.txt
-- Assets/GameData/BuildSkill_Data.txt
-- Assets/GameData/Character_Data.txt
-- Assets/GameData/Dialogue_Data.txt
-- Assets/GameData/Note_Data.txt
-- Assets/GameData/Conversation_Data.txt
-- Assets/GameData/NotePage_Data.txt
-- Assets/GameData/SupportSkill_Data.txt
-- Assets/GameData/Buff_Data.txt
-- Assets/GameData/DialogueGroup_Data.txt
-- Assets/GameData/Faction_Data.txt
-- Assets/GameData/EventOption_Data.txt
-- Assets/GameData/Area_Data.txt
-- Assets/GameData/EventResult_Data.txt
-- Assets/GameData/AudiosResources.txt
-- Assets/GameData/FightSkill_Data.txt
+- Assets/GameDataFile/ConversationOption_Data.txt
+- Assets/GameDataFile/EventTrigger_Data.txt
+- Assets/GameDataFile/PawnGroup_Data.txt
+- Assets/GameDataFile/ConversationEffect_Data.txt
+- Assets/GameDataFile/Camp_Data.txt
+- Assets/GameDataFile/Map_Data.txt
+- Assets/GameDataFile/BuildSkill_Data.txt
+- Assets/GameDataFile/Character_Data.txt
+- Assets/GameDataFile/Dialogue_Data.txt
+- Assets/GameDataFile/Note_Data.txt
+- Assets/GameDataFile/Conversation_Data.txt
+- Assets/GameDataFile/NotePage_Data.txt
+- Assets/GameDataFile/SupportSkill_Data.txt
+- Assets/GameDataFile/Buff_Data.txt
+- Assets/GameDataFile/DialogueGroup_Data.txt
+- Assets/GameDataFile/Faction_Data.txt
+- Assets/GameDataFile/EventOption_Data.txt
+- Assets/GameDataFile/Area_Data.txt
+- Assets/GameDataFile/EventResult_Data.txt
+- Assets/GameDataFile/AudiosResources.txt
+- Assets/GameDataFile/FightSkill_Data.txt
 Dependencies: []

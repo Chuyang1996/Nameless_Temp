@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 3812204764
+CRC: 2255276733
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -25,4 +25,7 @@ AssetBundleManifest:
       Dependencies: {}
     Info_7:
       Name: audio.nameless
+      Dependencies: {}
+    Info_8:
+      Name: gamedata.nameless
       Dependencies: {}

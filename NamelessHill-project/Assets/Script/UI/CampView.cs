@@ -22,6 +22,7 @@ namespace Nameless.UI
         public Text pawnNum;
 
         public ResourceShow campResourceShow;
+        public CampInfoView campInfoView;
 
         public Button pauseBtn;
 
@@ -46,7 +47,7 @@ namespace Nameless.UI
         private void Start()
         {
             this.pauseBtn.onClick.AddListener(this.PausePanelShow);
-            this.resumeBtn.onClick.AddListener(this.BackToGame);
+            this.resumeBtn.onClick.AddListener(this.PausePanelClose);
             this.optionBtn.onClick.AddListener(this.OptionPanel);
             this.mainBtn.onClick.AddListener(this.MainMenuPanel);
             this.exitBtn.onClick.AddListener(this.ExitGame);
@@ -70,6 +71,7 @@ namespace Nameless.UI
             this.InitPawnInfo(pawnNum);
             this.animation.clip = enterAnim;
             this.animation.Play();
+            this.campInfoView.isOnUI = false;
         }
 
         public void ExitCamp()
@@ -102,18 +104,21 @@ namespace Nameless.UI
             AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             Time.timeScale = 0.0f;
             this.pausePanel.gameObject.SetActive(true);
+            this.campInfoView.isOnUI = true;
         }
-        private void BackToGame()
+        private void PausePanelClose()
         {
             AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             Time.timeScale = 1.0f;
             this.pausePanel.gameObject.SetActive(false);
+            this.campInfoView.isOnUI = false;
         }
         private void OptionPanel()
         {
             AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             this.resultPanel.SetActive(false);
             this.optionPanel.SetActive(true);
+
         }
         private void MainMenuPanel()
         {
@@ -143,6 +148,7 @@ namespace Nameless.UI
         {
             AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             this.confirmPanel.gameObject.SetActive(false);
+            this.campInfoView.isOnUI = false;
         }
 
         private void BackToResultPanel()
@@ -155,6 +161,7 @@ namespace Nameless.UI
         {
             AudioManager.Instance.PlayAudio(this.transform, AudioConfig.uiRemind);
             this.confirmPanel.gameObject.SetActive(true);
+            this.campInfoView.isOnUI = true;
         }
 
 

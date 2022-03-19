@@ -12,11 +12,13 @@ namespace Nameless.UI
         // Start is called before the first frame update
         public GameObject selectPanel;
         public Text infoTxt;
+        public bool isOnUI;
         private void InitInfo(string value)
         {
             this.FollowMouseMove(this.selectPanel);
             this.selectPanel.SetActive(true);
             this.infoTxt.text = value;
+            this.isOnUI = false;
         }
         public override void FollowMouseMove(GameObject item)
         {
@@ -100,7 +102,7 @@ namespace Nameless.UI
         // Update is called once per frame
         void Update()
         {
-            if (Time.timeScale == 0.0f)
+            if (Time.timeScale == 0.0f || this.isOnUI)
                 return;
             this.MouseOnItem();
             this.MouseClickOnItem();

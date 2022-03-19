@@ -168,20 +168,16 @@ namespace Nameless.Manager {
 
 
 
-        //×ÊÔ´°ü
-        public AssetBundle gameDataAsset;
-        public AssetBundle atlasAsset;
-        public AssetBundle mapAsset;
-        public AssetBundle transInfoShowAsset;
-        public AssetBundle campAsset;
-        public AssetBundle characterAsset;
-        public AssetBundle buildAsset;
-        public AssetBundle notesAsset;
-        public AssetBundle audioAsset;
+
+        private void Awake()
+        {
+            base.Awake();
+            this.LoadAssetBundle();
+
+        }
         // Start is called before the first frame update
         void Start()
         {
-            this.LoadAssetBundle();
             this.isPlay = true;
             this.GameScene = GameScene.Menu;
             RTSCamera.Instance.InitCamera();
@@ -205,24 +201,7 @@ namespace Nameless.Manager {
         }
         public void LoadAssetBundle()
         {
-            if(this.gameDataAsset==null)
-                this.gameDataAsset = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/AssetBundle/gamedata.nameless");
-            if (this.atlasAsset == null)
-                this.atlasAsset = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/AssetBundle/atlas.nameless");
-            if (this.mapAsset == null)
-                this.mapAsset = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/AssetBundle/map.nameless");
-            if (this.transInfoShowAsset == null)
-                this.transInfoShowAsset = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/AssetBundle/transInfoShow.nameless");
-            if (this.campAsset == null)
-                this.campAsset = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/AssetBundle/camp.nameless");
-            if (this.characterAsset == null)
-                this.characterAsset = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/AssetBundle/character.nameless");
-            if (this.buildAsset == null)
-                this.buildAsset = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/AssetBundle/build.nameless");
-            if (this.notesAsset == null)
-                this.notesAsset = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/AssetBundle/note.nameless");
-            if (this.audioAsset == null)
-                this.audioAsset = AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/AssetBundle/audio.nameless");
+            AssetLoad.InitAssetLoad();
         }
         public void StartNewGame()
         {

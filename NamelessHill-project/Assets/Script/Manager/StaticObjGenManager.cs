@@ -40,27 +40,27 @@ namespace Nameless.Manager
             GameManager.Instance.PauseOrPlay(true);
             if (build is Obstacle)
             {
-                GameObject buildObj = Instantiate(GameManager.Instance.buildAsset.LoadAsset(build.prefabName)) as GameObject;
+                GameObject buildObj = Instantiate(AssetLoad.buildAsset.LoadAsset(build.prefabName)) as GameObject;
                 buildObj.GetComponent<ObstacleAvatar>().Init(pawnAvatar, area,build,isBuilding);
             }
             else if(build is Bunker)
             {
-                GameObject buildObj = Instantiate(GameManager.Instance.buildAsset.LoadAsset(build.prefabName)) as GameObject;
+                GameObject buildObj = Instantiate(AssetLoad.buildAsset.LoadAsset(build.prefabName)) as GameObject;
                 buildObj.GetComponent<BunkerAvatar>().Init(pawnAvatar, area, build, isBuilding);
             }
             else if(build is Cannon)
             {
-                GameObject buildObj = Instantiate(GameManager.Instance.buildAsset.LoadAsset(build.prefabName)) as GameObject;
+                GameObject buildObj = Instantiate(AssetLoad.buildAsset.LoadAsset(build.prefabName)) as GameObject;
                 buildObj.GetComponent<CannonAvatar>().Init(pawnAvatar, area, build, isBuilding);
             }
             else if (build is Ammo)
             {
-                GameObject buildObj = Instantiate(GameManager.Instance.buildAsset.LoadAsset(build.prefabName)) as GameObject;
+                GameObject buildObj = Instantiate(AssetLoad.buildAsset.LoadAsset(build.prefabName)) as GameObject;
                 buildObj.GetComponent<AmmoAvatar>().Init(pawnAvatar, area, build, isBuilding);
             }
             else if (build is Medicine)
             {
-                GameObject buildObj = Instantiate(GameManager.Instance.buildAsset.LoadAsset(build.prefabName)) as GameObject;
+                GameObject buildObj = Instantiate(AssetLoad.buildAsset.LoadAsset(build.prefabName)) as GameObject;
                 buildObj.GetComponent<MedicineAvatar>().Init(pawnAvatar, area, build, isBuilding);
             }
             EventTriggerManager.Instance.CheckEventBuildOnArea(build.type,FrontManager.Instance.localPlayer);
@@ -70,14 +70,14 @@ namespace Nameless.Manager
         {
             if (buildIconType == BuildIconType.Building)
             {
-                GameObject buildObj = Instantiate(GameManager.Instance.buildAsset.LoadAsset("BuildIcon")) as GameObject;
+                GameObject buildObj = Instantiate(AssetLoad.buildAsset.LoadAsset("BuildIcon")) as GameObject;
                 buildObj.transform.parent = area.centerNode.transform;
                 buildObj.transform.localPosition = new Vector3(0, 0, 0);
                 return buildObj;
             }
             else if (buildIconType == BuildIconType.BullEyes)
             {
-                GameObject buildObj = Instantiate(GameManager.Instance.buildAsset.LoadAsset("Bullseyes")) as GameObject;
+                GameObject buildObj = Instantiate(AssetLoad.buildAsset.LoadAsset("Bullseyes")) as GameObject;
                 buildObj.transform.parent = area.centerNode.transform;
                 buildObj.transform.localPosition = new Vector3(0, 0, 0);
                 return buildObj;

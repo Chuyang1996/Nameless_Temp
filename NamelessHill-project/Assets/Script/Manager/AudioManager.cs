@@ -202,7 +202,7 @@ namespace Nameless.Manager
 		public void InitAudio()
 		{
 			//Debug.Log(Application.dataPath);
-			AssetBundle gameData = GameManager.Instance.gameDataAsset;
+			AssetBundle gameData = AssetLoad.gameDataAsset;
 			string data = (gameData.LoadAsset("AudiosResources.txt") as TextAsset).text;
 			//FileStream file = File.Open(Application.streamingAssetsPath + "/" + "AudiosResources.txt", FileMode.Open, FileAccess.Read);
 			//StreamReader reader = new StreamReader(file);
@@ -234,7 +234,7 @@ namespace Nameless.Manager
 			this.gameSceneSound.transform.localPosition = new Vector3(0, 0, 0);
 			foreach (string ac in this.audioList)
 			{
-				audioDic.Add(ac, (GameManager.Instance.audioAsset.LoadAsset(ac, typeof(AudioClip)) as AudioClip));
+				audioDic.Add(ac, (AssetLoad.audioAsset.LoadAsset(ac, typeof(AudioClip)) as AudioClip));
 			}
 		}
 		//暂停播放
